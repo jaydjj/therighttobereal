@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..800,0..100,0..1;1,9..144,400..800,0..100,0..1&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/styles.css?v=13">
+  <link rel="stylesheet" href="assets/styles.css?v=14">
 </head>
 <body>
   <header class="site-header">
@@ -25,7 +25,7 @@
         <a href="#mission">Mission</a>
         <a href="#menu">March</a>
         <a href="#rules">Principles</a>
-        <a href="#blackout" class="nav-cta">March 8</a>
+        <a href="#blackout" class="nav-cta">Join March 8</a>
       </nav>
     </div>
   </header>
@@ -36,8 +36,8 @@
         <h1>Be real.<br><em>We're not buying it.</em></h1>
         <p class="lead">Collective action against the pressure to fix ourselves. Spend differently. Show up together. Make it count.</p>
         <div class="actions">
-          <a href="#blackout" class="pill pill-gold">March 8 · The Beauty Blackout</a>
-          <a href="#mission" class="pill pill-line">What's this about?</a>
+          <a href="#blackout" class="pill pill-gold">Join the Blackout · March 8</a>
+          <a href="https://www.instagram.com/therighttobereal/" class="pill pill-line" target="_blank" rel="noopener">Follow on Instagram</a>
         </div>
       </div>
     </section>
@@ -115,7 +115,7 @@
             <p class="res-sub">People who were told to change, and didn't.</p>
             <p>Some regulars you'll know from history. Some you'll know from your own kitchen table. All of them kept it real long before it was a hashtag.</p>
             <ul class="reg-points">
-              <li><strong>Nominations open on Instagram in January.</strong> A writer, an artist, your grandmother, your best friend. If we feature yours, we'll credit you.</li>
+              <li><strong>Nominations open on <a href="https://www.instagram.com/therighttobereal/" target="_blank" rel="noopener">Instagram</a> in January.</strong> A writer, an artist, your grandmother, your best friend. If we feature yours, we'll credit you.</li>
             </ul>
           </div>
         </div>
@@ -157,7 +157,20 @@
           <div><dt>Where</dt><dd>Everywhere</dd></div>
           <div><dt>Goal</dt><dd>Our first 1,000</dd></div>
         </dl>
-        <p class="soon">Sign-ups open January 2027.</p>
+        <form id="join" class="join" novalidate>
+          <p class="join-title">Count me in.</p>
+          <label class="visually-hidden" for="join-email">Email address</label>
+          <input id="join-email" name="email" type="email" placeholder="Your email" autocomplete="email" required>
+          <fieldset class="join-choice">
+            <legend>I'm in for</legend>
+            <label><input type="radio" name="pledge" value="day" checked> March 8</label>
+            <label><input type="radio" name="pledge" value="month"> The whole month</label>
+            <label><input type="radio" name="pledge" value="both"> Both</label>
+          </fieldset>
+          <label class="join-consent"><input id="join-consent" type="checkbox" name="consent"> Email me about The Right to Be Real. Unsubscribe any time.</label>
+          <button type="submit" class="pill pill-gold">Join the Blackout</button>
+          <p class="join-note" id="join-note" role="status">Sign-ups open January 2027. <a href="https://www.instagram.com/therighttobereal/" target="_blank" rel="noopener">Follow @therighttobereal</a> to hear first.</p>
+        </form>
       </div>
     </section>
 
@@ -187,12 +200,21 @@
     <div class="container foot">
       <p class="signoff">Have a real day.</p>
       <div class="foot-meta">
-        <p>Follow along on Instagram. Sign-ups open January 2027.</p>
+        <p><a href="https://www.instagram.com/therighttobereal/" target="_blank" rel="noopener">Follow @therighttobereal on Instagram</a></p>
         <p>&copy; <span id="year">2026</span> The Right to Be Real</p>
       </div>
     </div>
   </footer>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Sign-ups are not connected yet: nothing is sent or stored.
+    document.getElementById('join').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var note = document.getElementById('join-note');
+      note.innerHTML = 'Thanks for being early. Sign-ups open in January 2027, so we haven\'t saved this yet. <a href="https://www.instagram.com/therighttobereal/" target="_blank" rel="noopener">Follow @therighttobereal</a> to hear the moment they open.';
+      note.classList.add('join-note-on');
+    });
+  </script>
 </body>
 </html>

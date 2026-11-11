@@ -140,6 +140,22 @@ h1 em, h2 em { font-style: italic; }
 .stats dd { margin: 10px 0 0; font: 400 clamp(1.3rem, 3vw, 1.9rem)/1 var(--serif); }
 .soon { margin-top: 36px; display: inline-block; font: 600 .78rem/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; background: var(--gold); color: var(--ink); padding: 14px 20px; border-radius: 99px; }
 @media (max-width: 560px) { .stats { grid-template-columns: 1fr; } }
+.join { max-width: 520px; margin: 48px auto 0; padding-top: 40px; border-top: 1px solid rgba(248, 246, 240, .3); display: grid; gap: 14px; text-align: left; }
+.join-title { font: 400 clamp(1.6rem, 3.4vw, 2.2rem)/1.1 var(--serif); color: var(--paper); text-align: center; margin-bottom: 4px; }
+.join input[type="email"] { width: 100%; font: 400 1rem/1.2 var(--sans); padding: 14px 18px; border-radius: 99px; border: 1.5px solid rgba(248, 246, 240, .5); background: var(--paper); color: var(--ink); }
+.join input[type="email"]::placeholder { color: var(--muted); }
+.join-choice { border: 0; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 18px; color: var(--paper); font-size: .95rem; }
+.join-choice legend { font: 600 .7rem/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; padding: 0; }
+.join-choice label, .join-consent { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; }
+.join-consent { color: var(--morning); font-size: .88rem; align-items: flex-start; }
+.join-consent input { margin-top: 3px; }
+.join input[type="radio"], .join input[type="checkbox"] { accent-color: var(--gold); width: 16px; height: 16px; flex: none; }
+.join button { justify-self: center; border: 0; cursor: pointer; margin-top: 6px; font-size: .82rem; padding: 16px 28px; }
+.join-note { text-align: center; color: var(--morning); font-size: .88rem; }
+.join-note a, .join-consent a { color: var(--paper); }
+.join-note-on { color: var(--paper); }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.foot-meta a, .reg-points a { color: var(--blue); }
 
 /* Later */
 .later h2 { margin-bottom: 40px; }
