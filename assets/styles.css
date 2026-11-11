@@ -139,6 +139,7 @@ h1 em, h2 em { font-style: italic; }
 .long { max-width: 52ch; margin: 40px auto 0; padding-top: 32px; border-top: 1px solid rgba(248, 246, 240, .3); display: grid; gap: 10px; color: var(--morning); }
 .long-title { font: 400 clamp(1.5rem, 3vw, 2rem)/1.15 var(--serif); color: var(--paper); }
 .long-title em { color: var(--gold); white-space: nowrap; }
+.long strong { color: var(--paper); font-weight: 600; }
 .soon { margin-top: 36px; display: inline-block; font: 600 .78rem/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; background: var(--gold); color: var(--ink); padding: 14px 20px; border-radius: 99px; }
 @media (max-width: 560px) { .stats { grid-template-columns: 1fr; } }
 
