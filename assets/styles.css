@@ -68,6 +68,7 @@ h1 em, h2 em { font-style: italic; }
 
 /* Idea + rules */
 .split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: clamp(32px, 6vw, 96px); align-items: start; }
+.mission { font: 400 clamp(1.3rem, 2.2vw, 1.6rem)/1.45 var(--soft); font-variation-settings: "SOFT" 50, "opsz" 24; color: var(--ink); max-width: 38ch; text-wrap: pretty; }
 .prose { display: grid; gap: 1.1em; color: var(--muted); max-width: 60ch; font-size: 1.1rem; }
 .prose p:first-child { color: var(--ink); }
 .rules { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
