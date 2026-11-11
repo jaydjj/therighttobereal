@@ -10,4 +10,4 @@ Static website hosted on GitHub Pages. No build step: edit the files and push.
 ## Brand files
 - `brand/instagram-avatar.png`: 1080×1080 profile picture
 - `brand/wordmark.png`: logo on light background
-- `brand/avatar.html`: source used to render both (open in a browser and screenshot to re-export)
+- `brand/avatar.html`: source used to render the logo files and the favicon (open in a browser and screenshot to re-export)

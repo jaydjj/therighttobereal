@@ -9,6 +9,7 @@
   --muted: #545862;
   --line: #dcd8cc;
   --serif: "DM Serif Display", Georgia, "Times New Roman", serif;
+  --soft: "Fraunces", Georgia, "Times New Roman", serif;
   --sans: "Work Sans", "Helvetica Neue", Arial, sans-serif;
   --max: 1120px;
   color-scheme: light;
@@ -29,10 +30,9 @@ a { color: inherit; }
 .site-header { border-top: 5px solid var(--blue); border-bottom: 1px solid var(--line); background: var(--paper); }
 .bar { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 72px; }
 /* Logo: spaced caps over an italic serif "Real." with a gold full stop */
-.logo { display: inline-grid; justify-items: start; gap: 3px; text-decoration: none; color: var(--blue); }
-.logo-top { font: 600 .6rem/1 var(--sans); letter-spacing: .26em; text-transform: uppercase; padding-left: .12em; }
-.logo-main { font: italic 400 2rem/.8 var(--serif); letter-spacing: -.02em; }
-.logo-main i { font-style: normal; color: var(--gold); }
+.logo { display: inline-grid; justify-items: start; gap: 1px; text-decoration: none; color: var(--blue); white-space: nowrap; }
+.logo-top { font: italic 500 .82rem/1 var(--soft); font-variation-settings: "SOFT" 100, "WONK" 1, "opsz" 24; padding-left: .08em; }
+.logo-main { font: 700 1.9rem/.86 var(--soft); font-variation-settings: "SOFT" 100, "WONK" 1, "opsz" 144; letter-spacing: -.035em; }
 .nav { display: flex; align-items: center; gap: 26px; font: 500 .8rem/1 var(--sans); letter-spacing: .1em; text-transform: uppercase; }
 .nav a { text-decoration: none; color: var(--ink); }
 .nav a:hover { color: var(--blue); }
@@ -150,8 +150,6 @@ h1 em, h2 em { font-style: italic; }
 /* Footer */
 .site-footer { border-top: 5px solid var(--blue); }
 .foot { padding-block: 56px 48px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 32px; }
-.cup { display: grid; text-align: center; gap: 4px; color: var(--blue); }
-.cup span { font: 600 .7rem/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; }
-.cup em { font: italic 400 2.4rem/1 var(--serif); }
+.signoff { font: italic 500 clamp(2rem, 5vw, 3rem)/1 var(--soft); font-variation-settings: "SOFT" 100, "WONK" 1, "opsz" 144; color: var(--blue); letter-spacing: -.02em; }
 .foot-meta { display: grid; gap: 6px; color: var(--muted); font-size: .9rem; text-align: right; }
 @media (max-width: 600px) { .foot { justify-content: center; } .foot-meta { text-align: center; } }
