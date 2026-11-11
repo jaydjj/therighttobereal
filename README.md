@@ -6,4 +6,4 @@ Static website hosted on GitHub Pages. No build step: edit the files and push.
 - `assets/styles.css`: colors, fonts, layout (colors are variables at the top)
 - `assets/main.js`: mobile menu and footer year
 - `404.html`: not-found page
-- `CNAME`: the custom domain (add once the domain is known)
+- `CNAME`: custom domain (therighttobereal.com)
