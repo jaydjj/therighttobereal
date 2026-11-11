@@ -71,9 +71,8 @@ h1 em, h2 em { font-style: italic; }
 .mission { font: 400 clamp(1.3rem, 2.2vw, 1.6rem)/1.45 var(--soft); font-variation-settings: "SOFT" 50, "opsz" 24; color: var(--ink); max-width: 38ch; text-wrap: pretty; }
 .prose { display: grid; gap: 1.1em; color: var(--muted); max-width: 60ch; font-size: 1.1rem; }
 .prose p:first-child { color: var(--ink); }
-.rules { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
-.rules li { padding-block: 20px; border-top: 1px solid var(--line); color: var(--muted); }
-.rules li:last-child { border-bottom: 1px solid var(--line); }
+.rules { list-style: none; margin: 0; padding: 0; display: grid; gap: 24px; }
+.rules li { color: var(--muted); }
 .rules strong { display: block; color: var(--ink); font-weight: 600; margin-bottom: 4px; }
 @media (max-width: 760px) { .split { grid-template-columns: 1fr; } }
 
