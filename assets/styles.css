@@ -77,6 +77,8 @@ h1 em, h2 em { font-style: italic; }
 .rules strong { display: block; color: var(--ink); font-weight: 600; margin-bottom: 4px; }
 @media (max-width: 760px) { .split { grid-template-columns: 1fr; } }
 
+.divided { border-top: 1px solid var(--line); }
+
 /* Resolution */
 .resolution { border-top: 1px solid var(--line); }
 .resolution .split { align-items: center; }
