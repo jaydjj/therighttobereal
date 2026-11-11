@@ -3,7 +3,6 @@
 Static website hosted on GitHub Pages. No build step: edit the files and push.
 
 - `index.html`: page content
-- `assets/styles.css`: colors, fonts, layout (colors are variables at the top)
-- `assets/main.js`: mobile menu and footer year
+- `assets/styles.css`: "Deli Counter" brand styles (colors and fonts are variables at the top)
 - `404.html`: not-found page
 - `CNAME`: custom domain (therighttobereal.com)
