@@ -141,7 +141,7 @@ h1 em, h2 em { font-style: italic; }
 
 /* Later */
 .later h2 { margin-bottom: 40px; }
-.later-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+.later-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 28px; }
 .later-grid article { border-top: 2px solid var(--blue); padding-top: 16px; }
 .later-grid h3 { font: 400 1.4rem/1.15 var(--serif); margin: 6px 0 8px; }
 .later-grid p { color: var(--muted); }
