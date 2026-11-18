@@ -11,6 +11,7 @@ Key points:
 - Headlines pair an upright statement with an italic turn.
 - Copy is short, plain and dry. Challenge systems, never individuals. Never anti-makeup.
 - Never write "BeReal" as one word.
+- The logo is one shared file, `assets/logo.svg` ("The right to be real." in sentence case). Use it as an image wherever the logo appears; never retype or rebuild it in HTML or CSS. To change it, edit and rerun `brand/make_logo.py`.
 
 ## Working preferences
 
@@ -32,7 +33,8 @@ Key points:
 - `assets/styles.css`: styles and colour variables
 - `404.html`: not-found page
 - `CNAME`: custom domain
-- `brand/`: logo files and the profile picture (`avatar.html` is the source used to render them)
+- `assets/logo.svg`: the logo, used in the header, the hero and the 404 page
+- `brand/`: logo files and the profile picture (`avatar.html` is the source used to render them); `make_logo.py` builds `assets/logo.svg` from the Fraunces font
 - `DESIGN.md`: design guide
 
 ## Not yet connected

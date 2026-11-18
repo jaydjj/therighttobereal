@@ -55,7 +55,7 @@ Current values used on the website (see `assets/styles.css`).
 | Gold (accent: main buttons, highlighted words) | `#e3b341` |
 | Ink (body text) | `#1b1d22` |
 | Soft blue (secondary background) | `#c9d6ea` |
-| Logo | Fraunces, soft cut: "the right to" small italic above a bold "Be Real" |
+| Logo | `assets/logo.svg`: "The right to" in small italic above a bold "be real." (sentence case, with the full stop). Always use this file; never retype or rebuild the logo |
 | Headlines | DM Serif Display, upright paired with italic |
 | Body and labels | Work Sans; labels in small spaced capitals |
 

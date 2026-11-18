@@ -30,9 +30,10 @@ a { color: inherit; }
 .site-header { border-top: 5px solid var(--blue); border-bottom: 1px solid var(--line); background: var(--paper); }
 .bar { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 72px; }
 /* Logo: spaced caps over an italic serif "Real." with a gold full stop */
-.logo { display: inline-grid; justify-items: start; gap: 1px; text-decoration: none; color: var(--blue); white-space: nowrap; }
-.logo-top { font: italic 500 .82rem/1 var(--soft); font-variation-settings: "SOFT" 100, "WONK" 1, "opsz" 24; padding-left: .08em; }
-.logo-main { font: 700 1.9rem/.86 var(--soft); font-variation-settings: "SOFT" 100, "WONK" 1, "opsz" 144; letter-spacing: -.035em; }
+/* Logo: one shared asset, assets/logo.svg (built by brand/make_logo.py). Never rebuild it in CSS. */
+.logo { display: inline-flex; text-decoration: none; }
+.logo-img { display: block; height: 44px; width: auto; }
+.hero-logo { display: block; height: clamp(84px, 13vw, 132px); width: auto; margin: 0 auto 40px; }
 .nav { display: flex; align-items: center; gap: 26px; font: 500 .8rem/1 var(--sans); letter-spacing: .1em; text-transform: uppercase; }
 .nav a { text-decoration: none; color: var(--ink); }
 .nav a:hover { color: var(--blue); }
