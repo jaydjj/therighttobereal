@@ -33,7 +33,7 @@ Key points:
 - `assets/styles.css`: styles and colour variables
 - `404.html`: not-found page
 - `CNAME`: custom domain
-- `assets/logo.svg`: the logo, used in the header, the hero and the 404 page
+- `assets/logo.svg`: the logo, used in the header and the 404 page
 - `brand/`: logo files and the profile picture (`avatar.html` is the source used to render them); `make_logo.py` builds `assets/logo.svg` from the Fraunces font
 - `DESIGN.md`: design guide
 

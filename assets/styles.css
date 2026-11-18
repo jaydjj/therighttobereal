@@ -33,7 +33,6 @@ a { color: inherit; }
 /* Logo: one shared asset, assets/logo.svg (built by brand/make_logo.py). Never rebuild it in CSS. */
 .logo { display: inline-flex; text-decoration: none; }
 .logo-img { display: block; height: 44px; width: auto; }
-.hero-logo { display: block; height: clamp(84px, 13vw, 132px); width: auto; margin: 0 auto 40px; }
 .nav { display: flex; align-items: center; gap: 26px; font: 500 .8rem/1 var(--sans); letter-spacing: .1em; text-transform: uppercase; }
 .nav a { text-decoration: none; color: var(--ink); }
 .nav a:hover { color: var(--blue); }
