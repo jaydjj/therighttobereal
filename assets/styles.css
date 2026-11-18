@@ -55,7 +55,7 @@ h1 em, h2 em { font-style: italic; }
 
 /* Hero */
 .hero { padding-block: clamp(80px, 13vw, 168px) clamp(72px, 10vw, 128px); text-align: center; }
-.hero h1 { font: 400 clamp(3rem, 9.5vw, 7.6rem)/.94 var(--serif); color: var(--blue); letter-spacing: -.025em; }
+.hero h1 { font: 400 clamp(2.4rem, 6.6vw, 5.2rem)/.98 var(--serif); color: var(--blue); letter-spacing: -.025em; }
 .hero h1 em { display: inline-block; margin-top: .04em; }
 .hero .lead { font-size: clamp(1.05rem, 2vw, 1.3rem); color: var(--muted); margin: 28px auto 0; max-width: 46ch; text-wrap: balance; }
 .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 36px; }
