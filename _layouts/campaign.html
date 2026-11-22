@@ -4,18 +4,22 @@ layout: default
 {%- assign pillar = site.data.pillars | where: "id", page.pillar | first -%}
 {%- assign slug = page.url | remove: "/campaigns/" | remove: "/" -%}
 <article class="campaign pillar-{{ page.pillar }}">
-  <header class="c-hero">
-    <div class="container">
+  <header class="c-hero{% if page.broadside %} has-broadside{% endif %}">
+    <div class="container c-hero-grid">
+     <div class="c-hero-copy">
       <nav class="crumbs" aria-label="Back"><a class="back-top" href="{{ '/campaigns/' | relative_url }}"><span aria-hidden="true">←</span> All campaigns</a><span class="crumb-sep" aria-hidden="true">/</span><a href="{{ '/campaigns/' | relative_url }}#{{ pillar.id }}">{{ pillar.name }}</a></nav>
       <p class="kicker">{{ page.when }}</p>
       <h1>{{ page.title_html | default: page.title }}</h1>
       <p class="c-intro">{{ page.intro | default: page.summary }}</p>
-      {%- if page.stamp %}<p class="stamp stamp-c" aria-hidden="true">{{ page.stamp }}</p>{% endif %}
       {%- if page.facts %}
       <dl class="facts">
         {%- for f in page.facts %}<div><dt>{{ f.label }}</dt><dd>{{ f.value }}</dd></div>{% endfor %}
       </dl>
       {%- endif %}
+     </div>
+     {%- if page.broadside %}
+     <div class="c-hero-art">{% include broadside.html art=page.broadside.art label=page.broadside.label caption=page.broadside.caption size="md" %}</div>
+     {%- endif %}
     </div>
   </header>
 

@@ -8,7 +8,8 @@ Follow `DESIGN.md` for all design and writing decisions: the feel, voice, colour
 
 Key points:
 - Counterculture meets radical humanity. Defiant, wry, human.
-- Palette: paper, ink and one red. Headlines pair an upright statement with an italic turn.
+- Art direction: a contemporary movement's own broadside (woodcut/lithograph print language). Palette: paper, ink, brick red, ochre. Headlines pair an upright statement with an italic turn.
+- Recurring motif: the broadside panel (`_includes/broadside.html`, scenes in `_includes/broadsides/`). Use it selectively; the Blackout button always stays the most prominent thing on the page.
 - Challenge systems, never individuals. Never anti-makeup.
 - Never write "BeReal" as one word.
 - The logo is one shared file, `assets/logo.svg` ("The right to be real."). Use it as an image wherever the logo appears; never retype or rebuild it. To change it, rerun `brand/make_logo.py` (usage is in the file).

@@ -16,16 +16,8 @@ description: A social movement challenging the beauty pressure we're sold. Follo
         <a href="{{ site.instagram }}" class="link-ig" target="_blank" rel="noopener">Follow the movement on Instagram <span aria-hidden="true">→</span></a>
       </div>
     </div>
-    <div class="ad" aria-label="A beauty ad, rejected">
-      <p class="ad-label">Advertisement</p>
-      <ul class="ad-claims">
-        <li><s>Flawless.</s></li>
-        <li><s>Ageless.</s></li>
-        <li><s>Poreless.</s></li>
-        <li><s>Clinically proven.*</s></li>
-      </ul>
-      <p class="ad-fine">*Proven to work on your insecurities.</p>
-      <p class="stamp stamp-ad" aria-hidden="true">Rejected</p>
+    <div class="hero-art">
+      {% include broadside.html art="mirror.html" label="be real." caption="You shouldn't have to be beautiful to be valued." size="lg" %}
     </div>
   </div>
 </section>
@@ -68,7 +60,12 @@ description: A social movement challenging the beauty pressure we're sold. Follo
         <a href="{{ blackout.url | relative_url }}" class="btn btn-red btn-lg">Join the Beauty Blackout</a>
       </div>
     </div>
-    <dl class="facts facts-dark">
+    <div class="action-art">
+      {% include broadside.html art="peel.html" label=blackout.when caption="Buy nothing. Say everything." size="md" %}
+    </div>
+  </div>
+  <div class="container">
+    <dl class="facts facts-dark facts-row">
       {%- for f in blackout.facts %}<div><dt>{{ f.label }}</dt><dd>{{ f.value }}</dd></div>{% endfor %}
     </dl>
   </div>
@@ -83,10 +80,8 @@ description: A social movement challenging the beauty pressure we're sold. Follo
       <p class="insta-copy">Follow {{ site.instagram_handle }} on Instagram for actions, stories and updates.</p>
       <a href="{{ site.instagram }}" class="btn btn-ink" target="_blank" rel="noopener">Follow {{ site.instagram_handle }}</a>
     </div>
-    <a class="insta-card" href="{{ site.instagram }}" target="_blank" rel="noopener" aria-label="{{ site.instagram_handle }} on Instagram">
-      <img src="{{ '/assets/instagram-avatar.png' | relative_url }}" alt="" width="96" height="96">
-      <span class="insta-handle">{{ site.instagram_handle }}</span>
-      <span class="insta-meta">Actions · Stories · Updates</span>
+    <a class="insta-art" href="{{ site.instagram }}" target="_blank" rel="noopener" aria-label="Follow {{ site.instagram_handle }} on Instagram">
+      {% include broadside.html art="walk.html" label=site.instagram_handle caption="Actions. Stories. Updates." size="sm" %}
     </a>
   </div>
 </section>

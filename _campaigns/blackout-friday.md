@@ -7,7 +7,6 @@ cal: 7
 when: November 19–26
 summary: The biggest shopping day of the year, and we're not getting sucked in.
 intro: The biggest shopping day of the year, and we're not getting sucked in. No beauty purchases on Black Friday.
-stamp: Cart empty
 facts:
   - { label: Mute the Ads, value: "November 19–25" }
   - { label: Blackout Friday, value: "November 26" }

@@ -30,24 +30,29 @@ The point is not that everyone is beautiful. It's that people shouldn't have to 
 
 ## Visual identity
 
-**Primary: the counter-advertisement.** Bold editorial type, unexpected scale, strong hierarchy and high contrast. It can look like a beauty ad for a second, then undermine it. Sophisticated and restrained, never chaotic punk-zine.
+**Art direction: the movement's own broadside.** Inspired by 19th-century French broadsides and early 20th-century labour posters: woodcut and lithograph illustration, hand-printed ink, simple monumental compositions, carved shadows, strong diagonals, limited colour and commanding type. It should feel like a contemporary movement printing its own posters, serious, collective, human and lasting. Not a history costume and not a copy of any real poster.
 
-**Secondary: radical ordinary.** Candid, unretouched documentary photos of real people of different ages and appearances in ordinary moments. No stock photos, staged diversity, influencer polish or beauty photography. (No photos are on the site yet. Add them only when real ones exist.)
+**Avoid:** 1980s/90s retro (neon, Memphis shapes, airbrush, chrome, glossy gradients); punk-zine or photocopy styling (ransom-note type, grunge, torn paper, xerox noise); sepia or "vintage" filters; stamps as the main device; raised fists, weapons, guillotines, famous figures.
 
-The contrast between bold graphic design and quiet human imagery is the signature.
+**Texture with restraint:** a faint paper fibre on the page and slightly rough ink edges on illustrations. Never on text.
 
-### Signature devices
+### The broadside panel (recurring motif)
 
-- **The Receipt:** what manufactured insecurity costs in money, time and attention. Items crossed out in red.
-- **The Rejection Stamp:** a red, double-bordered, slightly rotated stamp ("Rejected", "Not buying it") that refuses a dubious claim.
-- **Crossed-out claims:** beauty-ad language ("Flawless.", "Clinically proven.*") struck through in red.
-- **The Human Portrait:** documentary photos, when we have them.
+A compact framed poster panel: double ink frame, a small wood-type top line ("The Right to Be Real" + a label), a woodcut scene, and a wood-type caption. Built from `_includes/broadside.html` with scenes in `_includes/broadsides/`:
+
+- `mirror.html`: a mirror turned to the wall; a woman walks toward the light (homepage hero).
+- `peel.html`: a "FLAWLESS" ad peeled back to reveal "be real." (Beauty Blackout).
+- `walk.html`: three different people walking away from a sign pointing to "PERFECT" (Instagram).
+
+Use it selectively (hero, the featured campaign, Instagram), never in every section, and never so it competes with the Blackout button. New scenes should keep the same palette, frame and print language: symbolic, dignified, diverse figures; not crowds by default.
+
+Other devices: **the Receipt** (money and time reclaimed). Documentary photos of real people can join later; no stock photos.
 
 ## Principles
 
 1. **The message does the shouting.** Restraint everywhere else so the statement lands.
 2. **Type leads.** Headlines pair an upright statement with an italic turn.
-3. **Calm by default, bold on purpose.** Mostly paper and ink; red and full ink sections for the moments that matter.
+3. **Calm by default, bold on purpose.** Mostly paper and ink; brick red and full ink sections for the moments that matter.
 4. **One clear next step.** The March 8 Beauty Blackout is the main call to action.
 5. **Progressive disclosure.** Short summaries on the homepage and campaign overview; full detail on each campaign page.
 6. **Describe here, mobilize there.** The site describes; Instagram carries how-to-join instructions.
@@ -58,20 +63,23 @@ The contrast between bold graphic design and quiet human imagery is the signatur
 
 | Role | Value |
 |---|---|
-| Paper (background) | `#f5f1e8` |
-| Paper 2 (quiet sections) | `#ebe5d8` |
-| Ink (text, bold sections) | `#151413` |
-| Red (accent, stamps, main buttons) | `#d4261c` (use `#ff6b5c` for small red text on ink) |
+| Paper (background) | `#efe6d4` |
+| Paper 2 (quiet sections, flaps) | `#e4d6ba` |
+| Paper light (panels, inputs) | `#f7f0e1` |
+| Ink (text, frames, bold sections) | `#1a1714` |
+| Brick red (main buttons, key words) | `#9e2a1f` (use `#e2876f` for small text on ink) |
+| Ochre (illustration fills only) | `#b8862b` (use `#d9a441` for small text on ink) |
 | Logo | `assets/logo.svg`: "The right to" in small italic above a bold "be real." Always use this file; never retype or rebuild the logo |
 | Headlines | DM Serif Display, upright paired with italic |
+| Poster lettering | Big Shoulders Display (wood type), only inside broadside panels |
 | Body and labels | Work Sans; labels in small spaced capitals |
 | Receipts and dates | System monospace |
 
 ## Instagram system
 
 The site's devices carry over so posts are recognizable without the logo:
-- **Editorial statements:** big serif on paper or ink, one italic turn, red only for the key word.
-- **Satire posts:** a fake ad with claims crossed out and a Rejection Stamp.
+- **Editorial statements:** big serif on paper or ink, one italic turn, brick red only for the key word.
+- **Satire posts:** a broadside panel with a woodcut scene that undermines a beauty-ad promise.
 - **Money and time posts:** the Receipt.
 - **Stories and portraits:** a documentary photo with a short caption in Work Sans.
 - **Event reminders:** date in small red capitals, campaign name in serif.
@@ -79,6 +87,7 @@ The site's devices carry over so posts are recognizable without the logo:
 ## Don'ts
 
 - Pastel wellness palettes, soft gradients, generic feminine branding, or pink as a "women's issue" colour.
+- Retro 80s/90s styling, punk-zine collage, sepia filters, or stamps as the main device.
 - Loud activist styling or punk nostalgia without purpose.
 - Writing "BeReal" as one word (a separate, unrelated app uses that).
 - Shaming anyone's personal choices.

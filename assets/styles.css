@@ -1,20 +1,25 @@
 /* The Right to Be Real
-   Counterculture meets radical humanity: an independent editorial voice
-   that borrows the look of beauty advertising and then refuses it.
-   Palette: warm paper, near-black ink, one vivid red. See DESIGN.md. */
+   A contemporary movement printing its own broadsides: woodcut and
+   lithograph traditions, limited ink, commanding type. See DESIGN.md. */
 :root {
-  --paper: #f5f1e8;
-  --paper-2: #ebe5d8;
-  --white: #fffdf8;
-  --ink: #151413;
-  --ink-2: #2b2926;
-  --muted: #5f5a52;
-  --muted-on-ink: #b8b1a4;
-  --line: #d6cfc1;
-  --red: #d4261c;          /* 4.5:1 on paper; white text on red 5:1 */
-  --red-on-ink: #ff6b5c;   /* red for small text on ink */
+  /* Print palette: uncoated paper, black ink, brick red, muted ochre */
+  --paper: #efe6d4;
+  --paper-2: #e4d6ba;
+  --paper-hi: #f7f0e1;    /* lighter sheet for panels and inputs */
+  --white: #f7f0e1;
+  --ink: #1a1714;
+  --ink-2: #3a332c;
+  --muted: #62584b;
+  --muted-on-ink: #c4b8a3;
+  --line: #cdbfa3;
+  --brick: #9e2a1f;       /* 6:1 on paper; paper text on brick 6.6:1 */
+  --red: var(--brick);
+  --red-on-ink: #e2876f;  /* brick tint for small text on ink */
+  --ochre: #b8862b;       /* fills only, never text on paper */
+  --ochre-on-ink: #d9a441;
   --serif: "DM Serif Display", Georgia, "Times New Roman", serif;
   --sans: "Work Sans", "Helvetica Neue", Arial, sans-serif;
+  --wood: "Big Shoulders Display", Impact, "Arial Narrow", sans-serif;
   --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   --max: 1160px;
   color-scheme: light;
@@ -57,10 +62,6 @@ h2 { font: 400 clamp(2rem, 4.6vw, 3.4rem)/1.02 var(--serif); letter-spacing: -.0
 .more { font: 600 .74rem/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; text-decoration: none; }
 
 /* ---------- Signature devices ---------- */
-/* The Rejection Stamp */
-.stamp { display: inline-block; font: 700 .9rem/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--red); border: 3px solid var(--red); outline: 1px solid var(--red); outline-offset: 3px; padding: 10px 14px 9px; transform: rotate(-7deg); white-space: nowrap; opacity: .92; pointer-events: none; }
-/* Crossed-out claims */
-s { text-decoration: line-through; text-decoration-color: var(--red); text-decoration-thickness: .09em; }
 
 /* ---------- Header ---------- */
 .site-header { border-top: 6px solid var(--ink); border-bottom: 1px solid var(--ink); background: var(--paper); }
@@ -83,14 +84,8 @@ s { text-decoration: line-through; text-decoration-color: var(--red); text-decor
 .nw { white-space: nowrap; }
 @media (max-width: 380px) { .hero .nw { white-space: normal; } }
 .hero-line { font: 500 clamp(1.05rem, 1.8vw, 1.25rem)/1.4 var(--sans); max-width: 34ch; }
-.ad { position: relative; background: var(--white); border: 1px solid var(--ink); padding: 28px 28px 24px; display: grid; gap: 14px; }
-.ad-label { font: 600 .62rem/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--muted); }
-.ad-claims { list-style: none; padding: 0; display: grid; gap: 2px; font: italic 400 clamp(1.9rem, 3.4vw, 2.8rem)/1.1 var(--serif); color: var(--ink-2); }
-.ad-fine { font-size: .78rem; color: var(--muted); }
-.stamp-ad { position: absolute; right: -14px; bottom: 26px; font-size: 1.15rem; background: rgba(255, 253, 248, .6); }
 @media (max-width: 820px) {
   .hero-grid { grid-template-columns: 1fr; }
-  .stamp-ad { right: 12px; bottom: auto; top: 20px; font-size: .95rem; }
 }
 
 /* ---------- Home: argument ---------- */
@@ -201,9 +196,7 @@ s { text-decoration: line-through; text-decoration-color: var(--red); text-decor
 .card-featured { background: var(--ink); color: var(--paper); }
 .card-featured .card-copy { color: var(--muted-on-ink); }
 .card-featured .card-when { color: var(--red-on-ink); }
-.stamp-card { position: absolute; right: 14px; bottom: 54px; font-size: .64rem; padding: 7px 9px 6px; border-width: 2px; }
-.card-featured .stamp-card { color: var(--red-on-ink); border-color: var(--red-on-ink); outline-color: var(--red-on-ink); }
-/* Pillar accents: protest = stamp, reclamation = receipt, people = quiet serif */
+/* Pillar accents: protest = brick rule, reclamation = receipt, people = quiet serif */
 .pillar-reclamation .card { background: var(--white); border-style: dashed; }
 .pillar-reclamation .card-when { font-family: var(--mono); letter-spacing: .06em; }
 .pillar-people .card { background: var(--paper-2); border-color: var(--paper-2); }
@@ -213,7 +206,8 @@ s { text-decoration: line-through; text-decoration-color: var(--red); text-decor
 
 /* ---------- L2: campaign page ---------- */
 .c-hero { position: relative; padding-block: clamp(40px, 6vw, 72px) clamp(40px, 6vw, 64px); border-bottom: 1px solid var(--ink); }
-.c-hero .container { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
+.c-hero .container { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; align-items: center; }
+.c-hero-copy { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
 .crumbs { display: flex; flex-wrap: wrap; gap: 8px; font: 600 .7rem/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; margin-bottom: 18px; }
 .crumbs a { text-decoration: none; }
 .crumbs a:hover { text-decoration: underline; text-decoration-color: var(--red); text-underline-offset: 4px; }
@@ -221,9 +215,7 @@ s { text-decoration: line-through; text-decoration-color: var(--red); text-decor
 .c-hero .kicker { color: var(--red); margin: 0; }
 .c-hero h1 { font-size: clamp(2.8rem, 7.4vw, 5.8rem); max-width: 14ch; }
 .c-intro { font: 400 clamp(1.15rem, 2vw, 1.4rem)/1.5 var(--sans); color: var(--ink-2); max-width: 54ch; }
-.stamp-c { position: absolute; right: max(20px, env(safe-area-inset-right, 0px)); top: 40px; font-size: 1rem; }
 .c-hero .facts { margin-top: 18px; max-width: 820px; }
-@media (max-width: 700px) { .stamp-c { position: static; justify-self: start; transform: rotate(-4deg); margin: 4px 0 6px 6px; } }
 
 .c-body { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 80px); padding-block: clamp(48px, 7vw, 80px); align-items: start; }
 .c-body:not(:has(.c-side)) { grid-template-columns: minmax(0, 1fr); }
@@ -280,7 +272,6 @@ s { text-decoration: line-through; text-decoration-color: var(--red); text-decor
 
 /* ---------- 404 ---------- */
 .hero-404 .container { position: relative; display: grid; gap: 24px; }
-.stamp-404 { position: static; justify-self: start; margin-top: 12px; }
 
 /* ---------- Homepage revision: hero actions, Instagram ---------- */
 .btn-lg { padding: 20px 28px; font-size: .86rem; letter-spacing: .12em; box-shadow: 5px 5px 0 var(--ink); }
@@ -344,3 +335,82 @@ s { text-decoration: line-through; text-decoration-color: var(--red); text-decor
 .principles-block { margin-top: clamp(40px, 6vw, 72px); padding-top: 24px; border-top: 1px solid var(--ink); }
 .principles-block .principles { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 48px; }
 @media (max-width: 700px) { .principles-block .principles { grid-template-columns: 1fr; } }
+
+
+/* =========================================================
+   Broadside art direction
+   ========================================================= */
+/* Uncoated paper: a faint fibre texture, nothing more */
+body { background-color: var(--paper); background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' seed='3'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.28  0 0 0 0 0.18  0 0 0 .07 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+
+/* The broadside panel: the recurring poster motif */
+.broadside { margin: 0; width: 100%; background: var(--paper-hi); border: 3px solid var(--ink); outline: 1px solid var(--ink); outline-offset: -10px; padding: 18px 18px 16px; box-shadow: 7px 7px 0 var(--ink); color: var(--ink); }
+.broadside-lg { max-width: 395px; }
+.broadside-md { max-width: 390px; }
+.broadside-sm { max-width: 320px; }
+.bs-top { display: flex; justify-content: space-between; gap: 12px; font: 700 .82rem/1 var(--wood); letter-spacing: .1em; text-transform: uppercase; padding: 4px 4px 10px; border-bottom: 2px solid var(--ink); }
+.bs-art { margin-top: 12px; border: 2px solid var(--ink); background: var(--paper-hi); }
+.bs-art svg { display: block; width: 100%; height: auto; }
+.bs-caption { font: 900 clamp(1.25rem, 2.2vw, 1.7rem)/1.02 var(--wood); text-transform: uppercase; letter-spacing: .02em; text-align: center; padding: 14px 6px 4px; text-wrap: balance; }
+.broadside-sm .bs-caption { font-size: 1.25rem; }
+
+/* Hero */
+.hero-grid { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); }
+.hero-art { justify-self: end; width: 100%; display: flex; justify-content: flex-end; }
+.hero-art .broadside { transform: rotate(1.2deg); }
+@media (max-width: 820px) {
+  .hero-art { justify-self: center; justify-content: center; max-width: 340px; margin: 8px auto 0; }
+  .hero-art .broadside { transform: none; }
+}
+
+/* Primary call to action: brick, heavy, printed shadow */
+.btn-red { background: var(--brick); color: var(--paper-hi); }
+.btn-lg { box-shadow: 6px 6px 0 var(--ink); }
+.btn-lg:hover { box-shadow: 8px 8px 0 var(--ink); }
+
+/* The Beauty Blackout section */
+.action { background-color: var(--ink); }
+.action .kicker-red { color: var(--ochre-on-ink); }
+.action h2 em { color: var(--red-on-ink); }
+.action .btn-lg { box-shadow: 6px 6px 0 var(--paper-hi); outline: 2px solid var(--paper-hi); outline-offset: -2px; }
+.action-grid { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: center; }
+.action-art { display: flex; justify-content: flex-end; }
+.action-art .broadside { box-shadow: 7px 7px 0 var(--brick); transform: rotate(-1deg); }
+.facts-row { margin-top: clamp(40px, 6vw, 64px); grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 820px) {
+  .action-art { justify-content: center; }
+  .action-art .broadside { max-width: 330px; transform: none; }
+  .facts-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Instagram section */
+.insta-art { display: flex; justify-content: center; text-decoration: none; }
+.insta-art:hover .broadside { box-shadow: 9px 9px 0 var(--brick); }
+.insta-art .broadside { transform: rotate(-1deg); transition: box-shadow .15s; }
+@media (max-width: 760px) { .insta-art .broadside { transform: none; max-width: 300px; } }
+
+/* Campaign overview cards */
+.pillar-protest .card { border-top: 6px solid var(--brick); }
+.pillar-protest .card-featured { border-top-color: var(--brick); }
+.card-featured .card-when { color: var(--ochre-on-ink); }
+.season { border-left-color: var(--brick); }
+.season .kicker-red { color: var(--ochre-on-ink); }
+
+/* Campaign page hero with a broadside */
+.c-hero.has-broadside .container { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); }
+.c-hero-art { display: flex; justify-content: flex-end; }
+.c-hero-art .broadside { transform: rotate(1deg); }
+@media (max-width: 820px) {
+  .c-hero.has-broadside .container { grid-template-columns: minmax(0, 1fr); }
+  .c-hero-art { justify-content: center; }
+  .c-hero-art .broadside { max-width: 320px; transform: none; }
+}
+
+/* Sign-up and invitation bands print in brick */
+.invitation, .c-join { background: var(--brick); color: var(--paper-hi); }
+.join input[type="email"] { background: var(--paper-hi); }
+
+/* Phones: stack hero and Blackout sections (keeps the CTA above the art) */
+@media (max-width: 820px) {
+  .hero-grid, .action-grid { grid-template-columns: minmax(0, 1fr); }
+}

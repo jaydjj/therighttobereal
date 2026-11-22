@@ -1,0 +1,10 @@
+{%- comment -%}
+  Broadside panel: the site's recurring poster motif.
+  include.art = file in _includes/broadsides/, include.label = top-right label, include.caption = bottom line.
+  include.size = "lg" | "md" | "sm"
+{%- endcomment -%}
+<figure class="broadside broadside-{{ include.size | default: 'md' }}">
+  <div class="bs-top"><span>The Right to Be Real</span><span>{{ include.label }}</span></div>
+  <div class="bs-art">{% include broadsides/{{ include.art }} %}</div>
+  <figcaption class="bs-caption">{{ include.caption }}</figcaption>
+</figure>

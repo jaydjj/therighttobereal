@@ -7,7 +7,6 @@ cal: 6
 when: March 1–7 · November 19–25
 summary: A week of hiding every beauty ad we see. Twice a year.
 intro: A week of hiding every beauty ad we see. The more of us who do it, the more it costs them to reach us.
-stamp: Hidden
 facts:
   - { label: Spring, value: "March 1–7, 2027" }
   - { label: Fall, value: "November 19–25" }
