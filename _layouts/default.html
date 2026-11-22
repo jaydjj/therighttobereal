@@ -10,8 +10,8 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ page.url | absolute_url }}">
   <meta name="theme-color" content="#1a1714">
-  <link rel="icon" href="{{ '/assets/favicon.png' | relative_url }}" type="image/png">
-  <link rel="apple-touch-icon" href="{{ '/assets/favicon.png' | relative_url }}">
+  <link rel="icon" href="{{ '/assets/favicon.png' | relative_url }}?v={{ site.time | date: '%s' }}" type="image/png">
+  <link rel="apple-touch-icon" href="{{ '/assets/favicon.png' | relative_url }}?v={{ site.time | date: '%s' }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
