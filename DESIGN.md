@@ -42,7 +42,8 @@ A compact framed poster panel: double ink frame, a small wood-type top line ("Th
 
 **Illustrations** are print-style artwork (relief-print or lithograph look: heavy black line, cross-hatching, paper grain, flat brick red, gold and ink). Files live in `assets/art/` as `<id>-480.webp`, `-800.webp`, `-1120.webp` and `-800.jpg`, with alt text in `_data/art.yml`. Every illustration needs alt text that describes the scene and any words in it.
 
-- `crowd`: a grey-haired woman standing calmly while a crowd hurries past giant beauty billboards (homepage hero).
+- `friends`: three women of different ages standing together, at ease, while a crowd hurries past giant beauty billboards (homepage hero).
+- `crowd`: an earlier version with one woman (not currently used).
 - `press`: a printing press churning out the same idealized face (Beauty Blackout, homepage and campaign page).
 - `walk`: three women of different ages walking and talking past a blank billboard toward the sun (Instagram).
 

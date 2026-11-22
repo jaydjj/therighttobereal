@@ -1,5 +1,7 @@
 # Illustrations for broadside panels. Files live in assets/art/<id>-<width>.webp (480, 800, 1120) plus <id>-800.jpg.
 # Every illustration needs alt text that describes the scene, including any words shown in it.
+friends:
+  alt: "Print-style illustration of three women of different ages and backgrounds standing together, relaxed and smiling, in jeans, wide trousers and jackets, while a crowd hurries past under giant beauty billboards reading Your Best Skin Day, Healthy-Looking Glow, Find Your Glow, 30% Off, Free Gift and Early Access."
 crowd:
   alt: "Print-style illustration of a grey-haired woman in a denim jacket and work trousers standing calmly, hands in pockets, while a crowd hurries past under giant beauty billboards reading Your Best Skin Day, Healthy-Looking Glow, Find Your Glow, 30% Off, Free Gift and Early Access."
 press:
