@@ -1,101 +1,196 @@
-# The Right to Be Real: Design Guide
+# The Right to Be Real: Brand, Design and UI Guide
 
-Guidance for anyone (people or AI agents) designing or writing for The Right to Be Real: the website, Instagram, merch and anything else.
+For anyone, people or AI agents, designing or writing for The Right to Be Real: the website, Instagram, merch and anything else. When this guide and the live site disagree, the live site is the reference and this guide should be updated.
 
-## The feel
+---
 
-Counterculture meets radical humanity. An intelligent, slightly rebellious cultural movement with the wit of an independent magazine and the warmth of documentary photography. Not a nonprofit, a wellness brand or a body-positivity campaign.
+## 1. Brand
 
-## The argument
+### The feel
+A contemporary movement printing its own broadsides. Serious, warm, collective and a little defiant, with the confidence of an independent magazine. Not a nonprofit, a wellness brand, a body-positivity account or a history costume.
 
-The point is not that everyone is beautiful. It's that people shouldn't have to be beautiful to be valued. The beauty industry manufactures insecurity and sells the fix. We challenge that business model and defend people's freedom to make their own choices.
+### The argument
+The point isn't that everyone is beautiful. It's that nobody should have to be beautiful to be valued. The beauty industry profits from self-doubt and sells the fix. We challenge that business model and defend everyone's freedom to make their own choices.
 
 **Narrative:** Challenge the system. Reclaim your choices. Find your people.
 
-## Personality
+### Personality
+- **Defiant:** confident, willing to take on powerful interests.
+- **Wry:** observant and dryly funny when it fits.
+- **Human:** warm, candid, grounded in ordinary lives.
 
-- **Defiant:** confident, independent, willing to take on powerful interests.
-- **Wry:** observant and dryly funny. Satire exposes the contradictions.
-- **Human:** warm, candid, grounded in ordinary people's lives.
+### Lines we use
+- "The pressure is everywhere. *So is our power to change it.*" (homepage headline)
+- "Our insecurities are someone else's *business model.*"
+- "You shouldn't have to be beautiful to be valued."
+- "Buy nothing. *Say everything.*" (Beauty Blackout)
+- "Have a real day." (sign-off)
 
-## Voice
+---
 
-- Minimal and scannable. Say each thing once per page; if a line repeats a headline, a button or a picture, cut it.
+## 2. Voice and copy
 
-- Write like an independent editorial publication, not an earnest nonprofit.
-- Short, memorable statements. Observational humour. Specific examples of industry absurdity.
-- Challenge the system, never the individual. Criticize manufactured insecurity, never people who buy beauty products. Never anti-makeup.
-- Invite people in. Don't lecture.
-- Avoid empowerment clichés, inspirational platitudes, corporate activism language and repeated affirmations about beauty or self-love.
-- Not everything is a slogan. Balance provocation with quiet, human moments.
-- Keep: "we're not buying it.", "Our insecurities are someone else's business model.", "Buy nothing. Say everything.", "Have a real day."
+1. **Minimal and scannable.** Short sentences. One idea per line. Cut anything that doesn't help someone understand or act.
+2. **Say it once per page.** If a line repeats a headline, a button, a picture or another section, cut it.
+3. **Pictures don't need captions on the site.** The page around them carries the words.
+4. **Challenge systems, never individuals.** Criticize manufactured insecurity, not people who buy beauty products. Never anti-makeup.
+5. **Invite, don't lecture.** No empowerment clichés, platitudes or corporate-activism language.
+6. **Describe here, mobilize there.** The website says what's happening. How to take part lives on Instagram.
+7. **Never invent** dates, activities, numbers or commitments.
+8. Never write "BeReal" as one word (a separate, unrelated app uses that).
 
-## Visual identity
+---
 
-**Art direction: the movement's own broadside.** Inspired by 19th-century French broadsides and early 20th-century labour posters: woodcut and lithograph illustration, hand-printed ink, simple monumental compositions, carved shadows, strong diagonals, limited colour and commanding type. It should feel like a contemporary movement printing its own posters, serious, collective, human and lasting. Not a history costume and not a copy of any real poster.
+## 3. Visual identity
 
-**Avoid:** 1980s/90s retro (neon, Memphis shapes, airbrush, chrome, glossy gradients); punk-zine or photocopy styling (ransom-note type, grunge, torn paper, xerox noise); sepia or "vintage" filters; stamps as the main device; raised fists, weapons, guillotines, famous figures.
+### Art direction
+Inspired by 19th-century broadsides and early 20th-century labour and lithograph posters: relief-print and lithograph illustration, heavy black line, cross-hatching, paper grain, limited flat colour, strong diagonals and dignified figures. It should feel like it could have been printed decades ago or today.
 
-**Texture with restraint:** a faint paper fibre on the page and slightly rough ink edges on illustrations. Never on text.
+**Avoid:** 80s/90s retro (neon, Memphis shapes, airbrush, chrome, gradients); punk-zine or photocopy collage; sepia or "vintage" filters; stamps as the main device; raised fists, weapons, guillotines, famous figures; copying any real poster.
 
-### The broadside panel (recurring motif)
+### Logo
+- One shared file: **`assets/logo.svg`**. "THE RIGHT TO" in tracked capitals, a heavy black italic "be" resting on a large brick-red "real". No full stop.
+- Use it as an image wherever the logo appears. Never retype, redraw or recolour it by hand. To change it, edit and rerun `brand/make_logo.py`.
+- Minimum height: about 48 px on screen, so "THE RIGHT TO" stays readable.
+- **Tab icon:** "be" over a red "r" on paper (`assets/favicon.png`, `favicon.ico`, `assets/apple-touch-icon.png`).
+- **Profile picture and wordmark:** `brand/instagram-avatar.png`, `brand/wordmark.png` (rendered by `brand/avatar.html`).
 
-A compact framed poster panel: double ink frame, a small wood-type top line ("The Right to Be Real" + a label), an illustration, and a wood-type caption. Built from `_includes/broadside.html`.
+### Colour
 
-**Illustrations** are print-style artwork (relief-print or lithograph look: heavy black line, cross-hatching, paper grain, flat brick red, gold and ink). Files live in `assets/art/` as `<id>-480.webp`, `-800.webp`, `-1120.webp` and `-800.jpg`, with alt text in `_data/art.yml`. Every illustration needs alt text that describes the scene and any words in it.
+| Name | Hex | Use |
+|---|---|---|
+| **Paper** (tan) | `#efe6d4` | Page background |
+| Paper light | `#f7f0e1` | Inside picture frames, form fields, cards |
+| Paper dark | `#e4d6ba` | Quiet sections and cards |
+| **Ink** (black) | `#1a1714` | Text, frames, the dark Blackout section |
+| Muted ink | `#62584b` | Secondary text on paper |
+| **Brick red** | `#9e2a1f` | Main buttons, key words, "real" in the logo |
+| Gold (ochre) | `#b8862b` | Illustration fills only, never text on paper |
 
-- `friends`: three women of different ages standing together, at ease, while a crowd hurries past giant beauty billboards (homepage hero).
-- `crowd`: an earlier version with one woman (not currently used).
-- `press`: a printing press churning out the same idealized face (Beauty Blackout, homepage and campaign page).
-- `walk`: three women of different ages walking and talking past a blank billboard toward the sun (Instagram).
+On the dark ink background, use the lighter tints for small text: brick tint `#e2876f`, gold tint `#d9a441`, muted `#c4b8a3`.
 
-Older drawn SVG scenes remain in `_includes/broadsides/` as a fallback.
+### Typography
 
-The top line and caption are optional. On the website, panels show the picture only: the page around them already carries the words. Use it selectively (hero, the featured campaign, Instagram), never in every section, and never so it competes with the Blackout button. New scenes should keep the same palette, frame and print language: symbolic, dignified, diverse figures; not crowds by default.
+| Role | Typeface | Notes |
+|---|---|---|
+| Headlines | DM Serif Display | Upright statement + italic turn, e.g. "The Beauty *Blackout.*" |
+| Body, buttons, labels | Work Sans | Labels and buttons in small spaced capitals |
+| Logo | Fraunces (outlined in the SVG) | Only via `assets/logo.svg` |
+| Poster lettering | Big Shoulders Display | Only inside a picture frame, and only if a caption is truly needed |
+| Dates in timelines, receipts | System monospace | |
 
-Other devices: **the Receipt** (money and time reclaimed). Documentary photos of real people can join later; no stock photos.
+### Texture
+A faint paper grain on the page background. Never on text. Illustrations carry their own print texture.
 
-## Principles
+---
 
-1. **The message does the shouting.** Restraint everywhere else so the statement lands.
-2. **Type leads.** Headlines pair an upright statement with an italic turn.
-3. **Calm by default, bold on purpose.** Mostly paper and ink; brick red and full ink sections for the moments that matter.
-4. **One clear next step.** The March 8 Beauty Blackout is the main call to action.
-5. **Progressive disclosure.** Short summaries on the homepage and campaign overview; full detail on each campaign page.
-6. **Describe here, mobilize there.** The site describes; Instagram carries how-to-join instructions.
-7. **Readable everywhere.** Phone first, accessible contrast, no gimmicky motion.
-8. **Inclusive by default.** No gender, age or look is the "intended" audience.
+## 4. Illustrations
 
-## Reference
+### Style
+Print-style artwork: relief-print or lithograph look, heavy black outlines, cross-hatching, visible paper grain, flat areas of brick red, gold and ink on warm paper. One clear symbolic idea per image: the beauty industry's machinery and promises in the background, real people at ease in the foreground.
 
-| Role | Value |
+### People
+A real range of ages, skin tones, body shapes, styles and (over time) genders. Dignified, relaxed, mid-conversation or mid-stride. The beauty ad is only ever the thing being walked past, peeled back or produced by a machine.
+
+### Format and files
+- Portrait 4:5, at least 1100 × 1400 px. Send each image separately.
+- Words in an illustration are fine only as part of the satire (billboard slogans). Never put real information (dates, calls to action) inside an image.
+- Files: `assets/art/<id>-480.webp`, `-800.webp`, `-1120.webp` and `-800.jpg`. Alt text goes in `_data/art.yml`.
+- **Every image needs alt text** describing the scene, including any words shown in it.
+
+### Current set
+
+| Id | Scene | Used on |
+|---|---|---|
+| `friends` | Three women of different ages, at ease, while a crowd hurries past beauty billboards | Homepage hero |
+| `press` | A printing press churning out the same idealized face | Beauty Blackout (homepage and campaign page) |
+| `walk` | Three women walking and talking past a blank billboard toward the sun | Homepage Instagram section |
+| `crowd` | Earlier version of the hero with one woman | Not in use |
+
+### Prompt recipe (for your image tool)
+> Vintage relief-print / lithograph poster illustration, heavy black ink outlines, cross-hatching, visible paper grain, limited palette of brick red, mustard gold, black and warm cream paper. [SCENE]. Diverse, dignified people of different ages and body types, relaxed and real. Strong diagonal composition. No text except [ANY SATIRICAL SIGN TEXT]. Portrait 4:5.
+
+---
+
+## 5. UI components
+
+**The picture frame (broadside panel).** `_includes/broadside.html`. A double ink frame with a hard offset shadow and a slight tilt. On the website it shows the picture only. Use it at most once per section and never so it competes with the main button.
+
+**Buttons.** One primary action per section.
+
+| Button | Look | Use |
+|---|---|---|
+| Primary | Brick red, cream text, hard black offset shadow (cream on dark sections) | Join the Beauty Blackout. Always the most prominent thing on the page |
+| Secondary | Solid ink, cream text | Follow on Instagram, See every campaign |
+| Text link | Small capitals, brick underline | Lesser actions, e.g. "Follow the movement on Instagram →" |
+| Outline | Ink border | Navigation such as "← All campaigns" |
+
+**Header.** Logo left; "Campaigns", "Follow on Instagram" and a small red "Join March 8" button right. On phones the Instagram link hides and the red button stays.
+
+**Labels (kickers).** Small spaced capitals above headlines: muted on paper, gold tint on ink, brick for dates.
+
+**Key facts.** A row of label + serif value (Date, Duration, Where, Goal). Only where the facts aren't already said nearby.
+
+**Timeline.** Monospace date, serif title, short description. The key date (March 8) is a full-width ink row.
+
+**Campaign cards.** Date label, serif title, one-line summary, "Explore campaign →". The featured campaign is an ink card; The Protest cards have a brick top rule; Reclamation cards are dashed; People cards are quiet tan.
+
+**How-to-join line.** One shared line on every campaign page pointing to Instagram. Don't repeat it in page text.
+
+**Sign-up form.** On the brick band: email, "I'm in for" (March 8 / the whole month / both), an **unticked** consent box (required by Canada's anti-spam law), and an ink button. Not yet connected to Kit.
+
+**The Receipt.** Monospace receipt with crossed-out items, for money and time reclaimed (Keep the Change).
+
+---
+
+## 6. Layout and pages
+
+- **Mobile first.** Check every change at iPhone width and on desktop. On phones, sections stack and the main button comes before any picture.
+- **Breathing room.** Generous space between sections and between headline, copy and buttons. If a section feels crowded, cut words before shrinking space.
+- **Homepage:** hero (headline, two short lines, Blackout button, Instagram link, picture) → why we're doing this (big statement, short paragraph, principles) → the Beauty Blackout (dark section) → Instagram. Keep it short; details live on campaign pages.
+- **Campaigns page** (`/campaigns/`): Women's Month feature, the three tracks as cards, then the year calendar (dates and titles only).
+- **Campaign pages** (`/campaigns/<name>/`): back link, date, headline, intro, key facts, timeline, sign-up form where relevant, the how-to-join line, related campaigns. Each keeps the full detail for that campaign, said once.
+
+---
+
+## 7. Accessibility
+
+- **Contrast:** all text meets WCAG AA. Checked pairs:
+
+| Text on background | Ratio |
 |---|---|
-| Paper (background) | `#efe6d4` |
-| Paper 2 (quiet sections, flaps) | `#e4d6ba` |
-| Paper light (panels, inputs) | `#f7f0e1` |
-| Ink (text, frames, bold sections) | `#1a1714` |
-| Brick red (main buttons, key words) | `#9e2a1f` (use `#e2876f` for small text on ink) |
-| Ochre (illustration fills only) | `#b8862b` (use `#d9a441` for small text on ink) |
-| Logo | `assets/logo.svg`: "THE RIGHT TO" in tracked capitals over a black bold italic "be" resting on a large brick-red "real". Always use this file; never retype or rebuild the logo |
-| Headlines | DM Serif Display, upright paired with italic |
-| Poster lettering | Big Shoulders Display (wood type), only inside broadside panels |
-| Body and labels | Work Sans; labels in small spaced capitals |
-| Receipts and dates | System monospace |
+| Ink on paper | 14.4 : 1 |
+| Muted ink on paper | 5.6 : 1 |
+| Muted ink on paper dark | 4.8 : 1 |
+| Brick on paper | 6.0 : 1 |
+| Cream on brick (buttons) | 6.6 : 1 |
+| Cream on ink | 14.4 : 1 |
+| Brick tint / gold tint / muted on ink | 6.7 / 7.9 / 9.1 : 1 |
+| Gold on paper | 2.6 : 1. **Fails: never use for text** |
 
-## Instagram system
+- Every image has descriptive alt text. Decorative shapes are hidden from screen readers.
+- Real information is real text, never baked into an image.
+- Visible keyboard focus (brick outline). Motion is minimal and respects "reduce motion".
+- Images are compressed and sized per screen; images below the first screen load lazily.
 
-The site's devices carry over so posts are recognizable without the logo:
-- **Editorial statements:** big serif on paper or ink, one italic turn, brick red only for the key word.
-- **Satire posts:** a broadside panel with a woodcut scene that undermines a beauty-ad promise.
-- **Money and time posts:** the Receipt.
-- **Stories and portraits:** a documentary photo with a short caption in Work Sans.
-- **Event reminders:** date in small red capitals, campaign name in serif.
+---
 
-## Don'ts
+## 8. Instagram
+
+The site's look carries over so posts are recognizable without the logo:
+- **Statements:** big serif on paper or ink, one italic turn, brick red for the key word only.
+- **Illustrations:** the print-style artwork in the picture frame, with a short caption below the image (in the post, not baked into the art).
+- **Money and time:** the Receipt.
+- **Event reminders:** date in small brick capitals, campaign name in serif.
+- **Profile picture:** `brand/instagram-avatar.png`.
+
+---
+
+## 9. Don'ts
 
 - Pastel wellness palettes, soft gradients, generic feminine branding, or pink as a "women's issue" colour.
 - Retro 80s/90s styling, punk-zine collage, sepia filters, or stamps as the main device.
-- Loud activist styling or punk nostalgia without purpose.
-- Writing "BeReal" as one word (a separate, unrelated app uses that).
-- Shaming anyone's personal choices.
-- Inventing campaign dates, activities or commitments.
+- More than one primary button per section, or anything louder than the Blackout button.
+- Repeating copy, captions under pictures on the site, or long paragraphs where a line will do.
+- Shaming personal choices or anti-makeup messages.
+- Inventing campaign dates, activities or numbers.

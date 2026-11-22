@@ -7,8 +7,9 @@ Website for The Right to Be Real, a social movement against the beauty standards
 Follow `DESIGN.md` for all design and writing decisions: the feel, voice, colours, fonts, signature devices and don'ts.
 
 Key points:
-- Counterculture meets radical humanity. Defiant, wry, human.
-- Art direction: a contemporary movement's own broadside (woodcut/lithograph print language). Palette: paper, ink, brick red, ochre. Headlines pair an upright statement with an italic turn.
+- A contemporary movement printing its own broadsides: print-style illustration, paper, ink, brick red, gold. Defiant, wry, human.
+- Copy is minimal and scannable: say each thing once per page; no captions under pictures on the site.
+- Headlines pair an upright statement with an italic turn.
 - Recurring motif: the broadside panel (`_includes/broadside.html`). Illustrations live in `assets/art/` with alt text in `_data/art.yml`; every new one needs descriptive alt text. Use it selectively; the Blackout button always stays the most prominent thing on the page.
 - Challenge systems, never individuals. Never anti-makeup.
 - Never write "BeReal" as one word.
@@ -34,7 +35,8 @@ Home → Campaigns (`/campaigns/`) → one page per campaign (`/campaigns/<name>
 - `_layouts/`, `_includes/`: shared page templates (header, footer, sign-up form, receipt)
 - `assets/styles.css`, `assets/site.js`: styles and small scripts (old one-page links redirect to their new pages)
 - Campaign order on the calendar comes from each campaign's `cal:` number
-- `assets/logo.svg`, `assets/favicon.png`: logo and tab icon
+- `assets/logo.svg`: logo; `assets/favicon.png`, `favicon.ico`, `assets/apple-touch-icon.png`: tab and home-screen icons
+- `assets/art/`: illustrations (alt text in `_data/art.yml`)
 - `brand/`: profile picture and wordmark images, and the scripts that make them
 - `404.html`, `CNAME`, `DESIGN.md`
 
@@ -43,7 +45,7 @@ Home → Campaigns (`/campaigns/`) → one page per campaign (`/campaigns/<name>
 - No pull requests. Commit and merge straight to `main`; this is a low-risk solo project.
 - Pushing to `main` builds the site with Jekyll and deploys it via `.github/workflows/pages.yml`.
 - The stylesheet link has an automatic cache-busting version, so there's no number to bump.
-- Preview locally with `jekyll build` and check layouts at phone width as well as desktop.
+- Preview locally with `jekyll build` and check layouts at phone width as well as desktop. Keep all text at WCAG AA contrast (see `DESIGN.md`).
 
 ## Not yet connected
 
