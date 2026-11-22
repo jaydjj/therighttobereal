@@ -1,0 +1,47 @@
+---
+layout: default
+title: Campaigns
+body_class: l1
+description: Every campaign from The Right to Be Real, in three pillars. The Protest, The Reclamation and The People.
+---
+{%- assign season = site.campaigns | where: "url", "/campaigns/womens-month/" | first -%}
+<section class="l1-hero">
+  <div class="container">
+    <p class="kicker">Campaigns</p>
+    <h1>What we're <em>doing about it.</em></h1>
+    <p class="l1-intro">Challenge the system. Reclaim your choices. Find your people.</p>
+  </div>
+</section>
+
+<section class="container">
+  <a class="season" href="{{ season.url | relative_url }}">
+    <span class="kicker kicker-red">{{ season.when }}</span>
+    <span class="season-title">{{ season.title_html }}</span>
+    <span class="season-copy">{{ season.summary }}</span>
+    <span class="more">See the full calendar <span aria-hidden="true">→</span></span>
+  </a>
+</section>
+
+{%- for p in site.data.pillars %}
+{%- assign cs = site.campaigns | where: "pillar", p.id | where_exp: "c", "c.season != true" | sort: "order" %}
+<section class="l1-pillar pillar-{{ p.id }}" id="{{ p.id }}">
+  <div class="container">
+    <header class="l1-pillar-head">
+      <p class="pillar-line">{{ p.line }}</p>
+      <h2>{{ p.name }}</h2>
+      <p class="pillar-summary">{{ p.summary }}</p>
+    </header>
+    <div class="cards">
+      {%- for c in cs %}
+      <a class="card{% if c.featured %} card-featured{% endif %}" href="{{ c.url | relative_url }}">
+        <span class="card-when">{{ c.when }}</span>
+        <span class="card-title">{{ c.title }}</span>
+        <span class="card-copy">{{ c.summary }}</span>
+        <span class="more">Explore campaign <span aria-hidden="true">→</span></span>
+        {%- if c.stamp %}<span class="stamp stamp-card" aria-hidden="true">{{ c.stamp }}</span>{% endif %}
+      </a>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+{%- endfor %}

@@ -1,4 +1,7 @@
-"""Build assets/logo.svg: outlined Fraunces lockup "The right to" / "be real."."""
+"""Build assets/logo.svg: outlined Fraunces lockup "The right to" / "be real.".
+
+Usage: python3 make_logo.py <fontsource-fraunces files dir> <out.svg> [colour]
+Fonts: npm pack @fontsource-variable/fraunces (files/ folder)."""
 import sys, io
 from fontTools.ttLib import TTFont
 from fontTools.varLib.instancer import instantiateVariableFont
@@ -7,7 +10,7 @@ from fontTools.pens.transformPen import TransformPen
 import uharfbuzz as hb
 
 pkg, out = sys.argv[1], sys.argv[2]
-BLUE = "#1e4c9a"
+BLUE = sys.argv[3] if len(sys.argv) > 3 else "#151413"
 
 def instance(path, axes):
     f = TTFont(path)

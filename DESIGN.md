@@ -1,67 +1,85 @@
 # The Right to Be Real: Design Guide
 
-Guidance for anyone (people or AI agents) designing or writing for The Right to Be Real: the website, social posts, merch and anything else.
+Guidance for anyone (people or AI agents) designing or writing for The Right to Be Real: the website, Instagram, merch and anything else.
 
 ## The feel
 
-Warm, confident editorial: like a smart independent magazine with a sense of humour. It's cool and grown-up, never preachy, and the message does the shouting so the design doesn't have to.
+Counterculture meets radical humanity. An intelligent, slightly rebellious cultural movement with the wit of an independent magazine and the warmth of documentary photography. Not a nonprofit, a wellness brand or a body-positivity campaign.
+
+## The argument
+
+The point is not that everyone is beautiful. It's that people shouldn't have to be beautiful to be valued. The beauty industry manufactures insecurity and sells the fix. We challenge that business model and defend people's freedom to make their own choices.
+
+**Narrative:** Challenge the system. Reclaim your choices. Find your people.
+
+## Personality
+
+- **Defiant:** confident, independent, willing to take on powerful interests.
+- **Wry:** observant and dryly funny. Satire exposes the contradictions.
+- **Human:** warm, candid, grounded in ordinary people's lives.
+
+## Voice
+
+- Write like an independent editorial publication, not an earnest nonprofit.
+- Short, memorable statements. Observational humour. Specific examples of industry absurdity.
+- Challenge the system, never the individual. Criticize manufactured insecurity, never people who buy beauty products. Never anti-makeup.
+- Invite people in. Don't lecture.
+- Avoid empowerment clichés, inspirational platitudes, corporate activism language and repeated affirmations about beauty or self-love.
+- Not everything is a slogan. Balance provocation with quiet, human moments.
+- Keep: "we're not buying it.", "Our insecurities are someone else's business model.", "Buy nothing. Say everything.", "Have a real day."
+
+## Visual identity
+
+**Primary: the counter-advertisement.** Bold editorial type, unexpected scale, strong hierarchy and high contrast. It can look like a beauty ad for a second, then undermine it. Sophisticated and restrained, never chaotic punk-zine.
+
+**Secondary: radical ordinary.** Candid, unretouched documentary photos of real people of different ages and appearances in ordinary moments. No stock photos, staged diversity, influencer polish or beauty photography. (No photos are on the site yet. Add them only when real ones exist.)
+
+The contrast between bold graphic design and quiet human imagery is the signature.
+
+### Signature devices
+
+- **The Receipt:** what manufactured insecurity costs in money, time and attention. Items crossed out in red.
+- **The Rejection Stamp:** a red, double-bordered, slightly rotated stamp ("Rejected", "Not buying it") that refuses a dubious claim.
+- **Crossed-out claims:** beauty-ad language ("Flawless.", "Clinically proven.*") struck through in red.
+- **The Human Portrait:** documentary photos, when we have them.
 
 ## Principles
 
-1. **Restraint is the statement.**
-   Confidence comes from what we leave out. Use generous space, few elements and one idea at a time. The message carries the weight, not decoration.
-
-2. **Type leads.**
-   Typography is the main visual tool. Headlines should be large, clear and expressive, and imagery should support them, not replace them.
-
-3. **Contrast within the line.**
-   Pair a plain statement with an expressive turn: upright with italic, or calm with emphatic. It gives the brand rhythm and a voice without extra graphics.
-
-4. **Calm by default, bold on purpose.**
-   Most of the experience is light and quiet. Strong colour is saved for the few moments that matter most, so they land.
-
-5. **A small, disciplined palette.**
-   One main brand colour, one warm neutral, one accent. The accent is used sparingly to direct attention, never as decoration.
-
-6. **Human, not corporate. Cool, not cold.**
-   Choose soft, warm forms over sharp, sterile ones. It should feel like a thoughtful independent brand, not an institution or a campaign machine.
-
-7. **No gimmicks.**
-   Avoid themes, props, ornaments and decoration that need explaining. If an element doesn't help someone understand or act, remove it.
-
-8. **One clear next step.**
-   Each moment has a single obvious action. Calls to action shouldn't compete; the most important one gets the most emphasis.
-
-9. **Say less, mean more.**
-   Copy is short, direct and plain-spoken, with a dry wink where it fits. It challenges systems, never individuals, and never lectures.
-
-10. **Describe here, mobilize there.**
-    The website explains what the movement is and what's coming. Social channels carry the live instructions, participation and community.
-
-11. **Readable everywhere.**
-    Design for the phone first. Keep text comfortable to read, sections short and layouts simple at small sizes.
-
-12. **Inclusive by default.**
-    No single gender, age or look should feel like the "intended" audience. Avoid visual clichés that box the message into one group.
+1. **The message does the shouting.** Restraint everywhere else so the statement lands.
+2. **Type leads.** Headlines pair an upright statement with an italic turn.
+3. **Calm by default, bold on purpose.** Mostly paper and ink; red and full ink sections for the moments that matter.
+4. **One clear next step.** The March 8 Beauty Blackout is the main call to action.
+5. **Progressive disclosure.** Short summaries on the homepage and campaign overview; full detail on each campaign page.
+6. **Describe here, mobilize there.** The site describes; Instagram carries how-to-join instructions.
+7. **Readable everywhere.** Phone first, accessible contrast, no gimmicky motion.
+8. **Inclusive by default.** No gender, age or look is the "intended" audience.
 
 ## Reference
 
-Current values used on the website (see `assets/styles.css`).
-
 | Role | Value |
 |---|---|
-| Brand blue (headlines, logo, bold sections) | `#1e4c9a` |
-| Warm paper (page background) | `#f8f6f0` |
-| Gold (accent: main buttons, highlighted words) | `#e3b341` |
-| Ink (body text) | `#1b1d22` |
-| Soft blue (secondary background) | `#c9d6ea` |
-| Logo | `assets/logo.svg`: "The right to" in small italic above a bold "be real." (sentence case, with the full stop). Always use this file; never retype or rebuild the logo |
+| Paper (background) | `#f5f1e8` |
+| Paper 2 (quiet sections) | `#ebe5d8` |
+| Ink (text, bold sections) | `#151413` |
+| Red (accent, stamps, main buttons) | `#d4261c` (use `#ff6b5c` for small red text on ink) |
+| Logo | `assets/logo.svg`: "The right to" in small italic above a bold "be real." Always use this file; never retype or rebuild the logo |
 | Headlines | DM Serif Display, upright paired with italic |
 | Body and labels | Work Sans; labels in small spaced capitals |
+| Receipts and dates | System monospace |
+
+## Instagram system
+
+The site's devices carry over so posts are recognizable without the logo:
+- **Editorial statements:** big serif on paper or ink, one italic turn, red only for the key word.
+- **Satire posts:** a fake ad with claims crossed out and a Rejection Stamp.
+- **Money and time posts:** the Receipt.
+- **Stories and portraits:** a documentary photo with a short caption in Work Sans.
+- **Event reminders:** date in small red capitals, campaign name in serif.
 
 ## Don'ts
 
-- Loud activist styling, stock photos, or pink as a "women's issue" colour.
+- Pastel wellness palettes, soft gradients, generic feminine branding, or pink as a "women's issue" colour.
+- Loud activist styling or punk nostalgia without purpose.
 - Writing "BeReal" as one word (a separate, unrelated app uses that).
-- Shaming anyone's personal choices, or anti-makeup messaging.
-- More than one competing call to action in the same place.
+- Shaming anyone's personal choices.
+- Inventing campaign dates, activities or commitments.

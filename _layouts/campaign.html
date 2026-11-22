@@ -1,0 +1,67 @@
+---
+layout: default
+---
+{%- assign pillar = site.data.pillars | where: "id", page.pillar | first -%}
+{%- assign slug = page.url | remove: "/campaigns/" | remove: "/" -%}
+<article class="campaign pillar-{{ page.pillar }}">
+  <header class="c-hero">
+    <div class="container">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="{{ '/campaigns/' | relative_url }}">Campaigns</a><span aria-hidden="true">/</span><a href="{{ '/campaigns/' | relative_url }}#{{ pillar.id }}">{{ pillar.name }}</a></nav>
+      <p class="kicker">{{ page.when }}</p>
+      <h1>{{ page.title_html | default: page.title }}</h1>
+      <p class="c-intro">{{ page.intro | default: page.summary }}</p>
+      {%- if page.stamp %}<p class="stamp stamp-c" aria-hidden="true">{{ page.stamp }}</p>{% endif %}
+      {%- if page.facts %}
+      <dl class="facts">
+        {%- for f in page.facts %}<div><dt>{{ f.label }}</dt><dd>{{ f.value }}</dd></div>{% endfor %}
+      </dl>
+      {%- endif %}
+    </div>
+  </header>
+
+  <div class="container c-body">
+    <div class="c-main prose">
+      {{ content }}
+    </div>
+    {%- if page.receipt %}<aside class="c-side">{% include receipt.html %}</aside>{% endif %}
+  </div>
+
+  {%- if page.agenda %}
+  <section class="container c-agenda" aria-labelledby="agenda-title">
+    <h2 id="agenda-title">{{ page.agenda_title | default: "Timeline" }}</h2>
+    <ol class="agenda">
+      {%- for item in page.agenda %}
+      <li id="{{ item.id | default: item.title | slugify }}"{% if item.highlight %} class="is-key"{% endif %}>
+        <span class="a-date">{{ item.date }}</span>
+        <div class="a-body">
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.text }}</p>
+          {%- if item.link %}<a class="more" href="{{ item.link | relative_url }}">Explore campaign <span aria-hidden="true">→</span></a>{% endif %}
+        </div>
+      </li>
+      {%- endfor %}
+    </ol>
+  </section>
+  {%- endif %}
+
+  {%- if page.form %}
+  <section class="c-join" id="join-section">
+    <div class="container narrow">
+      <h2>Count me <em>in.</em></h2>
+      {% include join-form.html %}
+    </div>
+  </section>
+  {%- endif %}
+
+  <section class="container c-related">
+    {%- if page.related %}
+    <h2 class="kicker">Related campaigns</h2>
+    <ul class="related">
+      {%- for r in page.related %}{% assign rurl = "/campaigns/" | append: r | append: "/" %}{% assign rc = site.campaigns | where: "url", rurl | first %}{% if rc %}
+      <li><a href="{{ rc.url | relative_url }}"><span class="r-when">{{ rc.when }}</span><span class="r-title">{{ rc.title }}</span></a></li>
+      {%- endif %}{% endfor %}
+    </ul>
+    {%- endif %}
+    <p><a class="back" href="{{ '/campaigns/' | relative_url }}"><span aria-hidden="true">←</span> All campaigns</a></p>
+  </section>
+</article>

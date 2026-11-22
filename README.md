@@ -1,13 +1,9 @@
 # therighttobereal
 
-Static website hosted on GitHub Pages. No build step: edit the files and push.
+Website for The Right to Be Real: https://therighttobereal.com
 
-- `index.html`: page content
-- `assets/styles.css`: "Deli Counter" brand styles (colors and fonts are variables at the top)
-- `404.html`: not-found page
-- `CNAME`: custom domain (therighttobereal.com)
+Built with Jekyll and published by GitHub Actions on every push to `main`.
 
-## Brand files
-- `brand/instagram-avatar.png`: 1080×1080 profile picture
-- `brand/wordmark.png`: logo on light background
-- `brand/avatar.html`: source used to render the logo files and the favicon (open in a browser and screenshot to re-export)
+- Campaign content: `_campaigns/` (one Markdown file per campaign)
+- Design and voice: `DESIGN.md`
+- Working notes for collaborators and AI agents: `CLAUDE.md`

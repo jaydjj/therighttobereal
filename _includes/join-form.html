@@ -1,0 +1,14 @@
+{%- comment -%} March 8 sign-up. Not connected to Kit yet: assets/site.js stops it and nothing is sent or stored. {%- endcomment -%}
+<form id="join" class="join" novalidate>
+  <label class="visually-hidden" for="join-email">Email address</label>
+  <input id="join-email" name="email" type="email" placeholder="Your email" autocomplete="email" required>
+  <fieldset class="join-choice">
+    <legend>I'm in for</legend>
+    <label><input type="radio" name="pledge" value="day" checked> March 8</label>
+    <label><input type="radio" name="pledge" value="month"> The whole month</label>
+    <label><input type="radio" name="pledge" value="both"> Both</label>
+  </fieldset>
+  <label class="join-consent"><input id="join-consent" type="checkbox" name="consent"> Email me about The Right to Be Real. Unsubscribe any time.</label>
+  <button type="submit" class="btn btn-ink">Join the Blackout</button>
+  <p class="join-note" id="join-note" role="status">Sign-ups open January 2027. <a href="{{ site.instagram }}" target="_blank" rel="noopener">Follow {{ site.instagram_handle }}</a> to hear first.</p>
+</form>

@@ -1,22 +1,17 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sorry, we're out of that · The Right to Be Real</title>
-  <link rel="icon" href="/assets/favicon.png" type="image/png">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..800,0..100,0..1;1,9..144,400..800,0..100,0..1&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/styles.css?v=17">
-</head>
-<body>
-  <header class="site-header"><div class="container bar"><a href="/" class="logo" aria-label="Home"><img src="/assets/logo.svg" alt="The right to be real." class="logo-img" width="292" height="136"></a></div></header>
-  <main class="hero">
-    <div class="container">
-      <p class="eyebrow">Error 404</p>
-      <h1>Sorry, we're<br><em>out of that.</em></h1>
-      <p class="lead">This page doesn't exist. Everything else is fresh.</p>
-      <div class="actions"><a class="pill pill-gold" href="/">Back to the counter</a></div>
+---
+layout: default
+title: Page not found
+permalink: /404.html
+---
+<section class="hero hero-404">
+  <div class="container">
+    <p class="kicker">Error 404</p>
+    <h1>This page <em>doesn't exist.</em></h1>
+    <p class="hero-line">Unlike your flaws, which also don't.</p>
+    <div class="actions">
+      <a class="btn btn-red" href="{{ '/' | relative_url }}">Back to the homepage</a>
+      <a class="btn btn-line" href="{{ '/campaigns/' | relative_url }}">See the campaigns</a>
     </div>
-  </main>
-</body>
-</html>
+    <p class="stamp stamp-ad stamp-404" aria-hidden="true">Not found</p>
+  </div>
+</section>

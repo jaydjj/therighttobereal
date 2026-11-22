@@ -1,0 +1,28 @@
+title: The Right to Be Real
+description: A social movement against the beauty standards corporations sell us. Collective action, starting with the Beauty Blackout on March 8, 2027.
+url: https://therighttobereal.com
+baseurl: ""
+instagram: https://www.instagram.com/therighttobereal/
+instagram_handle: "@therighttobereal"
+
+collections:
+  campaigns:
+    output: true
+    permalink: /campaigns/:name/
+
+defaults:
+  - scope: { path: "", type: campaigns }
+    values: { layout: campaign }
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+exclude:
+  - README.md
+  - CLAUDE.md
+  - DESIGN.md
+  - brand
+  - Gemfile
+  - Gemfile.lock
+  - vendor
