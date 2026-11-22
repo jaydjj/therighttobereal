@@ -340,15 +340,7 @@ s { text-decoration: line-through; text-decoration-color: var(--red); text-decor
 .c-related .back { display: inline-flex; gap: 8px; padding: 12px 16px; border: 2px solid var(--ink); }
 .c-related .back:hover { background: var(--ink); color: var(--paper); text-decoration: none; }
 
-/* Principles: open in place on the homepage */
-.principles-panel { margin-top: clamp(32px, 5vw, 56px); border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
-.principles-panel summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; cursor: pointer; font: 600 .78rem/1.2 var(--sans); letter-spacing: .14em; text-transform: uppercase; }
-.principles-panel summary::-webkit-details-marker { display: none; }
-.principles-panel summary:hover .sum-open, .principles-panel summary:hover .sum-close { text-decoration: underline; text-decoration-color: var(--red); text-decoration-thickness: 2px; text-underline-offset: 6px; }
-.sum-icon { font: 400 1.8rem/1 var(--serif); color: var(--red); transition: transform .2s; }
-.principles-panel[open] .sum-icon { transform: rotate(45deg); }
-.sum-close, .principles-panel[open] .sum-open { display: none; }
-.principles-panel[open] .sum-close { display: inline; }
-.principles-body { padding: 4px 0 32px; }
-.principles-body .principles { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 48px; }
-@media (max-width: 700px) { .principles-body .principles { grid-template-columns: 1fr; } }
+/* Principles on the homepage */
+.principles-block { margin-top: clamp(40px, 6vw, 72px); padding-top: 24px; border-top: 1px solid var(--ink); }
+.principles-block .principles { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 48px; }
+@media (max-width: 700px) { .principles-block .principles { grid-template-columns: 1fr; } }

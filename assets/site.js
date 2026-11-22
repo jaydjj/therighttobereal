@@ -18,11 +18,3 @@
   });
 })();
 
-// Principles open in place on the homepage; links to /#principles open them.
-(function () {
-  var panel = document.getElementById('principles');
-  if (!panel || panel.tagName !== 'DETAILS') return;
-  function openIfTargeted() { if (location.hash === '#principles') { panel.open = true; panel.scrollIntoView({ block: 'start' }); } }
-  openIfTargeted();
-  window.addEventListener('hashchange', openIfTargeted);
-})();
