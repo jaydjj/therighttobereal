@@ -3,6 +3,7 @@ title: Keep the Change
 title_html: Keep the <em>change.</em>
 pillar: reclamation
 order: 1
+cal: 1
 when: January 1, 2027
 summary: "A New Year's resolution: skip the new you. Fund the real one."
 intro: "New Year's resolution: keep the change. Skip the new you. Fund the real one."

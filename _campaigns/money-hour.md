@@ -3,6 +3,7 @@ title: Money Hour
 title_html: Money <em>Hour.</em>
 pillar: reclamation
 order: 2
+cal: 8
 when: Every month
 summary: Money strategies that actually work, shared by women in our community.
 intro: Money strategies that actually work, shared by women in our community. One featured every month.

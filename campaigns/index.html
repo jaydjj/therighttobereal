@@ -2,26 +2,45 @@
 layout: default
 title: Campaigns
 body_class: l1
-description: Every campaign from The Right to Be Real, in three pillars. The Protest, The Reclamation and The People.
+description: What The Right to Be Real stands for, its campaigns in three tracks, and the full calendar.
 ---
-{%- assign season = site.campaigns | where: "url", "/campaigns/womens-month/" | first -%}
+{%- assign march = site.campaigns | where: "url", "/campaigns/womens-month/" | first -%}
+{%- assign dated = site.campaigns | where_exp: "c", "c.cal" | sort: "cal" -%}
 <section class="l1-hero">
   <div class="container">
     <p class="kicker">Campaigns</p>
     <h1>What we're <em>doing about it.</em></h1>
     <p class="l1-intro">Challenge the system. Reclaim your choices. Find your people.</p>
+    <nav class="l1-jump" aria-label="On this page">
+      <a href="#principles">What we stand for</a>
+      <a href="#tracks">The three tracks</a>
+      <a href="#calendar">The calendar</a>
+    </nav>
   </div>
 </section>
 
-<section class="container">
-  <a class="season" href="{{ season.url | relative_url }}">
-    <span class="kicker kicker-red">{{ season.when }}</span>
-    <span class="season-title">{{ season.title_html }}</span>
-    <span class="season-copy">{{ season.summary }}</span>
-    <span class="more">See the full calendar <span aria-hidden="true">→</span></span>
-  </a>
+<!-- What we stand for -->
+<section class="l1-principles" id="principles">
+  <div class="container">
+   <div class="split-2">
+    <header>
+      <p class="kicker">Our principles</p>
+      <h2>What we <em>stand for.</em></h2>
+    </header>
+    <ul class="principles principles-lg">
+      <li><strong>Reject the standard.</strong> Nobody needs fixing to be worthy.</li>
+      <li><strong>Act together.</strong> Simple actions anyone can join, done by enough of us to matter.</li>
+      <li><strong>Spend on purpose.</strong> Our money is our loudest vote.</li>
+      <li><strong>You first. The rest is extra.</strong> We love a good lipstick. Buy what you love, use it up, and skip the one-click buys that promise to fix how you feel.</li>
+      <li><strong>Challenge systems, not people.</strong> We go after the pressure, never someone's personal choices.</li>
+      <li><strong>Everyone's in.</strong> Insecurity is sold to every gender, age and identity.</li>
+    </ul>
+   </div>
+  </div>
 </section>
 
+<!-- The three tracks -->
+<div id="tracks">
 {%- for p in site.data.pillars %}
 {%- assign cs = site.campaigns | where: "pillar", p.id | where_exp: "c", "c.season != true" | sort: "order" %}
 <section class="l1-pillar pillar-{{ p.id }}" id="{{ p.id }}">
@@ -45,3 +64,32 @@ description: Every campaign from The Right to Be Real, in three pillars. The Pro
   </div>
 </section>
 {%- endfor %}
+</div>
+
+<!-- The calendar -->
+<section class="l1-calendar" id="calendar">
+  <div class="container">
+    <header class="l1-pillar-head">
+      <p class="pillar-line">The calendar</p>
+      <h2>The whole <em>year.</em></h2>
+    </header>
+    <ol class="cal">
+      {%- for c in dated %}
+      <li class="cal-row{% if c.season %} cal-season{% endif %}">
+        <span class="cal-when">{{ c.when }}</span>
+        <div class="cal-body">
+          <a class="cal-title" href="{{ c.url | relative_url }}">{{ c.title }}</a>
+          <p>{{ c.summary }}</p>
+          {%- if c.season %}
+          <ol class="cal-days">
+            {%- for item in march.agenda %}
+            <li{% if item.highlight %} class="is-key"{% endif %}><span class="a-date">{{ item.date }}</span><a href="{{ march.url | relative_url }}#{{ item.id | default: item.title | slugify }}">{{ item.title }}</a></li>
+            {%- endfor %}
+          </ol>
+          {%- endif %}
+        </div>
+      </li>
+      {%- endfor %}
+    </ol>
+  </div>
+</section>

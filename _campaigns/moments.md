@@ -3,6 +3,7 @@ title: Moments
 title_html: The <em>moments.</em>
 pillar: people
 order: 3
+cal: 5
 when: June · October · November
 summary: Pride, mental health and International Men's Day. Insecurity is sold to everyone.
 intro: Insecurity is sold to every gender, age and identity. These are the moments in the year when we talk about it.

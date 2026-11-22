@@ -1,6 +1,6 @@
 // Old one-page links (/#menu, /#regulars...) now live on campaign pages.
 (function () {
-  var moved = { '#menu': '/campaigns/womens-month/', '#regulars': '/campaigns/the-regulars/', '#january': '/campaigns/keep-the-change/' };
+  var moved = { '#menu': '/campaigns/womens-month/', '#regulars': '/campaigns/the-regulars/', '#january': '/campaigns/keep-the-change/', '#rules': '/campaigns/#principles', '#join': '/campaigns/beauty-blackout/#join-section', '#join-section': '/campaigns/beauty-blackout/#join-section' };
   if ((location.pathname === '/' || location.pathname === '/index.html') && moved[location.hash]) {
     location.replace(moved[location.hash]);
   }

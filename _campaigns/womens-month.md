@@ -3,6 +3,7 @@ title: Women's Month 2027
 title_html: Women's <em>Month.</em>
 pillar: protest
 order: 0
+cal: 3
 season: true
 when: March 2027
 summary: One month of small actions, anchored by the Beauty Blackout on March 8.

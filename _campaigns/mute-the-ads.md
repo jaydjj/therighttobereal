@@ -3,6 +3,7 @@ title: Mute the Ads
 title_html: Mute the <em>ads.</em>
 pillar: protest
 order: 2
+cal: 6
 when: March 1–7 · November 19–25
 summary: A week of hiding every beauty ad we see. Twice a year.
 intro: A week of hiding every beauty ad we see. The more of us who do it, the more it costs them to reach us.

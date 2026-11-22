@@ -3,6 +3,7 @@ title: Time Well Spent
 title_html: Time well <em>spent.</em>
 pillar: reclamation
 order: 3
+cal: 4
 when: April 2027 · Financial Literacy Month
 summary: The 20 minutes you'd spend researching a beauty product, spent on something else.
 intro: Take the 20 minutes you'd spend researching a beauty product. Spend them on your savings, your budget, or planning an experience that has nothing to do with how you look.

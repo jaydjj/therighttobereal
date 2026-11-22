@@ -3,6 +3,7 @@ title: Blackout Friday
 title_html: Blackout <em>Friday.</em>
 pillar: protest
 order: 3
+cal: 7
 when: November 19–26
 summary: The biggest shopping day of the year, and we're not getting sucked in.
 intro: The biggest shopping day of the year, and we're not getting sucked in. No beauty purchases on Black Friday.
