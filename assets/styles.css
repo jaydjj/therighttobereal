@@ -332,3 +332,10 @@ s { text-decoration: line-through; text-decoration-color: var(--red); text-decor
 /* Nav: keep the Blackout button, tuck text links away on small phones */
 @media (max-width: 760px) { .nav .nav-ig { display: none; } }
 @media (max-width: 340px) { .nav .nav-link { display: none; } }
+
+/* Campaign pages: clear way back to the overview */
+.crumbs { align-items: center; gap: 10px 14px; }
+.back-top { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border: 2px solid var(--ink); text-decoration: none; }
+.back-top:hover { background: var(--ink); color: var(--paper); text-decoration: none !important; }
+.c-related .back { display: inline-flex; gap: 8px; padding: 12px 16px; border: 2px solid var(--ink); }
+.c-related .back:hover { background: var(--ink); color: var(--paper); text-decoration: none; }
