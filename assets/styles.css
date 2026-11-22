@@ -434,3 +434,7 @@ body { background-color: var(--paper); background-image: url("data:image/svg+xml
   .hero-actions .btn-lg { padding: 20px 14px; letter-spacing: .07em; font-size: .8rem; }
   .hero-art { margin-top: 32px; }
 }
+
+/* Panels without a top line or caption: just the framed picture */
+.bs-art:first-child { margin-top: 0; }
+.broadside:not(:has(.bs-caption)) { padding-bottom: 18px; }

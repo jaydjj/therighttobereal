@@ -18,7 +18,7 @@ description: A social movement challenging the beauty pressure we're sold. Follo
       </div>
     </div>
     <div class="hero-art">
-      {% include broadside.html img="friends" label="be real." caption="You shouldn't have to be beautiful to be valued." size="lg" loading="eager" %}
+      {% include broadside.html img="friends" size="lg" loading="eager" %}
     </div>
   </div>
 </section>
@@ -32,7 +32,7 @@ description: A social movement challenging the beauty pressure we're sold. Follo
     </div>
     <div class="argument-copy">
       <p class="argument-lead">You shouldn't have to be beautiful to be valued.</p>
-      <p>The Right to Be Real is a social movement against the ideals and pressures corporations use to sell us insecurity. We don't shame individual choices. We come together in practical ways, starting with how we spend our money, to send the beauty industry one clear message: <strong>we're tired of it.</strong></p>
+      <p>We don't shame individual choices. We come together in practical ways, starting with how we spend our money, to send the beauty industry one clear message: <strong>we're tired of it.</strong></p>
     </div>
   </div>
   <div class="container">
@@ -56,19 +56,14 @@ description: A social movement challenging the beauty pressure we're sold. Follo
     <div>
       <p class="kicker kicker-red">Our first major event · {{ blackout.when }}</p>
       <h2>The Beauty <em>Blackout.</em></h2>
-      <p class="action-copy">{{ blackout.intro }}</p>
+      <p class="action-copy">{{ blackout.summary }}</p>
       <div class="actions">
         <a href="{{ blackout.url | relative_url }}" class="btn btn-red btn-lg">Join the Beauty Blackout</a>
       </div>
     </div>
     <div class="action-art">
-      {% include broadside.html img="press" label=blackout.when caption="Buy nothing. Say everything." size="md" %}
+      {% include broadside.html img="press" size="md" %}
     </div>
-  </div>
-  <div class="container">
-    <dl class="facts facts-dark facts-row">
-      {%- for f in blackout.facts %}<div><dt>{{ f.label }}</dt><dd>{{ f.value }}</dd></div>{% endfor %}
-    </dl>
   </div>
 </section>
 
@@ -76,13 +71,12 @@ description: A social movement challenging the beauty pressure we're sold. Follo
 <section class="insta" id="instagram">
   <div class="container insta-grid">
     <div>
-      <p class="kicker">Follow along</p>
       <h2>The movement is happening <em>on Instagram.</em></h2>
       <p class="insta-copy">Follow {{ site.instagram_handle }} on Instagram for actions, stories and updates.</p>
       <a href="{{ site.instagram }}" class="btn btn-ink" target="_blank" rel="noopener">Follow {{ site.instagram_handle }}</a>
     </div>
     <a class="insta-art" href="{{ site.instagram }}" target="_blank" rel="noopener" aria-label="Follow {{ site.instagram_handle }} on Instagram">
-      {% include broadside.html img="walk" label=site.instagram_handle caption="Actions. Stories. Updates." size="sm" %}
+      {% include broadside.html img="walk" size="sm" %}
     </a>
   </div>
 </section>

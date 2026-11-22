@@ -6,7 +6,7 @@
   include.size  = "lg" | "md" | "sm"; include.sizes = optional sizes hint for the image
 {%- endcomment -%}
 <figure class="broadside broadside-{{ include.size | default: 'md' }}">
-  <div class="bs-top"><span>The Right to Be Real</span><span>{{ include.label }}</span></div>
+  {%- if include.label %}<div class="bs-top"><span>The Right to Be Real</span><span>{{ include.label }}</span></div>{% endif %}
   <div class="bs-art">
     {%- if include.img -%}
     {%- assign a = site.data.art[include.img] -%}
@@ -19,5 +19,5 @@
     {% include broadsides/{{ include.art }} %}
     {%- endif -%}
   </div>
-  <figcaption class="bs-caption">{{ include.caption }}</figcaption>
+  {%- if include.caption %}<figcaption class="bs-caption">{{ include.caption }}</figcaption>{% endif %}
 </figure>

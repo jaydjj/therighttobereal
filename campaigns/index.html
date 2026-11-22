@@ -57,7 +57,6 @@ description: The Right to Be Real campaigns in three tracks, and the full calend
         <span class="cal-when">{{ c.when }}</span>
         <div class="cal-body">
           <a class="cal-title" href="{{ c.url | relative_url }}">{{ c.title }}</a>
-          <p>{{ c.summary }}</p>
           {%- if c.season %}
           <ol class="cal-days">
             {%- for item in march.agenda %}

@@ -8,7 +8,7 @@ when: March 8, 2027
 summary: 24 hours. No beauty purchases, no cosmetic treatments. Anywhere in the world.
 intro: For 24 hours, buy no beauty products and book no cosmetic treatments. Anywhere in the world. One day to show how much of the industry runs on how we feel about ourselves.
 form: true
-broadside: { img: press, label: "March 8, 2027", caption: "Buy nothing. Say everything." }
+broadside: { img: press }
 facts:
   - { label: Date, value: "March 8, 2027" }
   - { label: Duration, value: "24 hrs" }

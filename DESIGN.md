@@ -20,6 +20,8 @@ The point is not that everyone is beautiful. It's that people shouldn't have to 
 
 ## Voice
 
+- Minimal and scannable. Say each thing once per page; if a line repeats a headline, a button or a picture, cut it.
+
 - Write like an independent editorial publication, not an earnest nonprofit.
 - Short, memorable statements. Observational humour. Specific examples of industry absurdity.
 - Challenge the system, never the individual. Criticize manufactured insecurity, never people who buy beauty products. Never anti-makeup.
@@ -49,7 +51,7 @@ A compact framed poster panel: double ink frame, a small wood-type top line ("Th
 
 Older drawn SVG scenes remain in `_includes/broadsides/` as a fallback.
 
-Use it selectively (hero, the featured campaign, Instagram), never in every section, and never so it competes with the Blackout button. New scenes should keep the same palette, frame and print language: symbolic, dignified, diverse figures; not crowds by default.
+The top line and caption are optional. On the website, panels show the picture only: the page around them already carries the words. Use it selectively (hero, the featured campaign, Instagram), never in every section, and never so it competes with the Blackout button. New scenes should keep the same palette, frame and print language: symbolic, dignified, diverse figures; not crowds by default.
 
 Other devices: **the Receipt** (money and time reclaimed). Documentary photos of real people can join later; no stock photos.
 
