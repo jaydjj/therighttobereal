@@ -6,7 +6,7 @@ order: 1
 featured: true
 when: March 8, 2027
 summary: 24 hours. No beauty purchases, no cosmetic treatments. Anywhere in the world.
-intro: For 24 hours, buy no beauty products and book no cosmetic treatments. Anywhere in the world. One day to show how much of the industry runs on how we feel about ourselves.
+intro: Buy no beauty products and book no cosmetic treatments. One day to show how much of the industry runs on how we feel about ourselves.
 form: true
 broadside: { img: press }
 facts:
@@ -25,16 +25,3 @@ agenda:
   - { date: "04.08", title: "The Long Blackout: the stories", text: "A month without buying beauty products. What it did to our brains and our wallets, in our own words." }
 related: [womens-month, mute-the-ads, blackout-friday]
 ---
-## Why it exists
-
-Our insecurities are someone else's business model. One day without buying shows how much of that business depends on how we feel about ourselves.
-
-## What we're doing
-
-- **For one day:** no beauty purchases and no cosmetic treatments, wherever you are.
-- **For a month, if you want to keep going:** The Long Blackout runs from March 8 to April 8. Buy no new beauty products and use what you already own. Sunscreen, prescriptions and basic hygiene don't count.
-- **Optional:** give what you'd have spent to a women's shelter or community fund.
-
-## How to join
-
-Sign up below for the day, the whole month or both. Sign-ups open January 2027. Details and how to join will be on our [Instagram](https://www.instagram.com/therighttobereal/).

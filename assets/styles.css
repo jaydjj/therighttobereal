@@ -438,3 +438,11 @@ body { background-color: var(--paper); background-image: url("data:image/svg+xml
 /* Panels without a top line or caption: just the framed picture */
 .bs-art:first-child { margin-top: 0; }
 .broadside:not(:has(.bs-caption)) { padding-bottom: 18px; }
+
+/* Campaign pages: one shared "how to join" line */
+.c-how { padding-block: clamp(32px, 5vw, 48px) 0; }
+.c-how p { padding: 16px 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
+.c-how a { text-decoration-color: var(--brick); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.c-hero + .c-agenda, .c-hero + .c-how { margin-top: clamp(40px, 6vw, 64px); }
+.c-agenda + .c-how, .c-join + .c-how { padding-top: 0; }
+.c-join + .c-how { padding-top: clamp(32px, 5vw, 48px); }

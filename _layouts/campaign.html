@@ -23,12 +23,15 @@ layout: default
     </div>
   </header>
 
+  {%- assign has_body = content | strip_html | strip | size -%}
+  {%- if has_body > 0 or page.receipt %}
   <div class="container c-body">
     <div class="c-main prose">
       {{ content }}
     </div>
     {%- if page.receipt %}<aside class="c-side">{% include receipt.html %}</aside>{% endif %}
   </div>
+  {%- endif %}
 
   {%- if page.agenda %}
   <section class="container c-agenda" aria-labelledby="agenda-title">
@@ -56,6 +59,10 @@ layout: default
     </div>
   </section>
   {%- endif %}
+
+  <section class="container c-how">
+    <p><strong>How to join:</strong> details are on <a href="{{ site.instagram }}" target="_blank" rel="noopener">Instagram ({{ site.instagram_handle }})</a>.</p>
+  </section>
 
   <section class="container c-related">
     {%- if page.related %}

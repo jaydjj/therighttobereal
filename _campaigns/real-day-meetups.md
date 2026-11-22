@@ -9,6 +9,3 @@ summary: Local get-togethers, organized by people in our community.
 intro: Local get-togethers, organized by people in our community.
 related: [the-regulars, moments, beauty-blackout]
 ---
-## How to join
-
-Details will be on our [Instagram](https://www.instagram.com/therighttobereal/).

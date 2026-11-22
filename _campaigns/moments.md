@@ -13,6 +13,3 @@ agenda:
   - { date: "November", title: International Men's Day, text: "Masculinity, success, appearance and the pressure to have it together." }
 related: [the-regulars, blackout-friday, real-day-meetups]
 ---
-## How to join
-
-Details will be on our [Instagram](https://www.instagram.com/therighttobereal/).

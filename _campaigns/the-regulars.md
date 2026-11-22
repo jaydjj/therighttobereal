@@ -10,7 +10,6 @@ intro: People who were told to change, and didn't. Some regulars you'll know fro
 facts:
   - { label: Starts, value: "February 2, 2027" }
   - { label: How often, value: "Every Tuesday" }
-  - { label: Nominations, value: "Open in January" }
 related: [real-day-meetups, moments, womens-month]
 ---
 ## Nominate a regular

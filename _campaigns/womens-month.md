@@ -7,7 +7,7 @@ cal: 3
 season: true
 when: March 2027
 summary: One month of small actions, anchored by the Beauty Blackout on March 8.
-intro: One month of small actions, anchored by the Beauty Blackout on March 8. Details and how to join will be on our Instagram.
+intro: One month of small actions, anchored by the Beauty Blackout on March 8.
 facts:
   - { label: When, value: "March 1–31, 2027" }
   - { label: Actions, value: "11" }
@@ -27,10 +27,3 @@ agenda:
   - { date: "03.31", title: The Right to Be Real, text: "The results: how many of us joined, and how much money stayed in our pockets. Then, what's next." }
 related: [beauty-blackout, mute-the-ads, the-regulars]
 ---
-## What it is
-
-Eleven small actions across March 2027, from unfiltered photos on the first to the results on the thirty-first. The Beauty Blackout on March 8 is the big one.
-
-## How to join
-
-Join in on any of them. Details and how to join each one will be on our [Instagram](https://www.instagram.com/therighttobereal/).
