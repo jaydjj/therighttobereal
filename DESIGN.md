@@ -69,7 +69,7 @@ Other devices: **the Receipt** (money and time reclaimed). Documentary photos of
 | Ink (text, frames, bold sections) | `#1a1714` |
 | Brick red (main buttons, key words) | `#9e2a1f` (use `#e2876f` for small text on ink) |
 | Ochre (illustration fills only) | `#b8862b` (use `#d9a441` for small text on ink) |
-| Logo | `assets/logo.svg`: "The right to" in small italic above a bold "be real." Always use this file; never retype or rebuild the logo |
+| Logo | `assets/logo.svg`: "THE RIGHT TO" in tracked capitals over a black bold italic "be" resting on a large brick-red "real". Always use this file; never retype or rebuild the logo |
 | Headlines | DM Serif Display, upright paired with italic |
 | Poster lettering | Big Shoulders Display (wood type), only inside broadside panels |
 | Body and labels | Work Sans; labels in small spaced capitals |

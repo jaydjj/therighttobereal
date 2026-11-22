@@ -12,7 +12,7 @@ Key points:
 - Recurring motif: the broadside panel (`_includes/broadside.html`, scenes in `_includes/broadsides/`). Use it selectively; the Blackout button always stays the most prominent thing on the page.
 - Challenge systems, never individuals. Never anti-makeup.
 - Never write "BeReal" as one word.
-- The logo is one shared file, `assets/logo.svg` ("The right to be real."). Use it as an image wherever the logo appears; never retype or rebuild it. To change it, rerun `brand/make_logo.py` (usage is in the file).
+- The logo is one shared file, `assets/logo.svg` ("THE RIGHT TO" / black italic "be" / brick-red "real"). Use it as an image wherever the logo appears; never retype or rebuild it. To change it, edit and rerun `brand/make_logo.py` (usage is in the file).
 
 ## Working preferences
 

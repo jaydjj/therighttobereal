@@ -65,15 +65,15 @@ h2 { font: 400 clamp(2rem, 4.6vw, 3.4rem)/1.02 var(--serif); letter-spacing: -.0
 
 /* ---------- Header ---------- */
 .site-header { border-top: 6px solid var(--ink); border-bottom: 1px solid var(--ink); background: var(--paper); }
-.bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 76px; }
+.bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 88px; }
 .logo { display: inline-flex; text-decoration: none; }
-.logo-img { display: block; height: 44px; width: auto; }
+.logo-img { display: block; height: 68px; width: auto; }
 .nav { display: flex; align-items: center; gap: 24px; font: 600 .74rem/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; }
 .nav a:not(.btn) { text-decoration: none; }
 .nav a:not(.btn):hover, .nav a[aria-current] { text-decoration: underline; text-decoration-color: var(--red); text-decoration-thickness: 2px; text-underline-offset: 6px; }
 @media (max-width: 640px) {
   .nav { gap: 14px; }
-  .logo-img { height: 38px; }
+  .logo-img { height: 50px; }
 }
 
 /* ---------- Home: hero ---------- */
