@@ -2,7 +2,7 @@
 layout: default
 title: Campaigns
 body_class: l1
-description: What The Right to Be Real stands for, its campaigns in three tracks, and the full calendar.
+description: The Right to Be Real campaigns in three tracks, and the full calendar.
 ---
 {%- assign march = site.campaigns | where: "url", "/campaigns/womens-month/" | first -%}
 {%- assign dated = site.campaigns | where_exp: "c", "c.cal" | sort: "cal" -%}
@@ -12,30 +12,9 @@ description: What The Right to Be Real stands for, its campaigns in three tracks
     <h1>What we're <em>doing about it.</em></h1>
     <p class="l1-intro">Challenge the system. Reclaim your choices. Find your people.</p>
     <nav class="l1-jump" aria-label="On this page">
-      <a href="#principles">What we stand for</a>
       <a href="#tracks">The three tracks</a>
       <a href="#calendar">The calendar</a>
     </nav>
-  </div>
-</section>
-
-<!-- What we stand for -->
-<section class="l1-principles" id="principles">
-  <div class="container">
-   <div class="split-2">
-    <header>
-      <p class="kicker">Our principles</p>
-      <h2>What we <em>stand for.</em></h2>
-    </header>
-    <ul class="principles principles-lg">
-      <li><strong>Reject the standard.</strong> Nobody needs fixing to be worthy.</li>
-      <li><strong>Act together.</strong> Simple actions anyone can join, done by enough of us to matter.</li>
-      <li><strong>Spend on purpose.</strong> Our money is our loudest vote.</li>
-      <li><strong>You first. The rest is extra.</strong> We love a good lipstick. Buy what you love, use it up, and skip the one-click buys that promise to fix how you feel.</li>
-      <li><strong>Challenge systems, not people.</strong> We go after the pressure, never someone's personal choices.</li>
-      <li><strong>Everyone's in.</strong> Insecurity is sold to every gender, age and identity.</li>
-    </ul>
-   </div>
   </div>
 </section>
 
