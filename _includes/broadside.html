@@ -1,10 +1,23 @@
 {%- comment -%}
   Broadside panel: the site's recurring poster motif.
-  include.art = file in _includes/broadsides/, include.label = top-right label, include.caption = bottom line.
-  include.size = "lg" | "md" | "sm"
+  include.img   = id from _data/art.yml (raster illustration in assets/art/), or
+  include.art   = file in _includes/broadsides/ (drawn SVG scene)
+  include.label = top-right label, include.caption = bottom line
+  include.size  = "lg" | "md" | "sm"; include.sizes = optional sizes hint for the image
 {%- endcomment -%}
 <figure class="broadside broadside-{{ include.size | default: 'md' }}">
   <div class="bs-top"><span>The Right to Be Real</span><span>{{ include.label }}</span></div>
-  <div class="bs-art">{% include broadsides/{{ include.art }} %}</div>
+  <div class="bs-art">
+    {%- if include.img -%}
+    {%- assign a = site.data.art[include.img] -%}
+    {%- assign base = '/assets/art/' | append: include.img | relative_url -%}
+    <picture>
+      <source type="image/webp" srcset="{{ base }}-480.webp 480w, {{ base }}-800.webp 800w, {{ base }}-1120.webp 1120w" sizes="{{ include.sizes | default: '(max-width: 820px) 90vw, 400px' }}">
+      <img src="{{ base }}-800.jpg" alt="{{ a.alt | escape }}" width="1122" height="1402" loading="{{ include.loading | default: 'lazy' }}" decoding="async">
+    </picture>
+    {%- else -%}
+    {% include broadsides/{{ include.art }} %}
+    {%- endif -%}
+  </div>
   <figcaption class="bs-caption">{{ include.caption }}</figcaption>
 </figure>

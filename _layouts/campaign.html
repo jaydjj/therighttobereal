@@ -18,7 +18,7 @@ layout: default
       {%- endif %}
      </div>
      {%- if page.broadside %}
-     <div class="c-hero-art">{% include broadside.html art=page.broadside.art label=page.broadside.label caption=page.broadside.caption size="md" %}</div>
+     <div class="c-hero-art">{% include broadside.html img=page.broadside.img art=page.broadside.art label=page.broadside.label caption=page.broadside.caption size="md" loading="eager" %}</div>
      {%- endif %}
     </div>
   </header>

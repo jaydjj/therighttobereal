@@ -38,11 +38,15 @@ The point is not that everyone is beautiful. It's that people shouldn't have to 
 
 ### The broadside panel (recurring motif)
 
-A compact framed poster panel: double ink frame, a small wood-type top line ("The Right to Be Real" + a label), a woodcut scene, and a wood-type caption. Built from `_includes/broadside.html` with scenes in `_includes/broadsides/`:
+A compact framed poster panel: double ink frame, a small wood-type top line ("The Right to Be Real" + a label), an illustration, and a wood-type caption. Built from `_includes/broadside.html`.
 
-- `mirror.html`: a mirror turned to the wall; a woman walks toward the light (homepage hero).
-- `peel.html`: a "FLAWLESS" ad peeled back to reveal "be real." (Beauty Blackout).
-- `walk.html`: three different people walking away from a sign pointing to "PERFECT" (Instagram).
+**Illustrations** are print-style artwork (relief-print or lithograph look: heavy black line, cross-hatching, paper grain, flat brick red, gold and ink). Files live in `assets/art/` as `<id>-480.webp`, `-800.webp`, `-1120.webp` and `-800.jpg`, with alt text in `_data/art.yml`. Every illustration needs alt text that describes the scene and any words in it.
+
+- `crowd`: a grey-haired woman standing calmly while a crowd hurries past giant beauty billboards (homepage hero).
+- `press`: a printing press churning out the same idealized face (Beauty Blackout, homepage and campaign page).
+- `walk`: three women of different ages walking and talking past a blank billboard toward the sun (Instagram).
+
+Older drawn SVG scenes remain in `_includes/broadsides/` as a fallback.
 
 Use it selectively (hero, the featured campaign, Instagram), never in every section, and never so it competes with the Blackout button. New scenes should keep the same palette, frame and print language: symbolic, dignified, diverse figures; not crowds by default.
 
