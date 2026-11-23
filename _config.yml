@@ -6,7 +6,7 @@ instagram: https://www.instagram.com/therighttobereal/
 instagram_handle: "@therighttobereal"
 
 # Pledge counter (Google Apps Script web app URL, see tools/pledge-sheet.gs). Empty = not connected yet.
-pledge_endpoint: ""
+pledge_endpoint: "https://script.google.com/macros/s/AKfycbyRhEr0_Uxxr37yZ7CA2C0C438Vzuyy9go952K7AewBB6eQDZzA0oXTLb9MYUPkJsq8qw/exec"
 # Show the public pledge count once it reaches this number.
 pledge_show_at: 72
 
