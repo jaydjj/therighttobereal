@@ -8,7 +8,6 @@ Follow `DESIGN.md` for all design and writing decisions: the feel, voice, colour
 
 Key points:
 - A contemporary movement printing its own broadsides: print-style illustration, paper, ink, brick red, gold. Defiant, wry, human.
-- On black, gold is the accent: all labels, the italic turn in headlines, the pledge bar. Red is for buttons.
 - Copy is minimal and scannable: say each thing once per page; no captions under pictures on the site.
 - Headlines pair an upright statement with an italic turn.
 - Illustrations live in `assets/art/` with size and alt text in `_data/art.yml`, shown with `_includes/picture.html` (a framed print). Every new one needs descriptive alt text. Never in the hero; the Blackout button always stays the most prominent thing on the page.
@@ -27,10 +26,10 @@ Key points:
 
 ## Structure
 
-One page. Everything lives on the homepage (`index.html`). Every section follows the same pattern (`section.section` → `.container` → `.section-head` → content); sections are separated by spacing and background tone, never lines. Only four font styles: serif, serif italic, sans, label (see `DESIGN.md`).
+One page. Everything lives on the homepage (`index.html`). Every section follows the same pattern (`section.section` → `.container` → `.section-head` → content); sections are separated by spacing and background tone, never lines. Only four font styles at seven sizes (`--t-display` … `--t-label`; see `DESIGN.md`). On paper red is the primary colour; on black gold is (buttons, labels, italic turns), never red.
 
 1. Hero: centred headline, one paragraph, the Blackout button. No image.
-2. The Beauty Blackout (`#blackout`, black): heading and a small facts strip, the pledge (live count "74/1,000 pledges", "Pledge for March 8" beside an outlined "Pledge for the whole month" jump button; once per device, the red button then says "You're in!" and a temporary line points to the footer sign-up), claims-street illustration to the right. The main purpose of the site.
+2. The Beauty Blackout (`#beautyblackoutpledge`, black): heading and a small facts strip, the pledge (live count "74/1,000 pledges", "Pledge for March 8" beside an outlined "Pledge for the whole month" jump button; once per device, the red button then says "You're in!" and a temporary line points to the footer sign-up), claims-street illustration to the right. The main purpose of the site.
 2b. Beauty Blackout *all month* (`#whole-month`, lighter black): the Long Blackout pledge (rules from `calendar.yml`), perks (group chats, featured stories), email required (`_includes/month-form.html`).
 3. Women's Month (`#march`): compact list. 4. One action a week (`#monthly`): four cards. 5. More to come (`#also`): compact list.
 6. Manifesto band (brick, press illustration). 7. What we stand for (`#why`, text only, principles). 8. Instagram (notice-board illustration).
@@ -44,13 +43,15 @@ One page. Everything lives on the homepage (`index.html`). Every section follows
 - `assets/art/`: illustrations (alt text in `_data/art.yml`)
 - `brand/`: profile picture and wordmark images, and the scripts that make them
 - `404.html`, `CNAME`, `DESIGN.md`
+- `tools/`: the Google Sheet script and `check-ui.js` (not published)
 
 ## Publishing
 
 - No pull requests. Commit and merge straight to `main`; this is a low-risk solo project.
 - Pushing to `main` builds the site with Jekyll and deploys it via `.github/workflows/pages.yml`.
 - The stylesheet link has an automatic cache-busting version, so there's no number to bump.
-- Preview locally with `jekyll build` and check layouts at phone width as well as desktop. Keep all text at WCAG AA contrast (see `DESIGN.md`).
+- **Before every push that changes the UI, run `node tools/check-ui.js` and fix every failure.** It checks type (four styles, seven sizes), WCAG AA contrast, no red on black, gold labels on black, phone-width overflow, lines between sections and alt text, on desktop and phone. Then look at desktop and phone screenshots yourself.
+- After pushing, check the "Deploy site to GitHub Pages" run finished green; re-run it if it failed.
 
 ## Not yet connected
 

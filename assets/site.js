@@ -1,6 +1,6 @@
 // Old one-page anchors (/#menu, /#regulars...) now point to their calendar entries.
 (function () {
-  var moved = { '#menu': '/#march', '#regulars': '/#the-resistance', '#january': '/#keep-the-change', '#rules': '/#principles', '#mission': '/#why', '#join': '/#blackout' };
+  var moved = { '#menu': '/#march', '#regulars': '/#the-resistance', '#january': '/#keep-the-change', '#rules': '/#principles', '#mission': '/#why', '#join': '/#beautyblackoutpledge', '#blackout': '/#beautyblackoutpledge' };
   if ((location.pathname === '/' || location.pathname === '/index.html') && moved[location.hash]) {
     location.replace(moved[location.hash]);
   }

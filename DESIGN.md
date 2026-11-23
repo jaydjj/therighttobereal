@@ -67,18 +67,32 @@ Inspired by 19th-century broadsides and early 20th-century labour and lithograph
 | **Brick red** | `#9e2a1f` | Main buttons, key words, "real" in the logo |
 | Gold (ochre) | `#b8862b` | Illustration fills only, never text on paper |
 
-**Gold is the accent on black.** On the dark sections (Blackout, Beauty Blackout all month, footer) every label is gold tint `#d9a441`, and gold is the second colour: the italic turn in headlines, the pledge bar, "day." in the sign-off. Body text on black is cream or muted `#c4b8a3`. Red stays for buttons. The March 8 row in the calendar follows the same rule (gold date on black). The whole-month section is a shade lighter black, `#26211c`, so it reads as its own section next to the Blackout.
+**Two modes.**
+- **On paper:** brick red is the primary (buttons, key words). Labels are muted ink, dates are brick.
+- **On black:** gold tint `#d9a441` is the primary. Buttons are gold with black text, every label is gold, and gold is the italic turn in headlines, the pledge bar and "day." in the sign-off. Text is cream or muted `#c4b8a3`. **Never red on black.** The March 8 row in the calendar follows the same rule (gold date on black). The whole-month section is a shade lighter black, `#26211c`, so it reads as its own section next to the Blackout.
 
-### Typography: four styles only
+### Typography: four styles, seven sizes
 
 | Style | Typeface | Used for |
 |---|---|---|
-| **Serif** | DM Serif Display, upright | Headlines, event and principle names, statements, key facts |
+| **Serif** | DM Serif Display, upright | Headlines, event and perk names, statements, key facts, the count |
 | **Serif italic** | DM Serif Display, italic | The turn in a headline ("So is our power *to change it.*"), emphasis |
 | **Sans** | Work Sans 400 | Body copy, form text |
 | **Label** | Work Sans 600, small spaced capitals | Kickers, dates, tags, buttons, navigation |
 
-Sizes come from the scale in `assets/styles.css` (`--t-display`, `--t-h2`, `--t-statement`, `--t-title`, `--t-lead`, `--t-body`, `--t-label`). No other typefaces, weights or styles (no bold body text, no monospace). The logo is an image (`assets/logo.svg`), not a font.
+Every piece of text uses one of these seven sizes (tokens in `assets/styles.css`). Nothing in between, no one-off sizes.
+
+| Size | Style | Used for |
+|---|---|---|
+| `--t-display` | Serif | Homepage headline, manifesto statement, "Have a real *day.*", the pledge count |
+| `--t-h2` | Serif | Section headlines |
+| `--t-title` | Serif | Event names, principle and perk names ("Group chats."), key facts, the closing line, "/1,000 pledges" |
+| `--t-lead` | Sans | The one paragraph under a headline |
+| `--t-body` | Sans | Body copy, lists, form fields |
+| `--t-small` | Sans | Form hints, notes, card text, copyright |
+| `--t-label` | Label | Kickers, dates, tags, buttons, navigation |
+
+No bold body text, no sans italic, no monospace, no new typefaces. A sentence is either a headline (serif) or copy (sans); don't set a body sentence in serif. The logo is an image (`assets/logo.svg`), not a font.
 
 ### Texture
 A faint paper grain on the page background. Never on text. Illustrations carry their own print texture.
@@ -120,10 +134,10 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 
 | Button | Look | Use |
 |---|---|---|
-| Primary | Brick red, cream text, hard black offset shadow (cream on dark sections) | Join the Beauty Blackout. Always the most prominent thing on the page |
+| Primary | Brick red, cream text, hard black offset shadow. **On black: gold, black text, cream shadow** | Join the Beauty Blackout, Pledge, Sign up. Always the most prominent thing on the page |
 | Secondary | Solid ink, cream text | Follow on Instagram, See every campaign |
 | Text link | Small capitals, brick underline | Lesser actions, e.g. "Follow the movement on Instagram →" |
-| Outline | Ink border | Secondary navigation, e.g. on the 404 page |
+| Outline | Ink border (cream on black) | Secondary actions, e.g. "Pledge for the whole month" beside the pledge |
 
 **Header.** Fixed to the top while scrolling. Logo left; "Instagram" and a small red "Join March 8" button (jumps to the Blackout) right. On phones the Instagram link hides and the red button stays.
 
@@ -184,6 +198,7 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 | Cream on brick (buttons) | 6.6 : 1 |
 | Cream on ink | 14.4 : 1 |
 | Gold tint / muted on ink | 7.9 / 9.1 : 1 |
+| Black on gold (buttons on black) | 7.9 : 1 |
 | Gold tint / muted on whole-month black `#26211c` | 7.1 / 8.2 : 1 |
 | Reclaim tag / Unite tag on light paper | 5.5 / 6.0 : 1 |
 | Gold on paper | 2.6 : 1. **Fails: never use for text** |
@@ -195,7 +210,18 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 
 ---
 
-## 8. Instagram
+## 8. Checking the UI before it ships
+
+Run `node tools/check-ui.js` before every push that changes how the site looks. It builds the site, opens every page at desktop and phone width (including the hidden states, like the line after pledging) and fails on:
+- any text outside the four styles and seven sizes;
+- any text below WCAG AA contrast;
+- red on black, or a label on black that isn't gold;
+- anything wider than a phone screen, or a line between sections;
+- an image without alt text.
+
+Fix every failure before pushing. Then look at desktop and phone screenshots: the script checks the rules, not whether it looks right.
+
+## 9. Instagram
 
 The site's look carries over so posts are recognizable without the logo:
 - **Statements:** big serif on paper or ink, one italic turn, brick red for the key word only.
@@ -206,11 +232,12 @@ The site's look carries over so posts are recognizable without the logo:
 
 ---
 
-## 9. Don'ts
+## 10. Don'ts
 
 - Pastel wellness palettes, soft gradients, generic feminine branding, or pink as a "women's issue" colour.
 - Retro 80s/90s styling, punk-zine collage, sepia filters, or stamps as the main device.
 - More than one primary button per section, or anything louder than the Blackout button.
+- One-off font sizes, serif body sentences, or red on black.
 - Repeating copy, captions under pictures on the site, or long paragraphs where a line will do.
 - Shaming personal choices or anti-makeup messages.
 - Inventing campaign dates, activities or numbers.
