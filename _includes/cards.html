@@ -1,11 +1,10 @@
 {%- comment -%} Event cards. include.items {%- endcomment -%}
 <ol class="cards">
   {%- for e in include.items %}
-  <li id="{{ e.id }}" class="card card-{{ e.tag }}">
+  <li id="{{ e.id }}" class="card">
     <span class="label row-date">{{ e.date }}</span>
     <h3 class="title">{{ e.title }}</h3>
     <p class="card-text">{{ e.text }}</p>
-    <p class="card-tags"><span class="tag tag-{{ e.tag }}">{{ e.tag | capitalize }}</span></p>
   </li>
   {%- endfor %}
 </ol>

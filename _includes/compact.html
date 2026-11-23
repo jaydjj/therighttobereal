@@ -1,6 +1,6 @@
-{%- comment -%} Compact event rows: date, then the name with its tag. include.items {%- endcomment -%}
+{%- comment -%} Compact event rows: date, then the name. include.items {%- endcomment -%}
 <ol class="rows">
   {%- for e in include.items %}
-  <li id="{{ e.id }}"{% if e.key %} class="row-key"{% endif %}><span class="label row-date">{{ e.date }}</span><span class="row-title">{{ e.title }} <span class="tag tag-{{ e.tag }}">{{ e.tag | capitalize }}</span></span></li>
+  <li id="{{ e.id }}"{% if e.key %} class="row-key"{% endif %}><span class="label row-date">{{ e.date }}</span><span class="row-title">{{ e.title }}</span></li>
   {%- endfor %}
 </ol>

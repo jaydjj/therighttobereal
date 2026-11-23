@@ -79,7 +79,8 @@ The site has two complete modes and never mixes them on one page. It follows the
 | Primary (buttons, pledge bar, March 8 row) | Brick red, cream text | Gold `#d9a441`, black text |
 | Labels | Muted black (dates brick) | Gold |
 | Italic turn in headlines | Black | Gold |
-| Bold blocks | Beauty Blackout and the manifesto band are red, with cream text and cream buttons | The Blackout is a Black 2 section; the manifesto band is gold with black text |
+| Beauty Blackout | Sand section; "*Blackout.*" in red, red buttons | Black 2 section; "*Blackout.*" in gold, gold buttons |
+| Manifesto band | Red block, cream text | Gold block, black text |
 | Logo | `assets/logo.svg` | `assets/logo-dark.svg` (cream, gold "real"), made by `brand/make_logo_dark.py` |
 
 Rules: no black sections in light mode; no light sections in dark mode (except the gold band); **never red in dark mode**. Illustrations keep their printed paper frame in both. Every colour in `assets/styles.css` goes through a role token (`--bg`, `--text`, `--primary`, `--label`, `--em`...), never a raw colour, so both modes stay complete.
@@ -91,7 +92,7 @@ Rules: no black sections in light mode; no light sections in dark mode (except t
 | **Serif** | DM Serif Display, upright | Headlines, statements, principle and perk names, the count. Kept for things that are said, not listed |
 | **Serif italic** | DM Serif Display, italic | The turn in a headline ("So is our power *to change it.*"), emphasis |
 | **Sans** | Work Sans 400 | Body copy, event names, week-card titles, key facts, form text |
-| **Label** | Work Sans 600, small spaced capitals | Kickers, dates, tags, buttons, navigation |
+| **Label** | Work Sans 600, small spaced capitals | Kickers, dates, buttons, navigation |
 
 Every piece of text uses one of these seven sizes (tokens in `assets/styles.css`). Nothing in between, no one-off sizes.
 
@@ -103,7 +104,7 @@ Every piece of text uses one of these seven sizes (tokens in `assets/styles.css`
 | `--t-lead` | Sans | The one paragraph under a headline; event names and week-card titles |
 | `--t-body` | Sans | Body copy, lists, key facts, form fields |
 | `--t-small` | Sans | Form hints, notes, card text, copyright |
-| `--t-label` | Label | Kickers, dates, tags, buttons, navigation |
+| `--t-label` | Label | Kickers, dates, buttons, navigation |
 
 No bold body text, no sans italic, no monospace, no new typefaces. A sentence is either a headline (serif) or copy (sans); don't set a body sentence in serif. The logo is an image (`assets/logo.svg`), not a font.
 
@@ -149,14 +150,14 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 
 | Button | Look | Use |
 |---|---|---|
-| Primary | Light: brick red, cream text, black offset shadow (cream button inside the red Blackout). Dark: gold, black text, cream shadow | Join the Beauty Blackout, Pledge, Sign up. Always the most prominent thing on the page |
+| Primary | Light: brick red, cream text, black offset shadow. Dark: gold, black text, cream shadow | Join the Beauty Blackout, Pledge, Sign up. Always the most prominent thing on the page |
 | Secondary | Solid black, cream text (dark: cream, black text) | Follow on Instagram |
 | Text link | Small capitals, brick underline | Lesser actions, e.g. "Follow the movement on Instagram →" |
 | Outline | Border in the text colour | Secondary actions, e.g. "Pledge for the whole month" beside the pledge |
 
 **Header.** Fixed to the top while scrolling. Logo left; the sun/moon mode toggle, "Instagram" and a small red "Join March 8" button (jumps to the Blackout) right. On phones the Instagram link hides and the red button stays.
 
-**Labels (kickers).** Small spaced capitals above headlines: light mode muted (dates brick, cream inside red blocks); dark mode always gold.
+**Labels (kickers).** Small spaced capitals above headlines: light mode muted (dates brick, cream inside the red band); dark mode always gold.
 
 **Key facts.** A small strip of label + sans value under the Blackout intro: Date and Where. The label above the heading says only "International Women's Day" so the date appears once; "24 hrs" is left out because the intro says "one day". (Duration and Goal stay in `_data/calendar.yml`.)
 
@@ -182,9 +183,9 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 
 ### The page, top to bottom
 1. **Hero** (paper): centred, text only. Headline, one paragraph, the Blackout button.
-2. **Beauty Blackout** (red block; dark: Black 2): heading, body copy and the key-facts strip, then the pledge (count and button), with the street-of-claims illustration to the right (below on phones).
+2. **Beauty Blackout** (sand; dark: Black 2; the headline turn in the primary colour): heading, body copy and the key-facts strip, then the pledge (count and button), with the street-of-claims illustration to the right (below on phones).
 3. **Beauty Blackout *all month.*** (plain): the whole-month pledge, email required.
-4. **Women's Month** (sand): compact two-column list (date, name, tag).
+4. **Women's Month** (sand): compact two-column list (date, name).
 5. **One action a week** (paper): four cards, Week 1–4.
 6. **More to come** (sand): compact list of the other campaigns, plus the one Instagram how-to-join line.
 7. **Manifesto band** (red; dark: gold): "Our insecurities should not be someone else's *business model.*" with the printing-press illustration.
@@ -193,8 +194,8 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 10. **Footer** (plain): "Have a real *day.*" beside the email sign-up, then the copyright. No repeated links: Instagram is in the fixed header.
 
 ### The calendar
-- Tags: Protest (brick), Reclaim (dark gold `#7a5410`), Unite (olive `#4f5a1f`). Outlined chips in label style, right beside the name. Recurring: dashed ink chip with ↻.
-- Event names are sans (lead size); the tags on each row are the key, so there is no separate tag legend. Week cards have no "Monthly" tag: the section lead already says they repeat every month.
+- No tags on the site: each event shows its date and name only. The Protest / Reclaim / Unite tag stays in `_data/calendar.yml` for planning.
+- Event names are sans (lead size).
 - March 8 is the one highlighted row in the Women's Month list (red in light mode, gold in dark).
 - Recurring events live only in "One action a week", never in the March list.
 - Descriptions for compact lists stay in `_data/calendar.yml` for reference and Instagram planning.
@@ -216,12 +217,11 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 | Gold tint / muted on ink | 7.9 / 9.1 : 1 |
 | Black on gold (dark-mode buttons, manifesto band) | 7.9 : 1 |
 | Gold tint / muted on whole-month black `#26211c` | 7.1 / 8.2 : 1 |
-| Reclaim tag / Unite tag on light paper | 5.5 / 6.0 : 1 |
 | Gold on paper | 2.6 : 1. **Fails: never use for text** |
 
 - Every image has descriptive alt text and every video a description. Looping animation has a pause button and respects "reduce motion". Decorative shapes are hidden from screen readers.
 - Real information is real text, never baked into an image.
-- Visible keyboard focus (outline in the primary colour: red in light mode, gold in dark, cream inside red blocks). A "Skip to content" link appears on the first Tab.
+- Visible keyboard focus (outline in the primary colour: red in light mode, gold in dark, cream inside the red band). A "Skip to content" link appears on the first Tab.
 - Screen readers: the animated pledge count is announced once when it settles ("74 of 1,000 pledges"), not on every frame. Form hints and error messages are linked to their fields; invalid emails are marked invalid.
 - Motion is minimal and respects "reduce motion".
 - Automated check: axe (WCAG 2.2 AA plus best practice) runs clean on every page in both modes.

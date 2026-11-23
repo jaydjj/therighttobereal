@@ -9,7 +9,7 @@
              --t-lead     sans    the paragraph under a headline
              --t-body     sans    body copy, lists, form fields
              --t-small    sans    hints, notes, card text, copyright
-             --t-label    label   kickers, dates, tags, buttons, nav
+             --t-label    label   kickers, dates, buttons, nav
 
    COLOUR: two modes, never mixed on one page. html[data-theme] is set in the <head> from the visitor's
    choice (header toggle) or their device setting. Everything uses the role tokens below, not raw colours.
@@ -47,10 +47,6 @@
   --em: currentColor;          /* the italic turn in a headline */
   --shadow: var(--ink);        /* hard offset shadows */
   --line: var(--ink);          /* borders of cards, frames, fields, the pledge bar */
-  --tag-protest: var(--brick);
-  --tag-reclaim: #7a5410;
-  --tag-unite: #4f5a1f;
-  --tag-bg: var(--sheet);
 
   /* Type */
   --serif: "DM Serif Display", Georgia, "Times New Roman", serif;
@@ -88,10 +84,6 @@
   --em: var(--gold);
   --shadow: var(--sheet);
   --line: var(--paper);
-  --tag-protest: var(--gold);
-  --tag-reclaim: var(--paper);
-  --tag-unite: #b9c08f;
-  --tag-bg: transparent;
   color-scheme: dark;
 }
 
@@ -125,7 +117,7 @@ h2 { font-size: var(--t-h2); }
 .facts-strip dd { font-family: var(--sans); }
 .small, .join-note, .join-done, .card-text, .signup-hint, .signup-note, .copyright { font-size: var(--t-small); }
 .lead { font-size: var(--t-lead); line-height: 1.5; max-width: 52ch; }
-.label, .btn, .tag, .nav a { font: 600 var(--t-label)/1.2 var(--sans); letter-spacing: .16em; text-transform: uppercase; }
+.label, .btn, .nav a { font: 600 var(--t-label)/1.2 var(--sans); letter-spacing: .16em; text-transform: uppercase; }
 
 /* ---------- Section pattern ---------- */
 .section { padding-block: var(--space-section); }
@@ -145,10 +137,12 @@ h1 em, h2 em, .statement em, .signoff em { color: var(--em); }
 /* Tones: sections alternate background instead of using rules */
 .section { background: var(--bg); }
 .tone-sand { background: var(--bg-alt); }
-/* The two bold blocks. Light: red with cream. Dark: the Blackout is an alternate black section, the band is gold. */
+/* Beauty Blackout: an alternate section (tan in light mode, black 2 in dark); its headline turn is in the primary colour. */
 .tone-feature { background: var(--bg-alt); }
-.tone-feature, .tone-brick { color: var(--text); }
-html:not([data-theme="dark"]) .tone-feature, html:not([data-theme="dark"]) .tone-brick {
+.tone-feature h2 em { color: var(--primary); }
+/* The manifesto band: red with cream in light mode, gold with black in dark. */
+.tone-brick { color: var(--text); }
+html:not([data-theme="dark"]) .tone-brick {
   background: var(--brick);
   --text: var(--sheet); --text-lead: var(--sheet); --text-muted: #f3dfd2; --label: var(--sheet); --em: var(--sheet);
   --primary: var(--sheet); --on-primary: var(--brick); --shadow: var(--ink); --line: var(--sheet);
@@ -158,7 +152,7 @@ html:not([data-theme="dark"]) .tone-feature, html:not([data-theme="dark"]) .tone
   --text: var(--ink); --text-lead: var(--ink); --text-muted: var(--ink); --label: var(--ink); --em: var(--ink); --shadow: var(--ink); --line: var(--ink);
 }
 
-/* ---------- Buttons, tags ---------- */
+/* ---------- Buttons ---------- */
 .actions { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 8px; }
 .btn { display: inline-block; text-decoration: none; text-align: center; padding: 16px 22px; border: 0; border-radius: 2px; cursor: pointer; transition: transform .15s, box-shadow .15s; }
 .btn:hover { transform: translateY(-2px); }
@@ -168,11 +162,6 @@ html:not([data-theme="dark"]) .tone-feature, html:not([data-theme="dark"]) .tone
 .btn-sm { padding: 11px 14px; }
 .btn-lg { padding: 20px 28px; box-shadow: 6px 6px 0 var(--shadow); }
 .btn-lg:hover { box-shadow: 8px 8px 0 var(--shadow); }
-.tags { display: flex; flex-wrap: wrap; gap: 8px; }
-.tag { display: inline-flex; align-items: center; gap: 4px; letter-spacing: .12em; padding: 5px 8px; border: 1.5px solid currentColor; border-radius: 2px; background: var(--tag-bg); white-space: nowrap; }
-.tag-protest { color: var(--tag-protest); }
-.tag-reclaim { color: var(--tag-reclaim); }
-.tag-unite { color: var(--tag-unite); }
 
 /* ---------- Header (fixed) ---------- */
 .site-header { position: sticky; top: 0; z-index: 50; background: var(--bg); box-shadow: 0 1px 0 color-mix(in srgb, var(--text) 14%, transparent); }
@@ -245,11 +234,9 @@ html:not([data-theme="dark"]) .tone-feature, html:not([data-theme="dark"]) .tone
 .rows { list-style: none; padding: 0; columns: 2; column-gap: var(--space-gap); }
 .rows li { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 12px; align-items: center; padding: 10px 0; break-inside: avoid; }
 .row-date { color: var(--date); }
-.row-title { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; }
 /* March 8: one highlighted row in the primary colour */
 .rows .row-key { background: var(--primary); color: var(--on-primary); padding-inline: 14px; margin-inline: -14px; }
 .row-key .row-date { color: var(--on-primary); }
-.row-key .tag { background: transparent; color: var(--on-primary); }
 .rows li:target { background: var(--surface); }
 @media (max-width: 760px) { .rows { columns: 1; } }
 @media (max-width: 560px) { .rows li { grid-template-columns: 5.4rem minmax(0, 1fr); } }
@@ -259,11 +246,7 @@ html:not([data-theme="dark"]) .tone-feature, html:not([data-theme="dark"]) .tone
 /* ---------- Cards (One action a week) ---------- */
 .cards { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
 .card { display: flex; flex-direction: column; gap: 10px; padding: 24px 22px 22px; background: var(--surface); border: 1.5px solid var(--line); border-top-width: 6px; box-shadow: 5px 5px 0 var(--shadow); }
-.card-protest { border-top-color: var(--tag-protest); }
-.card-reclaim { border-top-color: var(--tag-reclaim); }
-.card-unite { border-top-color: var(--tag-unite); }
 .card-text { color: var(--text-muted); flex: 1; }
-.card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
 .card:target { outline: 3px solid var(--primary); outline-offset: 3px; }
 @media (max-width: 1000px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .cards { grid-template-columns: minmax(0, 1fr); } }
