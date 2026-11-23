@@ -77,12 +77,9 @@ march:
     tag: gather
     text: The results. How many of us joined, how much money stayed in our pockets, and what's next.
 
-year:
-  - id: keep-the-change
-    date: Jan 1
-    title: Keep the Change
-    tag: reclaim
-    text: "A New Year's resolution: skip the new you, fund the real one. All January, we share stories from people who cut back on beauty and image spending and ended up more independent, more stable and more themselves. #KeepTheChange"
+
+# Recurring events, shown as cards.
+recurring:
   - id: the-resistance
     date: Tuesdays from Feb 2
     title: The Resistance
@@ -95,6 +92,26 @@ year:
     tag: reclaim
     recurring: Monthly
     text: One money strategy a month from women in our community. Budgets that stick, how they asked for the raise, and more.
+  - id: mute-the-ads-all-year
+    date: Mar 1–7 · Nov 19–25
+    title: Mute the Ads
+    tag: protest
+    recurring: Twice a year
+    text: 'We hide every beauty ad we see for a week, twice a year: before the Beauty Blackout, and the week before Black Friday. The more of us who do it, the more it costs them to reach us.'
+  - id: real-day-meetups
+    date: All year
+    title: Real Day Meetups
+    tag: gather
+    recurring: All year
+    text: Local get-togethers, organized by people in our community.
+
+# Other campaigns this year. Shown compactly (date, name, tag); the text is kept here for reference and Instagram planning.
+also:
+  - id: keep-the-change
+    date: Jan 1
+    title: Keep the Change
+    tag: reclaim
+    text: 'A New Year''s resolution: skip the new you, fund the real one. All January, we share stories from people who cut back on beauty and image spending and ended up more independent, more stable and more themselves. #KeepTheChange'
   - id: financial-literacy-month
     date: April
     title: Financial Literacy Month
@@ -107,7 +124,7 @@ year:
     text: We take the 20 minutes we'd spend researching a beauty product and spend them on our savings, our budget, or planning an experience that has nothing to do with how we look.
   - id: the-long-blackout-stories
     date: Apr 8
-    title: "The Long Blackout: The Stories"
+    title: 'The Long Blackout: The Stories'
     tag: gather
     text: What a month without buying beauty products did to our brains and our wallets, in our own words.
   - id: pride-and-mens-mental-health
@@ -125,20 +142,8 @@ year:
     title: International Men's Day
     tag: gather
     text: Masculinity, success, appearance and the pressure to have it together.
-  - id: mute-the-ads-november
-    date: Nov 19–25
-    title: Mute the Ads
-    tag: protest
-    recurring: Twice a year
-    text: We hide every beauty ad we see, the week before Black Friday.
   - id: blackout-friday
     date: Nov 26
     title: Blackout Friday
     tag: protest
     text: The biggest shopping day of the year. We buy no beauty products.
-  - id: real-day-meetups
-    date: All year
-    title: Real Day Meetups
-    tag: gather
-    recurring: All year
-    text: Local get-togethers, organized by people in our community.

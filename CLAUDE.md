@@ -30,11 +30,11 @@ One page. Everything lives on the homepage (`index.html`):
 
 1. Hero: headline, one paragraph, the Blackout button (jumps to `#blackout`), Instagram link, illustration.
 2. The Beauty Blackout (`#blackout`): details beside the "Count me in" sign-up card. The main purpose of the site.
-3. The calendar (`#calendar`): Women's Month (`#march`), then the whole year (`#year`). Each event has a tag (Protest, Reclaim or Gather) and, if it repeats, a "Recurring" label.
+3. The calendar (`#calendar`): Women's Month (`#march`), then the recurring events as cards (`#year`), then other campaigns as a compact list (`#also`). Each event has a tag (Protest, Reclaim or Gather) and, if it repeats, a "Recurring" label.
 4. Why we're doing this (`#why`) with the principles (`#principles`).
 5. Instagram.
 
-- `_data/calendar.yml`: **all event content.** The Blackout details, the March events and the year events. Edit this file to change dates, names or descriptions. Event names are short commands; descriptions are one or two lines in "we", present tense; dates like "Mar 8" or "Mar 1–7".
+- `_data/calendar.yml`: **all event content.** The Blackout details, the March events (`march`), recurring events (`recurring`) and other campaigns (`also`, shown without descriptions). Edit this file to change dates, names or descriptions. Event names are short commands; descriptions are one or two lines in "we", present tense; dates like "Mar 8" or "Mar 1–7".
 - `_includes/calendar.html`: renders a list of events. `_includes/join-form.html`: the sign-up form.
 - `campaigns/`: redirect stubs only. The old campaign pages now point to the matching spot on the homepage. Don't add pages here.
 - `_layouts/default.html`, `_layouts/redirect.html`, `_includes/header.html`, `footer.html`, `broadside.html`

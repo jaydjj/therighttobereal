@@ -533,3 +533,17 @@ body { background-color: var(--paper); background-image: url("data:image/svg+xml
 .band-statement em { color: var(--paper-hi); white-space: nowrap; }
 .argument-copy-solo { font: 400 clamp(1.2rem, 2.2vw, 1.55rem)/1.45 var(--serif); color: var(--ink-2); max-width: 46ch; }
 .argument-copy-solo strong { color: var(--ink); font-weight: 400; font-style: italic; }
+
+/* Recurring: 2 x 2 cards */
+#year + .cal-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 560px) { #year + .cal-cards { grid-template-columns: minmax(0, 1fr); } }
+
+/* Also this year: compact list, no descriptions */
+.also { margin-top: clamp(48px, 7vw, 80px); }
+.also-list { list-style: none; padding: 0; margin: 12px 0 0; border-top: 1px solid var(--ink); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 40px; }
+.also-list li { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line); scroll-margin-top: 16px; }
+.also-list li:target { background: var(--paper-hi); }
+.also-date { font: 600 .8rem/1.4 var(--mono); color: var(--brick); }
+.also-title { font: 400 1.15rem/1.25 var(--serif); }
+@media (max-width: 760px) { .also-list { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 560px) { .also-list li { grid-template-columns: 5.2rem minmax(0, 1fr) auto; gap: 10px; } .also-title { font-size: 1.05rem; } }

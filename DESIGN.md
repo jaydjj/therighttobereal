@@ -149,7 +149,9 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 - Each event: date (monospace, brick), short command-style name (serif), tag, optional "Recurring" label, one or two lines in "we", present tense.
 - **Tags:** Protest (brick), Reclaim (dark gold `#7a5410`), Gather (olive `#4f5a1f`). Outlined chips in small capitals. **Recurring:** dashed ink chip with ↻ and how often (Weekly, Monthly, Twice a year, All year).
 - The Beauty Blackout row (Mar 8) is the one full-width ink row.
-- **Women's Month** is a dated list (rows). **The whole year** is a grid of cards (3 across on desktop, 2 on tablets, 1 on phones): date, name, description, then tags at the bottom; the card's thick top edge takes its tag colour.
+- **Women's Month** is a dated list (rows) with full descriptions.
+- **All year long** shows only the recurring events, as cards (2 × 2): date, name, description, tags; the card's top edge takes its tag colour.
+- **Also this year** lists the other month-long campaigns compactly: date, name and tag only. Their descriptions stay in `_data/calendar.yml` for reference and Instagram planning.
 - Date formats: "Mar 8", "Mar 1–7", "Tuesdays from Feb 2", "Monthly", "All year".
 - Weekly series: **The Resistance** (people who were told to change, and didn't).
 

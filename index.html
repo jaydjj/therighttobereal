@@ -53,10 +53,19 @@ description: A social movement challenging the beauty pressure we're sold. Join 
     {% include calendar.html items=cal.march %}
 
     <div class="cal-head cal-head-year" id="year">
-      <p class="kicker">January to December</p>
-      <h2>The whole <em>year.</em></h2>
+      <p class="kicker">Recurring</p>
+      <h2>All year <em>long.</em></h2>
     </div>
-    {% include calendar.html items=cal.year layout="cards" %}
+    {% include calendar.html items=cal.recurring layout="cards" %}
+
+    <div class="also" id="also">
+      <p class="kicker">Also this year</p>
+      <ol class="also-list">
+        {%- for e in cal.also %}
+        <li id="{{ e.id }}"><span class="also-date">{{ e.date }}</span><span class="also-title">{{ e.title }}</span><span class="tag tag-{{ e.tag }}">{{ e.tag | capitalize }}</span></li>
+        {%- endfor %}
+      </ol>
+    </div>
 
     <p class="cal-how"><strong>How to join:</strong> details for every action are on <a href="{{ site.instagram }}" target="_blank" rel="noopener">Instagram ({{ site.instagram_handle }})</a>.</p>
   </div>
