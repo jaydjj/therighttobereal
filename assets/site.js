@@ -18,9 +18,10 @@
   if (!card || !btn || !more) return;
   var endpoint = card.getAttribute('data-endpoint') || '';
   var goal = parseInt(card.getAttribute('data-goal'), 10) || 100;
+  var base = parseInt(card.getAttribute('data-start'), 10) || 0;
   var num = document.getElementById('count-number');
   var fill = document.getElementById('count-fill');
-  var shown = 0, live = null, visible = false;
+  var shown = base, live = null, visible = false;
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
@@ -33,7 +34,7 @@
   // Counts up from what's on screen to the live number, once the counter is in view.
   function render() {
     if (live === null || !visible) return;
-    var n = live, from = shown, start = null, dur = reduce ? 0 : (from ? 500 : 1200);
+    var n = live, from = shown, start = null, dur = reduce ? 0 : (n - from > 5 ? 1200 : 500);
     shown = n;
     fill.style.width = Math.min(100, n / goal * 100) + '%';
     function step(t) {
@@ -44,7 +45,7 @@
     }
     requestAnimationFrame(step);
   }
-  function setCount(n) { if (typeof n === 'number' && n >= (live || 0)) { live = n; render(); } }
+  function setCount(n) { if (typeof n === 'number') n += base; if (typeof n === 'number' && n >= (live || 0)) { live = n; render(); } }
   function send(params) {
     if (!endpoint) return Promise.resolve(null);
     params.id = deviceId();
@@ -71,7 +72,7 @@
     var already = store('rtbr-pledged');
     pledged();
     document.getElementById('join-title').focus();
-    if (!already) { store('rtbr-pledged', '1'); if (live !== null) setCount(live + 1); }
+    if (!already) { store('rtbr-pledged', '1'); if (live !== null) setCount(live - base + 1); }
     send({ action: 'pledge' });
   });
   card.querySelectorAll('input[name="poll"]').forEach(function (r) {

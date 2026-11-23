@@ -3,10 +3,10 @@
   or the whole month) and optional email reminders (typing an email and pressing the button is the opt-in).
   Pledges, poll answers and emails go to the Google Sheet web app in pledge_endpoint (tools/pledge-sheet.gs).
 {%- endcomment -%}
-<div class="pledge" id="join" data-endpoint="{{ site.pledge_endpoint }}" data-goal="{{ site.pledge_goal }}">
+<div class="pledge" id="join" data-endpoint="{{ site.pledge_endpoint }}" data-goal="{{ site.pledge_goal }}" data-start="{{ site.pledge_start }}">
   <div class="count" id="pledge-count" aria-live="polite">
     <p class="label">Pledged so far</p>
-    <p class="count-number"><span id="count-number">0</span><span class="count-goal">/{{ site.pledge_goal }}</span></p>
+    <p class="count-number"><span id="count-number">{{ site.pledge_start }}</span><span class="count-goal">/{{ site.pledge_goal }}</span></p>
     <div class="count-bar"><span id="count-fill"></span></div>
   </div>
 

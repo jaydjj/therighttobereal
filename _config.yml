@@ -9,6 +9,8 @@ instagram_handle: "@therighttobereal"
 pledge_endpoint: "https://script.google.com/macros/s/AKfycbyRhEr0_Uxxr37yZ7CA2C0C438Vzuyy9go952K7AewBB6eQDZzA0oXTLb9MYUPkJsq8qw/exec"
 # The goal shown beside the live pledge count ("72/100"). Raise it when it's reached.
 pledge_goal: 100
+# The count starts here: the site shows this number plus the pledges in the Sheet.
+pledge_start: 72
 
 markdown: kramdown
 kramdown:
