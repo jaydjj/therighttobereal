@@ -95,6 +95,7 @@ h2 { font-size: var(--t-h2); }
 .actions { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 8px; }
 .btn { display: inline-block; text-decoration: none; text-align: center; padding: 16px 22px; border: 0; border-radius: 2px; cursor: pointer; transition: transform .15s, box-shadow .15s; }
 .btn:hover { transform: translateY(-2px); }
+.btn:disabled { opacity: .7; cursor: wait; transform: none; }
 .btn-red { background: var(--brick); color: var(--sheet); }
 .btn-ink { background: var(--ink); color: var(--paper); }
 .btn-sm { padding: 11px 14px; }

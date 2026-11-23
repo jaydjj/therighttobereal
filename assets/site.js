@@ -72,7 +72,14 @@
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { note.textContent = 'Please enter a valid email address.'; input.focus(); return; }
     if (!consent.checked) { note.textContent = 'Please tick the box so we can email you.'; consent.focus(); return; }
     if (!endpoint) { note.textContent = 'Thanks. Email reminders aren\'t switched on yet, so we haven\'t saved your address.'; return; }
+    var submit = this.querySelector('button[type="submit"]');
+    if (submit.disabled) return;
+    submit.disabled = true;
+    submit.textContent = 'Sending…';
+    note.textContent = 'Saving your email…';
     send({ action: 'email', email: email, consent: 'yes' }).then(function (d) {
+      submit.disabled = false;
+      submit.textContent = 'Send me reminders';
       if (d && d.ok) {
         note.textContent = 'Thanks. We\'ll email you before March 8. Unsubscribe any time.';
         input.value = ''; consent.checked = false;
