@@ -8,6 +8,7 @@ Follow `DESIGN.md` for all design and writing decisions: the feel, voice, colour
 
 Key points:
 - A contemporary movement printing its own broadsides: print-style illustration, paper, ink, brick red, gold. Defiant, wry, human.
+- On black, gold is the accent: all labels, the italic turn in headlines, the pledge bar. Red is for buttons.
 - Copy is minimal and scannable: say each thing once per page; no captions under pictures on the site.
 - Headlines pair an upright statement with an italic turn.
 - Illustrations live in `assets/art/` with size and alt text in `_data/art.yml`, shown with `_includes/picture.html` (a framed print). Every new one needs descriptive alt text. Never in the hero; the Blackout button always stays the most prominent thing on the page.
@@ -30,7 +31,7 @@ One page. Everything lives on the homepage (`index.html`). Every section follows
 
 1. Hero: centred headline, one paragraph, the Blackout button. No image.
 2. The Beauty Blackout (`#blackout`, black): heading and a small facts strip, the pledge (live count "74/1,000 pledges", "Pledge for March 8" beside an outlined "Pledge for the whole month" jump button; once per device, the red button then says "You're in!" and a temporary line points to the footer sign-up), claims-street illustration to the right. The main purpose of the site.
-2b. Go the whole month (`#whole-month`): the Long Blackout pledge (rules from `calendar.yml`), perks (group chats, featured stories), email required (`_includes/month-form.html`).
+2b. Beauty Blackout *all month* (`#whole-month`, lighter black): the Long Blackout pledge (rules from `calendar.yml`), perks (group chats, featured stories), email required (`_includes/month-form.html`).
 3. Women's Month (`#march`): compact list. 4. One action a week (`#monthly`): four cards. 5. More to come (`#also`): compact list.
 6. Manifesto band (brick, press illustration). 7. What we stand for (`#why`, text only, principles). 8. Instagram (notice-board illustration).
 

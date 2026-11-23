@@ -67,7 +67,7 @@ Inspired by 19th-century broadsides and early 20th-century labour and lithograph
 | **Brick red** | `#9e2a1f` | Main buttons, key words, "real" in the logo |
 | Gold (ochre) | `#b8862b` | Illustration fills only, never text on paper |
 
-On the dark ink background, use the lighter tints for small text: brick tint `#e2876f`, gold tint `#d9a441`, muted `#c4b8a3`.
+**Gold is the accent on black.** On the dark sections (Blackout, Beauty Blackout all month, footer) every label is gold tint `#d9a441`, and gold is the second colour: the italic turn in headlines, the pledge bar, "day." in the sign-off. Body text on black is cream or muted `#c4b8a3`. Red stays for buttons. The March 8 row in the calendar follows the same rule (gold date on black). The whole-month section is a shade lighter black, `#26211c`, so it reads as its own section next to the Blackout.
 
 ### Typography: four styles only
 
@@ -127,7 +127,7 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 
 **Header.** Fixed to the top while scrolling. Logo left; "Instagram" and a small red "Join March 8" button (jumps to the Blackout) right. On phones the Instagram link hides and the red button stays.
 
-**Labels (kickers).** Small spaced capitals above headlines: muted on paper, gold tint on ink, brick for dates.
+**Labels (kickers).** Small spaced capitals above headlines: muted on paper, brick for dates, and always gold tint on black.
 
 **Key facts.** A small strip of label + serif value across the top of the Blackout (Date, Duration, Where). Only where the facts aren't already said nearby.
 
@@ -135,7 +135,7 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 
 **Pledge.** Straight on the ink, no boxes. The live count in big serif, "74/1,000 pledges" (`pledge_start` plus the pledges in the Sheet, over `pledge_goal`, both in `_config.yml`), counting up when it scrolls into view, with an outlined bar under it. Then two buttons side by side (stacked on phones): the red **"Pledge for March 8"** and an outlined "Pledge for the whole month" that jumps to the whole-month section. Each device counts once: pledging adds one straight away, the red button changes to **"You're in!"**, and a temporary line under the buttons ("Want reminders? Sign up for emails") links to the footer sign-up and fades after 12 seconds.
 
-**Whole-month pledge** (`#whole-month`, paper, right after the Blackout). The Long Blackout's dates, name and rules come from `_data/calendar.yml`. "Go the whole *month.*", then what everyone who pledges gets (group chats; featured stories, shared April 8) and an email form. **Email is required** here: it's how we send the group chat invite. Pressing "Pledge for the whole month" is the opt-in; the wording beside it says what they'll get and that they can unsubscribe. It also counts toward the March 8 total, once per device.
+**Whole-month pledge** (`#whole-month`, lighter black, right after the Blackout). The Long Blackout's dates, name and rules come from `_data/calendar.yml`. "Beauty Blackout *all month.*" (gold italic), then what everyone who pledges gets (group chats; featured stories, shared April 8) and an email form. **Email is required** here: it's how we send the group chat invite. Pressing "Pledge for the whole month" is the opt-in; the wording beside it says what they'll get and that they can unsubscribe. It also counts toward the March 8 total, once per device.
 
 **Email sign-up.** Permanent, in the footer beside "Have a real *day.*" (`#newsletter`, on every page). No tick box: typing an email and pressing "Sign up" is the opt-in, and the wording beside it says what they'll get and that they can unsubscribe (Canada's anti-spam law). Pledges, choices and opted-in emails go to a Google Sheet; emails move to Kit later.
 
@@ -154,7 +154,7 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 ### The page, top to bottom
 1. **Hero** (paper): centred, text only. Headline, one paragraph, the Blackout button.
 2. **Beauty Blackout** (ink): heading, body copy and the key-facts strip, then the pledge (count and button), with the street-of-claims illustration to the right (below on phones).
-3. **Go the whole month** (paper): the whole-month pledge, email required.
+3. **Beauty Blackout *all month.*** (lighter black): the whole-month pledge, email required.
 4. **Women's Month** (sand): compact two-column list (date, name, tag).
 5. **One action a week** (paper): four cards, Week 1–4.
 6. **More to come** (sand): compact list of the other campaigns, plus the one Instagram how-to-join line.
@@ -183,7 +183,8 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 | Brick on paper | 6.0 : 1 |
 | Cream on brick (buttons) | 6.6 : 1 |
 | Cream on ink | 14.4 : 1 |
-| Brick tint / gold tint / muted on ink | 6.7 / 7.9 / 9.1 : 1 |
+| Gold tint / muted on ink | 7.9 / 9.1 : 1 |
+| Gold tint / muted on whole-month black `#26211c` | 7.1 / 8.2 : 1 |
 | Reclaim tag / Unite tag on light paper | 5.5 / 6.0 : 1 |
 | Gold on paper | 2.6 : 1. **Fails: never use for text** |
 
