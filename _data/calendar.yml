@@ -5,8 +5,8 @@
 
 blackout:
   when: March 8, 2027 · International Women's Day
-  title_html: Buy nothing. <em>Say everything.</em>
-  intro: Buy no beauty products and book no cosmetic treatments. One day to show how much of the industry runs on how we feel about ourselves.
+  title_html: Beauty <em>Blackout.</em>
+  intro: Buy nothing. Say everything. One day to show how much of the industry runs on how we feel about ourselves.
   facts:
     - { label: Date, value: "March 8, 2027" }
     - { label: Duration, value: "24 hrs" }

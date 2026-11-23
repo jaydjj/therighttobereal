@@ -564,3 +564,11 @@ body { background-color: var(--paper); background-image: url("data:image/svg+xml
 .hero { padding-block: clamp(48px, 7vw, 96px) clamp(56px, 8vw, 104px); }
 @media (min-width: 821px) { .hero h1 { font-size: clamp(3rem, 6.4vw, 5.4rem); } .hero-copy { gap: 24px; } .hero-actions { margin-top: 16px; } }
 @media (min-width: 821px) { .hero { padding-block: clamp(40px, 5vw, 72px) clamp(56px, 7vw, 96px); } .hero h1 { font-size: clamp(2.8rem, 5.6vw, 4.8rem); } }
+
+/* Beauty Blackout section in black */
+.bb { background: var(--ink); color: var(--paper); border-bottom: 0; }
+.bb .kicker-red { color: var(--ochre-on-ink); }
+.bb-head h2 em { color: var(--red-on-ink); }
+.bb-intro { color: var(--muted-on-ink); }
+.bb .facts { border-top-color: var(--paper); }
+.join-card { box-shadow: 7px 7px 0 var(--paper-hi); }

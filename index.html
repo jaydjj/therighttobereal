@@ -27,7 +27,7 @@ description: A social movement challenging the beauty pressure we're sold. Join 
       <p class="kicker kicker-red">{{ bb.when }}</p>
       <h2>{{ bb.title_html }}</h2>
       <p class="bb-intro">{{ bb.intro }}</p>
-      <dl class="facts">
+      <dl class="facts facts-dark">
         {%- for f in bb.facts %}<div><dt>{{ f.label }}</dt><dd>{{ f.value }}</dd></div>{% endfor %}
       </dl>
     </div>
