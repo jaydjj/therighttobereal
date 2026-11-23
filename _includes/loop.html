@@ -1,0 +1,16 @@
+{%- comment -%}
+  Framed looping illustration (video). include.img = id in _data/art.yml; files are
+  assets/art/<id>.mp4 and <id>-poster.webp / .jpg. Plays only on screen, never with "reduce motion",
+  and always has a pause button (loops longer than 5 seconds must be pausable).
+{%- endcomment -%}
+{%- assign a = site.data.art[include.img] -%}
+{%- assign base = '/assets/art/' | append: include.img | relative_url -%}
+<figure class="frame frame-loop">
+  <video class="loop" muted loop playsinline preload="metadata" poster="{{ base }}-poster.webp" width="{{ a.w }}" height="{{ a.h }}" aria-label="{{ a.alt | escape }}">
+    <source src="{{ base }}.mp4" type="video/mp4">
+  </video>
+  <button type="button" class="loop-toggle" aria-label="Pause animation" hidden>
+    <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg>
+    <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5l12 7-12 7z"/></svg>
+  </button>
+</figure>

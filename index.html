@@ -28,16 +28,16 @@ description: A social movement challenging the beauty pressure we're sold. Join 
   <div class="container bb-grid">
     <div class="bb-intro">
     <div class="section-head bb-head">
-      <p class="label kicker">{{ bb.when }}</p>
+      <p class="label kicker">{{ bb.when | split: " · " | last }}</p>
       <h2>{{ bb.title_html }}</h2>
       <p class="lead">{{ bb.intro }}</p>
     </div>
     <dl class="facts-strip">
-      {%- for f in bb.facts %}{% unless f.label == "Goal" %}<div><dt class="label">{{ f.label }}</dt><dd>{{ f.value }}</dd></div>{% endunless %}{% endfor %}
+      {%- for f in bb.facts %}{% unless f.label == "Goal" or f.label == "Duration" %}<div><dt class="label">{{ f.label }}</dt><dd>{{ f.value }}</dd></div>{% endunless %}{% endfor %}
     </dl>
     </div>
     {% include join-form.html %}
-    <div class="bb-art">{% include picture.html img="claims" %}</div>
+    <div class="bb-art">{% include loop.html img="blackout-loop" %}</div>
   </div>
 </section>
 
@@ -67,7 +67,6 @@ description: A social movement challenging the beauty pressure we're sold. Join 
       <p class="label kicker">March 2027</p>
       <h2>Women's <em>Month.</em></h2>
       <p class="lead">One month of small actions, anchored by the Beauty Blackout on March 8.</p>
-      <p class="tags"><span class="tag tag-protest">Protest</span><span class="tag tag-reclaim">Reclaim</span><span class="tag tag-unite">Unite</span></p>
     </div>
     {% include compact.html items=cal.march %}
   </div>

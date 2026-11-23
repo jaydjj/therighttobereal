@@ -189,3 +189,24 @@ var rtbrPledge = (function () {
     });
   });
 })();
+
+// Looping illustrations: play only while on screen, never with "reduce motion"; the button pauses and resumes.
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('.frame-loop').forEach(function (fig) {
+    var video = fig.querySelector('video');
+    var btn = fig.querySelector('.loop-toggle');
+    var paused = reduce, onScreen = false;
+    function update() {
+      if (!paused && onScreen) { var p = video.play(); if (p && p.catch) p.catch(function () {}); } else video.pause();
+      btn.classList.toggle('is-paused', paused);
+      btn.setAttribute('aria-label', paused ? 'Play animation' : 'Pause animation');
+    }
+    btn.hidden = false;
+    btn.addEventListener('click', function () { paused = !paused; update(); });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) { onScreen = es[0].isIntersecting; update(); }, { threshold: .2 }).observe(fig);
+    } else { onScreen = true; }
+    update();
+  });
+})();

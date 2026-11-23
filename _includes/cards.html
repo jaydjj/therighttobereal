@@ -5,7 +5,7 @@
     <span class="label row-date">{{ e.date }}</span>
     <h3 class="title">{{ e.title }}</h3>
     <p class="card-text">{{ e.text }}</p>
-    <p class="card-tags"><span class="tag tag-{{ e.tag }}">{{ e.tag | capitalize }}</span>{% if e.recurring %}<span class="tag tag-recur"><span aria-hidden="true">↻</span> {{ e.recurring | split: " · " | first }}</span>{% endif %}</p>
+    <p class="card-tags"><span class="tag tag-{{ e.tag }}">{{ e.tag | capitalize }}</span></p>
   </li>
   {%- endfor %}
 </ol>

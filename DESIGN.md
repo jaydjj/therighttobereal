@@ -88,9 +88,9 @@ Rules: no black sections in light mode; no light sections in dark mode (except t
 
 | Style | Typeface | Used for |
 |---|---|---|
-| **Serif** | DM Serif Display, upright | Headlines, event and perk names, statements, key facts, the count |
+| **Serif** | DM Serif Display, upright | Headlines, statements, principle and perk names, the count. Kept for things that are said, not listed |
 | **Serif italic** | DM Serif Display, italic | The turn in a headline ("So is our power *to change it.*"), emphasis |
-| **Sans** | Work Sans 400 | Body copy, form text |
+| **Sans** | Work Sans 400 | Body copy, event names, week-card titles, key facts, form text |
 | **Label** | Work Sans 600, small spaced capitals | Kickers, dates, tags, buttons, navigation |
 
 Every piece of text uses one of these seven sizes (tokens in `assets/styles.css`). Nothing in between, no one-off sizes.
@@ -99,9 +99,9 @@ Every piece of text uses one of these seven sizes (tokens in `assets/styles.css`
 |---|---|---|
 | `--t-display` | Serif | Homepage headline, manifesto statement, "Have a real *day.*", the pledge count |
 | `--t-h2` | Serif | Section headlines |
-| `--t-title` | Serif | Event names, principle and perk names ("Group chats."), key facts, the closing line, "/1,000 pledges" |
-| `--t-lead` | Sans | The one paragraph under a headline |
-| `--t-body` | Sans | Body copy, lists, form fields |
+| `--t-title` | Serif | Principle and perk names ("Group chats."), the closing line, "/1,000 pledges" |
+| `--t-lead` | Sans | The one paragraph under a headline; event names and week-card titles |
+| `--t-body` | Sans | Body copy, lists, key facts, form fields |
 | `--t-small` | Sans | Form hints, notes, card text, copyright |
 | `--t-label` | Label | Kickers, dates, tags, buttons, navigation |
 
@@ -124,6 +124,7 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 - Portrait 4:5, at least 1100 × 1400 px. Send each image separately.
 - Words in an illustration are fine only as part of the satire (billboard slogans). Never put real information (dates, calls to action) inside an image.
 - Files: `assets/art/<id>-480.webp`, `-800.webp`, `-1120.webp` and `-800.jpg`. Alt text goes in `_data/art.yml`.
+- **Animated illustrations** are MP4 video, never GIF (the Blackout GIF was 8.9 MB; the MP4 is 1.1 MB): `assets/art/<id>.mp4` plus `<id>-poster.webp` and `.jpg`, shown with `_includes/loop.html`. Crop off any baked-in border; the site adds the frame. They play only while on screen, stay still for visitors who ask for reduced motion, and always have a pause button. The description (in `_data/art.yml`) says what changes.
 - **Every image needs alt text** describing the scene, including any words shown in it.
 
 ### Current set
@@ -131,7 +132,8 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 | Id | Scene | Used on |
 |---|---|---|
 | `press` | A printing press churning out the same idealized face | Manifesto band ("business model") |
-| `claims` | A city street lined with beauty and diet claims | Beauty Blackout |
+| `blackout-loop` | The street of beauty and diet claims; the signs go dark until only a neon "be real with us" glows, then the lights return (8.8-second loop) | Beauty Blackout |
+| `claims` | The same street, still | Not in use (kept for Instagram) |
 | `board` | A community notice board: Come As You Are, All Bodies Welcome, Rest Is a Right… | Instagram |
 
 ### Prompt recipe (for your image tool)
@@ -156,7 +158,7 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 
 **Labels (kickers).** Small spaced capitals above headlines: light mode muted (dates brick, cream inside red blocks); dark mode always gold.
 
-**Key facts.** A small strip of label + serif value across the top of the Blackout (Date, Duration, Where). Only where the facts aren't already said nearby.
+**Key facts.** A small strip of label + sans value under the Blackout intro: Date and Where. The label above the heading says only "International Women's Day" so the date appears once; "24 hrs" is left out because the intro says "one day". (Duration and Goal stay in `_data/calendar.yml`.)
 
 **How-to-join line.** One line under the calendar pointing to Instagram. Don't repeat it elsewhere.
 
@@ -192,6 +194,7 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 
 ### The calendar
 - Tags: Protest (brick), Reclaim (dark gold `#7a5410`), Unite (olive `#4f5a1f`). Outlined chips in label style, right beside the name. Recurring: dashed ink chip with ↻.
+- Event names are sans (lead size); the tags on each row are the key, so there is no separate tag legend. Week cards have no "Monthly" tag: the section lead already says they repeat every month.
 - March 8 is the one highlighted row in the Women's Month list (red in light mode, gold in dark).
 - Recurring events live only in "One action a week", never in the March list.
 - Descriptions for compact lists stay in `_data/calendar.yml` for reference and Instagram planning.
@@ -216,7 +219,7 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 | Reclaim tag / Unite tag on light paper | 5.5 / 6.0 : 1 |
 | Gold on paper | 2.6 : 1. **Fails: never use for text** |
 
-- Every image has descriptive alt text. Decorative shapes are hidden from screen readers.
+- Every image has descriptive alt text and every video a description. Looping animation has a pause button and respects "reduce motion". Decorative shapes are hidden from screen readers.
 - Real information is real text, never baked into an image.
 - Visible keyboard focus (outline in the primary colour: red in light mode, gold in dark, cream inside red blocks). A "Skip to content" link appears on the first Tab.
 - Screen readers: the animated pledge count is announced once when it settles ("74 of 1,000 pledges"), not on every frame. Form hints and error messages are linked to their fields; invalid emails are marked invalid.

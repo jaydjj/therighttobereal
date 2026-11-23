@@ -11,7 +11,7 @@
     3. Modes never mix: in light mode no section, header or footer is black; in dark mode every one is
        (except the gold manifesto band), nothing is red, and labels are gold.
     4. Layout: nothing wider than the screen at phone width; no lines between sections.
-    5. Images: every image has alt text.
+    5. Images and videos: every image has alt text; every video has a description, and loops have a pause button.
   Needs Playwright (preinstalled in Claude's cloud sessions).
 */
 const { chromium } = require('playwright');
@@ -123,6 +123,10 @@ function audit(theme) {
 
   // 5. Images
   for (const img of document.querySelectorAll('img')) if (!img.alt || !img.alt.trim()) out.push(`image without alt text: ${img.src}`);
+  for (const v of document.querySelectorAll('video')) {
+    if (!(v.getAttribute('aria-label') || '').trim()) out.push(`video without a description (aria-label): ${v.currentSrc || v.src}`);
+    if (v.loop && !v.closest('figure')?.querySelector('.loop-toggle')) out.push(`looping video without a pause button: ${v.currentSrc || v.src}`);
+  }
   return out;
 }
 
