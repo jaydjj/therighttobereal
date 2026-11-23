@@ -5,9 +5,10 @@
   Pledges go to the Google Sheet web app in pledge_endpoint (tools/pledge-sheet.gs).
 {%- endcomment -%}
 <div class="pledge" id="join" data-endpoint="{{ site.pledge_endpoint }}" data-goal="{{ site.pledge_goal }}" data-start="{{ site.pledge_start }}">
-  <div class="count" id="pledge-count" aria-live="polite">
+  <div class="count" id="pledge-count">
     <p class="count-number"><span id="count-number">{{ site.pledge_start }}</span><span class="count-goal">/<span id="count-goal">{{ site.pledge_goal }}</span> pledges</span></p>
-    <div class="count-bar"><span id="count-fill"></span></div>
+    <div class="count-bar" aria-hidden="true"><span id="count-fill"></span></div>
+    <p class="visually-hidden" id="count-status" role="status"></p>
   </div>
 
   <form class="join-step" id="step-pledge" novalidate>

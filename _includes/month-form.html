@@ -5,9 +5,9 @@
 {%- endcomment -%}
 <form class="month-form" id="month-form" data-endpoint="{{ site.pledge_endpoint }}" novalidate>
   <label class="label" for="month-email">Your email (required)</label>
-  <p class="signup-hint">We'll send your group chat invite and how to share your story. Unsubscribe any time.</p>
+  <p class="signup-hint" id="month-hint">We'll send your group chat invite and how to share your story. Unsubscribe any time.</p>
   <div class="email-row">
-    <input id="month-email" name="email" type="email" placeholder="Your email" autocomplete="email" required>
+    <input id="month-email" name="email" type="email" placeholder="Your email" autocomplete="email" required aria-describedby="month-hint month-note">
     <button type="submit" class="btn btn-red">Pledge for the whole month</button>
   </div>
   <p class="signup-note" id="month-note" role="status"></p>

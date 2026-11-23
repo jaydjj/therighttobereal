@@ -70,6 +70,7 @@ var rtbrPledge = (function () {
       var p = dur ? Math.min(1, (t - start) / dur) : 1;
       num.textContent = Math.round(from + (n - from) * (1 - Math.pow(1 - p, 3))).toLocaleString();
       if (p < 1) requestAnimationFrame(step);
+      else document.getElementById('count-status').textContent = n.toLocaleString() + ' of ' + goal.toLocaleString() + ' pledges';
     }
     requestAnimationFrame(step);
   }
@@ -128,7 +129,8 @@ var rtbrPledge = (function () {
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     var email = input.value.trim();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { note.textContent = 'Please enter your email to pledge for the whole month.'; input.focus(); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { note.textContent = 'Please enter your email to pledge for the whole month.'; input.setAttribute('aria-invalid', 'true'); input.focus(); return; }
+    input.removeAttribute('aria-invalid');
     if (!endpoint) { note.textContent = 'Thanks. Pledges open January 2027, so nothing is saved yet.'; return; }
     if (submit.disabled) return;
     submit.disabled = true;
@@ -167,7 +169,8 @@ var rtbrPledge = (function () {
     e.preventDefault();
     var input = document.getElementById('join-email-input');
     var email = input.value.trim();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { note.textContent = 'Please enter a valid email address.'; input.focus(); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { note.textContent = 'Please enter a valid email address.'; input.setAttribute('aria-invalid', 'true'); input.focus(); return; }
+    input.removeAttribute('aria-invalid');
     if (!endpoint) { note.textContent = 'Thanks. Email sign-up isn\'t switched on yet, so we haven\'t saved your address.'; return; }
     var submit = form.querySelector('button[type="submit"]');
     if (submit.disabled) return;

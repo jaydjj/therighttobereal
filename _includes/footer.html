@@ -7,9 +7,9 @@
     <p class="signoff">Have a real <em>day.</em></p>
     <form class="signup" id="join-email" data-endpoint="{{ site.pledge_endpoint }}" novalidate>
       <label class="label" for="join-email-input">Emails and reminders</label>
-      <p class="signup-hint">Beauty Blackout reminders and news from The Right to Be Real. Unsubscribe any time.</p>
+      <p class="signup-hint" id="signup-hint">Beauty Blackout reminders and news from The Right to Be Real. Unsubscribe any time.</p>
       <div class="email-row">
-        <input id="join-email-input" name="email" type="email" placeholder="Your email" autocomplete="email">
+        <input id="join-email-input" name="email" type="email" placeholder="Your email" autocomplete="email" aria-describedby="signup-hint email-note">
         <button type="submit" class="btn btn-red">Sign up</button>
       </div>
       <p class="signup-note" id="email-note" role="status"></p>

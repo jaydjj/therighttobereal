@@ -107,6 +107,9 @@ a { color: inherit; }
 img { max-width: 100%; display: block; }
 :focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; }
 [id] { scroll-margin-top: var(--header-h); }
+.skip-link { position: fixed; left: 12px; top: -80px; z-index: 100; }
+.skip-link:focus { top: 12px; }
+main:focus { outline: none; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .container { width: 100%; max-width: var(--max); margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
 

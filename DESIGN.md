@@ -218,7 +218,10 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 
 - Every image has descriptive alt text. Decorative shapes are hidden from screen readers.
 - Real information is real text, never baked into an image.
-- Visible keyboard focus (brick outline). Motion is minimal and respects "reduce motion".
+- Visible keyboard focus (outline in the primary colour: red in light mode, gold in dark, cream inside red blocks). A "Skip to content" link appears on the first Tab.
+- Screen readers: the animated pledge count is announced once when it settles ("74 of 1,000 pledges"), not on every frame. Form hints and error messages are linked to their fields; invalid emails are marked invalid.
+- Motion is minimal and respects "reduce motion".
+- Automated check: axe (WCAG 2.2 AA plus best practice) runs clean on every page in both modes.
 - Images are compressed and sized per screen; images below the first screen load lazily.
 
 ---
