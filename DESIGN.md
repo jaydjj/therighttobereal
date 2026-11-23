@@ -133,7 +133,9 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 
 **How-to-join line.** One line under the calendar pointing to Instagram. Don't repeat it elsewhere.
 
-**Pledge.** Straight on the ink, no boxes. The live count in big serif, "74/1,000 pledges" (`pledge_start` plus the pledges in the Sheet, over `pledge_goal`, both in `_config.yml`), counting up when it scrolls into view, with an outlined bar under it. Then the choice as two stacked radio buttons ("March 8: I won't buy anything that day" / "The whole month: March 8 – April 8") and the red **Pledge** button. The choice and the button always stay. Each pledge adds one to the count straight away (pledging again counts again; the count is notional) and shows a temporary line under the button, "You're *in.* Sign up for emails and reminders", that links to the footer sign-up and fades after 12 seconds.
+**Pledge.** Straight on the ink, no boxes. The live count in big serif, "74/1,000 pledges" (`pledge_start` plus the pledges in the Sheet, over `pledge_goal`, both in `_config.yml`), counting up when it scrolls into view, with an outlined bar under it. Then the red **"Pledge for March 8"** button and a text link, "Or pledge for the whole month →", that jumps to the whole-month section. Each device counts once: pledging adds one straight away, the button becomes an outlined "You've pledged for March 8", and a temporary line ("You're *in.* Sign up for reminders") links to the footer sign-up and fades after 12 seconds.
+
+**Whole-month pledge** (`#whole-month`, paper, right after the Blackout). The Long Blackout's dates, name and rules come from `_data/calendar.yml`. "Go the whole *month.*", then what everyone who pledges gets (group chats; featured stories, shared April 8) and an email form. **Email is required** here: it's how we send the group chat invite. Pressing "Pledge for the whole month" is the opt-in; the wording beside it says what they'll get and that they can unsubscribe. It also counts toward the March 8 total, once per device.
 
 **Email sign-up.** Permanent, in the footer beside "Have a real *day.*" (`#newsletter`, on every page). No tick box: typing an email and pressing "Sign up" is the opt-in, and the wording beside it says what they'll get and that they can unsubscribe (Canada's anti-spam law). Pledges, choices and opted-in emails go to a Google Sheet; emails move to Kit later.
 
@@ -152,13 +154,14 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 ### The page, top to bottom
 1. **Hero** (paper): centred, text only. Headline, one paragraph, the Blackout button.
 2. **Beauty Blackout** (ink): heading, body copy and the key-facts strip, then the pledge (count and button), with the street-of-claims illustration to the right (below on phones).
-3. **Women's Month** (sand): compact two-column list (date, name, tag).
-4. **One action a week** (paper): four cards, Week 1–4.
-5. **More to come** (sand): compact list of the other campaigns, plus the one Instagram how-to-join line.
-6. **Manifesto band** (brick): "Our insecurities should not be someone else's *business model.*" with the printing-press illustration.
-7. **What we stand for** (paper): text only. "You shouldn't have to be beautiful *to be valued.*", the principles in two columns and the closing line.
-8. **Instagram** (sand): with the notice-board illustration.
-9. **Footer** (ink): "Have a real *day.*" beside the email sign-up, then the copyright. No repeated links: Calendar and Instagram are in the fixed header.
+3. **Go the whole month** (paper): the whole-month pledge, email required.
+4. **Women's Month** (sand): compact two-column list (date, name, tag).
+5. **One action a week** (paper): four cards, Week 1–4.
+6. **More to come** (sand): compact list of the other campaigns, plus the one Instagram how-to-join line.
+7. **Manifesto band** (brick): "Our insecurities should not be someone else's *business model.*" with the printing-press illustration.
+8. **What we stand for** (paper): text only. "You shouldn't have to be beautiful *to be valued.*", the principles in two columns and the closing line.
+9. **Instagram** (sand): with the notice-board illustration.
+10. **Footer** (ink): "Have a real *day.*" beside the email sign-up, then the copyright. No repeated links: Calendar and Instagram are in the fixed header.
 
 ### The calendar
 - Tags: Protest (brick), Reclaim (dark gold `#7a5410`), Unite (olive `#4f5a1f`). Outlined chips in label style, right beside the name. Recurring: dashed ink chip with ↻.

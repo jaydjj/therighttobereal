@@ -1,0 +1,14 @@
+{%- comment -%}
+  Whole-month pledge (The Long Blackout). Email required: it's how we send the group chat invite and stories.
+  Typing an email and pressing the button is the opt-in; the Sheet's "Month" tab saves the time and wording
+  (tools/pledge-sheet.gs, MONTH_CONSENT). A month pledge also counts toward the March 8 total, once per device.
+{%- endcomment -%}
+<form class="month-form" id="month-form" data-endpoint="{{ site.pledge_endpoint }}" novalidate>
+  <label class="label" for="month-email">Your email (required)</label>
+  <p class="signup-hint">We'll send your group chat invite and how to share your story. Unsubscribe any time.</p>
+  <div class="email-row">
+    <input id="month-email" name="email" type="email" placeholder="Your email" autocomplete="email" required>
+    <button type="submit" class="btn btn-red">Pledge for the whole month</button>
+  </div>
+  <p class="signup-note" id="month-note" role="status"></p>
+</form>

@@ -155,12 +155,11 @@ h2 { font-size: var(--t-h2); }
 .join-step { display: grid; gap: 24px; justify-items: start; }
 .join-note { font-size: .92rem; color: var(--muted-on-ink); }
 .join-note:empty { display: none; }
-.poll { border: 0; margin: 0; padding: 0; display: grid; gap: 14px; }
-.poll-option { display: flex; align-items: center; gap: 12px; cursor: pointer; font-size: 1.05rem; }
-.poll input[type="radio"] { accent-color: var(--brick-on-ink); width: 20px; height: 20px; flex: none; margin: 0; }
+.text-link { font: 600 var(--t-label)/1.2 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--paper); text-decoration: underline; text-decoration-color: var(--brick-on-ink); text-decoration-thickness: 2px; text-underline-offset: 6px; }
 .btn-pledge { min-width: 220px; }
 .tone-ink .btn-lg { box-shadow: 6px 6px 0 var(--sheet); }
 .tone-ink .btn-lg:hover { box-shadow: 8px 8px 0 var(--sheet); }
+.tone-ink .btn-pledge.is-done, .tone-ink .btn-pledge.is-done:hover { opacity: 1; cursor: default; background: transparent; color: var(--paper); box-shadow: inset 0 0 0 2px var(--paper); transform: none; }
 @media (max-width: 560px) { .btn-pledge { width: 100%; } }
 
 /* Temporary line after each pledge: points to the email sign-up in the footer, then fades */
@@ -223,9 +222,19 @@ h2 { font-size: var(--t-h2); }
 .signup .label { color: var(--gold-on-ink); }
 .signup-hint, .signup-note { font-size: .92rem; color: var(--muted-on-ink); }
 .signup-note:empty { display: none; }
+.signup-note a { color: inherit; }
 .signup-note a { color: var(--paper); }
 .email-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
 .email-row input { flex: 1 1 220px; min-width: 0; font: 400 1.05rem/1.2 var(--sans); padding: 14px 16px; border: 2px solid var(--sheet); border-radius: 2px; background: var(--sheet); color: var(--ink); }
 .email-row input::placeholder { color: var(--muted); }
 @media (max-width: 560px) { .email-row .btn { width: 100%; } }
+
+/* ---------- The whole month ---------- */
+.month-side { display: grid; gap: 24px; }
+.month-intro { font-family: var(--serif); font-size: var(--t-title); }
+.month-perks { grid-template-columns: minmax(0, 1fr); }
+.month-form { display: grid; gap: 10px; }
+.month-form .label { color: var(--muted); }
+.month-form .signup-hint, .month-form .signup-note { color: var(--muted); }
+.month-form .email-row input { border-color: var(--ink); }
 .copyright { margin-top: clamp(40px, 6vw, 64px); font-size: .85rem; color: var(--muted-on-ink); }

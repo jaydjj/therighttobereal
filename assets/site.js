@@ -20,19 +20,20 @@ function rtbrSend(endpoint, params) {
     .then(function (r) { return r.json(); }).catch(function () { return null; });
 }
 
-// Pledge: the live count ("74/1,000 pledges": pledge_start plus the Sheet's pledges), the choice, then Pledge.
-// The form always stays. Each pledge adds one straight away (pledging again counts again) and shows a
-// temporary line pointing to the email sign-up in the footer.
-(function () {
+// Pledge for March 8: the live count ("74/1,000 pledges": pledge_start plus the Sheet's pledges), then one button.
+// Each device counts once (remembered in this browser; the Sheet keeps one row per device id).
+// After pledging, a temporary line points to the email sign-up in the footer.
+var rtbrPledge = (function () {
   var card = document.getElementById('join');
   var form = document.getElementById('step-pledge');
-  if (!card || !form) return;
+  if (!card || !form) return null;
   var endpoint = card.getAttribute('data-endpoint') || '';
   var goal = parseInt(card.getAttribute('data-goal'), 10) || 1000;
   var base = parseInt(card.getAttribute('data-start'), 10) || 0;
   var num = document.getElementById('count-number');
   var fill = document.getElementById('count-fill');
   var note = document.getElementById('join-note');
+  var btn = document.getElementById('pledge-btn');
   var doneLine = document.getElementById('join-done');
   var shown = base, live = null, visible = false, timer;
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -53,6 +54,16 @@ function rtbrSend(endpoint, params) {
     requestAnimationFrame(step);
   }
   function setLive(n) { if (n >= (live || 0)) { live = n; render(); } }
+  function fromSheet(d) { if (d && typeof d.count === 'number') setLive(base + d.count); }
+  function markDone() { btn.textContent = 'You\'ve pledged for March 8'; btn.disabled = true; btn.classList.add('is-done'); }
+  // Records a pledge on this device once; returns true if it was new.
+  function claim() {
+    if (rtbrStore('rtbr-pledged')) return false;
+    rtbrStore('rtbr-pledged', '1');
+    setLive((live === null ? base : live) + 1);
+    markDone();
+    return true;
+  }
   function hideDone() { doneLine.classList.add('fading'); timer = setTimeout(function () { doneLine.hidden = true; doneLine.classList.remove('fading'); }, 600); }
 
   var counter = document.getElementById('pledge-count');
@@ -60,19 +71,15 @@ function rtbrSend(endpoint, params) {
     var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { io.disconnect(); visible = true; render(); } }, { threshold: .4 });
     io.observe(counter);
   } else visible = true;
-  if (endpoint) fetch(endpoint).then(function (r) { return r.json(); }).then(function (d) { if (typeof d.count === 'number') setLive(base + d.count); }).catch(function () {});
+  if (endpoint) fetch(endpoint).then(function (r) { return r.json(); }).then(fromSheet).catch(function () {});
   else setLive(base);
+  if (rtbrStore('rtbr-pledged')) markDone();
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    var choice = form.querySelector('input[name="poll"]:checked');
-    if (!choice) { note.textContent = 'Choose March 8 or the whole month, then pledge.'; return; }
+    if (!claim()) return;
     note.textContent = endpoint ? '' : 'Thanks. Pledges open January 2027, so nothing is saved yet.';
-    setLive((live === null ? base : live) + 1);
-    // Each pledge is its own row in the Sheet, so pledging again counts again.
-    var id = window.crypto && crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random().toString(16).slice(2);
-    if (endpoint) fetch(endpoint, { method: 'POST', body: new URLSearchParams({ action: 'poll', choice: choice.value, id: id }) })
-      .then(function (r) { return r.json(); }).then(function (d) { if (d && typeof d.count === 'number') setLive(base + d.count); }).catch(function () {});
+    rtbrSend(endpoint, { action: 'pledge' }).then(fromSheet);
     clearTimeout(timer);
     doneLine.classList.remove('fading');
     doneLine.hidden = false;
@@ -81,6 +88,52 @@ function rtbrSend(endpoint, params) {
   document.getElementById('done-link').addEventListener('click', function () {
     clearTimeout(timer); hideDone();
     setTimeout(function () { document.getElementById('join-email-input').focus({ preventScroll: true }); }, 400);
+  });
+  return { claim: claim, fromSheet: fromSheet };
+})();
+
+// Pledge for the whole month (#whole-month). Email required; typing it and pressing the button is the opt-in.
+// Also counts toward the March 8 total, once per device.
+(function () {
+  var form = document.getElementById('month-form');
+  if (!form) return;
+  var endpoint = form.getAttribute('data-endpoint') || '';
+  var note = document.getElementById('month-note');
+  var input = document.getElementById('month-email');
+  var submit = form.querySelector('button[type="submit"]');
+  function done() {
+    input.value = '';
+    note.textContent = 'You\'re in for the whole month. Watch your inbox for your group chat invite.';
+  }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var email = input.value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { note.textContent = 'Please enter your email to pledge for the whole month.'; input.focus(); return; }
+    if (!endpoint) { note.textContent = 'Thanks. Pledges open January 2027, so nothing is saved yet.'; return; }
+    if (submit.disabled) return;
+    submit.disabled = true;
+    var label = submit.textContent;
+    submit.textContent = 'Sending…';
+    note.textContent = 'Saving your pledge…';
+    rtbrSend(endpoint, { action: 'month', email: email, consent: 'yes' }).then(function (d) {
+      // Older versions of the Sheet script don't know "month": save it as a sign-up and a month choice instead.
+      if (d && d.ok && !d.month) {
+        return rtbrSend(endpoint, { action: 'poll', choice: 'month' }).then(function () {
+          return rtbrSend(endpoint, { action: 'email', email: email, consent: 'yes' });
+        });
+      }
+      return d;
+    }).then(function (d) {
+      submit.disabled = false;
+      submit.textContent = label;
+      if (d && d.ok) {
+        rtbrStore('rtbr-month', '1');
+        if (rtbrPledge) { rtbrPledge.claim(); rtbrPledge.fromSheet(d); }
+        done();
+      } else {
+        note.innerHTML = 'Sorry, that didn\'t go through. Please try again, or <a href="https://www.instagram.com/therighttobereal/" target="_blank" rel="noopener">message us on Instagram</a>.';
+      }
+    });
   });
 })();
 

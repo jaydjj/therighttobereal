@@ -5,6 +5,7 @@ description: A social movement challenging the beauty pressure we're sold. Join 
 ---
 {%- assign cal = site.data.calendar -%}
 {%- assign bb = cal.blackout -%}
+{%- assign lb = cal.march | where: "id", "the-long-blackout" | first -%}
 {%- comment -%}
   Every section follows one pattern:
   <section class="section [tone]"> > .container > .section-head (label kicker, h2, optional lead) > content.
@@ -37,6 +38,25 @@ description: A social movement challenging the beauty pressure we're sold. Join 
     </div>
     {% include join-form.html %}
     <div class="bb-art">{% include picture.html img="claims" %}</div>
+  </div>
+</section>
+
+<!-- The whole month (The Long Blackout pledge) -->
+<section class="section" id="whole-month">
+  <div class="container split">
+    <div class="section-head">
+      <p class="label kicker">{{ lb.date }} · {{ lb.title }}</p>
+      <h2>Go the whole <em>month.</em></h2>
+      <p class="lead">{{ lb.text }}</p>
+    </div>
+    <div class="month-side">
+      <p class="month-intro">A month is easier together. Everyone who pledges gets:</p>
+      <ul class="principles month-perks">
+        <li><span class="title">Group chats.</span> Small groups to check in, swap notes and keep each other going.</li>
+        <li><span class="title">Featured stories.</span> What the month is really like, in our own words. We'll share them on April 8.</li>
+      </ul>
+      {% include month-form.html %}
+    </div>
   </div>
 </section>
 

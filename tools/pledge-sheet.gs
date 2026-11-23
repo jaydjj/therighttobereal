@@ -10,6 +10,7 @@
  * "Emails" tab: only people who typed an email and pressed "Sign up" in the site footer (the opt-in). Keeps the time and
  * the exact consent wording (proof of consent under Canada's anti-spam law). Import this tab
  * into Kit when you're ready to send.
+ * "Month" tab: people who pledged for the whole month (email required), with the time and consent wording.
  *
  * After changing this script: Deploy → Manage deployments → Edit (pencil) → Version: New version
  * → Deploy. That keeps the same web app URL.
@@ -17,6 +18,8 @@
 const EMAIL_SHEET = 'Emails';
 const CONSENT_TEXT = 'Opted in by entering their email and pressing "Sign up" under: Emails and reminders. Beauty Blackout reminders and news from The Right to Be Real. Unsubscribe any time.';
 const SHEET_NAME = 'Pledges';
+const MONTH_SHEET = 'Month';
+const MONTH_CONSENT = 'Pledged for the whole month and opted in by entering their email and pressing "Pledge for the whole month" under: We\'ll send your group chat invite and how to share your story. Unsubscribe any time.';
 
 function sheet_() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -38,6 +41,16 @@ function emailSheet_() {
   return sh;
 }
 
+function monthSheet_() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  let sh = ss.getSheetByName(MONTH_SHEET);
+  if (!sh) {
+    sh = ss.insertSheet(MONTH_SHEET);
+    sh.appendRow(['Email', 'Pledged at', 'Consent wording', 'Device id']);
+  }
+  return sh;
+}
+
 function json_(obj) {
   return ContentService.createTextOutput(JSON.stringify(obj)).setMimeType(ContentService.MimeType.JSON);
 }
@@ -51,8 +64,10 @@ function doGet() {
   return json_({ count: count_(sheet_()) });
 }
 
-// POST action=pledge&id=...  |  action=poll&id=...&choice=day|month
-//      action=email&id=...&email=...&consent=yes
+// POST action=pledge&id=...  (March 8; one row per device)
+//      action=month&id=...&email=...&consent=yes  (whole month: Month tab, and counts as a pledge once per device)
+//      action=email&id=...&email=...&consent=yes  (footer sign-up: Emails tab)
+//      action=poll&id=...&choice=day|month  (older site versions)
 function doPost(e) {
   const lock = LockService.getScriptLock();
   lock.waitLock(10000);
@@ -66,10 +81,22 @@ function doPost(e) {
     let row = ids.indexOf(id);
 
     if (p.action === 'pledge' && row === -1) {
-      sh.appendRow([new Date(), id, '']);
+      sh.appendRow([new Date(), id, 'day']);
     } else if (p.action === 'poll' && (p.choice === 'day' || p.choice === 'month')) {
       if (row === -1) { sh.appendRow([new Date(), id, p.choice]); }
       else { sh.getRange(row + 2, 3).setValue(p.choice); }
+    }
+    if (p.action === 'month') {
+      const email = String(p.email || '').trim().toLowerCase().slice(0, 254);
+      if (p.consent !== 'yes' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        return json_({ ok: false, error: 'email and consent required', count: count_(sh) });
+      }
+      if (row === -1) { sh.appendRow([new Date(), id, 'month']); }
+      else { sh.getRange(row + 2, 3).setValue('month'); }
+      const ms = monthSheet_();
+      const emails = ms.getLastRow() > 1 ? ms.getRange(2, 1, ms.getLastRow() - 1, 1).getValues().map(r => r[0]) : [];
+      if (emails.indexOf(email) === -1) ms.appendRow([email, new Date(), MONTH_CONSENT, id]);
+      return json_({ ok: true, month: true, count: count_(sh) });
     }
     if (p.action === 'email') {
       const email = String(p.email || '').trim().toLowerCase().slice(0, 254);
