@@ -205,7 +205,7 @@ One page; everything lives on the homepage.
 | # | Section | Tone | Contents |
 |---|---|---|---|
 | 1 | Hero | Plain | Centred headline, one paragraph, the Blackout button. No image |
-| 2 | Beauty Blackout `#beautyblackoutpledge` | Alternate; "*Blackout.*" in the primary colour | Kicker, headline, intro, Date and Where, the pledge; the looping illustration right (below on phones) |
+| 2 | Beauty Blackout `#beautyblackoutpledge` | Alternate; "*Blackout.*" in the primary colour | Kicker, headline, intro, Date and Where, the pledge. No image: the open space is deliberate |
 | 3 | Beauty Blackout *all month.* `#whole-month` | Plain | The whole-month pledge |
 | 4 | Women's Month `#march` | Alternate | Calendar list |
 | 5 | One action a week `#monthly` | Plain | Four week cards |
@@ -237,7 +237,7 @@ Recurring events live only in "One action a week", never in the March list.
 
 | Id | Scene | Used on |
 |---|---|---|
-| `blackout-loop` | A street of beauty and diet claims; the signs go dark until only a neon "be real with us" glows, then the lights return (8.8 s loop) | Beauty Blackout |
+| `blackout-loop` | A street of beauty and diet claims; the signs go dark until only a neon "be real with us" glows, then the lights return (8.8 s loop) | Not on the site (kept for Instagram) |
 | `press` | A printing press churning out the same idealized face | Manifesto band |
 | `board` | A community notice board: Come As You Are, All Bodies Welcome, Rest Is a Right… | Instagram |
 | `claims` | The street of claims, still | Not on the site (kept for Instagram) |

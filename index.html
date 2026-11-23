@@ -25,8 +25,7 @@ description: A social movement challenging the beauty pressure we're sold. Join 
 
 <!-- The Beauty Blackout -->
 <section class="section tone-feature" id="beautyblackoutpledge">
-  <div class="container bb-grid">
-    <div class="bb-intro">
+  <div class="container">
     <div class="section-head bb-head">
       <p class="label kicker">{{ bb.when | split: " · " | last }}</p>
       <h2>{{ bb.title_html }}</h2>
@@ -35,9 +34,7 @@ description: A social movement challenging the beauty pressure we're sold. Join 
     <dl class="facts-strip">
       {%- for f in bb.facts %}{% unless f.label == "Goal" or f.label == "Duration" %}<div><dt class="label">{{ f.label }}</dt><dd>{{ f.value }}</dd></div>{% endunless %}{% endfor %}
     </dl>
-    </div>
     {% include join-form.html %}
-    <div class="bb-art">{% include loop.html img="blackout-loop" %}</div>
   </div>
 </section>
 

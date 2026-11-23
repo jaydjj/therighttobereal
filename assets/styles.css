@@ -194,15 +194,6 @@ html:not([data-theme="dark"]) .tone-brick {
 
 /* ---------- Beauty Blackout ---------- */
 .bb-head .lead { max-width: 60ch; }
-.bb-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 330px); grid-template-areas: "intro art" "pledge art"; column-gap: var(--space-gap); align-items: start; }
-.bb-intro { grid-area: intro; }
-.bb-grid .pledge { grid-area: pledge; }
-.bb-art { grid-area: art; }
-.bb-art .frame { max-width: 330px; }
-@media (max-width: 1020px) {
-  .bb-grid { grid-template-columns: minmax(0, 1fr); grid-template-areas: "intro" "pledge" "art"; }
-  .bb-art { margin-top: clamp(40px, 6vw, 56px); justify-self: center; }
-}
 .facts-strip { display: flex; flex-wrap: wrap; gap: 12px 40px; margin-bottom: clamp(32px, 4vw, 48px); }
 .facts-strip div { display: flex; align-items: baseline; gap: 10px; }
 .facts-strip dt { color: var(--label); }
