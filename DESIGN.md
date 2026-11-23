@@ -102,7 +102,7 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 
 | Id | Scene | Used on |
 |---|---|---|
-| `friends` | Three women of different ages, at ease, while a crowd hurries past beauty billboards | Homepage hero |
+| `friends` | Three women of different ages, at ease, while a crowd hurries past beauty billboards | Not in use (removed from the hero for space) |
 | `press` | A printing press churning out the same idealized face | Not in use (available for Instagram) |
 | `walk` | Three women walking and talking past a blank billboard toward the sun | Homepage Instagram section |
 | `crowd` | Earlier version of the hero with one woman | Not in use |
