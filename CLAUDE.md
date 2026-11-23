@@ -13,7 +13,7 @@ Key points:
 - Illustrations live in `assets/art/` with size and alt text in `_data/art.yml`, shown with `_includes/picture.html` (a framed print). Every new one needs descriptive alt text. Never in the hero; the Blackout button always stays the most prominent thing on the page.
 - Challenge systems, never individuals. Never anti-makeup.
 - Never write "BeReal" as one word.
-- The logo is one shared file, `assets/logo.svg` ("THE RIGHT TO" / black italic "be" / brick-red "real"). Use it as an image wherever the logo appears; never retype or rebuild it. To change it, edit and rerun `brand/make_logo.py` (usage is in the file).
+- The logo is one shared file, `assets/logo.svg` ("THE RIGHT TO" / black italic "be" / brick-red "real"), with a dark-mode copy `assets/logo-dark.svg` made from it. Use them as images wherever the logo appears; never retype or rebuild them. To change the logo, edit and rerun `brand/make_logo.py` (usage is in the file), then `brand/make_logo_dark.py`.
 
 ## Working preferences
 
@@ -26,20 +26,20 @@ Key points:
 
 ## Structure
 
-One page. Everything lives on the homepage (`index.html`). Every section follows the same pattern (`section.section` → `.container` → `.section-head` → content); sections are separated by spacing and background tone, never lines. Only four font styles at seven sizes (`--t-display` … `--t-label`; see `DESIGN.md`). On paper red is the primary colour; on black gold is (buttons, labels, italic turns), never red.
+One page. Everything lives on the homepage (`index.html`). Every section follows the same pattern (`section.section` → `.container` → `.section-head` → content); sections are separated by spacing and background tone, never lines. Only four font styles at seven sizes (`--t-display` … `--t-label`; see `DESIGN.md`). Two modes, never mixed: light (cream, black, red) and dark (black, gold, cream; never red), following the device setting with a header toggle. Use the role tokens (`--bg`, `--text`, `--primary`…) in `assets/styles.css`, never raw colours.
 
 1. Hero: centred headline, one paragraph, the Blackout button. No image.
-2. The Beauty Blackout (`#beautyblackoutpledge`, black): heading and a small facts strip, the pledge (live count "74/1,000 pledges", "Pledge for March 8" beside an outlined "Pledge for the whole month" jump button; once per device, the red button then says "You're in!" and a temporary line points to the footer sign-up), claims-street illustration to the right. The main purpose of the site.
-2b. Beauty Blackout *all month* (`#whole-month`, lighter black): the Long Blackout pledge (rules from `calendar.yml`), perks (group chats, featured stories), email required (`_includes/month-form.html`).
+2. The Beauty Blackout (`#beautyblackoutpledge`, red block in light mode): heading and a small facts strip, the pledge (live count "74/1,000 pledges", "Pledge for March 8" beside an outlined "Pledge for the whole month" jump button; once per device, the red button then says "You're in!" and a temporary line points to the footer sign-up), claims-street illustration to the right. The main purpose of the site.
+2b. Beauty Blackout *all month* (`#whole-month`): the Long Blackout pledge (rules from `calendar.yml`), perks (group chats, featured stories), email required (`_includes/month-form.html`).
 3. Women's Month (`#march`): compact list. 4. One action a week (`#monthly`): four cards. 5. More to come (`#also`): compact list.
-6. Manifesto band (brick, press illustration). 7. What we stand for (`#why`, text only, principles). 8. Instagram (notice-board illustration).
+6. Manifesto band (red; gold in dark mode; press illustration). 7. What we stand for (`#why`, text only, principles). 8. Instagram (notice-board illustration).
 
 - `_data/calendar.yml`: **all event content.** The Blackout details, the March events (`march`), the monthly rhythm (`monthly`, weeks 1–4) and other campaigns (`also`, shown without descriptions). Edit this file to change dates, names or descriptions. Event names are short commands; descriptions are one or two lines in "we", present tense; dates like "Mar 8" or "Mar 1–7".
 - `_includes/compact.html` (date/name/tag rows), `_includes/cards.html` (event cards), `_includes/picture.html` (framed illustration), `_includes/join-form.html` (sign-up form).
 - `campaigns/`: redirect stubs only. The old campaign pages now point to the matching spot on the homepage. Don't add pages here.
 - `_layouts/default.html`, `_layouts/redirect.html`, `_includes/header.html`, `footer.html` (sign-off and the permanent email sign-up, `#newsletter`)
 - `assets/styles.css`, `assets/site.js` (old one-page anchors redirect to their new spots)
-- `assets/logo.svg`: logo; `assets/favicon.png`, `favicon.ico`, `assets/apple-touch-icon.png`: icons
+- `assets/logo.svg`: logo; `assets/logo-dark.svg`: dark-mode logo (run `python3 brand/make_logo_dark.py` after changing the logo); `assets/favicon.png`, `favicon.ico`, `assets/apple-touch-icon.png`: icons
 - `assets/art/`: illustrations (alt text in `_data/art.yml`)
 - `brand/`: profile picture and wordmark images, and the scripts that make them
 - `404.html`, `CNAME`, `DESIGN.md`
@@ -50,7 +50,7 @@ One page. Everything lives on the homepage (`index.html`). Every section follows
 - No pull requests. Commit and merge straight to `main`; this is a low-risk solo project.
 - Pushing to `main` builds the site with Jekyll and deploys it via `.github/workflows/pages.yml`.
 - The stylesheet link has an automatic cache-busting version, so there's no number to bump.
-- **Before every push that changes the UI, run `node tools/check-ui.js` and fix every failure.** It checks type (four styles, seven sizes), WCAG AA contrast, no red on black, gold labels on black, phone-width overflow, lines between sections and alt text, on desktop and phone. Then look at desktop and phone screenshots yourself.
+- **Before every push that changes the UI, run `node tools/check-ui.js` and fix every failure.** It checks both modes: type (four styles, seven sizes), WCAG AA contrast, no mixed light/dark sections, no red and gold labels in dark mode, phone-width overflow, lines between sections and alt text, on desktop and phone. Then look at desktop and phone screenshots yourself.
 - After pushing, check the "Deploy site to GitHub Pages" run finished green; re-run it if it failed.
 
 ## Not yet connected

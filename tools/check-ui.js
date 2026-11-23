@@ -4,11 +4,12 @@
     node tools/check-ui.js            (builds with Jekyll into a temp folder, then checks)
     node tools/check-ui.js _site      (checks an already-built folder)
 
-  Opens every page at desktop (1280px) and phone (390px) widths, shows hidden states
-  (e.g. "Want reminders?"), and fails if anything breaks the rules in DESIGN.md:
+  Opens every page in light and dark mode, at desktop (1280px) and phone (390px) widths, shows hidden
+  states (e.g. "Want reminders?"), and fails if anything breaks the rules in DESIGN.md:
     1. Type: only the four styles at the seven sizes in assets/styles.css (--t-display ... --t-label).
     2. Contrast: all text meets WCAG AA (4.5:1, or 3:1 for large text).
-    3. Colour on black: no red text, buttons or bars on black; labels on black are gold.
+    3. Modes never mix: in light mode no section, header or footer is black; in dark mode every one is
+       (except the gold manifesto band), nothing is red, and labels are gold.
     4. Layout: nothing wider than the screen at phone width; no lines between sections.
     5. Images: every image has alt text.
   Needs Playwright (preinstalled in Claude's cloud sessions).
@@ -23,6 +24,7 @@ const path = require('path');
 const root = path.resolve(__dirname, '..');
 const PAGES = ['/', '/404.html'];
 const WIDTHS = [1280, 390];
+const THEMES = ['light', 'dark'];
 
 let site = process.argv[2] && path.resolve(process.argv[2]);
 if (!site) {
@@ -40,7 +42,7 @@ const server = http.createServer((req, res) => {
   fs.createReadStream(f).pipe(res);
 }).listen(0);
 
-function audit() {
+function audit(theme) {
   const out = [];
   const px = v => Math.round(parseFloat(v) * 10) / 10;
   const parse = c => (c.match(/[\d.]+/g) || [0, 0, 0, 0]).map(Number);
@@ -48,6 +50,7 @@ function audit() {
   const bgOf = el => { for (let e = el; e; e = e.parentElement) { const c = parse(getComputedStyle(e).backgroundColor); if (c.length < 4 || c[3] > 0.9) return c.slice(0, 3); } return [239, 230, 212]; };
   const near = (a, b) => a.every((v, i) => Math.abs(v - b[i]) < 6);
   const RED = [158, 42, 31];
+  const GOLD = [217, 164, 65];
   const isDark = c => lum(c) < 0.05;
   const label = (el, txt) => `${el.tagName.toLowerCase()}${el.className && typeof el.className === 'string' ? '.' + el.className.trim().split(/\s+/).join('.') : ''} "${txt.slice(0, 40)}"`;
 
@@ -72,10 +75,10 @@ function audit() {
     const cs = getComputedStyle(el);
     if (cs.display === 'none' || cs.visibility === 'hidden') continue;
 
-    // Colour on black (backgrounds of buttons and bars too)
-    const bg = bgOf(el.parentElement || el);
+    // No red anywhere in dark mode (text, buttons, bars)
     const ownBg = parse(cs.backgroundColor);
-    if (isDark(bg) && (ownBg.length < 4 || ownBg[3] > 0.9) && near(ownBg.slice(0, 3), RED)) out.push(`red on black: ${label(el, txt || el.textContent.trim())}`);
+    const solid = ownBg.length < 4 || ownBg[3] > 0.9;
+    if (theme === 'dark' && solid && near(ownBg.slice(0, 3), RED)) out.push(`red in dark mode: ${label(el, txt || el.textContent.trim())}`);
 
     if (!txt && el.tagName !== 'INPUT') continue;
     const text = txt || el.placeholder || '';
@@ -96,11 +99,18 @@ function audit() {
     const large = s >= 24;
     if (ratio < (large ? 3 : 4.5)) out.push(`contrast ${ratio.toFixed(2)}:1: ${label(el, text)}`);
 
-    // 3. Text colour on black: never red; labels gold
-    if (isDark(back)) {
-      if (near(fg.slice(0, 3), RED)) out.push(`red text on black: ${label(el, text)}`);
-      if (caps && !el.closest('.btn, .tag') && !near(fg.slice(0, 3), [217, 164, 65])) out.push(`label on black is not gold: ${label(el, text)}`);
+    // 3. Dark mode: never red; labels gold (except on the gold band, buttons, tags and the highlighted row)
+    if (theme === 'dark') {
+      if (near(fg.slice(0, 3), RED)) out.push(`red text in dark mode: ${label(el, text)}`);
+      if (caps && !el.closest('.btn, .tag, .tone-brick, .row-key') && !near(fg.slice(0, 3), GOLD)) out.push(`label in dark mode is not gold: ${label(el, text)}`);
     }
+  }
+
+  // 3. Modes never mix
+  for (const sec of document.querySelectorAll('section, .site-header, .site-footer')) {
+    const c = bgOf(sec);
+    if (theme === 'light' && isDark(c)) out.push(`black section in light mode: ${label(sec, sec.id || '')}`);
+    if (theme === 'dark' && !isDark(c) && !sec.classList.contains('tone-brick')) out.push(`light section in dark mode: ${label(sec, sec.id || '')}`);
   }
 
   // 4. Layout
@@ -120,16 +130,17 @@ function audit() {
   const port = server.address().port;
   const browser = await chromium.launch();
   let failures = 0;
-  for (const width of WIDTHS) {
+  for (const theme of THEMES) for (const width of WIDTHS) {
     const page = await browser.newPage({ viewport: { width, height: 900 } });
+    await page.addInitScript(t => { try { localStorage.setItem('rtbr-theme', t); } catch (e) {} }, theme);
     for (const u of PAGES) {
       await page.goto(`http://localhost:${port}${u}`);
       await page.evaluate(() => document.fonts.ready);
       // Show hidden states (e.g. the line after pledging) so they're checked too.
       await page.evaluate(() => document.querySelectorAll('main [hidden]').forEach(e => e.removeAttribute('hidden')));
-      const problems = [...new Set(await page.evaluate(audit))];
+      const problems = [...new Set(await page.evaluate(audit, theme))];
       failures += problems.length;
-      console.log(`${problems.length ? 'FAIL' : 'ok  '} ${u} at ${width}px${problems.length ? '\n  - ' + problems.join('\n  - ') : ''}`);
+      console.log(`${problems.length ? 'FAIL' : 'ok  '} ${u} ${theme} at ${width}px${problems.length ? '\n  - ' + problems.join('\n  - ') : ''}`);
     }
     await page.close();
   }

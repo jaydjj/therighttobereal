@@ -6,6 +6,26 @@
   }
 })();
 
+// Light / dark mode toggle (the <head> script picks the starting mode). The choice is remembered;
+// without one, the site follows the device setting, live.
+(function () {
+  var btn = document.getElementById('theme-toggle');
+  var root = document.documentElement;
+  function set(t, save) {
+    root.setAttribute('data-theme', t);
+    var meta = document.getElementById('theme-color'); if (meta) meta.content = t === 'dark' ? '#1a1714' : '#efe6d4';
+    if (btn) btn.setAttribute('aria-label', t === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+    if (save) try { localStorage.setItem('rtbr-theme', t); } catch (e) {}
+  }
+  set(root.getAttribute('data-theme') || 'light', false);
+  if (btn) btn.addEventListener('click', function () { set(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark', true); });
+  var mq = window.matchMedia && matchMedia('(prefers-color-scheme: dark)');
+  if (mq && mq.addEventListener) mq.addEventListener('change', function (e) {
+    var saved; try { saved = localStorage.getItem('rtbr-theme'); } catch (err) {}
+    if (!saved) set(e.matches ? 'dark' : 'light', false);
+  });
+})();
+
 function rtbrStore(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
 function rtbrId() {
   var id = rtbrStore('rtbr-id');

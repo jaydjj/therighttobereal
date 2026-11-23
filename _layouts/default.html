@@ -9,7 +9,16 @@
   <meta property="og:description" content="{{ page.description | default: page.summary | default: site.description | strip_html | escape }}">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ page.url | absolute_url }}">
-  <meta name="theme-color" content="#1a1714">
+  <meta name="theme-color" content="#efe6d4" id="theme-color">
+  <script>
+    // Light or dark mode before the page paints: the visitor's choice (header toggle), else their device setting.
+    (function () {
+      var t; try { t = localStorage.getItem('rtbr-theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
+      document.getElementById('theme-color').content = t === 'dark' ? '#1a1714' : '#efe6d4';
+    })();
+  </script>
   <link rel="icon" href="{{ '/assets/favicon.png' | relative_url }}?v={{ site.time | date: '%s' }}" type="image/png">
   <link rel="icon" href="{{ '/favicon.ico' | relative_url }}?v={{ site.time | date: '%s' }}" sizes="any">
   <link rel="apple-touch-icon" href="{{ '/assets/apple-touch-icon.png' | relative_url }}?v={{ site.time | date: '%s' }}">

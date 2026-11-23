@@ -67,9 +67,22 @@ Inspired by 19th-century broadsides and early 20th-century labour and lithograph
 | **Brick red** | `#9e2a1f` | Main buttons, key words, "real" in the logo |
 | Gold (ochre) | `#b8862b` | Illustration fills only, never text on paper |
 
-**Two modes.**
-- **On paper:** brick red is the primary (buttons, key words). Labels are muted ink, dates are brick.
-- **On black:** gold tint `#d9a441` is the primary. Buttons are gold with black text, every label is gold, and gold is the italic turn in headlines, the pledge bar and "day." in the sign-off. Text is cream or muted `#c4b8a3`. **Never red on black.** The March 8 row in the calendar follows the same rule (gold date on black). The whole-month section is a shade lighter black, `#26211c`, so it reads as its own section next to the Blackout.
+### Light and dark mode: never mixed
+
+The site has two complete modes and never mixes them on one page. It follows the visitor's device setting; the round sun/moon button in the header switches and is remembered.
+
+| | Light mode | Dark mode |
+|---|---|---|
+| Page and plain sections | Paper `#efe6d4` | Black `#1a1714` |
+| Alternate sections | Sand `#e4d6ba` | Black 2 `#26211c` |
+| Text | Black, muted `#62584b` | Cream, muted `#c4b8a3` |
+| Primary (buttons, pledge bar, March 8 row) | Brick red, cream text | Gold `#d9a441`, black text |
+| Labels | Muted black (dates brick) | Gold |
+| Italic turn in headlines | Black | Gold |
+| Bold blocks | Beauty Blackout and the manifesto band are red, with cream text and cream buttons | The Blackout is a Black 2 section; the manifesto band is gold with black text |
+| Logo | `assets/logo.svg` | `assets/logo-dark.svg` (cream, gold "real"), made by `brand/make_logo_dark.py` |
+
+Rules: no black sections in light mode; no light sections in dark mode (except the gold band); **never red in dark mode**. Illustrations keep their printed paper frame in both. Every colour in `assets/styles.css` goes through a role token (`--bg`, `--text`, `--primary`, `--label`, `--em`...), never a raw colour, so both modes stay complete.
 
 ### Typography: four styles, seven sizes
 
@@ -134,14 +147,14 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 
 | Button | Look | Use |
 |---|---|---|
-| Primary | Brick red, cream text, hard black offset shadow. **On black: gold, black text, cream shadow** | Join the Beauty Blackout, Pledge, Sign up. Always the most prominent thing on the page |
-| Secondary | Solid ink, cream text | Follow on Instagram, See every campaign |
+| Primary | Light: brick red, cream text, black offset shadow (cream button inside the red Blackout). Dark: gold, black text, cream shadow | Join the Beauty Blackout, Pledge, Sign up. Always the most prominent thing on the page |
+| Secondary | Solid black, cream text (dark: cream, black text) | Follow on Instagram |
 | Text link | Small capitals, brick underline | Lesser actions, e.g. "Follow the movement on Instagram →" |
-| Outline | Ink border (cream on black) | Secondary actions, e.g. "Pledge for the whole month" beside the pledge |
+| Outline | Border in the text colour | Secondary actions, e.g. "Pledge for the whole month" beside the pledge |
 
-**Header.** Fixed to the top while scrolling. Logo left; "Instagram" and a small red "Join March 8" button (jumps to the Blackout) right. On phones the Instagram link hides and the red button stays.
+**Header.** Fixed to the top while scrolling. Logo left; the sun/moon mode toggle, "Instagram" and a small red "Join March 8" button (jumps to the Blackout) right. On phones the Instagram link hides and the red button stays.
 
-**Labels (kickers).** Small spaced capitals above headlines: muted on paper, brick for dates, and always gold tint on black.
+**Labels (kickers).** Small spaced capitals above headlines: light mode muted (dates brick, cream inside red blocks); dark mode always gold.
 
 **Key facts.** A small strip of label + serif value across the top of the Blackout (Date, Duration, Where). Only where the facts aren't already said nearby.
 
@@ -149,7 +162,7 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 
 **Pledge.** Straight on the ink, no boxes. The live count in big serif, "74/1,000 pledges" (`pledge_start` plus the pledges in the Sheet, over `pledge_goal`, both in `_config.yml`), counting up when it scrolls into view, with an outlined bar under it. Then two buttons side by side (stacked on phones): the red **"Pledge for March 8"** and an outlined "Pledge for the whole month" that jumps to the whole-month section. Each device counts once: pledging adds one straight away, the red button changes to **"You're in!"**, and a temporary line under the buttons ("Want reminders? Sign up for emails") links to the footer sign-up and fades after 12 seconds.
 
-**Whole-month pledge** (`#whole-month`, lighter black, right after the Blackout). The Long Blackout's dates, name and rules come from `_data/calendar.yml`. "Beauty Blackout *all month.*" (gold italic), then what everyone who pledges gets (group chats; featured stories, shared April 8) and an email form. **Email is required** here: it's how we send the group chat invite. Pressing "Pledge for the whole month" is the opt-in; the wording beside it says what they'll get and that they can unsubscribe. It also counts toward the March 8 total, once per device.
+**Whole-month pledge** (`#whole-month`, plain section right after the Blackout). The Long Blackout's dates, name and rules come from `_data/calendar.yml`. "Beauty Blackout *all month.*" (gold italic), then what everyone who pledges gets (group chats; featured stories, shared April 8) and an email form. **Email is required** here: it's how we send the group chat invite. Pressing "Pledge for the whole month" is the opt-in; the wording beside it says what they'll get and that they can unsubscribe. It also counts toward the March 8 total, once per device.
 
 **Email sign-up.** Permanent, in the footer beside "Have a real *day.*" (`#newsletter`, on every page). No tick box: typing an email and pressing "Sign up" is the opt-in, and the wording beside it says what they'll get and that they can unsubscribe (Canada's anti-spam law). Pledges, choices and opted-in emails go to a Google Sheet; emails move to Kit later.
 
@@ -167,19 +180,19 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 
 ### The page, top to bottom
 1. **Hero** (paper): centred, text only. Headline, one paragraph, the Blackout button.
-2. **Beauty Blackout** (ink): heading, body copy and the key-facts strip, then the pledge (count and button), with the street-of-claims illustration to the right (below on phones).
-3. **Beauty Blackout *all month.*** (lighter black): the whole-month pledge, email required.
+2. **Beauty Blackout** (red block; dark: Black 2): heading, body copy and the key-facts strip, then the pledge (count and button), with the street-of-claims illustration to the right (below on phones).
+3. **Beauty Blackout *all month.*** (plain): the whole-month pledge, email required.
 4. **Women's Month** (sand): compact two-column list (date, name, tag).
 5. **One action a week** (paper): four cards, Week 1–4.
 6. **More to come** (sand): compact list of the other campaigns, plus the one Instagram how-to-join line.
-7. **Manifesto band** (brick): "Our insecurities should not be someone else's *business model.*" with the printing-press illustration.
+7. **Manifesto band** (red; dark: gold): "Our insecurities should not be someone else's *business model.*" with the printing-press illustration.
 8. **What we stand for** (paper): text only. "You shouldn't have to be beautiful *to be valued.*", the principles in two columns and the closing line.
 9. **Instagram** (sand): with the notice-board illustration.
-10. **Footer** (ink): "Have a real *day.*" beside the email sign-up, then the copyright. No repeated links: Instagram is in the fixed header.
+10. **Footer** (plain): "Have a real *day.*" beside the email sign-up, then the copyright. No repeated links: Instagram is in the fixed header.
 
 ### The calendar
 - Tags: Protest (brick), Reclaim (dark gold `#7a5410`), Unite (olive `#4f5a1f`). Outlined chips in label style, right beside the name. Recurring: dashed ink chip with ↻.
-- March 8 is the one ink row in the Women's Month list.
+- March 8 is the one highlighted row in the Women's Month list (red in light mode, gold in dark).
 - Recurring events live only in "One action a week", never in the March list.
 - Descriptions for compact lists stay in `_data/calendar.yml` for reference and Instagram planning.
 
@@ -198,7 +211,7 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 | Cream on brick (buttons) | 6.6 : 1 |
 | Cream on ink | 14.4 : 1 |
 | Gold tint / muted on ink | 7.9 / 9.1 : 1 |
-| Black on gold (buttons on black) | 7.9 : 1 |
+| Black on gold (dark-mode buttons, manifesto band) | 7.9 : 1 |
 | Gold tint / muted on whole-month black `#26211c` | 7.1 / 8.2 : 1 |
 | Reclaim tag / Unite tag on light paper | 5.5 / 6.0 : 1 |
 | Gold on paper | 2.6 : 1. **Fails: never use for text** |
@@ -212,10 +225,10 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 
 ## 8. Checking the UI before it ships
 
-Run `node tools/check-ui.js` before every push that changes how the site looks. It builds the site, opens every page at desktop and phone width (including the hidden states, like the line after pledging) and fails on:
+Run `node tools/check-ui.js` before every push that changes how the site looks. It builds the site, opens every page in light and dark mode, at desktop and phone width (including the hidden states, like the line after pledging) and fails on:
 - any text outside the four styles and seven sizes;
 - any text below WCAG AA contrast;
-- red on black, or a label on black that isn't gold;
+- mixed modes (a black section in light mode, a light one in dark), any red in dark mode, or a dark-mode label that isn't gold;
 - anything wider than a phone screen, or a line between sections;
 - an image without alt text.
 
@@ -237,7 +250,7 @@ The site's look carries over so posts are recognizable without the logo:
 - Pastel wellness palettes, soft gradients, generic feminine branding, or pink as a "women's issue" colour.
 - Retro 80s/90s styling, punk-zine collage, sepia filters, or stamps as the main device.
 - More than one primary button per section, or anything louder than the Blackout button.
-- One-off font sizes, serif body sentences, or red on black.
+- One-off font sizes, serif body sentences, raw colours instead of role tokens, mixing light and dark sections, or red in dark mode.
 - Repeating copy, captions under pictures on the site, or long paragraphs where a line will do.
 - Shaming personal choices or anti-makeup messages.
 - Inventing campaign dates, activities or numbers.
