@@ -29,7 +29,7 @@ Key points:
 One page. Everything lives on the homepage (`index.html`). Every section follows the same pattern (`section.section` → `.container` → `.section-head` → content); sections are separated by spacing and background tone, never lines. Only four font styles: serif, serif italic, sans, label (see `DESIGN.md`).
 
 1. Hero: centred headline, one paragraph, the Blackout button. No image.
-2. The Beauty Blackout (`#blackout`, black): heading and a small facts strip, the pledge (live count "74/1,000 pledges", "Pledge for March 8", once per device, then a temporary line pointing to the footer sign-up; a text link jumps to the whole-month pledge), claims-street illustration to the right. The main purpose of the site.
+2. The Beauty Blackout (`#blackout`, black): heading and a small facts strip, the pledge (live count "74/1,000 pledges", "Pledge for March 8" beside an outlined "Pledge for the whole month" jump button; once per device, the red button then says "You're in!" and a temporary line points to the footer sign-up), claims-street illustration to the right. The main purpose of the site.
 2b. Go the whole month (`#whole-month`): the Long Blackout pledge (rules from `calendar.yml`), perks (group chats, featured stories), email required (`_includes/month-form.html`).
 3. Women's Month (`#march`): compact list. 4. One action a week (`#monthly`): four cards. 5. More to come (`#also`): compact list.
 6. Manifesto band (brick, press illustration). 7. What we stand for (`#why`, text only, principles). 8. Instagram (notice-board illustration).

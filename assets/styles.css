@@ -152,22 +152,21 @@ h2 { font-size: var(--t-h2); }
 .count-goal { font-size: .42em; color: var(--muted-on-ink); letter-spacing: 0; margin-left: .1em; }
 .count-bar { height: 14px; border: 2px solid var(--paper); padding: 2px; }
 .count-bar span { display: block; height: 100%; width: 0; min-width: 4px; background: var(--brick-on-ink); transition: width 1.2s cubic-bezier(.2, .7, .2, 1); }
-.join-step { display: grid; gap: 24px; justify-items: start; }
+.join-step { display: flex; flex-wrap: wrap; gap: 22px 20px; align-items: center; }
 .join-note { font-size: .92rem; color: var(--muted-on-ink); }
 .join-note:empty { display: none; }
-.text-link { font: 600 var(--t-label)/1.2 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--paper); text-decoration: underline; text-decoration-color: var(--brick-on-ink); text-decoration-thickness: 2px; text-underline-offset: 6px; }
-.btn-pledge { min-width: 220px; }
+.btn-pledge { min-width: 240px; }
+.btn-line { background: transparent; color: var(--paper); box-shadow: inset 0 0 0 2px var(--paper) !important; }
+@media (hover: hover) { .btn-line:hover { background: rgba(247, 240, 225, .08); } }
 .tone-ink .btn-lg { box-shadow: 6px 6px 0 var(--sheet); }
 .tone-ink .btn-lg:hover { box-shadow: 8px 8px 0 var(--sheet); }
-.tone-ink .btn-pledge.is-done, .tone-ink .btn-pledge.is-done:hover { opacity: 1; cursor: default; background: transparent; color: var(--paper); box-shadow: inset 0 0 0 2px var(--paper); transform: none; }
-@media (max-width: 560px) { .btn-pledge { width: 100%; } }
+.tone-ink .btn-pledge.is-done, .tone-ink .btn-pledge.is-done:hover { opacity: 1; cursor: default; transform: none; box-shadow: 6px 6px 0 var(--sheet); }
+@media (max-width: 560px) { .btn-pledge, .btn-line { width: 100%; } }
 
 /* Temporary line after each pledge: points to the email sign-up in the footer, then fades */
 .join-done { color: var(--muted-on-ink); transition: opacity .6s; animation: done-in .35s ease-out; }
 .join-done[hidden] { display: none; }
 .join-done.fading { opacity: 0; }
-.join-done-title { font-family: var(--serif); font-size: 1.5rem; color: var(--paper); margin-right: 8px; }
-.join-done-title em { color: var(--brick-on-ink); }
 .join-done a { color: var(--paper); text-underline-offset: 3px; }
 @keyframes done-in { from { opacity: 0; transform: translateY(6px); } }
 @media (prefers-reduced-motion: reduce) { .join-done { animation: none; transition: none; } }

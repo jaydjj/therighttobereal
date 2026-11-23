@@ -55,7 +55,7 @@ var rtbrPledge = (function () {
   }
   function setLive(n) { if (n >= (live || 0)) { live = n; render(); } }
   function fromSheet(d) { if (d && typeof d.count === 'number') setLive(base + d.count); }
-  function markDone() { btn.textContent = 'You\'ve pledged for March 8'; btn.disabled = true; btn.classList.add('is-done'); }
+  function markDone() { btn.textContent = 'You\'re in!'; btn.disabled = true; btn.classList.add('is-done'); }
   // Records a pledge on this device once; returns true if it was new.
   function claim() {
     if (rtbrStore('rtbr-pledged')) return false;
