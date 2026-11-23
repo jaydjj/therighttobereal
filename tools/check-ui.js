@@ -11,6 +11,8 @@
     3. Modes never mix: in light mode no section, header or footer is black; in dark mode every one is
        (except the gold manifesto band), nothing is red, and labels are gold.
     4. Layout: nothing wider than the screen at phone width; no lines between sections.
+    1b. Repeated patterns: every item name (event, week card, principle, perk) has one style, and so
+       does every item description.
     5. Images and videos: every image has alt text; every video has a description, and loops have a pause button.
   Needs Playwright (preinstalled in Claude's cloud sessions).
 */
@@ -112,6 +114,17 @@ function audit(theme) {
     if (theme === 'light' && isDark(c)) out.push(`black section in light mode: ${label(sec, sec.id || '')}`);
     if (theme === 'dark' && !isDark(c) && !sec.classList.contains('tone-brick')) out.push(`light section in dark mode: ${label(sec, sec.id || '')}`);
   }
+
+  // 1b. Repeated patterns look the same everywhere: every item name (event, week card, principle, perk)
+  // shares one style, and so does every item description.
+  const sig = e => { const c = getComputedStyle(e); return `${c.fontFamily.split(',')[0]} ${c.fontWeight} ${c.fontStyle} ${px(c.fontSize)}px`; };
+  const same = (sel, what) => {
+    const els = [...document.querySelectorAll(sel)].filter(e => getComputedStyle(e).display !== 'none');
+    const kinds = [...new Set(els.map(sig))];
+    if (kinds.length > 1) out.push(`${what} are not all the same style: ${kinds.join(' / ')}`);
+  };
+  same('.title, .row-title', 'item names (events, week cards, principles, perks)');
+  same('.card-text, .principles li', 'item descriptions');
 
   // 4. Layout
   const wide = [...document.querySelectorAll('body *')].filter(e => e.getBoundingClientRect().right > innerWidth + 1 && getComputedStyle(e).position !== 'fixed');

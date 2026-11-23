@@ -89,9 +89,9 @@ Rules: no black sections in light mode; no light sections in dark mode (except t
 
 | Style | Typeface | Used for |
 |---|---|---|
-| **Serif** | DM Serif Display, upright | Headlines, statements, principle and perk names, the count. Kept for things that are said, not listed |
+| **Serif** | DM Serif Display, upright | Headlines, statements, the count. Kept for things that are said, not listed |
 | **Serif italic** | DM Serif Display, italic | The turn in a headline ("So is our power *to change it.*"), emphasis |
-| **Sans** | Work Sans 400 | Body copy, event names, week-card titles, key facts, form text |
+| **Sans** | Work Sans 400 | Body copy, item names and descriptions, key facts, form text |
 | **Label** | Work Sans 600, small spaced capitals | Kickers, dates, buttons, navigation |
 
 Every piece of text uses one of these seven sizes (tokens in `assets/styles.css`). Nothing in between, no one-off sizes.
@@ -100,10 +100,10 @@ Every piece of text uses one of these seven sizes (tokens in `assets/styles.css`
 |---|---|---|
 | `--t-display` | Serif | Homepage headline, manifesto statement, "Have a real *day.*", the pledge count |
 | `--t-h2` | Serif | Section headlines |
-| `--t-title` | Serif | Principle and perk names ("Group chats."), the closing line, "/1,000 pledges" |
-| `--t-lead` | Sans | The one paragraph under a headline; event names and week-card titles |
-| `--t-body` | Sans | Body copy, lists, key facts, form fields |
-| `--t-small` | Sans | Form hints, notes, card text, copyright |
+| `--t-title` | Serif | The closing line, "/1,000 pledges" |
+| `--t-lead` | Sans | The one paragraph under a headline; item names |
+| `--t-body` | Sans | Body copy, item descriptions, key facts, form fields |
+| `--t-small` | Sans | Form hints, notes, copyright |
 | `--t-label` | Label | Kickers, dates, buttons, navigation |
 
 No bold body text, no sans italic, no monospace, no new typefaces. A sentence is either a headline (serif) or copy (sans); don't set a body sentence in serif. The logo is an image (`assets/logo.svg`), not a font.
@@ -143,6 +143,8 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 ---
 
 ## 5. UI components
+
+**Items.** Every name-plus-description (calendar events, week cards, principles, perks) uses one pattern: the name in sans at lead size, full text colour, on its own line; the description below in sans at body size, muted. Never a serif name in one list and a sans name in another. `tools/check-ui.js` fails if they differ.
 
 **The picture frame.** `_includes/picture.html`. The illustration on a light sheet with an ink border and a hard offset shadow, no caption. At most one per section, never in the hero, never louder than the main button.
 
@@ -232,7 +234,7 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 ## 8. Checking the UI before it ships
 
 Run `node tools/check-ui.js` before every push that changes how the site looks. It builds the site, opens every page in light and dark mode, at desktop and phone width (including the hidden states, like the line after pledging) and fails on:
-- any text outside the four styles and seven sizes;
+- any text outside the four styles and seven sizes, or item names / descriptions that don't all match;
 - any text below WCAG AA contrast;
 - mixed modes (a black section in light mode, a light one in dark), any red in dark mode, or a dark-mode label that isn't gold;
 - anything wider than a phone screen, or a line between sections;
