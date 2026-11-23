@@ -12,6 +12,9 @@
  * into Kit when you're ready to send.
  * "Month" tab: people who pledged for the whole month (email required), with the time and consent wording.
  *
+ * Moving whole-month emails that arrived before this version (they landed in "Emails" with Poll = month):
+ * pick moveMonthEmails in the function menu at the top of the Apps Script editor and press Run, once.
+ *
  * After changing this script: Deploy → Manage deployments → Edit (pencil) → Version: New version
  * → Deploy. That keeps the same web app URL.
  */
@@ -111,5 +114,18 @@ function doPost(e) {
     return json_({ ok: true, count: count_(sh) });
   } finally {
     lock.releaseLock();
+  }
+}
+
+// Run once by hand: moves rows from "Emails" whose Poll is "month" into the "Month" tab.
+function moveMonthEmails() {
+  const es = emailSheet_();
+  const ms = monthSheet_();
+  const have = ms.getLastRow() > 1 ? ms.getRange(2, 1, ms.getLastRow() - 1, 1).getValues().map(r => r[0]) : [];
+  for (let r = es.getLastRow(); r >= 2; r--) {
+    const [email, at, wording, poll, id] = es.getRange(r, 1, 1, 5).getValues()[0];
+    if (poll !== 'month') continue;
+    if (have.indexOf(email) === -1) ms.appendRow([email, at, wording, id]);
+    es.deleteRow(r);
   }
 }
