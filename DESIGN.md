@@ -125,7 +125,7 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 | Text link | Small capitals, brick underline | Lesser actions, e.g. "Follow the movement on Instagram →" |
 | Outline | Ink border | Secondary navigation, e.g. on the 404 page |
 
-**Header.** Fixed to the top while scrolling. Logo left; "Calendar", "Instagram" and a small red "Join March 8" button (jumps to the Blackout) right. On phones the Instagram link hides and the red button stays.
+**Header.** Fixed to the top while scrolling. Logo left; "Instagram" and a small red "Join March 8" button (jumps to the Blackout) right. On phones the Instagram link hides and the red button stays.
 
 **Labels (kickers).** Small spaced capitals above headlines: muted on paper, gold tint on ink, brick for dates.
 
@@ -161,7 +161,7 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 7. **Manifesto band** (brick): "Our insecurities should not be someone else's *business model.*" with the printing-press illustration.
 8. **What we stand for** (paper): text only. "You shouldn't have to be beautiful *to be valued.*", the principles in two columns and the closing line.
 9. **Instagram** (sand): with the notice-board illustration.
-10. **Footer** (ink): "Have a real *day.*" beside the email sign-up, then the copyright. No repeated links: Calendar and Instagram are in the fixed header.
+10. **Footer** (ink): "Have a real *day.*" beside the email sign-up, then the copyright. No repeated links: Instagram is in the fixed header.
 
 ### The calendar
 - Tags: Protest (brick), Reclaim (dark gold `#7a5410`), Unite (olive `#4f5a1f`). Outlined chips in label style, right beside the name. Recurring: dashed ink chip with ↻.
