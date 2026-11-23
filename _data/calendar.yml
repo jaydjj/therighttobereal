@@ -1,5 +1,5 @@
 # The whole calendar, shown on the homepage.
-# Each event: id (link anchor), date, title, tag (protest | reclaim | gather), text.
+# Each event: id (link anchor), date, title, tag (protest | reclaim | unite), text.
 # Optional: recurring (shown as a "Recurring" label, e.g. "Twice a year"), key: true (highlighted).
 # Names are short commands; descriptions are one or two lines in "we", present tense.
 
@@ -17,18 +17,12 @@ march:
   - id: make-normal-normal-again
     date: Mar 1
     title: Make Normal Normal Again
-    tag: gather
+    tag: unite
     text: We share unfiltered photos. Real skin, real age, real people.
-  - id: mute-the-ads
-    date: Mar 1–7
-    title: Mute the Ads
-    tag: protest
-    recurring: Twice a year
-    text: We hide every beauty ad we see for a week. The more of us who do it, the more it costs them to reach us.
   - id: own-the-flaw
     date: Mar 4
     title: Own the “Flaw”
-    tag: gather
+    tag: unite
     text: We share stories and photos celebrating the exact things we were once told were flaws.
   - id: the-beauty-blackout
     date: Mar 8
@@ -64,7 +58,7 @@ march:
   - id: compliment-something-else
     date: Mar 23
     title: Compliment Something Else
-    tag: gather
+    tag: unite
     text: Her mind, her work, her jokes, her nerve. We say it out loud.
   - id: abandon-the-cart
     date: Mar 27
@@ -74,7 +68,7 @@ march:
   - id: count-what-we-kept
     date: Mar 31
     title: Count What We Kept
-    tag: gather
+    tag: unite
     text: The results. How many of us joined, how much money stayed in our pockets, and what's next.
 
 
@@ -83,7 +77,7 @@ monthly:
   - id: the-resistance
     date: Week 1
     title: The Resistance
-    tag: gather
+    tag: unite
     recurring: Monthly · Week 1
     text: People who were told to change, and didn't. Nominate a writer, an artist, your grandmother or your best friend on Instagram; if we feature yours, we'll credit you.
   - id: money-hour
@@ -120,22 +114,22 @@ also:
   - id: the-long-blackout-stories
     date: Apr 8
     title: 'The Long Blackout: The Stories'
-    tag: gather
+    tag: unite
     text: What a month without buying beauty products did to our brains and our wallets, in our own words.
   - id: pride-and-mens-mental-health
     date: June
     title: Pride Month & Men's Mental Health Month
-    tag: gather
+    tag: unite
     text: Identity, belonging, self-expression and what's expected of us.
   - id: world-mental-health-day
     date: October
     title: World Mental Health Day
-    tag: gather
+    tag: unite
     text: Self-worth, comparison and standards nobody can meet.
   - id: international-mens-day
     date: November
     title: International Men's Day
-    tag: gather
+    tag: unite
     text: Masculinity, success, appearance and the pressure to have it together.
   - id: blackout-friday
     date: Nov 26
@@ -145,5 +139,5 @@ also:
   - id: real-day-meetups
     date: All year
     title: Real Day Meetups
-    tag: gather
+    tag: unite
     text: Local get-togethers, organized by people in our community.

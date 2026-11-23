@@ -30,7 +30,7 @@ One page. Everything lives on the homepage (`index.html`):
 
 1. Hero: headline, one paragraph, the Blackout button (jumps to `#blackout`), Instagram link. No image, for breathing room.
 2. The Beauty Blackout (`#blackout`): a black section headed "Beauty *Blackout.*", details beside the "Count me in" sign-up card. The main purpose of the site.
-3. The calendar: Women's Month (`#march`); then its own section, the monthly rhythm (`#monthly`): one action a week, every month (The Resistance, Money Hour, Mute the Ads, Take Back 20 Minutes); then other campaigns as a compact list (`#also`). Each event has a tag (Protest, Reclaim or Gather) and, if it repeats, a "Recurring" label.
+3. The calendar: Women's Month (`#march`); then its own section, the monthly rhythm (`#monthly`): one action a week, every month (The Resistance, Money Hour, Mute the Ads, Take Back 20 Minutes); then other campaigns as a compact list (`#also`). Each event has a tag (Protest, Reclaim or Unite) and, if it repeats, a "Recurring" label.
 4. Why we're doing this (`#why`) with the principles (`#principles`).
 5. Instagram.
 

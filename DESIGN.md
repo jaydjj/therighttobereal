@@ -147,9 +147,9 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 
 ### The calendar
 - Each event: date (monospace, brick), short command-style name (serif), tag, optional "Recurring" label, one or two lines in "we", present tense.
-- **Tags:** Protest (brick), Reclaim (dark gold `#7a5410`), Gather (olive `#4f5a1f`). Outlined chips in small capitals. **Recurring:** dashed ink chip with ↻ and how often (Weekly, Monthly, Twice a year, All year).
+- **Tags:** Protest (brick), Reclaim (dark gold `#7a5410`), Unite (olive `#4f5a1f`). Outlined chips in small capitals. **Recurring:** dashed ink chip with ↻ and how often (Weekly, Monthly, Twice a year, All year).
 - The Beauty Blackout row (Mar 8) is the one full-width ink row.
-- **Women's Month** is a dated list (rows) with full descriptions.
+- **Women's Month** and **Also this year** are compact two-column lists (read down each column): date, then the name with its tag right beside it. Descriptions stay in `_data/calendar.yml`. Recurring events never appear in the March list; they live in the monthly rhythm.
 - **One action a week** (its own section): the monthly rhythm as four cards, Week 1–4: The Resistance, Money Hour, Mute the Ads, Take Back 20 Minutes. Each repeats every month.
 - **Also this year** lists the other month-long campaigns compactly: date, name and tag only. Their descriptions stay in `_data/calendar.yml` for reference and Instagram planning.
 - Date formats: "Mar 8", "Mar 1–7", "Tuesdays from Feb 2", "Monthly", "All year".
@@ -170,7 +170,7 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 | Cream on brick (buttons) | 6.6 : 1 |
 | Cream on ink | 14.4 : 1 |
 | Brick tint / gold tint / muted on ink | 6.7 / 7.9 / 9.1 : 1 |
-| Reclaim tag / Gather tag on light paper | 5.5 / 6.0 : 1 |
+| Reclaim tag / Unite tag on light paper | 5.5 / 6.0 : 1 |
 | Gold on paper | 2.6 : 1. **Fails: never use for text** |
 
 - Every image has descriptive alt text. Decorative shapes are hidden from screen readers.

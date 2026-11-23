@@ -45,9 +45,9 @@ description: A social movement challenging the beauty pressure we're sold. Join 
       <p class="kicker">March 2027</p>
       <h2>Women's <em>Month.</em></h2>
       <p class="cal-intro">One month of small actions, anchored by the Beauty Blackout on March 8.</p>
-      <p class="cal-legend"><span class="tag tag-protest">Protest</span><span class="tag tag-reclaim">Reclaim</span><span class="tag tag-gather">Gather</span><span class="tag tag-recur"><span aria-hidden="true">↻</span> Recurring</span></p>
+      <p class="cal-legend"><span class="tag tag-protest">Protest</span><span class="tag tag-reclaim">Reclaim</span><span class="tag tag-unite">Unite</span></p>
     </div>
-    {% include calendar.html items=cal.march %}
+    {% include compact.html items=cal.march %}
 
   </div>
 </section>
@@ -68,11 +68,7 @@ description: A social movement challenging the beauty pressure we're sold. Join 
   <div class="container">
     <div class="also" id="also">
       <p class="kicker">Also this year</p>
-      <ol class="also-list">
-        {%- for e in cal.also %}
-        <li id="{{ e.id }}"><span class="also-date">{{ e.date }}</span><span class="also-title">{{ e.title }}</span><span class="tag tag-{{ e.tag }}">{{ e.tag | capitalize }}</span></li>
-        {%- endfor %}
-      </ol>
+      {% include compact.html items=cal.also %}
     </div>
 
     <p class="cal-how"><strong>How to join:</strong> details for every action are on <a href="{{ site.instagram }}" target="_blank" rel="noopener">Instagram ({{ site.instagram_handle }})</a>.</p>

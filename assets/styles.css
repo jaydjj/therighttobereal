@@ -503,11 +503,11 @@ body { background-color: var(--paper); background-image: url("data:image/svg+xml
 .cal-how a { text-decoration-color: var(--brick); text-decoration-thickness: 2px; text-underline-offset: 3px; }
 @media (max-width: 640px) { .ev { grid-template-columns: 1fr; gap: 6px; } }
 
-/* Tags: Protest, Reclaim, Gather, Recurring (all pass AA on paper) */
+/* Tags: Protest, Reclaim, Unite, Recurring (all pass AA on paper) */
 .tag { display: inline-flex; align-items: center; gap: 4px; font: 600 .66rem/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; padding: 5px 8px; border: 1.5px solid currentColor; border-radius: 2px; background: var(--paper-hi); }
 .tag-protest { color: var(--brick); }
 .tag-reclaim { color: #7a5410; }
-.tag-gather { color: #4f5a1f; }
+.tag-unite { color: #4f5a1f; }
 .tag-recur { color: var(--ink); border-style: dashed; }
 
 /* Principles lead line */
@@ -518,7 +518,7 @@ body { background-color: var(--paper); background-image: url("data:image/svg+xml
 .ev-card { position: relative; display: flex; flex-direction: column; gap: 10px; padding: 22px 22px 20px; background: var(--paper-hi); border: 1.5px solid var(--ink); border-top-width: 6px; box-shadow: 5px 5px 0 var(--ink); scroll-margin-top: 16px; }
 .ev-card-protest { border-top-color: var(--brick); }
 .ev-card-reclaim { border-top-color: #7a5410; }
-.ev-card-gather { border-top-color: #4f5a1f; }
+.ev-card-unite { border-top-color: #4f5a1f; }
 .ev-card .ev-title { font-size: 1.45rem; }
 .ev-card .ev-text { font-size: .95rem; flex: 1; }
 .ev-card .ev-tags { margin-top: 4px; padding-top: 12px; border-top: 1px dashed var(--line); }
@@ -578,3 +578,15 @@ body { background-color: var(--paper); background-image: url("data:image/svg+xml
 .hero h1 { margin-inline: auto; }
 .hero-line { margin-inline: auto; }
 .hero-actions { justify-content: center; }
+
+/* Compact rows (Women's Month and Also this year): date, title + tag, read down each column */
+.also-list { display: block; columns: 2; column-gap: 48px; }
+.also-list li { grid-template-columns: 6.5rem minmax(0, 1fr); break-inside: avoid; }
+.also-title { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; }
+.also-list .also-key { background: var(--ink); color: var(--paper); padding-inline: 12px; margin-inline: -12px; }
+.also-key .also-date { color: var(--red-on-ink); }
+.also-key .tag { background: transparent; color: var(--paper); }
+#march + .also-list { margin-top: 20px; }
+@media (max-width: 760px) { .also-list { columns: 1; } }
+@media (max-width: 560px) { .also-list li { grid-template-columns: 5.2rem minmax(0, 1fr); } }
+@media (min-width: 561px) { .also-list li { grid-template-columns: 7.5rem minmax(0, 1fr); } }
