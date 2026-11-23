@@ -512,3 +512,16 @@ body { background-color: var(--paper); background-image: url("data:image/svg+xml
 
 /* Principles lead line */
 .principles-lead { font: 400 clamp(1.5rem, 2.6vw, 1.9rem)/1.2 var(--serif); margin: 0 0 24px; }
+
+/* The whole year: cards in a grid */
+.cal-cards { list-style: none; padding: 0; margin: 24px 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.ev-card { position: relative; display: flex; flex-direction: column; gap: 10px; padding: 22px 22px 20px; background: var(--paper-hi); border: 1.5px solid var(--ink); border-top-width: 6px; box-shadow: 5px 5px 0 var(--ink); scroll-margin-top: 16px; }
+.ev-card-protest { border-top-color: var(--brick); }
+.ev-card-reclaim { border-top-color: #7a5410; }
+.ev-card-gather { border-top-color: #4f5a1f; }
+.ev-card .ev-title { font-size: 1.45rem; }
+.ev-card .ev-text { font-size: .95rem; flex: 1; }
+.ev-card .ev-tags { margin-top: 4px; padding-top: 12px; border-top: 1px dashed var(--line); }
+.ev-card:target { outline: 3px solid var(--brick); outline-offset: 3px; }
+@media (max-width: 900px) { .cal-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .cal-cards { grid-template-columns: minmax(0, 1fr); } }
