@@ -10,7 +10,7 @@ Key points:
 - A contemporary movement printing its own broadsides: print-style illustration, paper, ink, brick red, gold. Defiant, wry, human.
 - Copy is minimal and scannable: say each thing once per page; no captions under pictures on the site.
 - Headlines pair an upright statement with an italic turn.
-- Recurring motif: the broadside panel (`_includes/broadside.html`). Illustrations live in `assets/art/` with alt text in `_data/art.yml`; every new one needs descriptive alt text. Use it selectively; the Blackout button always stays the most prominent thing on the page.
+- Illustrations live in `assets/art/` with size and alt text in `_data/art.yml`, shown with `_includes/picture.html` (a framed print). Every new one needs descriptive alt text. Never in the hero; the Blackout button always stays the most prominent thing on the page.
 - Challenge systems, never individuals. Never anti-makeup.
 - Never write "BeReal" as one word.
 - The logo is one shared file, `assets/logo.svg` ("THE RIGHT TO" / black italic "be" / brick-red "real"). Use it as an image wherever the logo appears; never retype or rebuild it. To change it, edit and rerun `brand/make_logo.py` (usage is in the file).
@@ -26,18 +26,17 @@ Key points:
 
 ## Structure
 
-One page. Everything lives on the homepage (`index.html`):
+One page. Everything lives on the homepage (`index.html`). Every section follows the same pattern (`section.section` → `.container` → `.section-head` → content); sections are separated by spacing and background tone, never lines. Only four font styles: serif, serif italic, sans, label (see `DESIGN.md`).
 
-1. Hero: headline, one paragraph, the Blackout button (jumps to `#blackout`). No image and no Instagram link, for breathing room. The header stays fixed at the top while scrolling.
-2. The Beauty Blackout (`#blackout`): a black section headed "Beauty *Blackout.*", details beside the "Count me in" sign-up card. The main purpose of the site.
-3. The calendar: Women's Month (`#march`); then its own section, the monthly rhythm (`#monthly`): one action a week, every month (The Resistance, Money Hour, Mute the Ads, Take Back 20 Minutes); then other campaigns as a compact list (`#also`). Each event has a tag (Protest, Reclaim or Unite) and, if it repeats, a "Recurring" label.
-4. Why we're doing this (`#why`) with the principles (`#principles`).
-5. Instagram.
+1. Hero: centred headline, one paragraph, the Blackout button. No image.
+2. The Beauty Blackout (`#blackout`, black): details beside the "Count me in" card. The main purpose of the site.
+3. Women's Month (`#march`): compact list. 4. One action a week (`#monthly`): four cards. 5. More to come (`#also`): compact list.
+6. Manifesto band (brick, press illustration). 7. What we stand for (`#why`, claims-street illustration, principles). 8. Instagram (notice-board illustration).
 
 - `_data/calendar.yml`: **all event content.** The Blackout details, the March events (`march`), the monthly rhythm (`monthly`, weeks 1–4) and other campaigns (`also`, shown without descriptions). Edit this file to change dates, names or descriptions. Event names are short commands; descriptions are one or two lines in "we", present tense; dates like "Mar 8" or "Mar 1–7".
-- `_includes/calendar.html`: renders a list of events. `_includes/join-form.html`: the sign-up form.
+- `_includes/compact.html` (date/name/tag rows), `_includes/cards.html` (event cards), `_includes/picture.html` (framed illustration), `_includes/join-form.html` (sign-up form).
 - `campaigns/`: redirect stubs only. The old campaign pages now point to the matching spot on the homepage. Don't add pages here.
-- `_layouts/default.html`, `_layouts/redirect.html`, `_includes/header.html`, `footer.html`, `broadside.html`
+- `_layouts/default.html`, `_layouts/redirect.html`, `_includes/header.html`, `footer.html`
 - `assets/styles.css`, `assets/site.js` (old one-page anchors redirect to their new spots)
 - `assets/logo.svg`: logo; `assets/favicon.png`, `favicon.ico`, `assets/apple-touch-icon.png`: icons
 - `assets/art/`: illustrations (alt text in `_data/art.yml`)

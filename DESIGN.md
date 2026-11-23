@@ -69,15 +69,16 @@ Inspired by 19th-century broadsides and early 20th-century labour and lithograph
 
 On the dark ink background, use the lighter tints for small text: brick tint `#e2876f`, gold tint `#d9a441`, muted `#c4b8a3`.
 
-### Typography
+### Typography: four styles only
 
-| Role | Typeface | Notes |
+| Style | Typeface | Used for |
 |---|---|---|
-| Headlines | DM Serif Display | Upright statement + italic turn, e.g. "The Beauty *Blackout.*" |
-| Body, buttons, labels | Work Sans | Labels and buttons in small spaced capitals |
-| Logo | Fraunces (outlined in the SVG) | Only via `assets/logo.svg` |
-| Poster lettering | Big Shoulders Display | Only inside a picture frame, and only if a caption is truly needed |
-| Dates in timelines, receipts | System monospace | |
+| **Serif** | DM Serif Display, upright | Headlines, event and principle names, statements, key facts |
+| **Serif italic** | DM Serif Display, italic | The turn in a headline ("So is our power *to change it.*"), emphasis |
+| **Sans** | Work Sans 400 | Body copy, form text |
+| **Label** | Work Sans 600, small spaced capitals | Kickers, dates, tags, buttons, navigation |
+
+Sizes come from the scale in `assets/styles.css` (`--t-display`, `--t-h2`, `--t-statement`, `--t-title`, `--t-lead`, `--t-body`, `--t-label`). No other typefaces, weights or styles (no bold body text, no monospace). The logo is an image (`assets/logo.svg`), not a font.
 
 ### Texture
 A faint paper grain on the page background. Never on text. Illustrations carry their own print texture.
@@ -102,10 +103,9 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 
 | Id | Scene | Used on |
 |---|---|---|
-| `friends` | Three women of different ages, at ease, while a crowd hurries past beauty billboards | Not in use (removed from the hero for space) |
-| `press` | A printing press churning out the same idealized face | Not in use (available for Instagram) |
-| `walk` | Three women walking and talking past a blank billboard toward the sun | Homepage Instagram section |
-| `crowd` | Earlier version of the hero with one woman | Not in use |
+| `press` | A printing press churning out the same idealized face | Manifesto band ("business model") |
+| `claims` | A city street lined with beauty and diet claims | What we stand for |
+| `board` | A community notice board: Come As You Are, All Bodies Welcome, Rest Is a Right… | Instagram |
 
 ### Prompt recipe (for your image tool)
 > Vintage relief-print / lithograph poster illustration, heavy black ink outlines, cross-hatching, visible paper grain, limited palette of brick red, mustard gold, black and warm cream paper. [SCENE]. Diverse, dignified people of different ages and body types, relaxed and real. Strong diagonal composition. No text except [ANY SATIRICAL SIGN TEXT]. Portrait 4:5.
@@ -114,7 +114,7 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 
 ## 5. UI components
 
-**The picture frame (broadside panel).** `_includes/broadside.html`. A double ink frame with a hard offset shadow and a slight tilt. On the website it shows the picture only. Use it at most once per section and never so it competes with the main button.
+**The picture frame.** `_includes/picture.html`. The illustration on a light sheet with an ink border and a hard offset shadow, no caption. At most one per section, never in the hero, never competing with the main button.
 
 **Buttons.** One primary action per section.
 
@@ -141,19 +141,28 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 
 ## 6. Layout and pages
 
-- **One page.** Hero (centred, text only, no picture, for breathing room) → the Beauty Blackout (black section headed "Beauty *Blackout.*", details beside the brick "Count me in" card) → Women's Month → one action a week (the monthly rhythm) → also this year → **red manifesto band** ("Our insecurities should not be someone else's *business model.*", cream on brick, no buttons) → what we stand for ("You shouldn't have to be beautiful to be valued.", the principles, then the closing paragraph "We don't shame individual choices…") → Instagram. No separate campaign pages.
-- **Mobile first.** Check every change at iPhone width and on desktop. On phones, sections stack and the main button comes before any picture.
-- **Breathing room.** If a section feels crowded, cut words before shrinking space.
+### Section rules
+- Every section follows one pattern: `section.section` → `.container` → `.section-head` (label kicker, h2, optional lead) → content.
+- **Spacing separates sections, not lines.** Sections alternate background tone instead: paper, sand, ink (Blackout), brick (manifesto band). No borders or rules between sections.
+- One spacing scale: `--space-section` (between sections), `--space-head` (heading to content), `--space-gap` (between columns).
+- Two-column sections use `.split`; with an illustration, `.split-art` (picture right) or `.split-art-left` (picture left). On phones everything stacks to one column, text before picture.
+
+### The page, top to bottom
+1. **Hero** (paper): centred, text only. Headline, one paragraph, the Blackout button.
+2. **Beauty Blackout** (ink): heading, body copy and key facts beside the brick "Count me in" card.
+3. **Women's Month** (sand): compact two-column list (date, name, tag).
+4. **One action a week** (paper): four cards, Week 1–4.
+5. **More to come** (sand): compact list of the other campaigns, plus the one Instagram how-to-join line.
+6. **Manifesto band** (brick): "Our insecurities should not be someone else's *business model.*" with the printing-press illustration.
+7. **What we stand for** (paper): the street-of-claims illustration beside "You shouldn't have to be beautiful *to be valued.*", the principles and the closing line.
+8. **Instagram** (sand): with the notice-board illustration.
+9. **Footer** (ink): "Have a real *day.*", links.
 
 ### The calendar
-- Each event: date (monospace, brick), short command-style name (serif), tag, optional "Recurring" label, one or two lines in "we", present tense.
-- **Tags:** Protest (brick), Reclaim (dark gold `#7a5410`), Unite (olive `#4f5a1f`). Outlined chips in small capitals. **Recurring:** dashed ink chip with ↻ and how often (Weekly, Monthly, Twice a year, All year).
-- The Beauty Blackout row (Mar 8) is the one full-width ink row.
-- **Women's Month** and **Also this year** are compact two-column lists (read down each column): date, then the name with its tag right beside it. Descriptions stay in `_data/calendar.yml`. Recurring events never appear in the March list; they live in the monthly rhythm.
-- **One action a week** (its own section): the monthly rhythm as four cards, Week 1–4: The Resistance, Money Hour, Mute the Ads, Take Back 20 Minutes. Each repeats every month.
-- **Also this year** lists the other month-long campaigns compactly: date, name and tag only. Their descriptions stay in `_data/calendar.yml` for reference and Instagram planning.
-- Date formats: "Mar 8", "Mar 1–7", "Tuesdays from Feb 2", "Monthly", "All year".
-- **The Resistance** (people who were told to change, and didn't) runs in week 1 of every month.
+- Tags: Protest (brick), Reclaim (dark gold `#7a5410`), Unite (olive `#4f5a1f`). Outlined chips in label style, right beside the name. Recurring: dashed ink chip with ↻.
+- March 8 is the one ink row in the Women's Month list.
+- Recurring events live only in "One action a week", never in the March list.
+- Descriptions for compact lists stay in `_data/calendar.yml` for reference and Instagram planning.
 
 ---
 

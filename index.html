@@ -5,112 +5,122 @@ description: A social movement challenging the beauty pressure we're sold. Join 
 ---
 {%- assign cal = site.data.calendar -%}
 {%- assign bb = cal.blackout -%}
+{%- comment -%}
+  Every section follows one pattern:
+  <section class="section [tone]"> > .container > .section-head (label kicker, h2, optional lead) > content.
+  Sections are separated by spacing and background tone, not lines.
+{%- endcomment -%}
 
-<!-- 1. Hero -->
-<section class="hero">
-  <div class="container hero-grid">
-    <div class="hero-copy">
-      <h1><span class="h1-line">The pressure is everywhere.</span> <em class="h1-line">So is our power to change it.</em></h1>
-      <p class="hero-line">We’re challenging the beauty pressure that profits from self-doubt. Join the Beauty Blackout on March 8, and follow along as the movement grows.</p>
-      <div class="hero-actions">
-        <a href="#blackout" class="btn btn-red btn-lg">Join the Beauty Blackout · March 8</a>
-      </div>
+<!-- Hero -->
+<section class="section hero">
+  <div class="container hero-copy">
+    <h1><span class="h1-line">The pressure is everywhere.</span> <em class="h1-line">So is our power to change it.</em></h1>
+    <p class="lead">We’re challenging the beauty pressure that profits from self-doubt. Join the Beauty Blackout on March 8, and follow along as the movement grows.</p>
+    <div class="actions">
+      <a href="#blackout" class="btn btn-red btn-lg">Join the Beauty Blackout · March 8</a>
     </div>
   </div>
 </section>
 
-<!-- 2. The Beauty Blackout: sign-up first -->
-<section class="bb" id="blackout">
-  <div class="container bb-top">
-    <div class="bb-head">
-      <p class="kicker kicker-red">{{ bb.when }}</p>
-      <h2>{{ bb.title_html }}</h2>
-      <p class="bb-intro">{{ bb.intro }}</p>
-      <dl class="facts facts-dark">
-        {%- for f in bb.facts %}<div><dt>{{ f.label }}</dt><dd>{{ f.value }}</dd></div>{% endfor %}
+<!-- The Beauty Blackout -->
+<section class="section tone-ink" id="blackout">
+  <div class="container split">
+    <div>
+      <div class="section-head">
+        <p class="label kicker">{{ bb.when }}</p>
+        <h2>{{ bb.title_html }}</h2>
+        <p class="lead">{{ bb.intro }}</p>
+      </div>
+      <dl class="facts">
+        {%- for f in bb.facts %}<div><dt class="label">{{ f.label }}</dt><dd class="title">{{ f.value }}</dd></div>{% endfor %}
       </dl>
     </div>
     <div class="join-card" id="join-section">
-      <h3>Count me <em>in.</em></h3>
+      <h3 class="join-title">Count me <em>in.</em></h3>
       {% include join-form.html %}
     </div>
   </div>
 </section>
 
-<!-- 3. The calendar: Women's Month, then the rest of the year -->
-<section class="calendar" id="calendar">
-  <div class="container">
-    <div class="cal-head" id="march">
-      <p class="kicker">March 2027</p>
+<!-- Women's Month -->
+<section class="section tone-sand" id="calendar">
+  <div class="container" id="march">
+    <div class="section-head">
+      <p class="label kicker">March 2027</p>
       <h2>Women's <em>Month.</em></h2>
-      <p class="cal-intro">One month of small actions, anchored by the Beauty Blackout on March 8.</p>
-      <p class="cal-legend"><span class="tag tag-protest">Protest</span><span class="tag tag-reclaim">Reclaim</span><span class="tag tag-unite">Unite</span></p>
+      <p class="lead">One month of small actions, anchored by the Beauty Blackout on March 8.</p>
+      <p class="tags"><span class="tag tag-protest">Protest</span><span class="tag tag-reclaim">Reclaim</span><span class="tag tag-unite">Unite</span></p>
     </div>
     {% include compact.html items=cal.march %}
-
   </div>
 </section>
 
-<!-- 4. The monthly rhythm -->
-<section class="monthly" id="monthly">
-  <div class="container">
-    <div class="cal-head" id="year">
-      <p class="kicker">Every month</p>
+<!-- One action a week -->
+<section class="section" id="monthly">
+  <div class="container" id="year">
+    <div class="section-head">
+      <p class="label kicker">Every month</p>
       <h2>One action a <em>week.</em></h2>
-      <p class="cal-intro">The same four actions, every month of the year.</p>
+      <p class="lead">The same four actions, every month of the year.</p>
     </div>
-    {% include calendar.html items=cal.monthly layout="cards" %}
+    {% include cards.html items=cal.monthly %}
   </div>
 </section>
 
-<section class="calendar calendar-also">
+<!-- Also this year -->
+<section class="section tone-sand" id="also">
   <div class="container">
-    <div class="also" id="also">
-      <p class="kicker">Also this year</p>
-      {% include compact.html items=cal.also %}
+    <div class="section-head">
+      <p class="label kicker">Also this year</p>
+      <h2>More to <em>come.</em></h2>
     </div>
-
-    <p class="cal-how"><strong>How to join:</strong> details for every action are on <a href="{{ site.instagram }}" target="_blank" rel="noopener">Instagram ({{ site.instagram_handle }})</a>.</p>
+    {% include compact.html items=cal.also %}
+    <p class="note">Details for every action are on <a href="{{ site.instagram }}" target="_blank" rel="noopener">Instagram ({{ site.instagram_handle }})</a>.</p>
   </div>
 </section>
 
-<!-- 4. Manifesto band -->
-<section class="band" aria-label="Why we're doing this">
-  <div class="container">
-    <p class="kicker band-kicker">Why we're doing this</p>
-    <p class="band-statement">Our insecurities should not be someone else's <em>business model.</em></p>
-  </div>
-</section>
-
-<!-- 5. What we stand for -->
-<section class="argument" id="why">
-  <div class="container">
-    <div class="principles-block" id="principles">
-      <p class="kicker">What we stand for</p>
-      <p class="principles-lead">You shouldn't have to be beautiful to be valued.</p>
-      <ul class="principles principles-lg">
-        <li><strong>Reject the standard.</strong> Nobody needs fixing to be worthy.</li>
-        <li><strong>Act together.</strong> Simple actions anyone can join, done by enough of us to matter.</li>
-        <li><strong>Spend on purpose.</strong> Our money is our loudest vote.</li>
-        <li><strong>You first. The rest is extra.</strong> We love a good lipstick. Buy what you love, use it up, and skip the one-click buys that promise to fix how you feel.</li>
-        <li><strong>Challenge systems, not people.</strong> We go after the pressure, never someone's personal choices.</li>
-        <li><strong>Everyone's in.</strong> Insecurity is sold to every gender, age and identity.</li>
-      </ul>
-      <p class="argument-copy-solo argument-close">We don't shame individual choices. We come together in practical ways, starting with how we spend our money, to send the beauty industry one clear message: <strong>we're tired of it.</strong></p>
+<!-- Manifesto band -->
+<section class="section tone-brick band" aria-label="Why we're doing this">
+  <div class="container split split-art">
+    <div class="section-head">
+      <p class="label kicker">Why we're doing this</p>
+      <p class="statement">Our insecurities should not be someone else's <em>business model.</em></p>
     </div>
+    {% include picture.html img="press" %}
   </div>
 </section>
 
-<!-- 6. Instagram -->
-<section class="insta" id="instagram">
-  <div class="container insta-grid">
+<!-- What we stand for -->
+<section class="section" id="why">
+  <div class="container split split-art-left" id="principles">
+    {% include picture.html img="claims" %}
     <div>
-      <h2>The movement is happening <em>on Instagram.</em></h2>
-      <p class="insta-copy">Follow {{ site.instagram_handle }} on Instagram for actions, stories and updates.</p>
-      <a href="{{ site.instagram }}" class="btn btn-ink" target="_blank" rel="noopener">Follow {{ site.instagram_handle }}</a>
+      <div class="section-head">
+        <p class="label kicker">What we stand for</p>
+        <h2>You shouldn't have to be beautiful <em>to be valued.</em></h2>
+      </div>
+      <ul class="principles">
+        <li><span class="title">Reject the standard.</span> Nobody needs fixing to be worthy.</li>
+        <li><span class="title">Act together.</span> Simple actions anyone can join, done by enough of us to matter.</li>
+        <li><span class="title">Spend on purpose.</span> Our money is our loudest vote.</li>
+        <li><span class="title">You first. The rest is extra.</span> We love a good lipstick. Buy what you love, use it up, and skip the one-click buys that promise to fix how you feel.</li>
+        <li><span class="title">Challenge systems, not people.</span> We go after the pressure, never someone's personal choices.</li>
+        <li><span class="title">Everyone's in.</span> Insecurity is sold to every gender, age and identity.</li>
+      </ul>
+      <p class="closing">We don't shame individual choices. We come together in practical ways, starting with how we spend our money, to send the beauty industry one clear message: <em>we're tired of it.</em></p>
     </div>
-    <a class="insta-art" href="{{ site.instagram }}" target="_blank" rel="noopener" aria-label="Follow {{ site.instagram_handle }} on Instagram">
-      {% include broadside.html img="walk" size="sm" %}
-    </a>
+  </div>
+</section>
+
+<!-- Instagram -->
+<section class="section tone-sand" id="instagram">
+  <div class="container split split-art">
+    <div class="section-head">
+      <p class="label kicker">Follow along</p>
+      <h2>The movement is happening <em>on Instagram.</em></h2>
+      <p class="lead">Follow {{ site.instagram_handle }} for actions, stories and updates.</p>
+      <div class="actions"><a href="{{ site.instagram }}" class="btn btn-ink" target="_blank" rel="noopener">Follow {{ site.instagram_handle }}</a></div>
+    </div>
+    <a class="frame-link" href="{{ site.instagram }}" target="_blank" rel="noopener" aria-label="Follow {{ site.instagram_handle }} on Instagram">{% include picture.html img="board" %}</a>
   </div>
 </section>

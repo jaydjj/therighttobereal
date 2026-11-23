@@ -1,10 +1,10 @@
 <footer class="site-footer">
   <div class="container foot">
-    <p class="signoff">Have a real day.</p>
+    <p class="signoff">Have a real <em>day.</em></p>
     <nav class="foot-links" aria-label="Footer">
       <a href="{{ site.instagram }}" target="_blank" rel="noopener">Instagram</a>
       <a href="{{ '/#calendar' | relative_url }}">Calendar</a>
+      <span>&copy; <span id="year">{{ site.time | date: '%Y' }}</span> The Right to Be Real</span>
     </nav>
-    <p class="foot-copy">&copy; <span id="year">{{ site.time | date: '%Y' }}</span> The Right to Be Real</p>
   </div>
 </footer>
