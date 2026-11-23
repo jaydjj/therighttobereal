@@ -12,7 +12,7 @@ description: A social movement challenging the beauty pressure we're sold. Follo
       <h1>The pressure is everywhere. <em>So is our power to change it.</em></h1>
       <p class="hero-line">We’re challenging the beauty pressure that profits from self-doubt. Join the Beauty Blackout on March 8, and follow along as the movement grows.</p>
       <div class="hero-actions">
-        <a href="{{ blackout.url | relative_url }}" class="btn btn-red btn-lg">Join the Beauty Blackout · March 8</a>
+        <a href="#blackout" class="btn btn-red btn-lg">Join the Beauty Blackout · March 8</a>
         <a href="{{ site.instagram }}" class="link-ig" target="_blank" rel="noopener">Follow the movement on Instagram <span aria-hidden="true">→</span></a>
       </div>
     </div>
@@ -22,7 +22,30 @@ description: A social movement challenging the beauty pressure we're sold. Follo
   </div>
 </section>
 
-<!-- 2. Why we're doing this -->
+<!-- 2. The Beauty Blackout: the main event, sign-up first -->
+<section class="bb" id="blackout">
+  <div class="container">
+    <div class="bb-top">
+      <div class="bb-head">
+        <p class="kicker kicker-red">Our first major event · {{ blackout.when }}</p>
+        <h2>{{ blackout.title_html }}</h2>
+        <p class="bb-intro">{{ blackout.intro }}</p>
+        <dl class="facts">
+          {%- for f in blackout.facts %}<div><dt>{{ f.label }}</dt><dd>{{ f.value }}</dd></div>{% endfor %}
+        </dl>
+      </div>
+      <div class="join-card" id="join-section">
+        <h3>Count me <em>in.</em></h3>
+        {% include join-form.html %}
+      </div>
+    </div>
+    <div class="bb-agenda">
+      {% include agenda.html items=blackout.agenda title=blackout.agenda_title heading="h3" %}
+    </div>
+  </div>
+</section>
+
+<!-- 3. Why we're doing this -->
 <section class="argument" id="mission">
   <div class="container argument-grid">
     <div>
@@ -45,23 +68,6 @@ description: A social movement challenging the beauty pressure we're sold. Follo
         <li><strong>Challenge systems, not people.</strong> We go after the pressure, never someone's personal choices.</li>
         <li><strong>Everyone's in.</strong> Insecurity is sold to every gender, age and identity.</li>
       </ul>
-    </div>
-  </div>
-</section>
-
-<!-- 3. The Beauty Blackout: the first major event -->
-<section class="action" id="blackout">
-  <div class="container action-grid">
-    <div>
-      <p class="kicker kicker-red">Our first major event · {{ blackout.when }}</p>
-      <h2>The Beauty <em>Blackout.</em></h2>
-      <p class="action-copy">{{ blackout.summary }}</p>
-      <div class="actions">
-        <a href="{{ blackout.url | relative_url }}" class="btn btn-red btn-lg">Join the Beauty Blackout</a>
-      </div>
-    </div>
-    <div class="action-art">
-      {% include broadside.html img="press" size="md" %}
     </div>
   </div>
 </section>

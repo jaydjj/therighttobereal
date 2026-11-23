@@ -1,0 +1,15 @@
+{%- comment -%} Timeline list. include.items = agenda array, include.title, include.heading = h2|h3 {%- endcomment -%}
+{%- assign tag = include.heading | default: "h2" -%}
+<{{ tag }} id="agenda-title" class="agenda-title">{{ include.title | default: "Timeline" }}</{{ tag }}>
+<ol class="agenda">
+  {%- for item in include.items %}
+  <li id="{{ item.id | default: item.title | slugify }}"{% if item.highlight %} class="is-key"{% endif %}>
+    <span class="a-date">{{ item.date }}</span>
+    <div class="a-body">
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.text }}</p>
+      {%- if item.link %}<a class="more" href="{{ item.link | relative_url }}">Explore campaign <span aria-hidden="true">→</span></a>{% endif %}
+    </div>
+  </li>
+  {%- endfor %}
+</ol>

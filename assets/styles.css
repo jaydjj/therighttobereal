@@ -458,3 +458,20 @@ body { background-color: var(--paper); background-image: url("data:image/svg+xml
   .hero-copy { gap: 16px; }
   .hero-actions { margin-top: 12px; }
 }
+
+/* Homepage: the Beauty Blackout, sign-up first */
+.bb { background: var(--paper-2); padding-block: clamp(56px, 8vw, 104px); border-bottom: 1px solid var(--ink); scroll-margin-top: 0; }
+.bb-top { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: start; }
+.bb-head { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
+.bb-head .kicker { margin: 0; }
+.bb-head h2 { font-size: clamp(2.4rem, 5.4vw, 4.2rem); }
+.bb-intro { font-size: 1.1rem; color: var(--ink-2); max-width: 46ch; }
+.bb .facts { margin-top: 8px; }
+.join-card { background: var(--brick); color: var(--paper-hi); padding: clamp(24px, 4vw, 40px); box-shadow: 7px 7px 0 var(--ink); }
+.join-card h3 { font: 400 clamp(2rem, 4vw, 2.8rem)/1 var(--serif); }
+.join-card .join { margin-top: 18px; }
+.bb-agenda { margin-top: clamp(48px, 7vw, 80px); }
+.agenda-title { font: 400 clamp(1.6rem, 3vw, 2.2rem)/1.1 var(--serif); margin-bottom: 20px; }
+@media (max-width: 860px) { .bb-top { grid-template-columns: minmax(0, 1fr); } }
+.bb .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 460px; }
+.c-join + .c-agenda { padding-top: clamp(48px, 7vw, 80px); }

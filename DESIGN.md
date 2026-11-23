@@ -137,7 +137,7 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 
 **How-to-join line.** One shared line on every campaign page pointing to Instagram. Don't repeat it in page text.
 
-**Sign-up form.** On the brick band: email, "I'm in for" (March 8 / the whole month / both), an **unticked** consent box (required by Canada's anti-spam law), and an ink button. Not yet connected to Kit.
+**Sign-up form.** On a brick card or band, placed at the top of the Blackout section (before the timeline): email, "I'm in for" (March 8 / the whole month / both), an **unticked** consent box (required by Canada's anti-spam law), and an ink button. Not yet connected to Kit.
 
 **The Receipt.** Monospace receipt with crossed-out items, for money and time reclaimed (Keep the Change).
 
@@ -147,7 +147,7 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 
 - **Mobile first.** Check every change at iPhone width and on desktop. On phones, sections stack and the main button comes before any picture.
 - **Breathing room.** Generous space between sections and between headline, copy and buttons. If a section feels crowded, cut words before shrinking space.
-- **Homepage:** hero (headline, two short lines, Blackout button, Instagram link, picture) → why we're doing this (big statement, short paragraph, principles) → the Beauty Blackout (dark section) → Instagram. Keep it short; details live on campaign pages.
+- **Homepage:** hero (headline, one short paragraph, Blackout button, Instagram link, picture) → **the Beauty Blackout** (headline, intro and key facts beside the "Count me in" sign-up card, then the full timeline) → why we're doing this (big statement, short paragraph, principles) → Instagram. The Blackout is the site's main purpose; the sign-up sits at the top of its section, never at the bottom.
 - **Campaigns page** (`/campaigns/`): Women's Month feature, the three tracks as cards, then the year calendar (dates and titles only).
 - **Campaign pages** (`/campaigns/<name>/`): back link, date, headline, intro, key facts, timeline, sign-up form where relevant, the how-to-join line, related campaigns. Each keeps the full detail for that campaign, said once.
 

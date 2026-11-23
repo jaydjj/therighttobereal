@@ -28,7 +28,8 @@ Key points:
 
 Home → Campaigns (`/campaigns/`) → one page per campaign (`/campaigns/<name>/`).
 
-- `index.html`: homepage, kept short: hero (Blackout button first, Instagram second), why we're doing this (with the principles), the Beauty Blackout, Instagram. The site is Instagram-led; the Blackout stays the most prominent action.
+- `index.html`: homepage. The Beauty Blackout is the main purpose: hero (Blackout button first, Instagram second) → the Beauty Blackout (sign-up form at the top, beside the details, then the timeline) → why we're doing this (with the principles) → Instagram. The hero and header buttons jump to `#blackout`.
+- `_includes/agenda.html`: the timeline, shared by the homepage and campaign pages
 - `campaigns/index.html`: campaign overview: the three tracks and the full calendar
 - `_campaigns/*.md`: one file per campaign. Front matter holds the title, pillar, dates, summary, facts and the agenda; the body holds the longer sections. Edit these to change campaign content.
 - `_data/pillars.yml`: the three pillars (The Protest, The Reclamation, The People)

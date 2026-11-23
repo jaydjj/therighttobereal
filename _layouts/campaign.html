@@ -33,24 +33,6 @@ layout: default
   </div>
   {%- endif %}
 
-  {%- if page.agenda %}
-  <section class="container c-agenda" aria-labelledby="agenda-title">
-    <h2 id="agenda-title">{{ page.agenda_title | default: "Timeline" }}</h2>
-    <ol class="agenda">
-      {%- for item in page.agenda %}
-      <li id="{{ item.id | default: item.title | slugify }}"{% if item.highlight %} class="is-key"{% endif %}>
-        <span class="a-date">{{ item.date }}</span>
-        <div class="a-body">
-          <h3>{{ item.title }}</h3>
-          <p>{{ item.text }}</p>
-          {%- if item.link %}<a class="more" href="{{ item.link | relative_url }}">Explore campaign <span aria-hidden="true">→</span></a>{% endif %}
-        </div>
-      </li>
-      {%- endfor %}
-    </ol>
-  </section>
-  {%- endif %}
-
   {%- if page.form %}
   <section class="c-join" id="join-section">
     <div class="container narrow">
@@ -59,6 +41,13 @@ layout: default
     </div>
   </section>
   {%- endif %}
+
+  {%- if page.agenda %}
+  <section class="container c-agenda" aria-labelledby="agenda-title">
+    {% include agenda.html items=page.agenda title=page.agenda_title %}
+  </section>
+  {%- endif %}
+
 
   <section class="container c-how">
     <p><strong>How to join:</strong> details are on <a href="{{ site.instagram }}" target="_blank" rel="noopener">Instagram ({{ site.instagram_handle }})</a>.</p>
