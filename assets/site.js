@@ -21,7 +21,8 @@ function rtbrSend(endpoint, params) {
 }
 
 // Pledge: the live count ("74/1,000 pledges": pledge_start plus the Sheet's pledges), the choice, then Pledge.
-// Pledging adds one straight away and shows a temporary banner pointing to the email sign-up in the footer.
+// The form always stays. Each pledge adds one straight away (pledging again counts again) and shows a
+// temporary line pointing to the email sign-up in the footer.
 (function () {
   var card = document.getElementById('join');
   var form = document.getElementById('step-pledge');
@@ -32,8 +33,7 @@ function rtbrSend(endpoint, params) {
   var num = document.getElementById('count-number');
   var fill = document.getElementById('count-fill');
   var note = document.getElementById('join-note');
-  var title = document.getElementById('join-title');
-  var banner = document.getElementById('pledge-banner');
+  var doneLine = document.getElementById('join-done');
   var shown = base, live = null, visible = false, timer;
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.getElementById('count-goal').textContent = goal.toLocaleString();
@@ -52,37 +52,34 @@ function rtbrSend(endpoint, params) {
     }
     requestAnimationFrame(step);
   }
-  function setCount(n) { if (typeof n !== 'number') return; n += base; if (n >= (live || 0)) { live = n; render(); } }
-  function done() { form.hidden = true; title.hidden = false; }
-  function hideBanner() { banner.hidden = true; clearTimeout(timer); }
+  function setLive(n) { if (n >= (live || 0)) { live = n; render(); } }
+  function hideDone() { doneLine.classList.add('fading'); timer = setTimeout(function () { doneLine.hidden = true; doneLine.classList.remove('fading'); }, 600); }
 
   var counter = document.getElementById('pledge-count');
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { io.disconnect(); visible = true; render(); } }, { threshold: .4 });
     io.observe(counter);
   } else visible = true;
-  if (endpoint) fetch(endpoint).then(function (r) { return r.json(); }).then(function (d) { setCount(d.count); }).catch(function () {});
-  else setCount(0);
-  if (endpoint && rtbrStore('rtbr-pledged')) done();
+  if (endpoint) fetch(endpoint).then(function (r) { return r.json(); }).then(function (d) { if (typeof d.count === 'number') setLive(base + d.count); }).catch(function () {});
+  else setLive(base);
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     var choice = form.querySelector('input[name="poll"]:checked');
     if (!choice) { note.textContent = 'Choose March 8 or the whole month, then pledge.'; return; }
     note.textContent = endpoint ? '' : 'Thanks. Pledges open January 2027, so nothing is saved yet.';
-    var first = !rtbrStore('rtbr-pledged');
-    rtbrStore('rtbr-pledged', '1');
-    rtbrStore('rtbr-poll', choice.value);
-    done();
-    title.focus({ preventScroll: true });
-    if (first && live !== null) setCount(live - base + 1);
-    rtbrSend(endpoint, { action: 'poll', choice: choice.value }).then(function (d) { if (d) setCount(d.count); });
-    banner.hidden = false;
-    timer = setTimeout(hideBanner, 20000);
+    setLive((live === null ? base : live) + 1);
+    // Each pledge is its own row in the Sheet, so pledging again counts again.
+    var id = window.crypto && crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random().toString(16).slice(2);
+    if (endpoint) fetch(endpoint, { method: 'POST', body: new URLSearchParams({ action: 'poll', choice: choice.value, id: id }) })
+      .then(function (r) { return r.json(); }).then(function (d) { if (d && typeof d.count === 'number') setLive(base + d.count); }).catch(function () {});
+    clearTimeout(timer);
+    doneLine.classList.remove('fading');
+    doneLine.hidden = false;
+    timer = setTimeout(hideDone, 12000);
   });
-  document.getElementById('banner-close').addEventListener('click', hideBanner);
-  document.getElementById('banner-link').addEventListener('click', function () {
-    hideBanner();
+  document.getElementById('done-link').addEventListener('click', function () {
+    clearTimeout(timer); hideDone();
     setTimeout(function () { document.getElementById('join-email-input').focus({ preventScroll: true }); }, 400);
   });
 })();

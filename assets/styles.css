@@ -153,10 +153,6 @@ h2 { font-size: var(--t-h2); }
 .count-bar { height: 14px; border: 2px solid var(--paper); padding: 2px; }
 .count-bar span { display: block; height: 100%; width: 0; min-width: 4px; background: var(--brick-on-ink); transition: width 1.2s cubic-bezier(.2, .7, .2, 1); }
 .join-step { display: grid; gap: 24px; justify-items: start; }
-.join-step[hidden], .join-title[hidden] { display: none; }
-.join-title { font-family: var(--serif); font-size: clamp(2rem, 4vw, 2.6rem); line-height: 1.1; }
-.join-title em { color: var(--brick-on-ink); }
-.join-title:focus { outline: none; }
 .join-note { font-size: .92rem; color: var(--muted-on-ink); }
 .join-note:empty { display: none; }
 .poll { border: 0; margin: 0; padding: 0; display: grid; gap: 14px; }
@@ -167,16 +163,15 @@ h2 { font-size: var(--t-h2); }
 .tone-ink .btn-lg:hover { box-shadow: 8px 8px 0 var(--sheet); }
 @media (max-width: 560px) { .btn-pledge { width: 100%; } }
 
-/* Temporary banner after pledging: points to the email sign-up in the footer */
-.banner { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); z-index: 60; width: min(560px, calc(100% - 32px)); display: flex; align-items: center; gap: 16px; padding: 16px 18px 16px 22px; background: var(--sheet); color: var(--ink); border: 2px solid var(--ink); box-shadow: 6px 6px 0 var(--brick); animation: banner-in .35s ease-out; }
-.banner[hidden] { display: none; }
-.banner p { flex: 1; }
-.banner-title { font-family: var(--serif); font-size: 1.3rem; margin-right: 8px; }
-.banner-title em { color: var(--brick); }
-.banner a { color: var(--brick); font-weight: 400; text-underline-offset: 3px; }
-.banner-close { border: 0; background: none; font: 400 1.6rem/1 var(--sans); color: var(--ink); cursor: pointer; padding: 4px 8px; }
-@keyframes banner-in { from { transform: translate(-50%, 20px); opacity: 0; } }
-@media (prefers-reduced-motion: reduce) { .banner { animation: none; } }
+/* Temporary line after each pledge: points to the email sign-up in the footer, then fades */
+.join-done { color: var(--muted-on-ink); transition: opacity .6s; animation: done-in .35s ease-out; }
+.join-done[hidden] { display: none; }
+.join-done.fading { opacity: 0; }
+.join-done-title { font-family: var(--serif); font-size: 1.5rem; color: var(--paper); margin-right: 8px; }
+.join-done-title em { color: var(--brick-on-ink); }
+.join-done a { color: var(--paper); text-underline-offset: 3px; }
+@keyframes done-in { from { opacity: 0; transform: translateY(6px); } }
+@media (prefers-reduced-motion: reduce) { .join-done { animation: none; transition: none; } }
 @media (max-width: 480px) { .poll { grid-template-columns: minmax(0, 1fr); } }
 
 /* ---------- Compact rows (Women's Month, Also this year) ---------- */

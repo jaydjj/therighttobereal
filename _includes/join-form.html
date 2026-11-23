@@ -1,6 +1,7 @@
 {%- comment -%}
   Pledge: the live count toward the goal, the choice (March 8 or the whole month), then Pledge.
-  After pledging, a temporary banner points to the email sign-up in the footer (_includes/footer.html).
+  After each pledge, a temporary line points to the email sign-up in the footer (_includes/footer.html).
+  The form stays: anyone can pledge again (the count is notional).
   Pledges and choices go to the Google Sheet web app in pledge_endpoint (tools/pledge-sheet.gs).
 {%- endcomment -%}
 <div class="pledge" id="join" data-endpoint="{{ site.pledge_endpoint }}" data-goal="{{ site.pledge_goal }}" data-start="{{ site.pledge_start }}">
@@ -18,11 +19,7 @@
     <button type="submit" class="btn btn-red btn-lg btn-pledge" id="pledge-btn">Pledge</button>
   </form>
 
-  <p class="join-title" id="join-title" tabindex="-1" hidden>You're <em>in.</em></p>
   <p class="join-note" id="join-note" role="status">{% if site.pledge_endpoint == "" %}Pledges open January 2027, so nothing is saved yet.{% endif %}</p>
+  <p class="join-done" id="join-done" role="status" hidden><span class="join-done-title">You're <em>in.</em></span> <a href="#newsletter" id="done-link">Sign up for emails and reminders</a></p>
 </div>
 
-<div class="banner" id="pledge-banner" role="status" hidden>
-  <p><span class="banner-title">You're <em>in.</em></span> <a href="#newsletter" id="banner-link">Sign up for emails and reminders</a></p>
-  <button type="button" class="banner-close" id="banner-close" aria-label="Close">×</button>
-</div>
