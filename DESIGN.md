@@ -125,7 +125,7 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 | Text link | Small capitals, brick underline | Lesser actions, e.g. "Follow the movement on Instagram →" |
 | Outline | Ink border | Secondary navigation, e.g. on the 404 page |
 
-**Header.** Logo left; "Calendar", "Follow on Instagram" and a small red "Join March 8" button (jumps to the Blackout) right. On phones the Instagram link hides and the red button stays.
+**Header.** Fixed to the top while scrolling. Logo left; "Calendar", "Follow on Instagram" and a small red "Join March 8" button (jumps to the Blackout) right. On phones the Instagram link hides and the red button stays.
 
 **Labels (kickers).** Small spaced capitals above headlines: muted on paper, gold tint on ink, brick for dates.
 

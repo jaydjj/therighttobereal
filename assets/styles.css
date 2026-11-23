@@ -601,3 +601,8 @@ body { background-color: var(--paper); background-image: url("data:image/svg+xml
 .argument .principles-block { margin-top: 0; border-top: 0; padding-top: 0; }
 .argument-close { margin-top: clamp(40px, 6vw, 64px); padding-top: 28px; border-top: 1px solid var(--ink); }
 .argument-close { max-width: none; }
+
+/* Fixed navigation: header stays at the top while scrolling */
+.site-header { position: sticky; top: 0; z-index: 50; }
+:target, [id] { scroll-margin-top: 94px; }
+@media (max-width: 640px) { :target, [id] { scroll-margin-top: 84px; } }
