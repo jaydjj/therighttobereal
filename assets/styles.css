@@ -590,3 +590,9 @@ body { background-color: var(--paper); background-image: url("data:image/svg+xml
 @media (max-width: 760px) { .also-list { columns: 1; } }
 @media (max-width: 560px) { .also-list li { grid-template-columns: 5.2rem minmax(0, 1fr); } }
 @media (min-width: 561px) { .also-list li { grid-template-columns: 7.5rem minmax(0, 1fr); } }
+/* Hero headline: wider measure (two lines on desktop) */
+.hero-copy { max-width: 1040px; }
+.hero h1 { max-width: 22ch; }
+.hero h1 { max-width: none; }
+.h1-line { display: block; }
+@media (min-width: 821px) { .hero h1 { font-size: clamp(2.6rem, 5vw, 4.6rem); } .h1-line { white-space: nowrap; } }
