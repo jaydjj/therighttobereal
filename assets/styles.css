@@ -596,3 +596,8 @@ body { background-color: var(--paper); background-image: url("data:image/svg+xml
 .hero h1 { max-width: none; }
 .h1-line { display: block; }
 @media (min-width: 821px) { .hero h1 { font-size: clamp(2.6rem, 5vw, 4.6rem); } .h1-line { white-space: nowrap; } }
+
+/* Closing line under the principles */
+.argument .principles-block { margin-top: 0; border-top: 0; padding-top: 0; }
+.argument-close { margin-top: clamp(40px, 6vw, 64px); padding-top: 28px; border-top: 1px solid var(--ink); }
+.argument-close { max-width: none; }
