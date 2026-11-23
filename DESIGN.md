@@ -125,7 +125,7 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 | Text link | Small capitals, brick underline | Lesser actions, e.g. "Follow the movement on Instagram →" |
 | Outline | Ink border | Secondary navigation, e.g. on the 404 page |
 
-**Header.** Fixed to the top while scrolling. Logo left; "Calendar", "Follow on Instagram" and a small red "Join March 8" button (jumps to the Blackout) right. On phones the Instagram link hides and the red button stays.
+**Header.** Fixed to the top while scrolling. Logo left; "Calendar", "Instagram" and a small red "Join March 8" button (jumps to the Blackout) right. On phones the Instagram link hides and the red button stays.
 
 **Labels (kickers).** Small spaced capitals above headlines: muted on paper, gold tint on ink, brick for dates.
 
@@ -133,7 +133,9 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 
 **How-to-join line.** One line under the calendar pointing to Instagram. Don't repeat it elsewhere.
 
-**Pledge.** Straight on the ink, no boxes. The live count over the goal in big serif ("72/100": `pledge_start` plus the pledges in the Sheet, over `pledge_goal`, both in `_config.yml`), counting up when it scrolls into view, with a thin bar under it. Then one line and the red **"I pledge to join the Blackout"** button; tapping it adds one to the count straight away. After pledging: "You're *in.*", the **optional** email reminders box, and the quick poll ("Just March 8" / "The whole month (Mar 8 – Apr 8)") stacked as plain radio buttons. No tick box: typing an email and pressing "Send me reminders" is the opt-in, and the wording beside it says what they'll get and that they can unsubscribe (Canada's anti-spam law). Pledges, poll and opted-in emails go to a Google Sheet; emails move to Kit later.
+**Pledge.** Straight on the ink, no boxes. The live count in big serif, "74/1,000 pledges" (`pledge_start` plus the pledges in the Sheet, over `pledge_goal`, both in `_config.yml`), counting up when it scrolls into view, with an outlined bar under it. Then the choice as two stacked radio buttons ("March 8: I won't buy anything that day" / "The whole month: March 8 – April 8") and the red **Pledge** button. Pledging adds one to the count straight away, swaps the form for "You're *in.*", and shows a temporary banner at the bottom of the screen ("You're *in.* Sign up for emails and reminders") that jumps to the footer sign-up and closes itself after 20 seconds.
+
+**Email sign-up.** Permanent, in the footer beside "Have a real *day.*" (`#newsletter`, on every page). No tick box: typing an email and pressing "Sign up" is the opt-in, and the wording beside it says what they'll get and that they can unsubscribe (Canada's anti-spam law). Pledges, choices and opted-in emails go to a Google Sheet; emails move to Kit later.
 
 **The Receipt.** Monospace receipt with crossed-out items, for money and time reclaimed (Keep the Change).
 
@@ -156,7 +158,7 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 6. **Manifesto band** (brick): "Our insecurities should not be someone else's *business model.*" with the printing-press illustration.
 7. **What we stand for** (paper): text only. "You shouldn't have to be beautiful *to be valued.*", the principles in two columns and the closing line.
 8. **Instagram** (sand): with the notice-board illustration.
-9. **Footer** (ink): "Have a real *day.*", links.
+9. **Footer** (ink): "Have a real *day.*" beside the email sign-up, then the copyright. No repeated links: Calendar and Instagram are in the fixed header.
 
 ### The calendar
 - Tags: Protest (brick), Reclaim (dark gold `#7a5410`), Unite (olive `#4f5a1f`). Outlined chips in label style, right beside the name. Recurring: dashed ink chip with ↻.

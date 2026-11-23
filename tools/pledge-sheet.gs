@@ -7,7 +7,7 @@
  *
  * "Pledges" tab: one row per pledge with a random device id, the time and the poll answer
  * (day or month). No personal data.
- * "Emails" tab: only people who typed an email and pressed "Send me reminders" (the opt-in). Keeps the time and
+ * "Emails" tab: only people who typed an email and pressed "Sign up" in the site footer (the opt-in). Keeps the time and
  * the exact consent wording (proof of consent under Canada's anti-spam law). Import this tab
  * into Kit when you're ready to send.
  *
@@ -15,7 +15,7 @@
  * → Deploy. That keeps the same web app URL.
  */
 const EMAIL_SHEET = 'Emails';
-const CONSENT_TEXT = 'Opted in by entering their email and pressing "Send me reminders" under: Add your email to get Beauty Blackout reminders from The Right to Be Real. Unsubscribe any time.';
+const CONSENT_TEXT = 'Opted in by entering their email and pressing "Sign up" under: Emails and reminders. Beauty Blackout reminders and news from The Right to Be Real. Unsubscribe any time.';
 const SHEET_NAME = 'Pledges';
 
 function sheet_() {

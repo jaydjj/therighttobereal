@@ -1,10 +1,19 @@
-<footer class="site-footer">
+{%- comment -%}
+  The permanent email sign-up (#newsletter). Typing an email and pressing "Sign up" is the opt-in;
+  the Sheet saves the time and the wording (tools/pledge-sheet.gs, CONSENT_TEXT).
+{%- endcomment -%}
+<footer class="site-footer" id="newsletter">
   <div class="container foot">
     <p class="signoff">Have a real <em>day.</em></p>
-    <nav class="foot-links" aria-label="Footer">
-      <a href="{{ site.instagram }}" target="_blank" rel="noopener">Instagram</a>
-      <a href="{{ '/#calendar' | relative_url }}">Calendar</a>
-      <span>&copy; <span id="year">{{ site.time | date: '%Y' }}</span> The Right to Be Real</span>
-    </nav>
+    <form class="signup" id="join-email" data-endpoint="{{ site.pledge_endpoint }}" novalidate>
+      <label class="label" for="join-email-input">Emails and reminders</label>
+      <p class="signup-hint">Beauty Blackout reminders and news from The Right to Be Real. Unsubscribe any time.</p>
+      <div class="email-row">
+        <input id="join-email-input" name="email" type="email" placeholder="Your email" autocomplete="email">
+        <button type="submit" class="btn btn-red">Sign up</button>
+      </div>
+      <p class="signup-note" id="email-note" role="status"></p>
+    </form>
   </div>
+  <p class="container copyright">&copy; {{ site.time | date: '%Y' }} The Right to Be Real</p>
 </footer>

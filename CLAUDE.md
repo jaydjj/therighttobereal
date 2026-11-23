@@ -29,14 +29,14 @@ Key points:
 One page. Everything lives on the homepage (`index.html`). Every section follows the same pattern (`section.section` → `.container` → `.section-head` → content); sections are separated by spacing and background tone, never lines. Only four font styles: serif, serif italic, sans, label (see `DESIGN.md`).
 
 1. Hero: centred headline, one paragraph, the Blackout button. No image.
-2. The Beauty Blackout (`#blackout`, black): heading and a small facts strip, the pledge (live count "72/100" + pledge button, then email reminders and poll), claims-street illustration to the right. The main purpose of the site.
+2. The Beauty Blackout (`#blackout`, black): heading and a small facts strip, the pledge (live count "74/1,000 pledges", the March 8 / whole-month choice, Pledge; then a temporary banner pointing to the footer sign-up), claims-street illustration to the right. The main purpose of the site.
 3. Women's Month (`#march`): compact list. 4. One action a week (`#monthly`): four cards. 5. More to come (`#also`): compact list.
 6. Manifesto band (brick, press illustration). 7. What we stand for (`#why`, text only, principles). 8. Instagram (notice-board illustration).
 
 - `_data/calendar.yml`: **all event content.** The Blackout details, the March events (`march`), the monthly rhythm (`monthly`, weeks 1–4) and other campaigns (`also`, shown without descriptions). Edit this file to change dates, names or descriptions. Event names are short commands; descriptions are one or two lines in "we", present tense; dates like "Mar 8" or "Mar 1–7".
 - `_includes/compact.html` (date/name/tag rows), `_includes/cards.html` (event cards), `_includes/picture.html` (framed illustration), `_includes/join-form.html` (sign-up form).
 - `campaigns/`: redirect stubs only. The old campaign pages now point to the matching spot on the homepage. Don't add pages here.
-- `_layouts/default.html`, `_layouts/redirect.html`, `_includes/header.html`, `footer.html`
+- `_layouts/default.html`, `_layouts/redirect.html`, `_includes/header.html`, `footer.html` (sign-off and the permanent email sign-up, `#newsletter`)
 - `assets/styles.css`, `assets/site.js` (old one-page anchors redirect to their new spots)
 - `assets/logo.svg`: logo; `assets/favicon.png`, `favicon.ico`, `assets/apple-touch-icon.png`: icons
 - `assets/art/`: illustrations (alt text in `_data/art.yml`)
@@ -52,4 +52,4 @@ One page. Everything lives on the homepage (`index.html`). Every section follows
 
 ## Not yet connected
 
-The pledge (`_includes/join-form.html`, logic in `assets/site.js`) sends pledges and the one-day-or-month poll to a Google Sheet web app once `pledge_endpoint` is set in `_config.yml` (script: `tools/pledge-sheet.gs`; no personal data, one row per device). The public count always shows, as count/goal: `pledge_start` (72) plus the pledges in the Sheet, over `pledge_goal` (100; raise it when reached). Optional emails are saved to the Sheet's "Emails" tab when someone types an email and presses "Send me reminders" (no tick box; the action is the opt-in, saved with the time and consent wording), to import into Kit later. Mailing must follow Canada's anti-spam law (CASL): opt-in by clear action (never pre-filled), a sender address in every email, and an unsubscribe link.
+The pledge (`_includes/join-form.html`, logic in `assets/site.js`) sends pledges and the one-day-or-month choice to a Google Sheet web app once `pledge_endpoint` is set in `_config.yml` (script: `tools/pledge-sheet.gs`; no personal data, one row per device). The public count always shows, as count/goal: `pledge_start` (72) plus the pledges in the Sheet, over `pledge_goal` (1,000). Optional emails, from the footer sign-up, are saved to the Sheet's "Emails" tab when someone types an email and presses "Sign up" (no tick box; the action is the opt-in, saved with the time and consent wording), to import into Kit later. Mailing must follow Canada's anti-spam law (CASL): opt-in by clear action (never pre-filled), a sender address in every email, and an unsubscribe link.

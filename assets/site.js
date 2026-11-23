@@ -6,30 +6,37 @@
   }
 })();
 
-// Pledge: the live count toward the goal ("72/100"), then a one-tap pledge that adds one straight away.
-// After pledging: optional email reminders and the poll. Pledges, poll answers and emails go to the Google Sheet
-// web app in data-endpoint (see tools/pledge-sheet.gs). Typing an email and pressing "Send me reminders" is the opt-in.
+function rtbrStore(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
+function rtbrId() {
+  var id = rtbrStore('rtbr-id');
+  if (!id) { id = (window.crypto && crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random().toString(16).slice(2)); rtbrStore('rtbr-id', id); }
+  return id;
+}
+// Posts to the Google Sheet web app (tools/pledge-sheet.gs). Resolves to the JSON reply, or null.
+function rtbrSend(endpoint, params) {
+  if (!endpoint) return Promise.resolve(null);
+  params.id = rtbrId();
+  return fetch(endpoint, { method: 'POST', body: new URLSearchParams(params) })
+    .then(function (r) { return r.json(); }).catch(function () { return null; });
+}
+
+// Pledge: the live count ("74/1,000 pledges": pledge_start plus the Sheet's pledges), the choice, then Pledge.
+// Pledging adds one straight away and shows a temporary banner pointing to the email sign-up in the footer.
 (function () {
   var card = document.getElementById('join');
-  var btn = document.getElementById('pledge-btn');
-  var more = document.getElementById('step-more');
-  var first = document.getElementById('step-pledge');
-  var note = document.getElementById('join-note');
-  if (!card || !btn || !more) return;
+  var form = document.getElementById('step-pledge');
+  if (!card || !form) return;
   var endpoint = card.getAttribute('data-endpoint') || '';
-  var goal = parseInt(card.getAttribute('data-goal'), 10) || 100;
+  var goal = parseInt(card.getAttribute('data-goal'), 10) || 1000;
   var base = parseInt(card.getAttribute('data-start'), 10) || 0;
   var num = document.getElementById('count-number');
   var fill = document.getElementById('count-fill');
-  var shown = base, live = null, visible = false;
+  var note = document.getElementById('join-note');
+  var title = document.getElementById('join-title');
+  var banner = document.getElementById('pledge-banner');
+  var shown = base, live = null, visible = false, timer;
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
-  function deviceId() {
-    var id = store('rtbr-id');
-    if (!id) { id = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random().toString(16).slice(2)); store('rtbr-id', id); }
-    return id;
-  }
+  document.getElementById('count-goal').textContent = goal.toLocaleString();
 
   // Counts up from what's on screen to the live number, once the counter is in view.
   function render() {
@@ -45,20 +52,9 @@
     }
     requestAnimationFrame(step);
   }
-  function setCount(n) { if (typeof n === 'number') n += base; if (typeof n === 'number' && n >= (live || 0)) { live = n; render(); } }
-  function send(params) {
-    if (!endpoint) return Promise.resolve(null);
-    params.id = deviceId();
-    return fetch(endpoint, { method: 'POST', body: new URLSearchParams(params) })
-      .then(function (r) { return r.json(); }).then(function (d) { if (d) setCount(d.count); return d; })
-      .catch(function () { return null; });
-  }
-  function pledged() {
-    first.hidden = true;
-    more.hidden = false;
-    var choice = store('rtbr-poll');
-    if (choice) { var r = card.querySelector('input[name="poll"][value="' + choice + '"]'); if (r) r.checked = true; }
-  }
+  function setCount(n) { if (typeof n !== 'number') return; n += base; if (n >= (live || 0)) { live = n; render(); } }
+  function done() { form.hidden = true; title.hidden = false; }
+  function hideBanner() { banner.hidden = true; clearTimeout(timer); }
 
   var counter = document.getElementById('pledge-count');
   if ('IntersectionObserver' in window) {
@@ -66,38 +62,53 @@
     io.observe(counter);
   } else visible = true;
   if (endpoint) fetch(endpoint).then(function (r) { return r.json(); }).then(function (d) { setCount(d.count); }).catch(function () {});
-  if (endpoint && store('rtbr-pledged')) pledged();
+  else setCount(0);
+  if (endpoint && rtbrStore('rtbr-pledged')) done();
 
-  btn.addEventListener('click', function () {
-    var already = store('rtbr-pledged');
-    pledged();
-    document.getElementById('join-title').focus();
-    if (!already) { store('rtbr-pledged', '1'); if (live !== null) setCount(live - base + 1); }
-    send({ action: 'pledge' });
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var choice = form.querySelector('input[name="poll"]:checked');
+    if (!choice) { note.textContent = 'Choose March 8 or the whole month, then pledge.'; return; }
+    note.textContent = endpoint ? '' : 'Thanks. Pledges open January 2027, so nothing is saved yet.';
+    var first = !rtbrStore('rtbr-pledged');
+    rtbrStore('rtbr-pledged', '1');
+    rtbrStore('rtbr-poll', choice.value);
+    done();
+    title.focus({ preventScroll: true });
+    if (first && live !== null) setCount(live - base + 1);
+    rtbrSend(endpoint, { action: 'poll', choice: choice.value }).then(function (d) { if (d) setCount(d.count); });
+    banner.hidden = false;
+    timer = setTimeout(hideBanner, 20000);
   });
-  card.querySelectorAll('input[name="poll"]').forEach(function (r) {
-    r.addEventListener('change', function () {
-      store('rtbr-poll', r.value);
-      if (endpoint) { send({ action: 'poll', choice: r.value }); note.textContent = 'Thanks for voting.'; }
-      else note.textContent = 'Thanks for voting. Pledges and the poll open January 2027, so nothing is saved yet.';
-    });
+  document.getElementById('banner-close').addEventListener('click', hideBanner);
+  document.getElementById('banner-link').addEventListener('click', function () {
+    hideBanner();
+    setTimeout(function () { document.getElementById('join-email-input').focus({ preventScroll: true }); }, 400);
   });
-  document.getElementById('join-email').addEventListener('submit', function (e) {
+})();
+
+// Email sign-up in the footer. Typing an email and pressing "Sign up" is the opt-in; the Sheet saves the time and wording.
+(function () {
+  var form = document.getElementById('join-email');
+  if (!form) return;
+  var endpoint = form.getAttribute('data-endpoint') || '';
+  var note = document.getElementById('email-note');
+  form.addEventListener('submit', function (e) {
     e.preventDefault();
     var input = document.getElementById('join-email-input');
     var email = input.value.trim();
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { note.textContent = 'Please enter a valid email address.'; input.focus(); return; }
-    if (!endpoint) { note.textContent = 'Thanks. Email reminders aren\'t switched on yet, so we haven\'t saved your address.'; return; }
-    var submit = this.querySelector('button[type="submit"]');
+    if (!endpoint) { note.textContent = 'Thanks. Email sign-up isn\'t switched on yet, so we haven\'t saved your address.'; return; }
+    var submit = form.querySelector('button[type="submit"]');
     if (submit.disabled) return;
     submit.disabled = true;
     submit.textContent = 'Sending…';
     note.textContent = 'Saving your email…';
-    send({ action: 'email', email: email, consent: 'yes' }).then(function (d) {
+    rtbrSend(endpoint, { action: 'email', email: email, consent: 'yes' }).then(function (d) {
       submit.disabled = false;
-      submit.textContent = 'Send me reminders';
+      submit.textContent = 'Sign up';
       if (d && d.ok) {
-        note.textContent = 'Thanks. We\'ll email you before March 8. Unsubscribe any time.';
+        note.textContent = 'Thanks. You\'re signed up. Unsubscribe any time.';
         input.value = '';
       } else {
         note.innerHTML = 'Sorry, that didn\'t go through. Please try again, or <a href="https://www.instagram.com/therighttobereal/" target="_blank" rel="noopener">message us on Instagram</a>.';

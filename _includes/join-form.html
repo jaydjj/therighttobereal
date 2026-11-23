@@ -1,36 +1,28 @@
 {%- comment -%}
-  Pledge: the live count toward the goal (pledge_goal), then a one-tap pledge. After pledging: the poll (one day
-  or the whole month) and optional email reminders (typing an email and pressing the button is the opt-in).
-  Pledges, poll answers and emails go to the Google Sheet web app in pledge_endpoint (tools/pledge-sheet.gs).
+  Pledge: the live count toward the goal, the choice (March 8 or the whole month), then Pledge.
+  After pledging, a temporary banner points to the email sign-up in the footer (_includes/footer.html).
+  Pledges and choices go to the Google Sheet web app in pledge_endpoint (tools/pledge-sheet.gs).
 {%- endcomment -%}
 <div class="pledge" id="join" data-endpoint="{{ site.pledge_endpoint }}" data-goal="{{ site.pledge_goal }}" data-start="{{ site.pledge_start }}">
   <div class="count" id="pledge-count" aria-live="polite">
-    <p class="label">Pledged so far</p>
-    <p class="count-number"><span id="count-number">{{ site.pledge_start }}</span><span class="count-goal">/{{ site.pledge_goal }}</span></p>
+    <p class="count-number"><span id="count-number">{{ site.pledge_start }}</span><span class="count-goal">/<span id="count-goal">{{ site.pledge_goal }}</span> pledges</span></p>
     <div class="count-bar"><span id="count-fill"></span></div>
   </div>
 
-  <div class="join-step" id="step-pledge">
-    <p>Pledge to buy no beauty products and book no cosmetic treatments on March 8.</p>
-    <button type="button" class="btn btn-red btn-lg btn-pledge" id="pledge-btn">I pledge to join the Blackout</button>
-  </div>
-
-  <div class="join-step" id="step-more" hidden>
-    <p class="join-title" id="join-title" tabindex="-1">You're <em>in.</em></p>
-    <form class="join-email" id="join-email" novalidate>
-      <label class="label" for="join-email-input">Want email reminders? (optional)</label>
-      <p class="join-hint">Add your email to get Beauty Blackout reminders from The Right to Be Real. Unsubscribe any time. Or skip it and follow <a href="{{ site.instagram }}" target="_blank" rel="noopener">{{ site.instagram_handle }}</a>; we'll post reminders on Instagram too.</p>
-      <div class="email-row">
-        <input id="join-email-input" name="email" type="email" placeholder="Your email" autocomplete="email">
-        <button type="submit" class="btn btn-red">Send me reminders</button>
-      </div>
-    </form>
+  <form class="join-step" id="step-pledge" novalidate>
     <fieldset class="poll">
-      <legend class="label">Quick poll: how far will you go?</legend>
-      <label class="poll-option"><input type="radio" name="poll" value="day"> <span>Just March 8</span></label>
-      <label class="poll-option"><input type="radio" name="poll" value="month"> <span>The whole month (Mar 8 – Apr 8)</span></label>
+      <legend class="visually-hidden">Choose your pledge</legend>
+      <label class="poll-option"><input type="radio" name="poll" value="day"> <span>March 8: I won't buy anything that day</span></label>
+      <label class="poll-option"><input type="radio" name="poll" value="month"> <span>The whole month: March 8 – April 8</span></label>
     </fieldset>
-  </div>
+    <button type="submit" class="btn btn-red btn-lg btn-pledge" id="pledge-btn">Pledge</button>
+  </form>
 
+  <p class="join-title" id="join-title" tabindex="-1" hidden>You're <em>in.</em></p>
   <p class="join-note" id="join-note" role="status">{% if site.pledge_endpoint == "" %}Pledges open January 2027, so nothing is saved yet.{% endif %}</p>
+</div>
+
+<div class="banner" id="pledge-banner" role="status" hidden>
+  <p><span class="banner-title">You're <em>in.</em></span> <a href="#newsletter" id="banner-link">Sign up for emails and reminders</a></p>
+  <button type="button" class="banner-close" id="banner-close" aria-label="Close">×</button>
 </div>
