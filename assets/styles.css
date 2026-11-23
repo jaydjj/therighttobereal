@@ -525,3 +525,11 @@ body { background-color: var(--paper); background-image: url("data:image/svg+xml
 .ev-card:target { outline: 3px solid var(--brick); outline-offset: 3px; }
 @media (max-width: 900px) { .cal-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .cal-cards { grid-template-columns: minmax(0, 1fr); } }
+
+/* Manifesto band: full-width brick, cream type, no buttons */
+.band { background: var(--brick); color: var(--paper-hi); padding-block: clamp(72px, 11vw, 140px); }
+.band-kicker { color: var(--paper-hi); opacity: 1; }
+.band-statement { font: 400 clamp(2.6rem, 7.5vw, 6.2rem)/.98 var(--serif); letter-spacing: -.02em; max-width: 15ch; text-wrap: balance; }
+.band-statement em { color: var(--paper-hi); white-space: nowrap; }
+.argument-copy-solo { font: 400 clamp(1.2rem, 2.2vw, 1.55rem)/1.45 var(--serif); color: var(--ink-2); max-width: 46ch; }
+.argument-copy-solo strong { color: var(--ink); font-weight: 400; font-style: italic; }

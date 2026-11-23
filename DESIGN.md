@@ -141,7 +141,7 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 
 ## 6. Layout and pages
 
-- **One page.** Hero → the Beauty Blackout (details beside the "Count me in" card) → the calendar (Women's Month, then the whole year) → why we're doing this (statement, short paragraph, "You shouldn't have to be beautiful to be valued.", principles) → Instagram. No separate campaign pages.
+- **One page.** Hero → the Beauty Blackout (details beside the "Count me in" card) → the calendar (Women's Month, then the whole year) → **red manifesto band** ("Our insecurities are someone else's *business model.*", cream on brick, no buttons) → why we're doing this (statement, short paragraph, "You shouldn't have to be beautiful to be valued.", principles) → Instagram. No separate campaign pages.
 - **Mobile first.** Check every change at iPhone width and on desktop. On phones, sections stack and the main button comes before any picture.
 - **Breathing room.** If a section feels crowded, cut words before shrinking space.
 
