@@ -2,7 +2,7 @@
   Pledge card. Step 1: one-tap pledge (no email). Step 2: a separate poll (one day or the whole month)
   and optional email for reminders. Not connected yet: assets/site.js handles it and nothing is sent or stored.
 {%- endcomment -%}
-<div id="join" class="join">
+<div id="join" class="join" data-endpoint="{{ site.pledge_endpoint }}" data-show-at="{{ site.pledge_show_at }}">
   <div class="join-step" id="step-pledge">
     <p>Pledge to buy no beauty products and book no cosmetic treatments on March 8.</p>
     <button type="button" class="btn btn-ink btn-pledge" id="pledge-btn">I pledge to join the Blackout</button>
@@ -23,5 +23,6 @@
     </form>
   </div>
 
-  <p class="join-note" id="join-note" role="status">Pledges open January 2027, so nothing is saved yet. <a href="{{ site.instagram }}" target="_blank" rel="noopener">Follow {{ site.instagram_handle }}</a> to hear first.</p>
+  <p class="join-count label" id="join-count" hidden></p>
+  <p class="join-note" id="join-note" role="status">{% if site.pledge_endpoint == "" %}Pledges open January 2027, so nothing is saved yet. <a href="{{ site.instagram }}" target="_blank" rel="noopener">Follow {{ site.instagram_handle }}</a> to hear first.{% endif %}</p>
 </div>

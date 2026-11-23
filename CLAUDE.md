@@ -52,4 +52,4 @@ One page. Everything lives on the homepage (`index.html`). Every section follows
 
 ## Not yet connected
 
-The pledge card (`_includes/join-form.html`) doesn't send anything yet. Plan: pledges and the one-day-or-month poll go to a Google Sheet (via Apps Script); optional, consented emails go to Kit. Mailing must follow Canada's anti-spam law (CASL): an unticked consent box, a sender address in every email, and an unsubscribe link.
+The pledge card (`_includes/join-form.html`, logic in `assets/site.js`) sends pledges and the one-day-or-month poll to a Google Sheet web app once `pledge_endpoint` is set in `_config.yml` (script: `tools/pledge-sheet.gs`; no personal data, one row per device). The public count shows from `pledge_show_at` (72). Optional emails are not connected yet; they will go to Kit, consented only. Mailing must follow Canada's anti-spam law (CASL): an unticked consent box, a sender address in every email, and an unsubscribe link.

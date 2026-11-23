@@ -151,6 +151,8 @@ h2 { font-size: var(--t-h2); }
 .join input[type="radio"], .join input[type="checkbox"] { accent-color: var(--ink); width: 17px; height: 17px; flex: none; margin-top: 2px; }
 .join-email button { justify-self: start; }
 .join-note { font-size: .92rem; }
+.join-count { color: var(--sheet); }
+.join-count[hidden] { display: none; }
 @media (max-width: 480px) { .poll { grid-template-columns: minmax(0, 1fr); } }
 
 /* ---------- Compact rows (Women's Month, Also this year) ---------- */

@@ -5,6 +5,11 @@ baseurl: ""
 instagram: https://www.instagram.com/therighttobereal/
 instagram_handle: "@therighttobereal"
 
+# Pledge counter (Google Apps Script web app URL, see tools/pledge-sheet.gs). Empty = not connected yet.
+pledge_endpoint: ""
+# Show the public pledge count once it reaches this number.
+pledge_show_at: 72
+
 markdown: kramdown
 kramdown:
   input: GFM
@@ -14,6 +19,7 @@ exclude:
   - CLAUDE.md
   - DESIGN.md
   - brand
+  - tools
   - Gemfile
   - Gemfile.lock
   - vendor

@@ -6,29 +6,66 @@
   }
 })();
 
-// Pledge card. Not connected yet: nothing is sent or stored.
-// Step 1 is a one-tap pledge; step 2 (poll + optional email) appears after it.
+// Pledge card. Step 1: one-tap pledge. Step 2: poll (one day or the whole month) + optional email.
+// Pledges and poll answers go to the Google Sheet web app in data-endpoint (see tools/pledge-sheet.gs).
+// With no endpoint set, nothing is sent or stored. Emails are not sent anywhere yet (Kit comes later).
 (function () {
+  var card = document.getElementById('join');
   var btn = document.getElementById('pledge-btn');
   var more = document.getElementById('step-more');
   var first = document.getElementById('step-pledge');
   var note = document.getElementById('join-note');
-  if (!btn || !more) return;
-  more.hidden = true;
-  btn.addEventListener('click', function () {
+  var countEl = document.getElementById('join-count');
+  if (!card || !btn || !more) return;
+  var endpoint = card.getAttribute('data-endpoint') || '';
+  var showAt = parseInt(card.getAttribute('data-show-at'), 10) || 72;
+
+  function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
+  function deviceId() {
+    var id = store('rtbr-id');
+    if (!id) { id = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random().toString(16).slice(2)); store('rtbr-id', id); }
+    return id;
+  }
+  function showCount(n) {
+    if (typeof n !== 'number' || n < showAt) return;
+    countEl.textContent = n.toLocaleString() + ' of us have pledged · Goal: our first 1,000';
+    countEl.hidden = false;
+  }
+  function send(params) {
+    if (!endpoint) return Promise.resolve(null);
+    params.id = deviceId();
+    return fetch(endpoint, { method: 'POST', body: new URLSearchParams(params) })
+      .then(function (r) { return r.json(); }).then(function (d) { if (d) showCount(d.count); return d; })
+      .catch(function () { return null; });
+  }
+  function pledged() {
     first.hidden = true;
     more.hidden = false;
     var t = document.getElementById('join-title');
-    if (t) { t.innerHTML = 'You\'re <em>in.</em>'; t.focus(); }
+    if (t) t.innerHTML = 'You\'re <em>in.</em>';
+    var choice = store('rtbr-poll');
+    if (choice) { var r = card.querySelector('input[name="poll"][value="' + choice + '"]'); if (r) r.checked = true; }
+  }
+
+  more.hidden = true;
+  if (endpoint) fetch(endpoint).then(function (r) { return r.json(); }).then(function (d) { showCount(d.count); }).catch(function () {});
+  if (endpoint && store('rtbr-pledged')) pledged();
+
+  btn.addEventListener('click', function () {
+    pledged();
+    document.getElementById('join-title').focus();
+    store('rtbr-pledged', '1');
+    send({ action: 'pledge' });
   });
-  document.querySelectorAll('input[name="poll"]').forEach(function (r) {
+  card.querySelectorAll('input[name="poll"]').forEach(function (r) {
     r.addEventListener('change', function () {
-      note.textContent = 'Thanks for voting. Pledges and the poll open January 2027, so nothing is saved yet.';
+      store('rtbr-poll', r.value);
+      if (endpoint) { send({ action: 'poll', choice: r.value }); note.textContent = 'Thanks for voting.'; }
+      else note.textContent = 'Thanks for voting. Pledges and the poll open January 2027, so nothing is saved yet.';
     });
   });
-  var form = document.getElementById('join-email');
-  form.addEventListener('submit', function (e) {
+  document.getElementById('join-email').addEventListener('submit', function (e) {
     e.preventDefault();
-    note.innerHTML = 'Thanks for being early. Pledges open January 2027, so we haven\'t saved this yet. <a href="https://www.instagram.com/therighttobereal/" target="_blank" rel="noopener">Follow @therighttobereal</a> to hear the moment they open.';
+    note.innerHTML = 'Thanks. Email reminders aren\'t switched on yet, so we haven\'t saved your address. <a href="https://www.instagram.com/therighttobereal/" target="_blank" rel="noopener">Follow @therighttobereal</a> for updates.';
   });
 })();
