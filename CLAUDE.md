@@ -19,7 +19,7 @@ Key points:
 
 - **Check before adding.** Propose new content, sections or events and get approval before building them. Only make the changes that were asked for.
 - **Give options first** for new copy, names and visual directions, with a recommendation.
-- **Never invent** campaign dates, activities or commitments. Campaign pages hold only content that's been approved for the public site.
+- **Never invent** event dates, activities or commitments. The calendar holds only content that's been approved for the public site.
 - **Never delete event detail.** Every date, rule and description lives in `_data/calendar.yml`; tighten wording, don't drop information.
 - **Keep events simple.** The website describes what's happening; how-to-join instructions live on Instagram (@therighttobereal).
 - **One main call to action:** the March 8 Beauty Blackout.
