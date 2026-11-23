@@ -572,3 +572,9 @@ body { background-color: var(--paper); background-image: url("data:image/svg+xml
 .bb-intro { color: var(--muted-on-ink); }
 .bb .facts { border-top-color: var(--paper); }
 .join-card { box-shadow: 7px 7px 0 var(--paper-hi); }
+
+/* Hero: centred */
+.hero-copy { margin-inline: auto; justify-items: center; text-align: center; }
+.hero h1 { margin-inline: auto; }
+.hero-line { margin-inline: auto; }
+.hero-actions { justify-content: center; }
