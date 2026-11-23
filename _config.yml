@@ -7,10 +7,11 @@ instagram_handle: "@therighttobereal"
 
 # Pledge counter (Google Apps Script web app URL, see tools/pledge-sheet.gs). Empty = not connected yet.
 pledge_endpoint: "https://script.google.com/macros/s/AKfycbyRhEr0_Uxxr37yZ7CA2C0C438Vzuyy9go952K7AewBB6eQDZzA0oXTLb9MYUPkJsq8qw/exec"
-# The goal shown beside the live pledge count ("74/1,000 pledges"). Raise it when it's reached.
-pledge_goal: 1000
+# Stepping goals: the count shows the next one ("2/100 pledges", "Be one of the first 100.").
+# When a goal is passed, the next step takes over. Add bigger steps here if needed.
+pledge_goals: [100, 250, 500, 1000, 2500, 5000, 10000, 25000, 50000, 100000]
 # The count starts here: the site shows this number plus the pledges in the Sheet.
-pledge_start: 72
+pledge_start: 2
 
 markdown: kramdown
 kramdown:

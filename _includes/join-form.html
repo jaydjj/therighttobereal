@@ -1,13 +1,14 @@
 {%- comment -%}
-  Pledge for March 8: the live count toward the goal, then one button. Each device counts once.
+  Pledge for March 8: the live count toward the next stepping goal (pledge_goals) with "Be one of the first …", then the buttons. Each device counts once.
   After pledging, a temporary line points to the email sign-up in the footer (_includes/footer.html).
   The second button jumps to the whole-month pledge (#whole-month, _includes/month-form.html).
   Pledges go to the Google Sheet web app in pledge_endpoint (tools/pledge-sheet.gs).
 {%- endcomment -%}
-<div class="pledge" id="join" data-endpoint="{{ site.pledge_endpoint }}" data-goal="{{ site.pledge_goal }}" data-start="{{ site.pledge_start }}">
+<div class="pledge" id="join" data-endpoint="{{ site.pledge_endpoint }}" data-goals="{{ site.pledge_goals | join: ',' }}" data-start="{{ site.pledge_start }}">
   <div class="count" id="pledge-count">
-    <p class="count-number"><span id="count-number">{{ site.pledge_start }}</span><span class="count-goal">/<span id="count-goal">{{ site.pledge_goal }}</span> pledges</span></p>
+    <p class="count-number"><span id="count-number">{{ site.pledge_start }}</span><span class="count-goal">/<span id="count-goal">{{ site.pledge_goals | first }}</span> pledges</span></p>
     <div class="count-bar" aria-hidden="true"><span id="count-fill"></span></div>
+    <p class="count-note" id="count-note">Be one of the first {{ site.pledge_goals | first }}.</p>
     <p class="visually-hidden" id="count-status" role="status"></p>
   </div>
 

@@ -40,7 +40,7 @@ function rtbrSend(endpoint, params) {
     .then(function (r) { return r.json(); }).catch(function () { return null; });
 }
 
-// Pledge for March 8: the live count ("74/1,000 pledges": pledge_start plus the Sheet's pledges), then one button.
+// Pledge for March 8: the live count (pledge_start plus the Sheet's pledges) over the next stepping goal, then the buttons.
 // Each device counts once (remembered in this browser; the Sheet keeps one row per device id).
 // After pledging, a temporary line points to the email sign-up in the footer.
 var rtbrPledge = (function () {
@@ -48,7 +48,10 @@ var rtbrPledge = (function () {
   var form = document.getElementById('step-pledge');
   if (!card || !form) return null;
   var endpoint = card.getAttribute('data-endpoint') || '';
-  var goal = parseInt(card.getAttribute('data-goal'), 10) || 1000;
+  var goals = (card.getAttribute('data-goals') || '100').split(',').map(Number).filter(Boolean);
+  var goal = goals[0];
+  // The next goal not yet reached (the last one if all are passed).
+  function goalFor(n) { for (var i = 0; i < goals.length; i++) if (n < goals[i]) return goals[i]; return goals[goals.length - 1]; }
   var base = parseInt(card.getAttribute('data-start'), 10) || 0;
   var num = document.getElementById('count-number');
   var fill = document.getElementById('count-fill');
@@ -57,13 +60,15 @@ var rtbrPledge = (function () {
   var doneLine = document.getElementById('join-done');
   var shown = base, live = null, visible = false, timer;
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  document.getElementById('count-goal').textContent = goal.toLocaleString();
 
   // Counts up from what's on screen to the live number, once the counter is in view.
   function render() {
     if (live === null || !visible) return;
     var n = live, from = shown, start = null, dur = reduce ? 0 : (n - from > 5 ? 1200 : 500);
     shown = n;
+    goal = goalFor(n);
+    document.getElementById('count-goal').textContent = goal.toLocaleString();
+    document.getElementById('count-note').textContent = 'Be one of the first ' + goal.toLocaleString() + '.';
     fill.style.width = Math.min(100, n / goal * 100) + '%';
     function step(t) {
       if (start === null) start = t;

@@ -203,6 +203,7 @@ html:not([data-theme="dark"]) .tone-brick {
 .count { display: grid; gap: 14px; }
 .count-number { line-height: 1; letter-spacing: -.01em; font-variant-numeric: tabular-nums; }
 .count-goal { color: var(--text-muted); letter-spacing: 0; margin-left: .2em; }
+.count-note { color: var(--text-muted); }
 .count-bar { height: 14px; border: 2px solid var(--line); padding: 2px; }
 .count-bar span { display: block; height: 100%; width: 0; min-width: 4px; background: var(--primary); transition: width 1.2s cubic-bezier(.2, .7, .2, 1); }
 .join-step { display: flex; flex-wrap: wrap; gap: 22px 20px; align-items: center; }

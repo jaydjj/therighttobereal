@@ -180,7 +180,7 @@ Large buttons go full width on phones. Busy buttons say what's happening ("Sendi
 **Week cards.** "Week 1–4" (label, date colour), name, description. Sheet (dark: Black 2) with a 1.5 px border, 6 px top border and 5 px hard shadow. Four across, two on tablets, one on phones.
 
 **Pledge.** In the Blackout section, straight on the background, no box:
-- The count, "74/1,000 pledges" (`pledge_start` plus the Sheet's pledges, over `pledge_goal`), with an outlined progress bar.
+- The count over the next stepping goal, e.g. "2/100 pledges" (`pledge_start` plus the Sheet's pledges), an outlined progress bar, and "Be one of the first 100." Goals step up as each is passed (100, 250, 500, 1,000, 2,500, 5,000, 10,000…, `pledge_goals` in `_config.yml`), so the bar always shows progress. Keep the count honest: `pledge_start` is a small head start (2), never padding.
 - The primary "Pledge for March 8" beside the outline "Pledge for the whole month" (which jumps to `#whole-month`).
 - Each device counts once. After pledging, the count goes up straight away, the button reads "You're in!", and a line under the buttons ("Want reminders? Sign up for emails") links to the footer sign-up, then fades.
 
