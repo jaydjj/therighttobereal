@@ -21,7 +21,7 @@ The point isn't that everyone is beautiful. It's that nobody should have to be b
 
 ### Lines we use
 - "The pressure is everywhere. *So is our power to change it.*" (homepage headline)
-- "Our insecurities are someone else's *business model.*"
+- "Our insecurities should not be someone else's *business model.*"
 - "You shouldn't have to be beautiful to be valued." (core belief, top of the principles)
 - "Buy nothing. *Say everything.*" (Beauty Blackout)
 - "Have a real day." (sign-off)
@@ -141,7 +141,7 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 
 ## 6. Layout and pages
 
-- **One page.** Hero (centred, text only, no picture, for breathing room) → the Beauty Blackout (black section headed "Beauty *Blackout.*", details beside the brick "Count me in" card) → Women's Month → one action a week (the monthly rhythm) → also this year → **red manifesto band** ("Our insecurities are someone else's *business model.*", cream on brick, no buttons) → what we stand for ("You shouldn't have to be beautiful to be valued.", the principles, then the closing paragraph "We don't shame individual choices…") → Instagram. No separate campaign pages.
+- **One page.** Hero (centred, text only, no picture, for breathing room) → the Beauty Blackout (black section headed "Beauty *Blackout.*", details beside the brick "Count me in" card) → Women's Month → one action a week (the monthly rhythm) → also this year → **red manifesto band** ("Our insecurities should not be someone else's *business model.*", cream on brick, no buttons) → what we stand for ("You shouldn't have to be beautiful to be valued.", the principles, then the closing paragraph "We don't shame individual choices…") → Instagram. No separate campaign pages.
 - **Mobile first.** Check every change at iPhone width and on desktop. On phones, sections stack and the main button comes before any picture.
 - **Breathing room.** If a section feels crowded, cut words before shrinking space.
 
