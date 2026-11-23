@@ -4,7 +4,7 @@
     node tools/check-ui.js            (builds with Jekyll into a temp folder, then checks)
     node tools/check-ui.js _site      (checks an already-built folder)
 
-  Opens every page in light and dark mode, at desktop (1280px) and phone (390px) widths, shows hidden
+  Opens every page in light and dark mode, at desktop (1280px), phone (390px) and small-phone (320px) widths, shows hidden
   states (e.g. "Want reminders?"), and fails if anything breaks the rules in DESIGN.md:
     1. Type: only the four styles at the seven sizes in assets/styles.css (--t-display ... --t-label).
     2. Contrast: all text meets WCAG AA (4.5:1, or 3:1 for large text).
@@ -25,7 +25,7 @@ const path = require('path');
 
 const root = path.resolve(__dirname, '..');
 const PAGES = ['/', '/404.html'];
-const WIDTHS = [1280, 390];
+const WIDTHS = [1280, 390, 320];
 const THEMES = ['light', 'dark'];
 
 let site = process.argv[2] && path.resolve(process.argv[2]);

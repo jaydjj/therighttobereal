@@ -1,264 +1,322 @@
-# The Right to Be Real: Brand, Design and UI Guide
+# The Right to Be Real: Design System
 
-For anyone, people or AI agents, designing or writing for The Right to Be Real: the website, Instagram, merch and anything else. When this guide and the live site disagree, the live site is the reference and this guide should be updated.
+The rules for anyone, people or AI agents, designing, building or writing for The Right to Be Real: the website, Instagram, merch and anything else.
+
+- **Source of truth:** the tokens at the top of `assets/styles.css`. This guide explains them; if the two ever disagree, fix whichever is wrong and keep them in step.
+- **Checked automatically:** `node tools/check-ui.js` enforces the type, colour, mode, layout and media rules below (see [Quality checks](#11-quality-checks)).
+- **Changing the system:** propose the change first, update the tokens, this guide and the checker together, then ship.
+
+**Contents:** 1 Principles · 2 Brand · 3 Voice and copy · 4 Foundations · 5 Components · 6 Page structure · 7 Illustration · 8 Logo and icons · 9 Accessibility · 10 Instagram · 11 Quality checks · 12 Don'ts
 
 ---
 
-## 1. Brand
+## 1. Principles
 
-### The feel
-A contemporary movement printing its own broadsides. Serious, warm, collective and a little defiant, with the confidence of an independent magazine. Not a nonprofit, a wellness brand, a body-positivity account or a history costume.
+1. **One action leads.** The March 8 Beauty Blackout pledge is always the most prominent thing on the page. Everything else supports it.
+2. **Print, not polish.** A movement printing its own broadsides: flat colour, heavy line, hard shadows, paper. No gradients, blur or glossy effects.
+3. **Say it once.** Every word, picture and element earns its place. If something repeats, cut it.
+4. **One pattern per job.** The same kind of content always looks the same. New patterns need a reason and an entry in this guide.
+5. **Two modes, never mixed.** Light and dark are complete themes. A page is entirely one or the other.
+6. **Accessible by default.** WCAG 2.2 AA is the floor, in both modes, on every screen size.
 
-### The argument
-The point isn't that everyone is beautiful. It's that nobody should have to be beautiful to be valued. The beauty industry profits from self-doubt and sells the fix. We challenge that business model and defend everyone's freedom to make their own choices.
+---
+
+## 2. Brand
+
+**The feel.** A contemporary movement printing its own broadsides. Serious, warm, collective and a little defiant, with the confidence of an independent magazine. Not a nonprofit, a wellness brand, a body-positivity account or a history costume.
+
+**The argument.** The point isn't that everyone is beautiful. It's that nobody should have to be beautiful to be valued. The beauty industry profits from self-doubt and sells the fix. We challenge that business model and defend everyone's freedom to make their own choices.
 
 **Narrative:** Challenge the system. Reclaim your choices. Find your people.
 
-### Personality
+**Personality**
 - **Defiant:** confident, willing to take on powerful interests.
 - **Wry:** observant and dryly funny when it fits.
 - **Human:** warm, candid, grounded in ordinary lives.
 
-### Lines we use
+**Lines we use**
 - "The pressure is everywhere. *So is our power to change it.*" (homepage headline)
 - "Our insecurities should not be someone else's *business model.*"
-- "You shouldn't have to be beautiful to be valued." (core belief, top of the principles)
-- "Buy nothing. *Say everything.*" (Beauty Blackout)
-- "Have a real day." (sign-off)
+- "You shouldn't have to be beautiful *to be valued.*" (core belief)
+- "Buy nothing. Say everything." (Beauty Blackout)
+- "Have a real *day.*" (sign-off)
 
 ---
 
-## 2. Voice and copy
+## 3. Voice and copy
 
-1. **Minimal and scannable.** Short sentences. One idea per line. Cut anything that doesn't help someone understand or act.
+1. **Minimal and scannable.** Short sentences, one idea per line. Cut anything that doesn't help someone understand or act.
 2. **Say it once per page.** If a line repeats a headline, a button, a picture or another section, cut it.
-3. **Pictures don't need captions on the site.** The page around them carries the words.
-4. **Challenge systems, never individuals.** Criticize manufactured insecurity, not people who buy beauty products. Never anti-makeup.
-5. **Invite, don't lecture.** No empowerment clichés, platitudes or corporate-activism language.
-6. **Describe here, mobilize there.** The website says what's happening. How to take part lives on Instagram.
-7. **Never invent** dates, activities, numbers or commitments.
-8. Never write "BeReal" as one word (a separate, unrelated app uses that).
+3. **Headlines pair an upright statement with an italic turn:** "Women's *Month.*"
+4. **Buttons say what happens,** in a few words: "Pledge for March 8", "Sign up". No "Click here" or "Learn more".
+5. **No captions under pictures on the site.** The page around them carries the words.
+6. **Challenge systems, never individuals.** Criticize manufactured insecurity, not people who buy beauty products. Never anti-makeup.
+7. **Invite, don't lecture.** No empowerment clichés, platitudes or corporate-activism language.
+8. **Describe here, mobilize there.** The website says what's happening; how to take part lives on Instagram (@therighttobereal).
+9. **Never invent** dates, activities, numbers or commitments.
+10. **Mechanics:** sentence case everywhere (labels are set in capitals by the style, not typed in capitals); Canadian spelling; dates as "Mar 8" in lists and "March 8, 2027" in prose; en dash for ranges ("Mar 8 – Apr 8").
+11. Never write "BeReal" as one word (a separate, unrelated app uses that).
 
 ---
 
-## 3. Visual identity
+## 4. Foundations
 
-### Art direction
-Inspired by 19th-century broadsides and early 20th-century labour and lithograph posters: relief-print and lithograph illustration, heavy black line, cross-hatching, paper grain, limited flat colour, strong diagonals and dignified figures. It should feel like it could have been printed decades ago or today.
+### 4.1 Colour
 
-**Avoid:** 80s/90s retro (neon, Memphis shapes, airbrush, chrome, gradients); punk-zine or photocopy collage; sepia or "vintage" filters; stamps as the main device; raised fists, weapons, guillotines, famous figures; copying any real poster.
+**Palette.** The raw colours. Use them only to define role tokens, never directly in components.
 
-### Logo
-- One shared file: **`assets/logo.svg`**. "THE RIGHT TO" in tracked capitals, a heavy black italic "be" resting on a large brick-red "real". No full stop.
-- Use it as an image wherever the logo appears. Never retype, redraw or recolour it by hand. To change it, edit and rerun `brand/make_logo.py`.
-- Minimum height: about 48 px on screen, so "THE RIGHT TO" stays readable.
-- **Tab icon:** "be" over a red "r" on paper (`assets/favicon.png`, `favicon.ico`, `assets/apple-touch-icon.png`).
-- **Profile picture and wordmark:** `brand/instagram-avatar.png`, `brand/wordmark.png` (rendered by `brand/avatar.html`).
-
-### Colour
-
-| Name | Hex | Use |
+| Name | Hex | Notes |
 |---|---|---|
-| **Paper** (tan) | `#efe6d4` | Page background |
-| Paper light | `#f7f0e1` | Inside picture frames, form fields, cards |
-| Paper dark | `#e4d6ba` | Quiet sections and cards |
-| **Ink** (black) | `#1a1714` | Text, frames, the dark Blackout section |
-| Muted ink | `#62584b` | Secondary text on paper |
-| **Brick red** | `#9e2a1f` | Main buttons, key words, "real" in the logo |
-| Gold (ochre) | `#b8862b` | Illustration fills only, never text on paper |
+| Paper | `#efe6d4` | Light-mode page |
+| Sand | `#e4d6ba` | Light-mode alternate sections |
+| Sheet | `#f7f0e1` | Cards, picture frames, form fields |
+| Ink | `#1a1714` | Light-mode text; dark-mode page |
+| Black 2 | `#26211c` | Dark-mode alternate sections and cards |
+| Muted | `#62584b` | Secondary text in light mode |
+| Muted on black | `#c4b8a3` | Secondary text in dark mode |
+| Brick | `#9e2a1f` | Light-mode primary; "real" in the logo |
+| Gold | `#d9a441` | Dark-mode primary |
+| Ochre | `#b8862b` | Illustration fills only. Never text (2.6:1 on paper) |
 
-### Light and dark mode: never mixed
+**Roles.** Components use these tokens, so both modes are always complete.
 
-The site has two complete modes and never mixes them on one page. It follows the visitor's device setting; the round sun/moon button in the header switches and is remembered.
+| Token | Light | Dark | Used for |
+|---|---|---|---|
+| `--bg` | Paper | Ink | Page and plain sections |
+| `--bg-alt` | Sand | Black 2 | Alternate sections (including the Blackout) |
+| `--surface` | Sheet | Black 2 | Cards, highlighted targets |
+| `--text` | Ink | Paper | Headlines and body |
+| `--text-lead` | Ink | Muted on black | The paragraph under a headline |
+| `--text-muted` | Muted | Muted on black | Descriptions, hints, notes |
+| `--text-soft` | `#3a332c` | `#ddd2bd` | The closing line, the how-to-join note |
+| `--primary` / `--on-primary` | Brick / Sheet | Gold / Ink | Primary buttons, the pledge bar, the March 8 row, focus rings |
+| `--label` | Muted | Gold | Kickers and other labels |
+| `--date` | Brick | Gold | Dates in lists and cards |
+| `--em` | Inherits | Gold | The italic turn in headlines |
+| `--line` / `--shadow` | Ink / Ink | Paper / Sheet | Borders and hard shadows |
 
-| | Light mode | Dark mode |
+**Rules**
+- Light mode is cream, black and red. Dark mode is black, gold and cream. **Never red in dark mode.**
+- The mode follows the visitor's device setting; the sun/moon button in the header overrides it and is remembered.
+- Light mode has no black sections; dark mode has no light sections. The one coloured block is the manifesto band: red with cream text in light mode, gold with black text in dark.
+- Colour never carries meaning on its own; there is always text too.
+- Illustrations keep their printed paper frame in both modes.
+
+### 4.2 Typography
+
+**Four styles, seven sizes.** Nothing else: no other typefaces, weights or one-off sizes; no bold body text, sans italic or monospace.
+
+| Style | Typeface | Job |
 |---|---|---|
-| Page and plain sections | Paper `#efe6d4` | Black `#1a1714` |
-| Alternate sections | Sand `#e4d6ba` | Black 2 `#26211c` |
-| Text | Black, muted `#62584b` | Cream, muted `#c4b8a3` |
-| Primary (buttons, pledge bar, March 8 row) | Brick red, cream text | Gold `#d9a441`, black text |
-| Labels | Muted black (dates brick) | Gold |
-| Italic turn in headlines | Black | Gold |
-| Beauty Blackout | Sand section; "*Blackout.*" in red, red buttons | Black 2 section; "*Blackout.*" in gold, gold buttons |
-| Manifesto band | Red block, cream text | Gold block, black text |
-| Logo | `assets/logo.svg` | `assets/logo-dark.svg` (cream, gold "real"), made by `brand/make_logo_dark.py` |
+| **Serif** | DM Serif Display 400 | Things that are *said*: headlines, statements, the count |
+| **Serif italic** | DM Serif Display 400 italic | The turn in a headline, emphasis inside a statement |
+| **Sans** | Work Sans 400 | Things that are *read* or *listed*: copy, item names, facts, forms |
+| **Label** | Work Sans 600, capitals, +0.16em tracking | Kickers, dates, buttons, navigation |
 
-Rules: no black sections in light mode; no light sections in dark mode (except the gold band); **never red in dark mode**. Illustrations keep their printed paper frame in both. Every colour in `assets/styles.css` goes through a role token (`--bg`, `--text`, `--primary`, `--label`, `--em`...), never a raw colour, so both modes stay complete.
+| Token | Style | Size (phone → desktop) | Line height | Used for |
+|---|---|---|---|---|
+| `--t-display` | Serif | 42 → 74 px | 1.0 | Homepage headline, manifesto statement, sign-off, the pledge count |
+| `--t-h2` | Serif | 35 → 58 px | 1.0 | Section headlines |
+| `--t-title` | Serif | 22 px | 1.2–1.4 | The closing line, "/1,000 pledges" |
+| `--t-lead` | Sans | 18 → 20 px | 1.3–1.5 | The paragraph under a headline; item names |
+| `--t-body` | Sans | 17 px | 1.6 | Body copy, item descriptions, key facts, form fields |
+| `--t-small` | Sans | 15 px | 1.6 | Form hints, notes, copyright |
+| `--t-label` | Label | 11.5 px | 1.2 | Kickers, dates, buttons, navigation |
 
-### Typography: four styles, seven sizes
+**Rules**
+- A sentence is either a headline (serif) or copy (sans). Never set a body sentence in serif.
+- Line length: leads and paragraphs 46–60 characters wide; headlines balanced across lines.
+- Fonts load from Google Fonts with `display=swap`, so text is readable before the fonts arrive.
+- The logo is an image, not a font.
 
-| Style | Typeface | Used for |
-|---|---|---|
-| **Serif** | DM Serif Display, upright | Headlines, statements, the count. Kept for things that are said, not listed |
-| **Serif italic** | DM Serif Display, italic | The turn in a headline ("So is our power *to change it.*"), emphasis |
-| **Sans** | Work Sans 400 | Body copy, item names and descriptions, key facts, form text |
-| **Label** | Work Sans 600, small spaced capitals | Kickers, dates, buttons, navigation |
+### 4.3 Space and layout
 
-Every piece of text uses one of these seven sizes (tokens in `assets/styles.css`). Nothing in between, no one-off sizes.
+- **Container:** max 1160 px wide, with at least 20 px side gutters (more on notched phones).
+- **Section pattern:** `section.section` → `.container` → `.section-head` (kicker, h2, optional lead) → content. Sections are separated by space and background tone, **never lines**. Plain and alternate tones alternate down the page.
+- **Spacing tokens:** `--space-section` (72 → 128 px, top and bottom of every section), `--space-head` (28 → 48 px, heading to content), `--space-gap` (32 → 88 px, between columns). Gaps inside components stay small and even (8–24 px); reuse the values already in the component rather than inventing new ones.
+- **Columns:** `.split` (two equal columns), `.split-art` (picture right), `.split-art-left` (picture left). Lists of items use two columns on desktop, cards four. On phones everything stacks to one column, text before picture.
+- **Breakpoints:** phone up to 560 px, tablet up to 860 px, desktop above. Components may add a breakpoint only where their content needs it.
 
-| Size | Style | Used for |
-|---|---|---|
-| `--t-display` | Serif | Homepage headline, manifesto statement, "Have a real *day.*", the pledge count |
-| `--t-h2` | Serif | Section headlines |
-| `--t-title` | Serif | The closing line, "/1,000 pledges" |
-| `--t-lead` | Sans | The one paragraph under a headline; item names |
-| `--t-body` | Sans | Body copy, item descriptions, key facts, form fields |
-| `--t-small` | Sans | Form hints, notes, copyright |
-| `--t-label` | Label | Kickers, dates, buttons, navigation |
+### 4.4 Shape and depth
 
-No bold body text, no sans italic, no monospace, no new typefaces. A sentence is either a headline (serif) or copy (sans); don't set a body sentence in serif. The logo is an image (`assets/logo.svg`), not a font.
+- **Corners:** square, with a 2 px radius on buttons and fields. No pills, apart from the round icon buttons.
+- **Borders:** 1.5–3 px in the line colour: cards 1.5 px with a 6 px top, picture frames 3 px, fields 2 px.
+- **Shadows:** hard offset, no blur, in the shadow colour: buttons 6 px (8 px on hover), cards 5 px, frames 7 px. This is the only depth on the site.
 
-### Texture
-A faint paper grain on the page background. Never on text. Illustrations carry their own print texture.
+### 4.5 Motion
+
+- **Allowed:** button lift on hover (2 px); the pledge count counting up once when it scrolls into view (1.2 s, ease-out); the bar filling; the "Want reminders?" line fading in, then out after 12 s; looping illustrations.
+- **Reduce motion:** with the device setting on, nothing animates; counts appear instantly, loops show a still frame, and smooth scrolling is off.
+- Loops play only while on screen and always have a pause button (anything moving longer than 5 s must be pausable).
+
+### 4.6 Icons
+
+Only where words don't fit: the mode toggle (sun/moon) and the loop pause/play. Simple 2 px line or solid shapes in the current text colour, inside 40 px round buttons, always with an accessible name ("Switch to dark mode", "Pause animation").
 
 ---
 
-## 4. Illustrations
+## 5. Components
 
-### Style
-Print-style artwork: relief-print or lithograph look, heavy black outlines, cross-hatching, visible paper grain, flat areas of brick red, gold and ink on warm paper. One clear symbolic idea per image: the beauty industry's machinery and promises in the background, real people at ease in the foreground.
+Every component uses role tokens and the type scale. States: **hover** (lift or underline, only on devices with a mouse), **focus** (3 px outline in the primary colour, 3 px offset), **disabled/done** (no lift, default cursor), **error** (message in words next to the field).
 
-### People
-A real range of ages, skin tones, body shapes, styles and (over time) genders. Dignified, relaxed, mid-conversation or mid-stride. The beauty ad is only ever the thing being walked past, peeled back or produced by a machine.
+**Header.** Fixed to the top. Logo left; the mode toggle, "Instagram" and a small primary "Join March 8" button right. On phones the Instagram link hides; the button always stays.
 
-### Format and files
-- Portrait 4:5, at least 1100 × 1400 px. Send each image separately.
-- Words in an illustration are fine only as part of the satire (billboard slogans). Never put real information (dates, calls to action) inside an image.
-- Files: `assets/art/<id>-480.webp`, `-800.webp`, `-1120.webp` and `-800.jpg`. Alt text goes in `_data/art.yml`.
-- **Animated illustrations** are MP4 video, never GIF (the Blackout GIF was 8.9 MB; the MP4 is 1.1 MB): `assets/art/<id>.mp4` plus `<id>-poster.webp` and `.jpg`, shown with `_includes/loop.html`. Crop off any baked-in border; the site adds the frame. They play only while on screen, stay still for visitors who ask for reduced motion, and always have a pause button. The description (in `_data/art.yml`) says what changes.
-- **Every image needs alt text** describing the scene, including any words shown in it.
+**Buttons.** At most one primary per section.
 
-### Current set
+| Type | Look | Use |
+|---|---|---|
+| Primary | `--primary` fill, `--on-primary` text, hard shadow on large buttons | Join the Beauty Blackout, Pledge for March 8, Pledge for the whole month (in its form), Sign up |
+| Secondary | Solid text colour, page-colour text | Follow @therighttobereal |
+| Outline | 2 px border in the text colour | The secondary choice beside a primary, e.g. "Pledge for the whole month" next to the pledge |
+
+Large buttons go full width on phones. Busy buttons say what's happening ("Sending…") and can't be pressed twice.
+
+**Section head.** Kicker (label), headline (serif with an italic turn), optional lead (one paragraph). Nothing else.
+
+**Items.** Every name-plus-description (calendar events, week cards, principles, perks) uses one pattern: the name in sans at lead size, full text colour, on its own line; the description below in sans at body size, muted. The checker fails if any two differ.
+
+**Calendar list.** Date (label, date colour) and event name per row, two columns on desktop. No tags, no descriptions on the site (both stay in `_data/calendar.yml`). March 8 is the one highlighted row, in the primary colour.
+
+**Week cards.** "Week 1–4" (label, date colour), name, description. Sheet (dark: Black 2) with a 1.5 px border, 6 px top border and 5 px hard shadow. Four across, two on tablets, one on phones.
+
+**Pledge.** In the Blackout section, straight on the background, no box:
+- The count, "74/1,000 pledges" (`pledge_start` plus the Sheet's pledges, over `pledge_goal`), with an outlined progress bar.
+- The primary "Pledge for March 8" beside the outline "Pledge for the whole month" (which jumps to `#whole-month`).
+- Each device counts once. After pledging, the count goes up straight away, the button reads "You're in!", and a line under the buttons ("Want reminders? Sign up for emails") links to the footer sign-up, then fades.
+
+**Whole-month pledge** (`#whole-month`). Dates, name and rules from `_data/calendar.yml`; "Beauty Blackout *all month.*"; the perks (items); an email form where **email is required**, because it's how we send the group chat invite.
+
+**Forms.** Every field has a visible label (label style), a hint underneath linked to the field, and messages in words. No placeholder-only fields. Consent is by action (typing an email and pressing the button), with what they'll get and "Unsubscribe any time" beside the button; no pre-ticked or hidden consent (Canada's anti-spam law).
+
+**Picture frame** (`_includes/picture.html`). The illustration on sheet with a 3 px ink border and a 7 px hard shadow, no caption. At most one per section, never in the hero.
+
+**Looping illustration** (`_includes/loop.html`). The picture frame with an MP4 inside, a round pause/play button in the corner, and a description. See [Illustration](#7-illustration).
+
+**Manifesto band.** The one coloured block: a big serif statement beside an illustration.
+
+**Footer.** "Have a real *day.*" beside the permanent email sign-up (`#newsletter`), then the copyright. No repeated navigation.
+
+---
+
+## 6. Page structure
+
+One page; everything lives on the homepage.
+
+| # | Section | Tone | Contents |
+|---|---|---|---|
+| 1 | Hero | Plain | Centred headline, one paragraph, the Blackout button. No image |
+| 2 | Beauty Blackout `#beautyblackoutpledge` | Alternate; "*Blackout.*" in the primary colour | Kicker, headline, intro, Date and Where, the pledge; the looping illustration right (below on phones) |
+| 3 | Beauty Blackout *all month.* `#whole-month` | Plain | The whole-month pledge |
+| 4 | Women's Month `#march` | Alternate | Calendar list |
+| 5 | One action a week `#monthly` | Plain | Four week cards |
+| 6 | More to come `#also` | Alternate | Calendar list, plus the one Instagram how-to-join line |
+| 7 | Manifesto band | Red (dark: gold) | "Our insecurities should not be someone else's *business model.*" with the printing-press illustration |
+| 8 | What we stand for `#why` | Plain | Headline, principles (items, two columns), closing line |
+| 9 | Instagram | Alternate | Follow button and the notice-board illustration |
+| 10 | Footer | Plain | Sign-off and email sign-up |
+
+Recurring events live only in "One action a week", never in the March list.
+
+---
+
+## 7. Illustration
+
+**Art direction.** Inspired by 19th-century broadsides and early 20th-century labour and lithograph posters: relief-print and lithograph look, heavy black line, cross-hatching, paper grain, limited flat colour (brick, ochre, ink on warm paper), strong diagonals and dignified figures. One clear symbolic idea per image: the beauty industry's machinery and promises in the background, real people at ease in the foreground.
+
+**People.** A real range of ages, skin tones, body shapes, styles and (over time) genders. Dignified, relaxed, mid-conversation or mid-stride. The beauty ad is only ever the thing being walked past, peeled back or produced by a machine.
+
+**Avoid.** 80s/90s retro (neon, Memphis shapes, airbrush, chrome, gradients); punk-zine or photocopy collage; sepia or "vintage" filters; stamps as the main device; raised fists, weapons, guillotines, famous figures; copying any real poster.
+
+**Files**
+- Still: portrait 4:5, at least 1100 × 1400 px, as `assets/art/<id>-480.webp`, `-800.webp`, `-1120.webp` and `-800.jpg`, served by screen size and lazy-loaded below the first screen.
+- Animated: MP4, never GIF, as `assets/art/<id>.mp4` plus `<id>-poster.webp` and `.jpg`. Crop off any baked-in border (the site adds the frame). Keep loops short and under about 1.5 MB.
+- Words inside an illustration only as satire (billboard slogans). Real information (dates, calls to action) is always real text.
+- Every image needs alt text, and every video a description, in `_data/art.yml`, including any words shown and, for loops, what changes.
+
+**Current set**
 
 | Id | Scene | Used on |
 |---|---|---|
-| `press` | A printing press churning out the same idealized face | Manifesto band ("business model") |
-| `blackout-loop` | The street of beauty and diet claims; the signs go dark until only a neon "be real with us" glows, then the lights return (8.8-second loop) | Beauty Blackout |
-| `claims` | The same street, still | Not in use (kept for Instagram) |
+| `blackout-loop` | A street of beauty and diet claims; the signs go dark until only a neon "be real with us" glows, then the lights return (8.8 s loop) | Beauty Blackout |
+| `press` | A printing press churning out the same idealized face | Manifesto band |
 | `board` | A community notice board: Come As You Are, All Bodies Welcome, Rest Is a Right… | Instagram |
+| `claims` | The street of claims, still | Not on the site (kept for Instagram) |
 
-### Prompt recipe (for your image tool)
+**Prompt recipe**
 > Vintage relief-print / lithograph poster illustration, heavy black ink outlines, cross-hatching, visible paper grain, limited palette of brick red, mustard gold, black and warm cream paper. [SCENE]. Diverse, dignified people of different ages and body types, relaxed and real. Strong diagonal composition. No text except [ANY SATIRICAL SIGN TEXT]. Portrait 4:5.
 
 ---
 
-## 5. UI components
+## 8. Logo and icons
 
-**Items.** Every name-plus-description (calendar events, week cards, principles, perks) uses one pattern: the name in sans at lead size, full text colour, on its own line; the description below in sans at body size, muted. Never a serif name in one list and a sans name in another. `tools/check-ui.js` fails if they differ.
-
-**The picture frame.** `_includes/picture.html`. The illustration on a light sheet with an ink border and a hard offset shadow, no caption. At most one per section, never in the hero, never louder than the main button.
-
-**Buttons.** One primary action per section.
-
-| Button | Look | Use |
-|---|---|---|
-| Primary | Light: brick red, cream text, black offset shadow. Dark: gold, black text, cream shadow | Join the Beauty Blackout, Pledge, Sign up. Always the most prominent thing on the page |
-| Secondary | Solid black, cream text (dark: cream, black text) | Follow on Instagram |
-| Text link | Small capitals, brick underline | Lesser actions, e.g. "Follow the movement on Instagram →" |
-| Outline | Border in the text colour | Secondary actions, e.g. "Pledge for the whole month" beside the pledge |
-
-**Header.** Fixed to the top while scrolling. Logo left; the sun/moon mode toggle, "Instagram" and a small red "Join March 8" button (jumps to the Blackout) right. On phones the Instagram link hides and the red button stays.
-
-**Labels (kickers).** Small spaced capitals above headlines: light mode muted (dates brick, cream inside the red band); dark mode always gold.
-
-**Key facts.** A small strip of label + sans value under the Blackout intro: Date and Where. The label above the heading says only "International Women's Day" so the date appears once; "24 hrs" is left out because the intro says "one day". (Duration and Goal stay in `_data/calendar.yml`.)
-
-**How-to-join line.** One line under the calendar pointing to Instagram. Don't repeat it elsewhere.
-
-**Pledge.** Straight on the ink, no boxes. The live count in big serif, "74/1,000 pledges" (`pledge_start` plus the pledges in the Sheet, over `pledge_goal`, both in `_config.yml`), counting up when it scrolls into view, with an outlined bar under it. Then two buttons side by side (stacked on phones): the red **"Pledge for March 8"** and an outlined "Pledge for the whole month" that jumps to the whole-month section. Each device counts once: pledging adds one straight away, the red button changes to **"You're in!"**, and a temporary line under the buttons ("Want reminders? Sign up for emails") links to the footer sign-up and fades after 12 seconds.
-
-**Whole-month pledge** (`#whole-month`, plain section right after the Blackout). The Long Blackout's dates, name and rules come from `_data/calendar.yml`. "Beauty Blackout *all month.*" (gold italic), then what everyone who pledges gets (group chats; featured stories, shared April 8) and an email form. **Email is required** here: it's how we send the group chat invite. Pressing "Pledge for the whole month" is the opt-in; the wording beside it says what they'll get and that they can unsubscribe. It also counts toward the March 8 total, once per device.
-
-**Email sign-up.** Permanent, in the footer beside "Have a real *day.*" (`#newsletter`, on every page). No tick box: typing an email and pressing "Sign up" is the opt-in, and the wording beside it says what they'll get and that they can unsubscribe (Canada's anti-spam law). Pledges, choices and opted-in emails go to a Google Sheet; emails move to Kit later.
-
-**The Receipt.** Monospace receipt with crossed-out items, for money and time reclaimed (Keep the Change).
+- **Logo:** `assets/logo.svg`: "THE RIGHT TO" in tracked capitals, a heavy black italic "be" resting on a large brick-red "real". No full stop. Dark mode uses `assets/logo-dark.svg` (cream lettering, gold "real").
+- Use the files as images wherever the logo appears. Never retype, redraw or recolour by hand: edit and rerun `brand/make_logo.py`, then `brand/make_logo_dark.py`.
+- Minimum height about 48 px on screen, so "THE RIGHT TO" stays readable. Keep clear space of at least the height of "be" around it.
+- **Tab icon:** "be" over a red "r" on paper (`assets/favicon.png`, `favicon.ico`, `assets/apple-touch-icon.png`).
+- **Profile picture and wordmark:** `brand/instagram-avatar.png`, `brand/wordmark.png` (rendered by `brand/avatar.html`).
 
 ---
 
-## 6. Layout and pages
+## 9. Accessibility
 
-### Section rules
-- Every section follows one pattern: `section.section` → `.container` → `.section-head` (label kicker, h2, optional lead) → content.
-- **Spacing separates sections, not lines.** Sections alternate background tone instead: paper, sand, ink (Blackout), brick (manifesto band). No borders or rules between sections.
-- One spacing scale: `--space-section` (between sections), `--space-head` (heading to content), `--space-gap` (between columns).
-- Two-column sections use `.split`; with an illustration, `.split-art` (picture right) or `.split-art-left` (picture left). On phones everything stacks to one column, text before picture.
+WCAG 2.2 AA in both modes, at every screen size.
 
-### The page, top to bottom
-1. **Hero** (paper): centred, text only. Headline, one paragraph, the Blackout button.
-2. **Beauty Blackout** (sand; dark: Black 2; the headline turn in the primary colour): heading, body copy and the key-facts strip, then the pledge (count and button), with the street-of-claims illustration to the right (below on phones).
-3. **Beauty Blackout *all month.*** (plain): the whole-month pledge, email required.
-4. **Women's Month** (sand): compact two-column list (date, name).
-5. **One action a week** (paper): four cards, Week 1–4.
-6. **More to come** (sand): compact list of the other campaigns, plus the one Instagram how-to-join line.
-7. **Manifesto band** (red; dark: gold): "Our insecurities should not be someone else's *business model.*" with the printing-press illustration.
-8. **What we stand for** (paper): text only. "You shouldn't have to be beautiful *to be valued.*", the principles in two columns and the closing line.
-9. **Instagram** (sand): with the notice-board illustration.
-10. **Footer** (plain): "Have a real *day.*" beside the email sign-up, then the copyright. No repeated links: Instagram is in the fixed header.
+- **Contrast:** text at least 4.5:1 (3:1 for 24 px and up); icons and field borders at least 3:1.
 
-### The calendar
-- No tags on the site: each event shows its date and name only. The Protest / Reclaim / Unite tag stays in `_data/calendar.yml` for planning.
-- Event names are sans (lead size).
-- March 8 is the one highlighted row in the Women's Month list (red in light mode, gold in dark).
-- Recurring events live only in "One action a week", never in the March list.
-- Descriptions for compact lists stay in `_data/calendar.yml` for reference and Instagram planning.
+  | Pair | Light | Dark |
+  |---|---|---|
+  | Text on page / alternate | 14.4 / 12.4 | 14.4 / 12.9 |
+  | Muted on page / alternate / sheet | 5.6 / 4.8 / 6.1 | 9.1 / 8.2 / – |
+  | Primary on page / alternate | 6.0 / 5.2 (brick) | 7.9 / 7.1 (gold) |
+  | Button text on primary | 6.6 (sheet on brick) | 7.9 (ink on gold) |
+  | Ochre on paper | 2.6: never text | – |
+
+- **Keyboard:** everything works with Tab, Enter and Space; focus is always visible (primary-colour outline); "Skip to content" appears on the first Tab; nothing is hidden behind the fixed header when focused or linked to.
+- **Targets:** at least 40 × 40 px for icon buttons and comfortable spacing between buttons.
+- **Structure:** one h1; h2 for every section; lists for lists; real buttons for actions and links for navigation; the page language is set.
+- **Screen readers:** images have alt text and videos descriptions; icon buttons have names; the pledge count is announced once when it settles, not on every frame; form hints and errors are linked to their fields, and invalid fields are marked invalid; status messages use live regions.
+- **Motion:** respects "reduce motion"; loops can be paused.
+- **Zoom and reflow:** works at 200% zoom and at 320 px wide with no sideways scrolling.
 
 ---
 
-## 7. Accessibility
+## 10. Instagram
 
-- **Contrast:** all text meets WCAG AA. Checked pairs:
-
-| Text on background | Ratio |
-|---|---|
-| Ink on paper | 14.4 : 1 |
-| Muted ink on paper | 5.6 : 1 |
-| Muted ink on paper dark | 4.8 : 1 |
-| Brick on paper | 6.0 : 1 |
-| Cream on brick (buttons) | 6.6 : 1 |
-| Cream on ink | 14.4 : 1 |
-| Gold tint / muted on ink | 7.9 / 9.1 : 1 |
-| Black on gold (dark-mode buttons, manifesto band) | 7.9 : 1 |
-| Gold tint / muted on whole-month black `#26211c` | 7.1 / 8.2 : 1 |
-| Gold on paper | 2.6 : 1. **Fails: never use for text** |
-
-- Every image has descriptive alt text and every video a description. Looping animation has a pause button and respects "reduce motion". Decorative shapes are hidden from screen readers.
-- Real information is real text, never baked into an image.
-- Visible keyboard focus (outline in the primary colour: red in light mode, gold in dark, cream inside the red band). A "Skip to content" link appears on the first Tab.
-- Screen readers: the animated pledge count is announced once when it settles ("74 of 1,000 pledges"), not on every frame. Form hints and error messages are linked to their fields; invalid emails are marked invalid.
-- Motion is minimal and respects "reduce motion".
-- Automated check: axe (WCAG 2.2 AA plus best practice) runs clean on every page in both modes.
-- Images are compressed and sized per screen; images below the first screen load lazily.
-
----
-
-## 8. Checking the UI before it ships
-
-Run `node tools/check-ui.js` before every push that changes how the site looks. It builds the site, opens every page in light and dark mode, at desktop and phone width (including the hidden states, like the line after pledging) and fails on:
-- any text outside the four styles and seven sizes, or item names / descriptions that don't all match;
-- any text below WCAG AA contrast;
-- mixed modes (a black section in light mode, a light one in dark), any red in dark mode, or a dark-mode label that isn't gold;
-- anything wider than a phone screen, or a line between sections;
-- an image without alt text.
-
-Fix every failure before pushing. Then look at desktop and phone screenshots: the script checks the rules, not whether it looks right.
-
-## 9. Instagram
-
-The site's look carries over so posts are recognizable without the logo:
-- **Statements:** big serif on paper or ink, one italic turn, brick red for the key word only.
-- **Illustrations:** the print-style artwork in the picture frame, with a short caption below the image (in the post, not baked into the art).
-- **Money and time:** the Receipt.
-- **Event reminders:** date in small brick capitals, campaign name in serif.
+The site's look carries over so posts are recognizable without the logo.
+- **Statements:** big serif on paper or black, one italic turn; red for the key word on paper, gold on black.
+- **Illustrations:** the print-style artwork in the picture frame, with a short caption in the post (never baked into the art).
+- **The Receipt:** an Instagram-only device for money and time reclaimed (Keep the Change): a receipt with crossed-out items. Not used on the site.
+- **Event reminders:** the date in small capitals, the campaign name in serif.
 - **Profile picture:** `brand/instagram-avatar.png`.
 
 ---
 
-## 10. Don'ts
+## 11. Quality checks
 
-- Pastel wellness palettes, soft gradients, generic feminine branding, or pink as a "women's issue" colour.
-- Retro 80s/90s styling, punk-zine collage, sepia filters, or stamps as the main device.
-- More than one primary button per section, or anything louder than the Blackout button.
-- One-off font sizes, serif body sentences, raw colours instead of role tokens, mixing light and dark sections, or red in dark mode.
+Before every push that changes how the site looks:
+
+1. **Run `node tools/check-ui.js`** and fix every failure. It builds the site and opens every page in light and dark mode, at 1280, 390 and 320 px, including hidden states, and fails on:
+   - text outside the four styles and seven sizes;
+   - item names or item descriptions that don't all match;
+   - text below WCAG AA contrast;
+   - mixed modes (a black section in light mode, a light one in dark), any red in dark mode, or a dark-mode label that isn't gold;
+   - anything wider than a phone screen, or a line between sections;
+   - an image without alt text, a video without a description, or a loop without a pause button.
+2. **Run axe** (WCAG 2.2 AA plus best practice) on every page in both modes: no violations.
+3. **Look** at desktop and phone screenshots in both modes. The scripts check the rules, not whether it looks right.
+4. **After pushing,** confirm the "Deploy site to GitHub Pages" run finished green.
+
+---
+
+## 12. Don'ts
+
+- More than one primary button per section, or anything louder than the Blackout pledge.
+- One-off font sizes, serif body sentences, bold body text, or a new typeface.
+- Raw colours in components, mixing light and dark sections, or red in dark mode.
+- Lines between sections, gradients, blurred shadows or rounded pills.
 - Repeating copy, captions under pictures on the site, or long paragraphs where a line will do.
+- Tags, badges or decorative labels that don't help someone act.
+- GIFs, autoplaying motion without a pause button, or information only inside an image.
+- Pastel wellness palettes, generic feminine branding, or pink as a "women's issue" colour.
 - Shaming personal choices or anti-makeup messages.
 - Inventing campaign dates, activities or numbers.
