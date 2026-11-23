@@ -6,19 +6,21 @@
   }
 })();
 
-// Pledge card. Step 1: one-tap pledge. Step 2: poll (one day or the whole month) + optional email.
-// Pledges and poll answers go to the Google Sheet web app in data-endpoint (see tools/pledge-sheet.gs).
-// With no endpoint set, nothing is sent or stored. Emails are not sent anywhere yet (Kit comes later).
+// Pledge panel. A live counter beside a one-tap pledge; after pledging, the poll and optional email.
+// Pledges, poll answers and emails go to the Google Sheet web app in data-endpoint (see tools/pledge-sheet.gs).
+// Typing an email and pressing "Send me reminders" is the opt-in; the Sheet records the time and wording.
 (function () {
   var card = document.getElementById('join');
   var btn = document.getElementById('pledge-btn');
   var more = document.getElementById('step-more');
   var first = document.getElementById('step-pledge');
   var note = document.getElementById('join-note');
-  var countEl = document.getElementById('join-count');
   if (!card || !btn || !more) return;
   var endpoint = card.getAttribute('data-endpoint') || '';
   var showAt = parseInt(card.getAttribute('data-show-at'), 10) || 72;
+  var GOAL = 1000;
+  var shown = 0;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
   function deviceId() {
@@ -26,10 +28,25 @@
     if (!id) { id = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random().toString(16).slice(2)); store('rtbr-id', id); }
     return id;
   }
+
+  // Counter: hidden until the count reaches showAt, then counts up to the live number.
   function showCount(n) {
     if (typeof n !== 'number' || n < showAt) return;
-    countEl.textContent = n.toLocaleString() + ' of us have pledged · Goal: our first 1,000';
-    countEl.hidden = false;
+    var num = document.getElementById('count-number');
+    document.getElementById('count-label').textContent = 'Pledged so far';
+    document.getElementById('count-sub').textContent = n >= GOAL ? 'We passed our first 1,000.' : 'Toward our first 1,000.';
+    var bar = document.getElementById('count-bar'); bar.hidden = false;
+    document.getElementById('count-fill').style.width = Math.min(100, n / GOAL * 100) + '%';
+    var from = shown, start = null, dur = reduce ? 0 : 1200;
+    shown = n;
+    function step(t) {
+      if (start === null) start = t;
+      var p = dur ? Math.min(1, (t - start) / dur) : 1;
+      var eased = 1 - Math.pow(1 - p, 3);
+      num.textContent = Math.round(from + (n - from) * eased).toLocaleString();
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
   }
   function send(params) {
     if (!endpoint) return Promise.resolve(null);
@@ -41,14 +58,20 @@
   function pledged() {
     first.hidden = true;
     more.hidden = false;
-    var t = document.getElementById('join-title');
-    if (t) t.innerHTML = 'You\'re <em>in.</em>';
+    document.getElementById('join-title').innerHTML = 'You\'re <em>in.</em>';
     var choice = store('rtbr-poll');
     if (choice) { var r = card.querySelector('input[name="poll"][value="' + choice + '"]'); if (r) r.checked = true; }
   }
 
   more.hidden = true;
-  if (endpoint) fetch(endpoint).then(function (r) { return r.json(); }).then(function (d) { showCount(d.count); }).catch(function () {});
+  if (endpoint) {
+    var counter = document.getElementById('pledge-count');
+    var load = function () { fetch(endpoint).then(function (r) { return r.json(); }).then(function (d) { showCount(d.count); }).catch(function () {}); };
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { io.disconnect(); load(); } }, { threshold: .4 });
+      io.observe(counter);
+    } else load();
+  }
   if (endpoint && store('rtbr-pledged')) pledged();
 
   btn.addEventListener('click', function () {
@@ -67,10 +90,8 @@
   document.getElementById('join-email').addEventListener('submit', function (e) {
     e.preventDefault();
     var input = document.getElementById('join-email-input');
-    var consent = document.getElementById('join-consent');
     var email = input.value.trim();
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { note.textContent = 'Please enter a valid email address.'; input.focus(); return; }
-    if (!consent.checked) { note.textContent = 'Please tick the box so we can email you.'; consent.focus(); return; }
     if (!endpoint) { note.textContent = 'Thanks. Email reminders aren\'t switched on yet, so we haven\'t saved your address.'; return; }
     var submit = this.querySelector('button[type="submit"]');
     if (submit.disabled) return;
@@ -82,7 +103,7 @@
       submit.textContent = 'Send me reminders';
       if (d && d.ok) {
         note.textContent = 'Thanks. We\'ll email you before March 8. Unsubscribe any time.';
-        input.value = ''; consent.checked = false;
+        input.value = '';
       } else {
         note.innerHTML = 'Sorry, that didn\'t go through. Please try again, or <a href="https://www.instagram.com/therighttobereal/" target="_blank" rel="noopener">message us on Instagram</a>.';
       }

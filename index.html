@@ -24,21 +24,19 @@ description: A social movement challenging the beauty pressure we're sold. Join 
 
 <!-- The Beauty Blackout -->
 <section class="section tone-ink" id="blackout">
-  <div class="container split">
-    <div>
-      <div class="section-head">
-        <p class="label kicker">{{ bb.when }}</p>
-        <h2>{{ bb.title_html }}</h2>
-        <p class="lead">{{ bb.intro }}</p>
-      </div>
-      <dl class="facts">
-        {%- for f in bb.facts %}<div><dt class="label">{{ f.label }}</dt><dd class="title">{{ f.value }}</dd></div>{% endfor %}
-      </dl>
+  <div class="container bb-grid">
+    <div class="bb-intro">
+    <div class="section-head bb-head">
+      <p class="label kicker">{{ bb.when }}</p>
+      <h2>{{ bb.title_html }}</h2>
+      <p class="lead">{{ bb.intro }}</p>
     </div>
-    <div class="join-card" id="join-section">
-      <h3 class="join-title" id="join-title" tabindex="-1">Count me <em>in.</em></h3>
-      {% include join-form.html %}
+    <dl class="facts-strip">
+      {%- for f in bb.facts %}{% unless f.label == "Goal" %}<div><dt class="label">{{ f.label }}</dt><dd>{{ f.value }}</dd></div>{% endunless %}{% endfor %}
+    </dl>
     </div>
+    {% include join-form.html %}
+    <div class="bb-art">{% include picture.html img="claims" %}</div>
   </div>
 </section>
 
@@ -92,9 +90,7 @@ description: A social movement challenging the beauty pressure we're sold. Join 
 
 <!-- What we stand for -->
 <section class="section" id="why">
-  <div class="container split split-art-left" id="principles">
-    {% include picture.html img="claims" %}
-    <div>
+  <div class="container" id="principles">
       <div class="section-head">
         <p class="label kicker">What we stand for</p>
         <h2>You shouldn't have to be beautiful <em>to be valued.</em></h2>
@@ -108,7 +104,6 @@ description: A social movement challenging the beauty pressure we're sold. Join 
         <li><span class="title">Everyone's in.</span> Insecurity is sold to every gender, age and identity.</li>
       </ul>
       <p class="closing">We don't shame individual choices. We come together in practical ways, starting with how we spend our money, to send the beauty industry one clear message: <em>we're tired of it.</em></p>
-    </div>
   </div>
 </section>
 

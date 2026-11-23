@@ -104,7 +104,7 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 | Id | Scene | Used on |
 |---|---|---|
 | `press` | A printing press churning out the same idealized face | Manifesto band ("business model") |
-| `claims` | A city street lined with beauty and diet claims | What we stand for |
+| `claims` | A city street lined with beauty and diet claims | Beauty Blackout |
 | `board` | A community notice board: Come As You Are, All Bodies Welcome, Rest Is a Right… | Instagram |
 
 ### Prompt recipe (for your image tool)
@@ -114,7 +114,7 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 
 ## 5. UI components
 
-**The picture frame.** `_includes/picture.html`. The illustration on a light sheet with an ink border and a hard offset shadow, no caption. At most one per section, never in the hero, never competing with the main button.
+**The picture frame.** `_includes/picture.html`. The illustration on a light sheet with an ink border and a hard offset shadow, no caption. At most one per section, never in the hero, never louder than the main button.
 
 **Buttons.** One primary action per section.
 
@@ -129,11 +129,11 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 
 **Labels (kickers).** Small spaced capitals above headlines: muted on paper, gold tint on ink, brick for dates.
 
-**Key facts.** A row of label + serif value (Date, Duration, Where, Goal). Only where the facts aren't already said nearby.
+**Key facts.** A small strip of label + serif value across the top of the Blackout (Date, Duration, Where). Only where the facts aren't already said nearby.
 
 **How-to-join line.** One line under the calendar pointing to Instagram. Don't repeat it elsewhere.
 
-**Pledge card.** Brick card beside the Blackout details. Step 1: one tap, **"I pledge to join the Blackout"**, no email needed. Step 2 (appears after): a separate poll, "Just March 8" or "The whole month (Mar 8 – Apr 8)", and an **optional** email with an **unticked** consent box (Canada's anti-spam law). Not yet connected: pledges and poll to a Google Sheet, opted-in emails to Kit.
+**Pledge panel.** Full width under the Blackout heading: a light counter side and a brick "Count me in" side, with a cream offset shadow. The counter shows "Our goal: 1,000" until 72 pledges, then the live count, counting up when it scrolls into view, with a bar toward the first 1,000. Step 1: one tap, **"I pledge to join the Blackout"**, no email needed. Step 2 (appears after): a separate poll, "Just March 8" or "The whole month (Mar 8 – Apr 8)", and an **optional** email. No tick box: typing an email and pressing "Send me reminders" is the opt-in, and the wording beside it says what they'll get and that they can unsubscribe (Canada's anti-spam law). Pledges, poll and opted-in emails go to a Google Sheet; emails move to Kit later.
 
 **The Receipt.** Monospace receipt with crossed-out items, for money and time reclaimed (Keep the Change).
 
@@ -149,12 +149,12 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 
 ### The page, top to bottom
 1. **Hero** (paper): centred, text only. Headline, one paragraph, the Blackout button.
-2. **Beauty Blackout** (ink): heading, body copy and key facts beside the brick "Count me in" card.
+2. **Beauty Blackout** (ink): heading, body copy and the key-facts strip, then the pledge panel, with the street-of-claims illustration beside them (below on phones).
 3. **Women's Month** (sand): compact two-column list (date, name, tag).
 4. **One action a week** (paper): four cards, Week 1–4.
 5. **More to come** (sand): compact list of the other campaigns, plus the one Instagram how-to-join line.
 6. **Manifesto band** (brick): "Our insecurities should not be someone else's *business model.*" with the printing-press illustration.
-7. **What we stand for** (paper): the street-of-claims illustration beside "You shouldn't have to be beautiful *to be valued.*", the principles and the closing line.
+7. **What we stand for** (paper): text only. "You shouldn't have to be beautiful *to be valued.*", the principles in two columns and the closing line.
 8. **Instagram** (sand): with the notice-board illustration.
 9. **Footer** (ink): "Have a real *day.*", links.
 
