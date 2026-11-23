@@ -475,3 +475,40 @@ body { background-color: var(--paper); background-image: url("data:image/svg+xml
 @media (max-width: 860px) { .bb-top { grid-template-columns: minmax(0, 1fr); } }
 .bb .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 460px; }
 .c-join + .c-agenda { padding-top: clamp(48px, 7vw, 80px); }
+
+/* =========================================================
+   Calendar (homepage): Women's Month, then the whole year
+   ========================================================= */
+.bb { border-bottom: 0; }
+.calendar { background: var(--paper-2); padding-block: 0 clamp(64px, 9vw, 112px); border-bottom: 1px solid var(--ink); }
+.cal-head { display: grid; gap: 10px; padding-top: clamp(48px, 7vw, 80px); border-top: 2px solid var(--ink); margin-bottom: 8px; }
+.cal-head .kicker { margin: 0; }
+.cal-head h2 { font-size: clamp(2.2rem, 5vw, 3.6rem); }
+.cal-intro { color: var(--ink-2); max-width: 52ch; }
+.cal-legend { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+.cal-head-year { margin-top: clamp(56px, 8vw, 96px); }
+.cal-list { list-style: none; padding: 0; margin: 20px 0 0; border-top: 1px solid var(--ink); }
+.ev { display: grid; grid-template-columns: 10rem minmax(0, 1fr); gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--line); scroll-margin-top: 16px; }
+.ev:target { background: var(--paper-hi); }
+.ev-date { font: 600 .82rem/1.7 var(--mono); color: var(--brick); font-variant-numeric: tabular-nums; }
+.ev-body { display: grid; gap: 6px; }
+.ev-title { font: 400 1.5rem/1.15 var(--serif); }
+.ev-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.ev-text { color: var(--muted); max-width: 64ch; }
+.ev-key { background: var(--ink); color: var(--paper); padding-inline: 16px; margin-inline: -16px; border-bottom-color: var(--ink); }
+.ev-key .ev-date { color: var(--red-on-ink); }
+.ev-key .ev-text { color: var(--muted-on-ink); }
+.ev-key .tag { background: transparent; color: var(--paper); border-color: var(--paper); }
+.cal-how { margin-top: clamp(32px, 5vw, 48px); padding: 16px 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
+.cal-how a { text-decoration-color: var(--brick); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+@media (max-width: 640px) { .ev { grid-template-columns: 1fr; gap: 6px; } }
+
+/* Tags: Protest, Reclaim, Gather, Recurring (all pass AA on paper) */
+.tag { display: inline-flex; align-items: center; gap: 4px; font: 600 .66rem/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; padding: 5px 8px; border: 1.5px solid currentColor; border-radius: 2px; background: var(--paper-hi); }
+.tag-protest { color: var(--brick); }
+.tag-reclaim { color: #7a5410; }
+.tag-gather { color: #4f5a1f; }
+.tag-recur { color: var(--ink); border-style: dashed; }
+
+/* Principles lead line */
+.principles-lead { font: 400 clamp(1.5rem, 2.6vw, 1.9rem)/1.2 var(--serif); margin: 0 0 24px; }

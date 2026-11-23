@@ -1,0 +1,144 @@
+# The whole calendar, shown on the homepage.
+# Each event: id (link anchor), date, title, tag (protest | reclaim | gather), text.
+# Optional: recurring (shown as a "Recurring" label, e.g. "Twice a year"), key: true (highlighted).
+# Names are short commands; descriptions are one or two lines in "we", present tense.
+
+blackout:
+  when: March 8, 2027 · International Women's Day
+  title_html: Buy nothing. <em>Say everything.</em>
+  intro: Buy no beauty products and book no cosmetic treatments. One day to show how much of the industry runs on how we feel about ourselves.
+  facts:
+    - { label: Date, value: "March 8, 2027" }
+    - { label: Duration, value: "24 hrs" }
+    - { label: Where, value: "Everywhere" }
+    - { label: Goal, value: "Our first 1,000" }
+
+march:
+  - id: make-normal-normal-again
+    date: Mar 1
+    title: Make Normal Normal Again
+    tag: gather
+    text: We share unfiltered photos. Real skin, real age, real people.
+  - id: mute-the-ads
+    date: Mar 1–7
+    title: Mute the Ads
+    tag: protest
+    recurring: Twice a year
+    text: We hide every beauty ad we see for a week. The more of us who do it, the more it costs them to reach us.
+  - id: own-the-flaw
+    date: Mar 4
+    title: Own the “Flaw”
+    tag: gather
+    text: We share stories and photos celebrating the exact things we were once told were flaws.
+  - id: the-beauty-blackout
+    date: Mar 8
+    title: The Beauty Blackout
+    tag: protest
+    key: true
+    text: "For 24 hours, anywhere in the world, we buy no beauty products and book no cosmetic treatments. Optional: give what you'd have spent to a women's shelter or community fund."
+  - id: the-long-blackout
+    date: Mar 8 – Apr 8
+    title: The Long Blackout
+    tag: protest
+    text: For a month, we buy no new beauty products and use what we already own. Sunscreen, prescriptions and basic hygiene don't count.
+  - id: unsave-your-card
+    date: Mar 9
+    title: Unsave Your Card
+    tag: reclaim
+    text: We remove our saved cards from at least one shopping app, so the next impulse buy takes a little more effort.
+  - id: unfollow-insecurity
+    date: Mar 11
+    title: Unfollow Insecurity
+    tag: reclaim
+    text: We unfollow the accounts that make us feel worse, and share the ones that don't.
+  - id: show-the-receipt
+    date: Mar 15
+    title: Show the Receipt
+    tag: reclaim
+    text: We add up what we didn't buy during the Blackout, and share the total.
+  - id: unsubscribe
+    date: Mar 19
+    title: Unsubscribe
+    tag: protest
+    text: Why is it so hard? We notice the little rush when a “new drop” email lands, then let it go.
+  - id: compliment-something-else
+    date: Mar 23
+    title: Compliment Something Else
+    tag: gather
+    text: Her mind, her work, her jokes, her nerve. We say it out loud.
+  - id: abandon-the-cart
+    date: Mar 27
+    title: Abandon the Cart
+    tag: protest
+    text: We fill the cart with everything the ads told us to buy. Then we walk away.
+  - id: count-what-we-kept
+    date: Mar 31
+    title: Count What We Kept
+    tag: gather
+    text: The results. How many of us joined, how much money stayed in our pockets, and what's next.
+
+year:
+  - id: keep-the-change
+    date: Jan 1
+    title: Keep the Change
+    tag: reclaim
+    text: "A New Year's resolution: skip the new you, fund the real one. All January, we share stories from people who cut back on beauty and image spending and ended up more independent, more stable and more themselves. #KeepTheChange"
+  - id: the-resistance
+    date: Tuesdays from Feb 2
+    title: The Resistance
+    tag: gather
+    recurring: Weekly
+    text: People who were told to change, and didn't. One every Tuesday. Nominate a writer, an artist, your grandmother or your best friend on Instagram from January; if we feature yours, we'll credit you.
+  - id: money-hour
+    date: Monthly
+    title: Money Hour
+    tag: reclaim
+    recurring: Monthly
+    text: One money strategy a month from women in our community. Budgets that stick, how they asked for the raise, and more.
+  - id: financial-literacy-month
+    date: April
+    title: Financial Literacy Month
+    tag: reclaim
+    text: Stories from financially independent women who got there by investing in what mattered to them, not what they were sold.
+  - id: take-back-20-minutes
+    date: April
+    title: Take Back 20 Minutes
+    tag: reclaim
+    text: We take the 20 minutes we'd spend researching a beauty product and spend them on our savings, our budget, or planning an experience that has nothing to do with how we look.
+  - id: the-long-blackout-stories
+    date: Apr 8
+    title: "The Long Blackout: The Stories"
+    tag: gather
+    text: What a month without buying beauty products did to our brains and our wallets, in our own words.
+  - id: pride-and-mens-mental-health
+    date: June
+    title: Pride Month & Men's Mental Health Month
+    tag: gather
+    text: Identity, belonging, self-expression and what's expected of us.
+  - id: world-mental-health-day
+    date: October
+    title: World Mental Health Day
+    tag: gather
+    text: Self-worth, comparison and standards nobody can meet.
+  - id: international-mens-day
+    date: November
+    title: International Men's Day
+    tag: gather
+    text: Masculinity, success, appearance and the pressure to have it together.
+  - id: mute-the-ads-november
+    date: Nov 19–25
+    title: Mute the Ads
+    tag: protest
+    recurring: Twice a year
+    text: We hide every beauty ad we see, the week before Black Friday.
+  - id: blackout-friday
+    date: Nov 26
+    title: Blackout Friday
+    tag: protest
+    text: The biggest shopping day of the year. We buy no beauty products.
+  - id: real-day-meetups
+    date: All year
+    title: Real Day Meetups
+    tag: gather
+    recurring: All year
+    text: Local get-togethers, organized by people in our community.

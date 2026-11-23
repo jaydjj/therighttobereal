@@ -22,7 +22,7 @@ The point isn't that everyone is beautiful. It's that nobody should have to be b
 ### Lines we use
 - "The pressure is everywhere. *So is our power to change it.*" (homepage headline)
 - "Our insecurities are someone else's *business model.*"
-- "You shouldn't have to be beautiful to be valued."
+- "You shouldn't have to be beautiful to be valued." (core belief, top of the principles)
 - "Buy nothing. *Say everything.*" (Beauty Blackout)
 - "Have a real day." (sign-off)
 
@@ -103,7 +103,7 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 | Id | Scene | Used on |
 |---|---|---|
 | `friends` | Three women of different ages, at ease, while a crowd hurries past beauty billboards | Homepage hero |
-| `press` | A printing press churning out the same idealized face | Beauty Blackout (homepage and campaign page) |
+| `press` | A printing press churning out the same idealized face | Not in use (available for Instagram) |
 | `walk` | Three women walking and talking past a blank billboard toward the sun | Homepage Instagram section |
 | `crowd` | Earlier version of the hero with one woman | Not in use |
 
@@ -123,19 +123,15 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 | Primary | Brick red, cream text, hard black offset shadow (cream on dark sections) | Join the Beauty Blackout. Always the most prominent thing on the page |
 | Secondary | Solid ink, cream text | Follow on Instagram, See every campaign |
 | Text link | Small capitals, brick underline | Lesser actions, e.g. "Follow the movement on Instagram →" |
-| Outline | Ink border | Navigation such as "← All campaigns" |
+| Outline | Ink border | Secondary navigation, e.g. on the 404 page |
 
-**Header.** Logo left; "Campaigns", "Follow on Instagram" and a small red "Join March 8" button right. On phones the Instagram link hides and the red button stays.
+**Header.** Logo left; "Calendar", "Follow on Instagram" and a small red "Join March 8" button (jumps to the Blackout) right. On phones the Instagram link hides and the red button stays.
 
 **Labels (kickers).** Small spaced capitals above headlines: muted on paper, gold tint on ink, brick for dates.
 
 **Key facts.** A row of label + serif value (Date, Duration, Where, Goal). Only where the facts aren't already said nearby.
 
-**Timeline.** Monospace date, serif title, short description. The key date (March 8) is a full-width ink row.
-
-**Campaign cards.** Date label, serif title, one-line summary, "Explore campaign →". The featured campaign is an ink card; The Protest cards have a brick top rule; Reclamation cards are dashed; People cards are quiet tan.
-
-**How-to-join line.** One shared line on every campaign page pointing to Instagram. Don't repeat it in page text.
+**How-to-join line.** One line under the calendar pointing to Instagram. Don't repeat it elsewhere.
 
 **Sign-up form.** On a brick card or band, placed at the top of the Blackout section (before the timeline): email, "I'm in for" (March 8 / the whole month / both), an **unticked** consent box (required by Canada's anti-spam law), and an ink button. Not yet connected to Kit.
 
@@ -145,11 +141,16 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 
 ## 6. Layout and pages
 
+- **One page.** Hero → the Beauty Blackout (details beside the "Count me in" card) → the calendar (Women's Month, then the whole year) → why we're doing this (statement, short paragraph, "You shouldn't have to be beautiful to be valued.", principles) → Instagram. No separate campaign pages.
 - **Mobile first.** Check every change at iPhone width and on desktop. On phones, sections stack and the main button comes before any picture.
-- **Breathing room.** Generous space between sections and between headline, copy and buttons. If a section feels crowded, cut words before shrinking space.
-- **Homepage:** hero (headline, one short paragraph, Blackout button, Instagram link, picture) → **the Beauty Blackout** (headline, intro and key facts beside the "Count me in" sign-up card, then the full timeline) → why we're doing this (big statement, short paragraph, principles) → Instagram. The Blackout is the site's main purpose; the sign-up sits at the top of its section, never at the bottom.
-- **Campaigns page** (`/campaigns/`): Women's Month feature, the three tracks as cards, then the year calendar (dates and titles only).
-- **Campaign pages** (`/campaigns/<name>/`): back link, date, headline, intro, key facts, timeline, sign-up form where relevant, the how-to-join line, related campaigns. Each keeps the full detail for that campaign, said once.
+- **Breathing room.** If a section feels crowded, cut words before shrinking space.
+
+### The calendar
+- Each event: date (monospace, brick), short command-style name (serif), tag, optional "Recurring" label, one or two lines in "we", present tense.
+- **Tags:** Protest (brick), Reclaim (dark gold `#7a5410`), Gather (olive `#4f5a1f`). Outlined chips in small capitals. **Recurring:** dashed ink chip with ↻ and how often (Weekly, Monthly, Twice a year, All year).
+- The Beauty Blackout row (Mar 8) is the one full-width ink row.
+- Date formats: "Mar 8", "Mar 1–7", "Tuesdays from Feb 2", "Monthly", "All year".
+- Weekly series: **The Resistance** (people who were told to change, and didn't).
 
 ---
 
@@ -166,6 +167,7 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 | Cream on brick (buttons) | 6.6 : 1 |
 | Cream on ink | 14.4 : 1 |
 | Brick tint / gold tint / muted on ink | 6.7 / 7.9 / 9.1 : 1 |
+| Reclaim tag / Gather tag on light paper | 5.5 / 6.0 : 1 |
 | Gold on paper | 2.6 : 1. **Fails: never use for text** |
 
 - Every image has descriptive alt text. Decorative shapes are hidden from screen readers.

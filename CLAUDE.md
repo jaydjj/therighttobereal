@@ -20,23 +20,26 @@ Key points:
 - **Check before adding.** Propose new content, sections or events and get approval before building them. Only make the changes that were asked for.
 - **Give options first** for new copy, names and visual directions, with a recommendation.
 - **Never invent** campaign dates, activities or commitments. Campaign pages hold only content that's been approved for the public site.
-- **Never delete campaign detail.** Short summaries go on the homepage and `/campaigns/`; full detail stays on each campaign page.
+- **Never delete event detail.** Every date, rule and description lives in `_data/calendar.yml`; tighten wording, don't drop information.
 - **Keep events simple.** The website describes what's happening; how-to-join instructions live on Instagram (@therighttobereal).
 - **One main call to action:** the March 8 Beauty Blackout.
 
 ## Structure
 
-Home → Campaigns (`/campaigns/`) → one page per campaign (`/campaigns/<name>/`).
+One page. Everything lives on the homepage (`index.html`):
 
-- `index.html`: homepage. The Beauty Blackout is the main purpose: hero (Blackout button first, Instagram second) → the Beauty Blackout (sign-up form at the top, beside the details, then the timeline) → why we're doing this (with the principles) → Instagram. The hero and header buttons jump to `#blackout`.
-- `_includes/agenda.html`: the timeline, shared by the homepage and campaign pages
-- `campaigns/index.html`: campaign overview: the three tracks and the full calendar
-- `_campaigns/*.md`: one file per campaign. Front matter holds the title, pillar, dates, summary, facts and the agenda; the body holds the longer sections. Edit these to change campaign content.
-- `_data/pillars.yml`: the three pillars (The Protest, The Reclamation, The People)
-- `_layouts/`, `_includes/`: shared page templates (header, footer, sign-up form, receipt)
-- `assets/styles.css`, `assets/site.js`: styles and small scripts (old one-page links redirect to their new pages)
-- Campaign order on the calendar comes from each campaign's `cal:` number
-- `assets/logo.svg`: logo; `assets/favicon.png`, `favicon.ico`, `assets/apple-touch-icon.png`: tab and home-screen icons
+1. Hero: headline, one paragraph, the Blackout button (jumps to `#blackout`), Instagram link, illustration.
+2. The Beauty Blackout (`#blackout`): details beside the "Count me in" sign-up card. The main purpose of the site.
+3. The calendar (`#calendar`): Women's Month (`#march`), then the whole year (`#year`). Each event has a tag (Protest, Reclaim or Gather) and, if it repeats, a "Recurring" label.
+4. Why we're doing this (`#why`) with the principles (`#principles`).
+5. Instagram.
+
+- `_data/calendar.yml`: **all event content.** The Blackout details, the March events and the year events. Edit this file to change dates, names or descriptions. Event names are short commands; descriptions are one or two lines in "we", present tense; dates like "Mar 8" or "Mar 1–7".
+- `_includes/calendar.html`: renders a list of events. `_includes/join-form.html`: the sign-up form.
+- `campaigns/`: redirect stubs only. The old campaign pages now point to the matching spot on the homepage. Don't add pages here.
+- `_layouts/default.html`, `_layouts/redirect.html`, `_includes/header.html`, `footer.html`, `broadside.html`
+- `assets/styles.css`, `assets/site.js` (old one-page anchors redirect to their new spots)
+- `assets/logo.svg`: logo; `assets/favicon.png`, `favicon.ico`, `assets/apple-touch-icon.png`: icons
 - `assets/art/`: illustrations (alt text in `_data/art.yml`)
 - `brand/`: profile picture and wordmark images, and the scripts that make them
 - `404.html`, `CNAME`, `DESIGN.md`

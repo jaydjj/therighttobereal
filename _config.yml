@@ -5,15 +5,6 @@ baseurl: ""
 instagram: https://www.instagram.com/therighttobereal/
 instagram_handle: "@therighttobereal"
 
-collections:
-  campaigns:
-    output: true
-    permalink: /campaigns/:name/
-
-defaults:
-  - scope: { path: "", type: campaigns }
-    values: { layout: campaign }
-
 markdown: kramdown
 kramdown:
   input: GFM

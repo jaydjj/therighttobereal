@@ -1,11 +1,12 @@
 ---
 layout: default
 body_class: home
-description: A social movement challenging the beauty pressure we're sold. Follow along on Instagram, and join the Beauty Blackout on March 8, 2027.
+description: A social movement challenging the beauty pressure we're sold. Join the Beauty Blackout on March 8, 2027, International Women's Day.
 ---
-{%- assign blackout = site.campaigns | where: "url", "/campaigns/beauty-blackout/" | first -%}
+{%- assign cal = site.data.calendar -%}
+{%- assign bb = cal.blackout -%}
 
-<!-- 1. Hero: what this is, the first action, where it lives -->
+<!-- 1. Hero -->
 <section class="hero">
   <div class="container hero-grid">
     <div class="hero-copy">
@@ -22,44 +23,60 @@ description: A social movement challenging the beauty pressure we're sold. Follo
   </div>
 </section>
 
-<!-- 2. The Beauty Blackout: the main event, sign-up first -->
+<!-- 2. The Beauty Blackout: sign-up first -->
 <section class="bb" id="blackout">
-  <div class="container">
-    <div class="bb-top">
-      <div class="bb-head">
-        <p class="kicker kicker-red">Our first major event · {{ blackout.when }}</p>
-        <h2>{{ blackout.title_html }}</h2>
-        <p class="bb-intro">{{ blackout.intro }}</p>
-        <dl class="facts">
-          {%- for f in blackout.facts %}<div><dt>{{ f.label }}</dt><dd>{{ f.value }}</dd></div>{% endfor %}
-        </dl>
-      </div>
-      <div class="join-card" id="join-section">
-        <h3>Count me <em>in.</em></h3>
-        {% include join-form.html %}
-      </div>
+  <div class="container bb-top">
+    <div class="bb-head">
+      <p class="kicker kicker-red">{{ bb.when }}</p>
+      <h2>{{ bb.title_html }}</h2>
+      <p class="bb-intro">{{ bb.intro }}</p>
+      <dl class="facts">
+        {%- for f in bb.facts %}<div><dt>{{ f.label }}</dt><dd>{{ f.value }}</dd></div>{% endfor %}
+      </dl>
     </div>
-    <div class="bb-agenda">
-      {% include agenda.html items=blackout.agenda title=blackout.agenda_title heading="h3" %}
+    <div class="join-card" id="join-section">
+      <h3>Count me <em>in.</em></h3>
+      {% include join-form.html %}
     </div>
   </div>
 </section>
 
-<!-- 3. Why we're doing this -->
-<section class="argument" id="mission">
+<!-- 3. The calendar: Women's Month, then the rest of the year -->
+<section class="calendar" id="calendar">
+  <div class="container">
+    <div class="cal-head" id="march">
+      <p class="kicker">March 2027</p>
+      <h2>Women's <em>Month.</em></h2>
+      <p class="cal-intro">One month of small actions, anchored by the Beauty Blackout on March 8.</p>
+      <p class="cal-legend"><span class="tag tag-protest">Protest</span><span class="tag tag-reclaim">Reclaim</span><span class="tag tag-gather">Gather</span><span class="tag tag-recur"><span aria-hidden="true">↻</span> Recurring</span></p>
+    </div>
+    {% include calendar.html items=cal.march %}
+
+    <div class="cal-head cal-head-year" id="year">
+      <p class="kicker">January to December</p>
+      <h2>The whole <em>year.</em></h2>
+    </div>
+    {% include calendar.html items=cal.year %}
+
+    <p class="cal-how"><strong>How to join:</strong> details for every action are on <a href="{{ site.instagram }}" target="_blank" rel="noopener">Instagram ({{ site.instagram_handle }})</a>.</p>
+  </div>
+</section>
+
+<!-- 4. Why we're doing this -->
+<section class="argument" id="why">
   <div class="container argument-grid">
     <div>
       <p class="kicker">Why we're doing this</p>
       <p class="big-statement">Our insecurities are someone else's <em>business model.</em></p>
     </div>
     <div class="argument-copy">
-      <p class="argument-lead">You shouldn't have to be beautiful to be valued.</p>
       <p>We don't shame individual choices. We come together in practical ways, starting with how we spend our money, to send the beauty industry one clear message: <strong>we're tired of it.</strong></p>
     </div>
   </div>
   <div class="container">
     <div class="principles-block" id="principles">
       <p class="kicker">What we stand for</p>
+      <p class="principles-lead">You shouldn't have to be beautiful to be valued.</p>
       <ul class="principles principles-lg">
         <li><strong>Reject the standard.</strong> Nobody needs fixing to be worthy.</li>
         <li><strong>Act together.</strong> Simple actions anyone can join, done by enough of us to matter.</li>
@@ -72,7 +89,7 @@ description: A social movement challenging the beauty pressure we're sold. Follo
   </div>
 </section>
 
-<!-- 4. Instagram -->
+<!-- 5. Instagram -->
 <section class="insta" id="instagram">
   <div class="container insta-grid">
     <div>

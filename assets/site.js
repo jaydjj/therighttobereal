@@ -1,6 +1,6 @@
-// Old one-page links (/#menu, /#regulars...) now live on campaign pages.
+// Old one-page anchors (/#menu, /#regulars...) now point to their calendar entries.
 (function () {
-  var moved = { '#menu': '/campaigns/womens-month/', '#regulars': '/campaigns/the-regulars/', '#january': '/campaigns/keep-the-change/', '#rules': '/#principles' };
+  var moved = { '#menu': '/#march', '#regulars': '/#the-resistance', '#january': '/#keep-the-change', '#rules': '/#principles', '#mission': '/#why', '#join': '/#blackout' };
   if ((location.pathname === '/' || location.pathname === '/index.html') && moved[location.hash]) {
     location.replace(moved[location.hash]);
   }

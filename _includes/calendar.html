@@ -1,0 +1,15 @@
+{%- comment -%} Calendar list. include.items = events from _data/calendar.yml {%- endcomment -%}
+{%- assign tagnames = "protest:Protest,reclaim:Reclaim,gather:Gather" | split: "," -%}
+<ol class="cal-list">
+  {%- for e in include.items %}
+  {%- assign tagname = e.tag | capitalize -%}
+  <li id="{{ e.id }}" class="ev{% if e.key %} ev-key{% endif %}">
+    <span class="ev-date">{{ e.date }}</span>
+    <div class="ev-body">
+      <h3 class="ev-title">{{ e.title }}</h3>
+      <p class="ev-tags"><span class="tag tag-{{ e.tag }}">{{ tagname }}</span>{% if e.recurring %}<span class="tag tag-recur"><span aria-hidden="true">↻</span> Recurring · {{ e.recurring }}</span>{% endif %}</p>
+      <p class="ev-text">{{ e.text }}</p>
+    </div>
+  </li>
+  {%- endfor %}
+</ol>
