@@ -133,7 +133,7 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 
 **How-to-join line.** One line under the calendar pointing to Instagram. Don't repeat it elsewhere.
 
-**Sign-up form.** On a brick card or band, placed at the top of the Blackout section (before the timeline): email, "I'm in for" (March 8 / the whole month / both), an **unticked** consent box (required by Canada's anti-spam law), and an ink button. Not yet connected to Kit.
+**Pledge card.** Brick card beside the Blackout details. Step 1: one tap, **"I pledge to join the Blackout"**, no email needed. Step 2 (appears after): a separate poll, "Just March 8" or "The whole month (Mar 8 – Apr 8)", and an **optional** email with an **unticked** consent box (Canada's anti-spam law). Not yet connected: pledges and poll to a Google Sheet, opted-in emails to Kit.
 
 **The Receipt.** Monospace receipt with crossed-out items, for money and time reclaimed (Keep the Change).
 

@@ -52,4 +52,4 @@ One page. Everything lives on the homepage (`index.html`). Every section follows
 
 ## Not yet connected
 
-The March 8 sign-up form (`_includes/join-form.html`) doesn't send anything yet. It will be connected to Kit (the email tool) once the account and sender email are set up. Mailing must follow Canada's anti-spam law (CASL): an unticked consent box, a sender address in every email, and an unsubscribe link.
+The pledge card (`_includes/join-form.html`) doesn't send anything yet. Plan: pledges and the one-day-or-month poll go to a Google Sheet (via Apps Script); optional, consented emails go to Kit. Mailing must follow Canada's anti-spam law (CASL): an unticked consent box, a sender address in every email, and an unsubscribe link.

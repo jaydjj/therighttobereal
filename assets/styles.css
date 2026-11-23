@@ -133,17 +133,25 @@ h2 { font-size: var(--t-h2); }
 .facts dt { color: var(--muted-on-ink); margin-bottom: 6px; }
 .join-card { background: var(--brick); color: var(--sheet); padding: clamp(24px, 4vw, 40px); box-shadow: 7px 7px 0 var(--sheet); }
 .join-title { font-size: clamp(2rem, 4vw, 2.8rem); }
-.join { display: grid; gap: 18px; margin-top: 20px; }
+.join { display: grid; gap: 20px; margin-top: 16px; }
+.join-step { display: grid; gap: 18px; }
+.join-step[hidden] { display: none; }
+.btn-pledge { justify-self: stretch; padding: 20px 24px; font-size: .82rem; box-shadow: 5px 5px 0 var(--sheet); }
+.btn-pledge:hover { box-shadow: 7px 7px 0 var(--sheet); }
+.join-title:focus { outline: none; }
+.poll { border: 0; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.poll legend { padding: 0; margin-bottom: 12px; }
+.poll-option { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border: 2px solid var(--sheet); border-radius: 2px; cursor: pointer; }
+.poll-option small { display: block; font-size: .85rem; opacity: .9; }
+.poll-option:has(input:checked) { background: var(--sheet); color: var(--ink); }
+.join-email { display: grid; gap: 14px; }
 .join input[type="email"] { width: 100%; font: 400 1.05rem/1.2 var(--sans); padding: 16px 18px; border: 2px solid var(--ink); border-radius: 2px; background: var(--sheet); color: var(--ink); }
 .join input[type="email"]::placeholder { color: var(--muted); }
-.join-choice { border: 0; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px 22px; }
-.join-choice legend { padding: 0; margin-bottom: 12px; }
-.join-choice label, .join-consent { display: inline-flex; align-items: flex-start; gap: 8px; cursor: pointer; }
-.join-consent { font-size: .92rem; }
-.join input[type="radio"], .join input[type="checkbox"] { accent-color: var(--ink); width: 17px; height: 17px; flex: none; margin-top: 4px; }
-.join button { justify-self: start; }
+.join-consent { display: inline-flex; align-items: flex-start; gap: 8px; cursor: pointer; font-size: .92rem; }
+.join input[type="radio"], .join input[type="checkbox"] { accent-color: var(--ink); width: 17px; height: 17px; flex: none; margin-top: 2px; }
+.join-email button { justify-self: start; }
 .join-note { font-size: .92rem; }
-.join-note-on { font-weight: 400; }
+@media (max-width: 480px) { .poll { grid-template-columns: minmax(0, 1fr); } }
 
 /* ---------- Compact rows (Women's Month, Also this year) ---------- */
 .rows { list-style: none; padding: 0; columns: 2; column-gap: var(--space-gap); }

@@ -1,14 +1,27 @@
-{%- comment -%} March 8 sign-up. Not connected to Kit yet: assets/site.js stops it and nothing is sent or stored. {%- endcomment -%}
-<form id="join" class="join" novalidate>
-  <label class="visually-hidden" for="join-email">Email address</label>
-  <input id="join-email" name="email" type="email" placeholder="Your email" autocomplete="email" required>
-  <fieldset class="join-choice">
-    <legend class="label">I'm in for</legend>
-    <label><input type="radio" name="pledge" value="day" checked> March 8</label>
-    <label><input type="radio" name="pledge" value="month"> The whole month</label>
-    <label><input type="radio" name="pledge" value="both"> Both</label>
-  </fieldset>
-  <label class="join-consent"><input id="join-consent" type="checkbox" name="consent"> Email me about The Right to Be Real. Unsubscribe any time.</label>
-  <button type="submit" class="btn btn-ink">Join the Blackout</button>
-  <p class="join-note" id="join-note" role="status">Sign-ups open January 2027. <a href="{{ site.instagram }}" target="_blank" rel="noopener">Follow {{ site.instagram_handle }}</a> to hear first.</p>
-</form>
+{%- comment -%}
+  Pledge card. Step 1: one-tap pledge (no email). Step 2: a separate poll (one day or the whole month)
+  and optional email for reminders. Not connected yet: assets/site.js handles it and nothing is sent or stored.
+{%- endcomment -%}
+<div id="join" class="join">
+  <div class="join-step" id="step-pledge">
+    <p>Pledge to buy no beauty products and book no cosmetic treatments on March 8.</p>
+    <button type="button" class="btn btn-ink btn-pledge" id="pledge-btn">I pledge to join the Blackout</button>
+  </div>
+
+  <div class="join-step" id="step-more">
+    <fieldset class="poll">
+      <legend class="label">Quick poll: how far will you go?</legend>
+      <label class="poll-option"><input type="radio" name="poll" value="day"> <span>Just March 8</span></label>
+      <label class="poll-option"><input type="radio" name="poll" value="month"> <span>The whole month <small>Mar 8 – Apr 8</small></span></label>
+    </fieldset>
+    <form class="join-email" id="join-email" novalidate>
+      <p class="label">Want reminders? (optional)</p>
+      <label class="visually-hidden" for="join-email-input">Email address</label>
+      <input id="join-email-input" name="email" type="email" placeholder="Your email" autocomplete="email">
+      <label class="join-consent"><input id="join-consent" type="checkbox" name="consent"> Email me about The Right to Be Real. Unsubscribe any time.</label>
+      <button type="submit" class="btn btn-ink">Send me reminders</button>
+    </form>
+  </div>
+
+  <p class="join-note" id="join-note" role="status">Pledges open January 2027, so nothing is saved yet. <a href="{{ site.instagram }}" target="_blank" rel="noopener">Follow {{ site.instagram_handle }}</a> to hear first.</p>
+</div>
