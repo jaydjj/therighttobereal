@@ -5,9 +5,17 @@
  * type "Web app", Execute as "Me", Who has access "Anyone". Copy the web app URL into
  * `pledge_endpoint` in _config.yml.
  *
- * Stores no personal data: one row per pledge with a random device id, the time, and the
- * poll answer (day or month). Emails are NOT collected here; they go to Kit later.
+ * "Pledges" tab: one row per pledge with a random device id, the time and the poll answer
+ * (day or month). No personal data.
+ * "Emails" tab: only people who typed an email AND ticked the consent box. Keeps the time and
+ * the exact consent wording (proof of consent under Canada's anti-spam law). Import this tab
+ * into Kit when you're ready to send.
+ *
+ * After changing this script: Deploy → Manage deployments → Edit (pencil) → Version: New version
+ * → Deploy. That keeps the same web app URL.
  */
+const EMAIL_SHEET = 'Emails';
+const CONSENT_TEXT = 'Email me about The Right to Be Real. Unsubscribe any time.';
 const SHEET_NAME = 'Pledges';
 
 function sheet_() {
@@ -16,6 +24,16 @@ function sheet_() {
   if (!sh) {
     sh = ss.insertSheet(SHEET_NAME);
     sh.appendRow(['Pledged at', 'Device id', 'Poll']);
+  }
+  return sh;
+}
+
+function emailSheet_() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  let sh = ss.getSheetByName(EMAIL_SHEET);
+  if (!sh) {
+    sh = ss.insertSheet(EMAIL_SHEET);
+    sh.appendRow(['Email', 'Consented at', 'Consent wording', 'Poll', 'Device id']);
   }
   return sh;
 }
@@ -33,7 +51,8 @@ function doGet() {
   return json_({ count: count_(sheet_()) });
 }
 
-// POST action=pledge&id=...  or  action=poll&id=...&choice=day|month
+// POST action=pledge&id=...  |  action=poll&id=...&choice=day|month
+//      action=email&id=...&email=...&consent=yes
 function doPost(e) {
   const lock = LockService.getScriptLock();
   lock.waitLock(10000);
@@ -51,6 +70,16 @@ function doPost(e) {
     } else if (p.action === 'poll' && (p.choice === 'day' || p.choice === 'month')) {
       if (row === -1) { sh.appendRow([new Date(), id, p.choice]); }
       else { sh.getRange(row + 2, 3).setValue(p.choice); }
+    }
+    if (p.action === 'email') {
+      const email = String(p.email || '').trim().toLowerCase().slice(0, 254);
+      if (p.consent !== 'yes' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        return json_({ ok: false, error: 'email and consent required', count: count_(sh) });
+      }
+      const es = emailSheet_();
+      const emails = es.getLastRow() > 1 ? es.getRange(2, 1, es.getLastRow() - 1, 1).getValues().map(r => r[0]) : [];
+      const poll = row === -1 ? '' : sh.getRange(row + 2, 3).getValue();
+      if (emails.indexOf(email) === -1) es.appendRow([email, new Date(), CONSENT_TEXT, poll, id]);
     }
     return json_({ ok: true, count: count_(sh) });
   } finally {

@@ -66,6 +66,19 @@
   });
   document.getElementById('join-email').addEventListener('submit', function (e) {
     e.preventDefault();
-    note.innerHTML = 'Thanks. Email reminders aren\'t switched on yet, so we haven\'t saved your address. <a href="https://www.instagram.com/therighttobereal/" target="_blank" rel="noopener">Follow @therighttobereal</a> for updates.';
+    var input = document.getElementById('join-email-input');
+    var consent = document.getElementById('join-consent');
+    var email = input.value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { note.textContent = 'Please enter a valid email address.'; input.focus(); return; }
+    if (!consent.checked) { note.textContent = 'Please tick the box so we can email you.'; consent.focus(); return; }
+    if (!endpoint) { note.textContent = 'Thanks. Email reminders aren\'t switched on yet, so we haven\'t saved your address.'; return; }
+    send({ action: 'email', email: email, consent: 'yes' }).then(function (d) {
+      if (d && d.ok) {
+        note.textContent = 'Thanks. We\'ll email you before March 8. Unsubscribe any time.';
+        input.value = ''; consent.checked = false;
+      } else {
+        note.innerHTML = 'Sorry, that didn\'t go through. Please try again, or <a href="https://www.instagram.com/therighttobereal/" target="_blank" rel="noopener">message us on Instagram</a>.';
+      }
+    });
   });
 })();
