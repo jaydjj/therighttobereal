@@ -29,7 +29,7 @@ Key points:
 One page. Everything lives on the homepage (`index.html`). Every section follows the same pattern (`section.section` → `.container` → `.section-head` → content); sections are separated by spacing and background tone, never lines. Only four font styles: serif, serif italic, sans, label (see `DESIGN.md`).
 
 1. Hero: centred headline, one paragraph, the Blackout button. No image.
-2. The Beauty Blackout (`#blackout`, black): heading and a small facts strip, the pledge panel (live count + "Count me in"), claims-street illustration beside. The main purpose of the site.
+2. The Beauty Blackout (`#blackout`, black): heading and a small facts strip, the pledge (live count "72/100" + pledge button, then email reminders and poll), claims-street illustration to the right. The main purpose of the site.
 3. Women's Month (`#march`): compact list. 4. One action a week (`#monthly`): four cards. 5. More to come (`#also`): compact list.
 6. Manifesto band (brick, press illustration). 7. What we stand for (`#why`, text only, principles). 8. Instagram (notice-board illustration).
 
@@ -52,4 +52,4 @@ One page. Everything lives on the homepage (`index.html`). Every section follows
 
 ## Not yet connected
 
-The pledge panel (`_includes/join-form.html`, logic in `assets/site.js`) sends pledges and the one-day-or-month poll to a Google Sheet web app once `pledge_endpoint` is set in `_config.yml` (script: `tools/pledge-sheet.gs`; no personal data, one row per device). The public count shows from `pledge_show_at` (72). Optional emails are saved to the Sheet's "Emails" tab when someone types an email and presses "Send me reminders" (no tick box; the action is the opt-in, saved with the time and consent wording), to import into Kit later. Mailing must follow Canada's anti-spam law (CASL): opt-in by clear action (never pre-filled), a sender address in every email, and an unsubscribe link.
+The pledge (`_includes/join-form.html`, logic in `assets/site.js`) sends pledges and the one-day-or-month poll to a Google Sheet web app once `pledge_endpoint` is set in `_config.yml` (script: `tools/pledge-sheet.gs`; no personal data, one row per device). The public count always shows, as count/goal (`pledge_goal`, 100; raise it when reached). Optional emails are saved to the Sheet's "Emails" tab when someone types an email and presses "Send me reminders" (no tick box; the action is the opt-in, saved with the time and consent wording), to import into Kit later. Mailing must follow Canada's anti-spam law (CASL): opt-in by clear action (never pre-filled), a sender address in every email, and an unsubscribe link.

@@ -133,7 +133,7 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 
 **How-to-join line.** One line under the calendar pointing to Instagram. Don't repeat it elsewhere.
 
-**Pledge panel.** Full width under the Blackout heading: a light counter side and a brick "Count me in" side, with a cream offset shadow. The counter shows "Our goal: 1,000" until 72 pledges, then the live count, counting up when it scrolls into view, with a bar toward the first 1,000. Step 1: one tap, **"I pledge to join the Blackout"**, no email needed. Step 2 (appears after): a separate poll, "Just March 8" or "The whole month (Mar 8 – Apr 8)", and an **optional** email. No tick box: typing an email and pressing "Send me reminders" is the opt-in, and the wording beside it says what they'll get and that they can unsubscribe (Canada's anti-spam law). Pledges, poll and opted-in emails go to a Google Sheet; emails move to Kit later.
+**Pledge.** Straight on the ink, no boxes. The live count over the goal in big serif ("72/100", goal set by `pledge_goal` in `_config.yml`), counting up when it scrolls into view, with a thin bar under it. Then one line and the red **"I pledge to join the Blackout"** button; tapping it adds one to the count straight away. After pledging: "You're *in.*", the **optional** email reminders box, and the quick poll ("Just March 8" / "The whole month (Mar 8 – Apr 8)") stacked as plain radio buttons. No tick box: typing an email and pressing "Send me reminders" is the opt-in, and the wording beside it says what they'll get and that they can unsubscribe (Canada's anti-spam law). Pledges, poll and opted-in emails go to a Google Sheet; emails move to Kit later.
 
 **The Receipt.** Monospace receipt with crossed-out items, for money and time reclaimed (Keep the Change).
 
@@ -149,7 +149,7 @@ A real range of ages, skin tones, body shapes, styles and (over time) genders. D
 
 ### The page, top to bottom
 1. **Hero** (paper): centred, text only. Headline, one paragraph, the Blackout button.
-2. **Beauty Blackout** (ink): heading, body copy and the key-facts strip, then the pledge panel, with the street-of-claims illustration beside them (below on phones).
+2. **Beauty Blackout** (ink): heading, body copy and the key-facts strip, then the pledge (count and button), with the street-of-claims illustration to the right (below on phones).
 3. **Women's Month** (sand): compact two-column list (date, name, tag).
 4. **One action a week** (paper): four cards, Week 1–4.
 5. **More to come** (sand): compact list of the other campaigns, plus the one Instagram how-to-join line.

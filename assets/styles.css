@@ -134,7 +134,7 @@ h2 { font-size: var(--t-h2); }
 .bb-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 330px); grid-template-areas: "intro art" "pledge art"; column-gap: var(--space-gap); align-items: start; }
 .bb-intro { grid-area: intro; }
 .bb-grid .pledge { grid-area: pledge; }
-.bb-art { grid-area: art; align-self: center; }
+.bb-art { grid-area: art; }
 .bb-art .frame { max-width: 330px; box-shadow: 7px 7px 0 var(--sheet); }
 @media (max-width: 1020px) {
   .bb-grid { grid-template-columns: minmax(0, 1fr); grid-template-areas: "intro" "pledge" "art"; }
@@ -145,34 +145,35 @@ h2 { font-size: var(--t-h2); }
 .facts-strip dt { color: var(--muted-on-ink); }
 .facts-strip dd { font-family: var(--serif); font-size: 1.15rem; }
 
-/* Pledge panel: live counter beside the pledge */
-.pledge { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); background: var(--brick); color: var(--sheet); box-shadow: 8px 8px 0 var(--sheet); }
-.pledge-count { display: grid; align-content: center; gap: 10px; padding: clamp(28px, 5vw, 56px); background: var(--sheet); color: var(--ink); }
-.pledge-count .label { color: var(--brick); }
-.count-number { font-family: var(--serif); font-size: clamp(4rem, 11vw, 8.5rem); line-height: .9; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
-.count-sub { color: var(--muted); }
-.count-bar { height: 12px; background: var(--sand); border: 2px solid var(--ink); margin-top: 8px; }
-.count-bar span { display: block; height: 100%; width: 0; background: var(--brick); transition: width 1.2s cubic-bezier(.2, .7, .2, 1); }
-.count-bar[hidden] { display: none; }
-.join { display: grid; gap: 20px; align-content: start; padding: clamp(28px, 5vw, 56px); }
-.join-title { font-size: clamp(2.2rem, 4vw, 3rem); }
-.join-title:focus { outline: none; }
-.join-step { display: grid; gap: 20px; }
+/* Pledge: live count toward the goal, then the pledge. No boxes; it sits straight on the ink. */
+.pledge { display: grid; gap: clamp(28px, 4vw, 40px); max-width: 640px; }
+.count { display: grid; gap: 8px; }
+.count .label { color: var(--gold-on-ink); }
+.count-number { font-family: var(--serif); font-size: clamp(4.5rem, 12vw, 8rem); line-height: .95; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.count-goal { font-size: .45em; color: var(--muted-on-ink); letter-spacing: 0; margin-left: .08em; }
+.count-bar { height: 10px; background: #3a332c; }
+.count-bar span { display: block; height: 100%; width: 0; background: var(--brick-on-ink); transition: width 1.2s cubic-bezier(.2, .7, .2, 1); }
+.join-step { display: grid; gap: 20px; justify-items: start; }
 .join-step[hidden] { display: none; }
-.btn-pledge { justify-self: start; padding: 22px 30px; font-size: .86rem; box-shadow: 6px 6px 0 var(--sheet); }
-.btn-pledge:hover { box-shadow: 8px 8px 0 var(--sheet); }
-.poll { border: 0; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-.poll legend { padding: 0; margin-bottom: 12px; }
-.poll-option { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border: 2px solid var(--sheet); border-radius: 2px; cursor: pointer; }
-.poll-option small { display: block; font-size: .85rem; opacity: .9; }
-.poll-option:has(input:checked) { background: var(--sheet); color: var(--ink); }
-.join-email { display: grid; gap: 12px; }
-.join-hint, .join-note { font-size: .92rem; }
-.email-row { display: flex; flex-wrap: wrap; gap: 10px; }
-.email-row input { flex: 1 1 220px; min-width: 0; font: 400 1.05rem/1.2 var(--sans); padding: 14px 16px; border: 2px solid var(--ink); border-radius: 2px; background: var(--sheet); color: var(--ink); }
+.join-step > p { color: var(--muted-on-ink); max-width: 46ch; }
+.join-step > .join-title { color: var(--paper); }
+.tone-ink .btn-lg { box-shadow: 6px 6px 0 var(--sheet); }
+.tone-ink .btn-lg:hover { box-shadow: 8px 8px 0 var(--sheet); }
+.join-title { font-family: var(--serif); font-size: clamp(2rem, 4vw, 2.6rem); line-height: 1.1; }
+.join-title em { color: var(--brick-on-ink); }
+.join-title:focus { outline: none; }
+.join-email { display: grid; gap: 10px; width: 100%; }
+.join-email .label { color: var(--paper); }
+.join-hint, .join-note { font-size: .92rem; color: var(--muted-on-ink); }
+.join-hint a { color: var(--paper); }
+.email-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+.email-row input { flex: 1 1 240px; min-width: 0; font: 400 1.05rem/1.2 var(--sans); padding: 14px 16px; border: 2px solid var(--sheet); border-radius: 2px; background: var(--sheet); color: var(--ink); }
 .email-row input::placeholder { color: var(--muted); }
-.join input[type="radio"] { accent-color: var(--ink); width: 17px; height: 17px; flex: none; }
-@media (max-width: 860px) { .pledge { grid-template-columns: minmax(0, 1fr); } .btn-pledge { justify-self: stretch; } }
+.poll { border: 0; margin: 0; padding: 0; display: grid; gap: 12px; }
+.poll legend { padding: 0; margin-bottom: 12px; color: var(--paper); }
+.poll-option { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+.poll input[type="radio"] { accent-color: var(--brick-on-ink); width: 18px; height: 18px; flex: none; margin: 0; }
+@media (max-width: 560px) { .btn-pledge, .email-row .btn { width: 100%; } }
 @media (max-width: 480px) { .poll { grid-template-columns: minmax(0, 1fr); } }
 
 /* ---------- Compact rows (Women's Month, Also this year) ---------- */

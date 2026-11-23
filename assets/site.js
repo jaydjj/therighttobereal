@@ -6,9 +6,9 @@
   }
 })();
 
-// Pledge panel. A live counter beside a one-tap pledge; after pledging, the poll and optional email.
-// Pledges, poll answers and emails go to the Google Sheet web app in data-endpoint (see tools/pledge-sheet.gs).
-// Typing an email and pressing "Send me reminders" is the opt-in; the Sheet records the time and wording.
+// Pledge: the live count toward the goal ("72/100"), then a one-tap pledge that adds one straight away.
+// After pledging: optional email reminders and the poll. Pledges, poll answers and emails go to the Google Sheet
+// web app in data-endpoint (see tools/pledge-sheet.gs). Typing an email and pressing "Send me reminders" is the opt-in.
 (function () {
   var card = document.getElementById('join');
   var btn = document.getElementById('pledge-btn');
@@ -17,9 +17,10 @@
   var note = document.getElementById('join-note');
   if (!card || !btn || !more) return;
   var endpoint = card.getAttribute('data-endpoint') || '';
-  var showAt = parseInt(card.getAttribute('data-show-at'), 10) || 72;
-  var GOAL = 1000;
-  var shown = 0;
+  var goal = parseInt(card.getAttribute('data-goal'), 10) || 100;
+  var num = document.getElementById('count-number');
+  var fill = document.getElementById('count-fill');
+  var shown = 0, live = null, visible = false;
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
@@ -29,55 +30,48 @@
     return id;
   }
 
-  // Counter: hidden until the count reaches showAt, then counts up to the live number.
-  function showCount(n) {
-    if (typeof n !== 'number' || n < showAt) return;
-    var num = document.getElementById('count-number');
-    document.getElementById('count-label').textContent = 'Pledged so far';
-    document.getElementById('count-sub').textContent = n >= GOAL ? 'We passed our first 1,000.' : 'Toward our first 1,000.';
-    var bar = document.getElementById('count-bar'); bar.hidden = false;
-    document.getElementById('count-fill').style.width = Math.min(100, n / GOAL * 100) + '%';
-    var from = shown, start = null, dur = reduce ? 0 : 1200;
+  // Counts up from what's on screen to the live number, once the counter is in view.
+  function render() {
+    if (live === null || !visible) return;
+    var n = live, from = shown, start = null, dur = reduce ? 0 : (from ? 500 : 1200);
     shown = n;
+    fill.style.width = Math.min(100, n / goal * 100) + '%';
     function step(t) {
       if (start === null) start = t;
       var p = dur ? Math.min(1, (t - start) / dur) : 1;
-      var eased = 1 - Math.pow(1 - p, 3);
-      num.textContent = Math.round(from + (n - from) * eased).toLocaleString();
+      num.textContent = Math.round(from + (n - from) * (1 - Math.pow(1 - p, 3))).toLocaleString();
       if (p < 1) requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
   }
+  function setCount(n) { if (typeof n === 'number' && n >= (live || 0)) { live = n; render(); } }
   function send(params) {
     if (!endpoint) return Promise.resolve(null);
     params.id = deviceId();
     return fetch(endpoint, { method: 'POST', body: new URLSearchParams(params) })
-      .then(function (r) { return r.json(); }).then(function (d) { if (d) showCount(d.count); return d; })
+      .then(function (r) { return r.json(); }).then(function (d) { if (d) setCount(d.count); return d; })
       .catch(function () { return null; });
   }
   function pledged() {
     first.hidden = true;
     more.hidden = false;
-    document.getElementById('join-title').innerHTML = 'You\'re <em>in.</em>';
     var choice = store('rtbr-poll');
     if (choice) { var r = card.querySelector('input[name="poll"][value="' + choice + '"]'); if (r) r.checked = true; }
   }
 
-  more.hidden = true;
-  if (endpoint) {
-    var counter = document.getElementById('pledge-count');
-    var load = function () { fetch(endpoint).then(function (r) { return r.json(); }).then(function (d) { showCount(d.count); }).catch(function () {}); };
-    if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { io.disconnect(); load(); } }, { threshold: .4 });
-      io.observe(counter);
-    } else load();
-  }
+  var counter = document.getElementById('pledge-count');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { io.disconnect(); visible = true; render(); } }, { threshold: .4 });
+    io.observe(counter);
+  } else visible = true;
+  if (endpoint) fetch(endpoint).then(function (r) { return r.json(); }).then(function (d) { setCount(d.count); }).catch(function () {});
   if (endpoint && store('rtbr-pledged')) pledged();
 
   btn.addEventListener('click', function () {
+    var already = store('rtbr-pledged');
     pledged();
     document.getElementById('join-title').focus();
-    store('rtbr-pledged', '1');
+    if (!already) { store('rtbr-pledged', '1'); if (live !== null) setCount(live + 1); }
     send({ action: 'pledge' });
   });
   card.querySelectorAll('input[name="poll"]').forEach(function (r) {
