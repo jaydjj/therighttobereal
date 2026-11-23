@@ -10,7 +10,7 @@
     <span class="ev-date">{{ e.date }}</span>
     <h3 class="ev-title">{{ e.title }}</h3>
     <p class="ev-text">{{ e.text }}</p>
-    <p class="ev-tags"><span class="tag tag-{{ e.tag }}">{{ tagname }}</span>{% if e.recurring %}<span class="tag tag-recur"><span aria-hidden="true">↻</span> {{ e.recurring }}</span>{% endif %}</p>
+    <p class="ev-tags"><span class="tag tag-{{ e.tag }}">{{ tagname }}</span>{% if e.recurring %}<span class="tag tag-recur"><span aria-hidden="true">↻</span> {{ e.recurring | split: " · " | first }}</span>{% endif %}</p>
   </li>
   {%- endfor %}
 </ol>

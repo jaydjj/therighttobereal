@@ -78,32 +78,32 @@ march:
     text: The results. How many of us joined, how much money stayed in our pockets, and what's next.
 
 
-# Recurring events, shown as cards.
-recurring:
+# The monthly rhythm: one action per week, every month. Shown as cards.
+monthly:
   - id: the-resistance
-    date: Tuesdays from Feb 2
+    date: Week 1
     title: The Resistance
     tag: gather
-    recurring: Weekly
-    text: People who were told to change, and didn't. One every Tuesday. Nominate a writer, an artist, your grandmother or your best friend on Instagram from January; if we feature yours, we'll credit you.
+    recurring: Monthly · Week 1
+    text: People who were told to change, and didn't. Nominate a writer, an artist, your grandmother or your best friend on Instagram; if we feature yours, we'll credit you.
   - id: money-hour
-    date: Monthly
+    date: Week 2
     title: Money Hour
     tag: reclaim
-    recurring: Monthly
-    text: One money strategy a month from women in our community. Budgets that stick, how they asked for the raise, and more.
-  - id: mute-the-ads-all-year
-    date: Mar 1–7 · Nov 19–25
+    recurring: Monthly · Week 2
+    text: One money strategy from women in our community. Budgets that stick, how they asked for the raise, and more.
+  - id: mute-the-ads-monthly
+    date: Week 3
     title: Mute the Ads
     tag: protest
-    recurring: Twice a year
-    text: 'We hide every beauty ad we see for a week, twice a year: before the Beauty Blackout, and the week before Black Friday. The more of us who do it, the more it costs them to reach us.'
-  - id: real-day-meetups
-    date: All year
-    title: Real Day Meetups
-    tag: gather
-    recurring: All year
-    text: Local get-togethers, organized by people in our community.
+    recurring: Monthly · Week 3
+    text: We hide every beauty ad we see for a week. The more of us who do it, the more it costs them to reach us.
+  - id: take-back-20-minutes
+    date: Week 4
+    title: Take Back 20 Minutes
+    tag: reclaim
+    recurring: Monthly · Week 4
+    text: We take the 20 minutes we'd spend researching a beauty product and spend them on our savings, our budget, or planning an experience that has nothing to do with how we look.
 
 # Other campaigns this year. Shown compactly (date, name, tag); the text is kept here for reference and Instagram planning.
 also:
@@ -117,11 +117,6 @@ also:
     title: Financial Literacy Month
     tag: reclaim
     text: Stories from financially independent women who got there by investing in what mattered to them, not what they were sold.
-  - id: take-back-20-minutes
-    date: April
-    title: Take Back 20 Minutes
-    tag: reclaim
-    text: We take the 20 minutes we'd spend researching a beauty product and spend them on our savings, our budget, or planning an experience that has nothing to do with how we look.
   - id: the-long-blackout-stories
     date: Apr 8
     title: 'The Long Blackout: The Stories'
@@ -147,3 +142,8 @@ also:
     title: Blackout Friday
     tag: protest
     text: The biggest shopping day of the year. We buy no beauty products.
+  - id: real-day-meetups
+    date: All year
+    title: Real Day Meetups
+    tag: gather
+    text: Local get-togethers, organized by people in our community.

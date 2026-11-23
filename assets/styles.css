@@ -534,9 +534,7 @@ body { background-color: var(--paper); background-image: url("data:image/svg+xml
 .argument-copy-solo { font: 400 clamp(1.2rem, 2.2vw, 1.55rem)/1.45 var(--serif); color: var(--ink-2); max-width: 46ch; }
 .argument-copy-solo strong { color: var(--ink); font-weight: 400; font-style: italic; }
 
-/* Recurring: 2 x 2 cards */
-#year + .cal-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-@media (max-width: 560px) { #year + .cal-cards { grid-template-columns: minmax(0, 1fr); } }
+
 
 /* Also this year: compact list, no descriptions */
 .also { margin-top: clamp(48px, 7vw, 80px); }
@@ -547,3 +545,13 @@ body { background-color: var(--paper); background-image: url("data:image/svg+xml
 .also-title { font: 400 1.15rem/1.25 var(--serif); }
 @media (max-width: 760px) { .also-list { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 560px) { .also-list li { grid-template-columns: 5.2rem minmax(0, 1fr) auto; gap: 10px; } .also-title { font-size: 1.05rem; } }
+
+/* The monthly rhythm: its own section, four weekly cards */
+.monthly { background: var(--paper); padding-block: 0 clamp(64px, 9vw, 104px); border-top: 1px solid var(--ink); }
+.monthly .cal-head { border-top: 0; }
+.monthly .cal-cards { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.monthly .ev-date { font-size: .95rem; letter-spacing: .04em; }
+@media (max-width: 1000px) { .monthly .cal-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .monthly .cal-cards { grid-template-columns: minmax(0, 1fr); } }
+.calendar-also { padding-top: 0; }
+.calendar-also .also { margin-top: 0; padding-top: clamp(48px, 7vw, 80px); }
